@@ -1,0 +1,115 @@
+.App {
+  text-align: center;
+  background: #fbfbfb;
+  min-height: 100vh;
+}
+
+.App-logo {
+  height: 4rem;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #fbfbfb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: inset 0px -5px 4px -8px rgba(0, 0, 0, 0.75);
+  padding: 1rem 0;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.file-bar {
+  display: flex;
+  gap: 1rem;
+  border: .1rem solid rgb(116, 131, 118);
+  background-color: rgb(242, 242, 242);
+  border-radius: 1rem;
+  overflow: hidden;
+  font-size: .7rem;
+  margin: 0 3rem;
+
+}
+.submit-input {
+  background: rgb(102, 119, 104);
+  color: rgb(255, 255, 255);
+  padding: .3rem 1rem;
+  border: none;
+  min-height: 1rem;
+}
+
+.file-input {
+  color: rgb(63, 63, 63);
+  width: 100%;
+}
+.file-input::file-selector-button {
+  background: rgb(102, 119, 104);
+  color: rgb(255, 255, 255);
+  padding: .3rem 1rem;
+  border: none;
+}
+.tool-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem 0;
+  background: #fefefe;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.view-table {
+  background: #fefefe;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  padding: .3rem;
+  font-size: .8rem !important;
+  text-align: left;
+}
+.expand {
+  display: flex;
+  grid-column: 1 / -1;
+  background: #fff;
+}
+
+.preview {
+  width: 100%;
+}
+
+.row-tree-leaf {
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.MuiFormLabel-root {
+  font-size: .8rem !important;
+}
+
+.MuiInputBase-input{
+  height: 0;
+  padding: 12.5px 10px !important;
+}
+
+.view-table > [data-table-library_table] {
+  --data-table-library_grid-template-columns: minmax(0px, 5fr) minmax(0px, 10fr) minmax(0px, 2fr) minmax(0px, 2fr) minmax(0px, 2fr) !important;
+}
+
+.hide {
+  display: none;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
