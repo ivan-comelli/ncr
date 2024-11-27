@@ -5,6 +5,9 @@ import { CompactTable } from '@table-library/react-table-library/compact';
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
+import { IconButton } from '@mui/material';
+import IconIsolate from '@mui/icons-material/LockOutlined';
+
 
 const TableInventory = ({filter, status, minified}) => {
   const [data, setData] = useState([]);
@@ -105,6 +108,19 @@ const TableInventory = ({filter, status, minified}) => {
       { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
       { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
       { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
+      {
+        label: '',
+        renderCell: (item) => (
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={() => handleAction(item)} // Cambia 'handleAction' a la función que necesites
+          >
+            <IconIsolate></IconIsolate>
+          </IconButton>
+        ),
+        resize: { resizerWidth: 100 },
+      },
     ]
   }
   else {
@@ -113,7 +129,20 @@ const TableInventory = ({filter, status, minified}) => {
       { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
       { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
       { label: 'On Hand', renderCell: (item) => item.onHand, resize:{resizerWidth:100}},
-      { label: 'PPK', renderCell: (item) => item.ppk, hide: false, resize:{resizerWidth:100}}
+      { label: 'PPK', renderCell: (item) => item.ppk, hide: false, resize:{resizerWidth:100}},
+      {
+        label: '',
+        renderCell: (item) => (
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={() => handleAction(item)} // Cambia 'handleAction' a la función que necesites
+          >
+            <IconIsolate></IconIsolate>
+          </IconButton>
+        ),
+        resize: { resizerWidth: 100 },
+      },
     ]
   }
 
@@ -121,6 +150,12 @@ const TableInventory = ({filter, status, minified}) => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const handleAction = (item) => {
+    console.log("Acción sobre el item:", item);
+    // Aquí puedes agregar la lógica que desees para el botón de cada fila
+  };
+
 
   return (
     <div className="view-table">
