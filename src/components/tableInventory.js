@@ -6,7 +6,7 @@ import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
 
-const TableInventory = ({filter}) => {
+const TableInventory = ({filter, status, minified}) => {
   const [data, setData] = useState([]);
   const [collectionData, setCollectionData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -71,6 +71,7 @@ const TableInventory = ({filter}) => {
 
   useEffect(() => {
     const search = filter;
+    console.log(filter)
     const filteredData = data.filter((item) => {
       if(search && search !="") {
         const descriptionMatch = item.description && item.description
@@ -84,17 +85,38 @@ const TableInventory = ({filter}) => {
       }
       return data;
     });
+    console.log(filteredData.length)
+    if(filteredData.length == 0 && !loading) {
+      status({empty: true, partIsolate: null});
+    }
+    else if(filteredData.length == 1) {
+      status({empty: false, partIsolate: filteredData[0]});
+    }
+    else {
+      status({empty: false, partIsolate: null});
 
+    }
     setCollectionData(filteredData);
   }, [data, filter]);
 
-  const COLUMNS = [
-    { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
-    { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
-    { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
-    { label: 'On Hand', renderCell: (item) => item.onHand, resize:{resizerWidth:100}},
-    { label: 'PPK', renderCell: (item) => item.ppk, hide: false, resize:{resizerWidth:100}}
-  ]
+  let COLUMNS = [];
+  if(minified) {
+    COLUMNS = [
+      { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
+      { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
+      { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
+    ]
+  }
+  else {
+    COLUMNS = [
+      { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
+      { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
+      { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
+      { label: 'On Hand', renderCell: (item) => item.onHand, resize:{resizerWidth:100}},
+      { label: 'PPK', renderCell: (item) => item.ppk, hide: false, resize:{resizerWidth:100}}
+    ]
+  }
+
 
   if (loading) {
     return <div>Loading...</div>;

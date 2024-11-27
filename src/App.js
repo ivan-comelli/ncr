@@ -3,16 +3,43 @@ import TableInventory from './components/tableInventory';
 import logo from './ncr-logo.png';
 import './App.css';
 import { TextField } from '@mui/material';
-import { FaSearch } from 'react-icons/fa';
 import { Button } from '@mui/material';
 import CheckerModal from './components/checkerModal';
 import PartNumberForm from './components/partForm';
+import SearchIcon from '@mui/icons-material/Search';
+import UploadIcon from '@mui/icons-material/Upload';
+
+const useWindowDimensions = () => {
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return windowDimensions;
+};
 
 function App() {
   const [search, setSearch] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [modalPromise, setModalPromise] = useState();
   const [showModal, setShowModal] = useState(false);
+  const [showEditor, setShowEditor] = useState(false);
+  const [partIsolate, setPartIsolate] = useState();//UID
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -48,21 +75,55 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="Logo"/>
+        <div className='tool-bar'>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={openModal}
+          >
+            <UploadIcon></UploadIcon>
+          </Button>
+          <TextField label="Busca una parte" value={search} icon={<SearchIcon></SearchIcon>} onChange={handleSearch} sx={{ width: '20rem' }} 
+            InputProps={{
+              style: { height: "3rem"},
+            }}
+          />
+      </div>
       </header>
-      <div className='tool-bar'>
-        <TextField label="Busca una parte" value={search} icon={<FaSearch/>} onChange={handleSearch}/>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          onClick={openModal}
+      <PartNumberForm active={showEditor} item={partIsolate}/>
+      <div
+        style={{
+          display: showEditor && !partIsolate ? 'none' : 'block',
+        }}
+      >
+        <TableInventory
+          minified={width < 768 ? true : false}
+          status={(response) => {
+            if (response.empty || response.partIsolate) {
+              setShowEditor(true);
+              setPartIsolate(response.partIsolate);
+            } else {
+              setShowEditor(false);
+              setPartIsolate(response.partIsolate);
+            }
+          }}
+          filter={debouncedSearch}
+        />
+      </div>
+
+      {/* Mensaje */}
+      {showEditor && !partIsolate && (
+        <p
+          style={{
+            textAlign: 'center',
+            marginTop: '20px',
+            fontSize: '18px',
+            color: '#666',
+          }}
         >
-          Subir
-        </Button>
-      </div>
-      <PartNumberForm/>
-      <div className=''>
-        <TableInventory filter={debouncedSearch}></TableInventory>
-      </div>
+          Agrega una nueva parte para empezar.
+        </p>
+      )}
       <CheckerModal show={showModal} rejectModal={modalPromise?.reject} resolveModal={modalPromise?.resolve}></CheckerModal>
     </div>
   );
