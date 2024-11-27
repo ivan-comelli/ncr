@@ -7,6 +7,7 @@ import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/ma
 import { useTree } from "@table-library/react-table-library/tree";
 import { IconButton } from '@mui/material';
 import IconIsolate from '@mui/icons-material/LockOutlined';
+import { ClipLoader } from 'react-spinners';
 
 
 const TableInventory = ({filter, status, minified}) => {
@@ -148,7 +149,7 @@ const TableInventory = ({filter, status, minified}) => {
 
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="loader"><ClipLoader size={50} color={"#123abc"} loading={true} /></div>;
   }
 
   const handleAction = (item) => {

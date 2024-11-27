@@ -4,11 +4,27 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#54b948',
+      contrastText: '#fdfdfd'
+    },
+    secondary: {
+      main: '#f50057', // Opcional, para el color secundario
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
 
