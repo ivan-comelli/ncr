@@ -6,7 +6,7 @@ import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
 import { IconButton } from '@mui/material';
-import IconIsolate from '@mui/icons-material/LockOutlined';
+import IconIsolate from '@mui/icons-material/VisibilityOutlined';
 import { ClipLoader } from 'react-spinners';
 
 
@@ -14,6 +14,7 @@ const TableInventory = ({filter, status, minified}) => {
   const [data, setData] = useState([]);
   const [collectionData, setCollectionData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState();
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
 
@@ -137,7 +138,11 @@ const TableInventory = ({filter, status, minified}) => {
           <IconButton
             variant="contained"
             color="primary"
-            onClick={() => handleAction(item)} // Cambia 'handleAction' a la función que necesites
+            onClick={() => handleAction(item)}
+            sx={{
+              color: selected ? "primary.main" : "secondary.main", 
+              "&:hover": { color: "primary.main" }, 
+            }}
           >
             <IconIsolate></IconIsolate>
           </IconButton>
@@ -154,6 +159,7 @@ const TableInventory = ({filter, status, minified}) => {
 
   const handleAction = (item) => {
     console.log("Acción sobre el item:", item);
+    setSelected(item)
     // Aquí puedes agregar la lógica que desees para el botón de cada fila
   };
 

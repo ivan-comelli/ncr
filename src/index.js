@@ -14,7 +14,7 @@ const theme = createTheme({
       contrastText: '#fdfdfd'
     },
     secondary: {
-      main: '#f50057', // Opcional, para el color secundario
+      main: '#f0f0f0', // Opcional, para el color secundario
     },
   },
 });
