@@ -116,7 +116,11 @@ const TableInventory = ({filter, status, minified}) => {
           <IconButton
             variant="contained"
             color="primary"
-            onClick={() => handleAction(item)} // Cambia 'handleAction' a la función que necesites
+            onClick={() => handleAction(item)}
+            sx={{
+              color: selected ? "primary.main" : "secondary.main", 
+              "&:hover": { color: "primary.main" }, 
+            }}
           >
             <IconIsolate></IconIsolate>
           </IconButton>
