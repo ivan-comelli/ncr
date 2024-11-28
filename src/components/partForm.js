@@ -1,10 +1,16 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Chip, TextField, Button, Stack,  Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton  } from '@mui/material';
+import { Autocomplete, Chip, TextField, Button, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import { Add, Remove } from '@mui/icons-material';
+import { Remove } from '@mui/icons-material';
+import { ArrowDropDown } from '@mui/icons-material';
+import { Add, Close } from "@mui/icons-material";
 
 const PartNumberForm = ({active, item}) => {
   const [value, setValue] = useState(0);
+  const [partNumber, setPartNumber] = useState('');
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   const handleIncrement = () => {
     setValue((prevValue) => prevValue + 1);
@@ -72,18 +78,31 @@ const PartNumberForm = ({active, item}) => {
     setData({...data, partNumber: updatedPartNumbers});
   };
 
-  // Memoizing handleDragEnd to prevent unnecessary re-renders
-  const handleDragEnd = useCallback((result) => {
-    console.log('Drag End result:', result); // Depuración
+  const handleSelectPartNumber = (selectedPart) => {
+    setPartNumber(selectedPart); // Actualiza el campo con el número seleccionado
+    handleCloseMenu();
+  };
 
-    if (!result.destination) return;
+  const handleOpenMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const reorderedPartNumbers = [...data.partNumbers];
-    const [removed] = reorderedPartNumbers.splice(result.source.index, 1);
-    reorderedPartNumbers.splice(result.destination.index, 0, removed);
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
 
-    setData({...data, partNumber: reorderedPartNumbers});
-  }, [data.partNumber]);
+  const toggleAddingState = () => {
+    setIsAdding(!isAdding);
+    if (!isAdding) {
+      setInputValue(""); // Resetea el campo al cambiar a estado de agregar
+    }
+  };
+
+  const handleInputKeyPress = (event) => {
+    if (event.key === "Enter" && isAdding) {
+      handleAddPartNumber();
+    }
+  };
 
   return (
     <>
@@ -98,56 +117,47 @@ const PartNumberForm = ({active, item}) => {
             value={data.description}
             onChange={(e) => setData({...data, description: e.target.value})}
           />
-
-          <div>
-            <TextField
-              label="Add Part Number"
-              variant="outlined"
-              fullWidth
-              margin="normal"
-              onKeyDown={handleAddPartNumber}
-              placeholder="Press 'Enter' to add"
-            />
-          
-
-          
-            <DragDropContext onDragEnd={handleDragEnd}>
-              <Droppable droppableId="partNumbers" direction="horizontal">
-                {(provided) => {
-                  console.log('Droppable rendered'); // Depuración
-                  return (
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      flexWrap="wrap"
-                      ref={provided.innerRef}
-                      {...provided.droppableProps}
-                    >
-                      {data.partNumber.map((partNumber, index) => (
-                        <Draggable key={index} draggableId={`${index}`} index={index}>
-                          {(provided) => {
-                            console.log(`Draggable rendered: ${index}`); // Depuración
-                            return (
-                              <Chip
-                                label={partNumber}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                ref={provided.innerRef}
-                                onDelete={() => handleDelete(index)}
-                                sx={{ cursor: 'pointer', marginBottom: '8px' }}
-                              />
-                            );
-                          }}
-                        </Draggable>
-                      ))}
-                      {provided.placeholder}
-                    </Stack>
-                  );
-                }}
-              </Droppable>
-            </DragDropContext>
-          </div>
-                <h5>Lista de partes:</h5>
+        <Autocomplete
+  freeSolo
+  disabled={!isAdding && data.partNumber.length == 0} // Deshabilitar si no está en modo agregar
+  id="free-solo-2-demo"
+  disableClearable
+  getOptionDisabled={() => true}
+  options={data.partNumber.length > 0 ? data.partNumber : []} // Asegurar opciones válidas
+  value={data.partNumber.length > 0 ? data.partNumber[0] : ""} // Si no hay elementos, usar cadena vacía
+  inputValue={isAdding ? inputValue : data.partNumber.length > 0 ? data.partNumber[0] : ""} // Manejar entrada vacía
+  onInputChange={(event, newInputValue) => {
+    if (isAdding) {
+      setInputValue(newInputValue); // Solo actualizar inputValue cuando está en modo agregar
+    }
+  }}
+  renderInput={(params) => (
+    <TextField
+      {...params}
+      label="Numero de Parte"
+      variant="outlined"
+      InputProps={{
+        ...params.InputProps,
+        endAdornment: (
+          <>
+            {params.InputProps.endAdornment}
+            <InputAdornment position="end">
+              <IconButton
+                onClick={toggleAddingState}
+                size="small"
+                color={isAdding ? "secondary" : "primary"}
+                aria-label={isAdding ? "Cancelar" : "Agregar nueva parte"}
+              >
+                {isAdding ? <Close /> : <Add />}
+              </IconButton>
+            </InputAdornment>
+          </>
+        ),
+      }}
+    />
+  )}
+/>
+         
             <FormControl fullWidth>
               <InputLabel id="csr-select-label">Selecciona un empleado</InputLabel>
               <Select
