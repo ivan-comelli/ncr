@@ -132,36 +132,29 @@ tr {
 
 .registerForm {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 3.5rem 5rem 3.5rem;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 3.5rem 3.5rem;
   grid-column-gap: 1rem;
-  grid-row-gap: 0px;
+  grid-row-gap: 1rem;
   padding: 0 10%;
   margin-top: 2rem;
 }
 
-.registerForm > *:nth-child(1) {
-  grid-area: 1 / 1 / 2 / 3;
-}
-.registerForm > *:nth-child(2) {
-  grid-area: 1 / 3 / 3 / 6;
-}
-.registerForm > *:nth-child(3) {
-  grid-area: 2 / 1 / 3 / 3;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: .8rem;
+.registerForm > .description {
+  grid-area: 1 / 1 / 2 / 5;
   margin: 0;
 }
-.registerForm > *:nth-child(4) {
-  grid-area: 3 / 1 / 4 / 3;
+.registerForm > .partNumber {
+  grid-area: 1 / 5 / 2 / 9;
 }
-.registerForm > *:nth-child(5) {
-  grid-area: 3 / 3 / 4 / 5;
+.registerForm > .select {
+  grid-area: 2 / 1 / 3 / 4;
 }
-.registerForm > *:nth-child(6) {
-  grid-area: 3 / 5 / 4 / 6;
+.registerForm > .stock {
+  grid-area: 2 / 4 / 3 / 9;
+}
+.registerForm > .submit {
+  grid-area: 1 / 9 / 3 / 10;
 }
 .loader {
   height: 100vh;

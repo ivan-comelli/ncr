@@ -111,6 +111,7 @@ const PartNumberForm = ({active, item}) => {
                    
           <TextField
             label="Description"
+            className='description'
             variant="outlined"
             fullWidth
             margin="normal"
@@ -118,6 +119,7 @@ const PartNumberForm = ({active, item}) => {
             onChange={(e) => setData({...data, description: e.target.value})}
           />
         <Autocomplete
+        className='partNumber'
   freeSolo
   disabled={!isAdding && data.partNumber.length == 0} // Deshabilitar si no está en modo agregar
   id="free-solo-2-demo"
@@ -158,9 +160,9 @@ const PartNumberForm = ({active, item}) => {
   )}
 />
          
-            <FormControl fullWidth>
-              <InputLabel id="csr-select-label">Selecciona un empleado</InputLabel>
+
               <Select
+              className='select'
                 labelId="csr-select-label"
                 value={selectedCsr}
                 onChange={handleChange}
@@ -176,12 +178,12 @@ const PartNumberForm = ({active, item}) => {
                   </MenuItem>
                 ))}
               </Select>
-            </FormControl>
             <TextField
               label="Número incremental"
               value={value}
               onChange={handleChangeStock}
               type="number"
+              className='stock'
               fullWidth
               InputProps={{
                 startAdornment: (
@@ -200,7 +202,7 @@ const PartNumberForm = ({active, item}) => {
                 ),
               }}
             />
-            <Button variant="contained" color="primary">
+            <Button className='submit' variant="contained" color="primary">
               Submit
             </Button>
         </form>
