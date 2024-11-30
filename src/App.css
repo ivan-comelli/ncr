@@ -142,6 +142,7 @@ tr {
 
 .registerForm {
   gap: 1rem;
+  padding: 1rem !important;
 }
 .registerForm > .description {
   grid-area: 1 / 1 / 2 / 5;
