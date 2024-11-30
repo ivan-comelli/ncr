@@ -158,7 +158,7 @@ const TableInventory = ({filter, status, minified}) => {
 
 
   if (loading) {
-    return <div className="loader"><ClipLoader size={50} color={"#123abc"} loading={true} /></div>;
+    return <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>;
   }
 
   const handleAction = (item) => {

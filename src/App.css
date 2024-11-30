@@ -119,6 +119,16 @@ tr {
   .view-table > [data-table-library_table] {
     --data-table-library_grid-template-columns: minmax(0px, 5fr) minmax(0px, 10fr) minmax(0px, 2fr) minmax(0px, 2fr) minmax(0px, 2fr) minmax(0px, 1fr)!important;
   }
+  .registerForm {
+    display: grid !important;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: 3.5rem 3.5rem;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+    padding: 0 10%;
+    margin-top: 2rem;
+  }
+  
 }
 
 .hide {
@@ -131,18 +141,10 @@ tr {
 }
 
 .registerForm {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: 3.5rem 3.5rem;
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
-  padding: 0 10%;
-  margin-top: 2rem;
+  gap: 1rem;
 }
-
 .registerForm > .description {
   grid-area: 1 / 1 / 2 / 5;
-  margin: 0;
 }
 .registerForm > .partNumber {
   grid-area: 1 / 5 / 2 / 9;

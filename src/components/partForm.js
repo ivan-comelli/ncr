@@ -1,9 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Autocomplete, Chip, TextField, Button, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
+import { Box, Autocomplete, Chip, TextField, Button, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { Remove } from '@mui/icons-material';
 import { ArrowDropDown } from '@mui/icons-material';
 import { Add, Close } from "@mui/icons-material";
+import StockManager from './stockInput';
 
 const PartNumberForm = ({active, item}) => {
   const [value, setValue] = useState(0);
@@ -12,20 +13,6 @@ const PartNumberForm = ({active, item}) => {
   const [isAdding, setIsAdding] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
-  const handleIncrement = () => {
-    setValue((prevValue) => prevValue + 1);
-  };
-
-  const handleDecrement = () => {
-    setValue((prevValue) => (prevValue > 0 ? prevValue - 1 : 0));
-  };
-
-  const handleChangeStock = (event) => {
-    const newValue = event.target.value;
-    if (newValue === '' || !isNaN(newValue)) {
-      setValue(Number(newValue));
-    }
-  };
   const [data, setData] = useState({
     partNumber: [],
     description: "",
@@ -98,23 +85,16 @@ const PartNumberForm = ({active, item}) => {
     }
   };
 
-  const handleInputKeyPress = (event) => {
-    if (event.key === "Enter" && isAdding) {
-      handleAddPartNumber();
-    }
-  };
-
   return (
     <>
       {active && (
-        <form className='registerForm'>
-                   
+        <FormControl className='registerForm' fullWidth>                   
           <TextField
             label="Description"
             className='description'
             variant="outlined"
             fullWidth
-            margin="normal"
+            margin="none"
             value={data.description}
             onChange={(e) => setData({...data, description: e.target.value})}
           />
@@ -160,14 +140,12 @@ const PartNumberForm = ({active, item}) => {
   )}
 />
          
-
+          
               <Select
               className='select'
-                labelId="csr-select-label"
                 value={selectedCsr}
                 onChange={handleChange}
-                label="Selecciona un empleado"
-                placeholder="Selecciona un empleado"
+                displayEmpty
               >
                 <MenuItem value="">
                   <em>Selecciona un empleado</em>
@@ -178,34 +156,13 @@ const PartNumberForm = ({active, item}) => {
                   </MenuItem>
                 ))}
               </Select>
-            <TextField
-              label="Número incremental"
-              value={value}
-              onChange={handleChangeStock}
-              type="number"
-              className='stock'
-              fullWidth
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <IconButton onClick={handleDecrement}>
-                      <Remove />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton onClick={handleIncrement}>
-                      <Add />
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
+
+              <StockManager></StockManager>
+     
             <Button className='submit' variant="contained" color="primary">
               Submit
             </Button>
-        </form>
+        </FormControl>
       )}
     </>
   );

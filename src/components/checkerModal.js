@@ -141,7 +141,7 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
       case 2:
           return <div className='content'>
             {loading ? (
-              <ClipLoader size={50} color={"#123abc"} loading={loading} />
+              <ClipLoader size={50} color={"#54b948"} loading={loading} />
             ) : (
               <div>Contenido cargado</div>
             )}
