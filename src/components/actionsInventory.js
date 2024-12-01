@@ -8,12 +8,21 @@ async function getTechnicianOfSomePart(refInventory, identity) {
             throw new Error("No hay referencia de la parte para actualizar");
         }
         const technicianCollectionRef = collection(refInventory, "technicians");
-        const qTechnician = query(technicianCollectionRef, or(where("csr", "==", identity.csr), where("name", "==", identity.name)));
-        const technicianSnapshot = await getDocs(qTechnician);
-        if (technicianSnapshot.size > 1) {
+        let technicianSnapshot = null;
+        if(identity){
+            const qTechnician = query(technicianCollectionRef, or(where("csr", "==", identity.csr), where("name", "==", identity.name)));
+            technicianSnapshot = await getDocs(qTechnician);
+        }
+        else {
+            technicianSnapshot = await getDocs(technicianCollectionRef);
+        }
+        if (technicianSnapshot.size > 1 && identity) {
             throw new Error("Hay mas de una coincidencia.");
         }
-        response = technicianSnapshot.docs[0];
+        response = technicianSnapshot.docs.map(doc => ({
+            id: doc.id, // Incluye el ID del documento si es necesario
+            ...doc.data() // Extrae los datos del documento
+        }));
     } catch(error) {
         throw new Error("No se pudo obtener el tecnico, " + error.message);
     }
@@ -40,7 +49,6 @@ async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
 
 async function getAllStockOfSomePart(refInventory) {
     //Aqui se debe calcular la sumatoria por cada CSR presente y la total de todas
-    let response = null;
     try {
         if(!refInventory) {
             throw new Error("No hay referencia de la parte para actualizar");
@@ -48,33 +56,30 @@ async function getAllStockOfSomePart(refInventory) {
         const stockCollectionRef = collection(refInventory, "stock");
         const stockSnapshot = await getDocs(stockCollectionRef);
         if (stockSnapshot.empty) {
-            throw new Error("No hay registro para esta parte.");
-        }
-        response = () => {
-            let balance = [] 
-            stockSnapshot.docs.forEach((doc) => {
-                let commonCount = balance.find((item) => item.csr == doc.csr);
-                if(commonCount) {
-                    commonCount.stock += doc.stock;
-                }
-                else {
-                    balance.push({
-                        csr: doc.csr,
-                        stock: doc.quantity,
-                        lastUpdate: doc.lastUpdate
-                    });
-                }
-            });
-            let totalStock = balance.reduce((sum, item) => sum + item.stock, 0);
             return {
-                total: totalStock,
-                detail: balance
+                total: {},
+                detail: []
             };
         }
+        let balance = [];
+        let commonCount = [];
+        stockSnapshot.docs.forEach((doc) => {
+            if(!commonCount[doc.data().csr ? doc.data().csr : "ANY"]) commonCount[doc.data().csr ? doc.data().csr : "ANY"] = 0;
+            commonCount[doc.data().csr ? doc.data().csr : "ANY"] += Number(doc.data().quantity);
+            balance.push({
+                csr: doc.data().csr ? doc.data().csr : "ANY",
+                stock: Number(doc.data().quantity),
+                lastUpdate: doc.data().lastUpdate,
+                total: commonCount[doc.data().csr]
+            });
+        });
+        return {
+            total: commonCount,
+            detail: balance
+        };
     } catch(error) {
         throw new Error("No se pudo obtener el stock, " + error.message);
     }
-    return response;
 }
 
 async function setStockToSomePart(refStock, newStock, batch) {
@@ -189,4 +194,54 @@ async function setBulkInventory(data) {
     }
 }
 
-export default setBulkInventory;
+async function getAllInventory() {
+    const inventoryCollectionRef = collection(db, "Inventory");
+    let response = [];
+    try {
+        // Obtener todos los documentos de la colección "Inventory"
+        const inventorySnapshot = await getDocs(inventoryCollectionRef);
+
+        if (inventorySnapshot.empty) {
+            throw new Error("No se encontraron documentos en la colección de inventario.");
+        }
+
+        // Procesar documentos concurrentemente
+        response = await Promise.all(inventorySnapshot.docs.map(async (inventoryDoc) => {
+            const inventoryData = {
+                id: inventoryDoc.id,
+                partNumber: inventoryDoc.data().partNumber,
+                description: inventoryDoc.data().description
+            };
+
+            const refInventory = inventoryDoc.ref;
+
+            // Obtener datos de technicians
+            let technicians = [];
+            try {
+                technicians = await getTechnicianOfSomePart(refInventory);
+            } catch (error) {
+                console.error("Error al obtener técnicos:", error.message);
+            }
+
+            // Obtener datos de stock
+            let stock = [];
+            try {
+                stock = await getAllStockOfSomePart(refInventory);
+            } catch (error) {
+                console.error("Error al obtener stock:", error.message);
+            }
+
+            // Añadir información al inventario
+            return {
+                ...inventoryData,
+                technicians,
+                stock
+            };
+        }));
+    } catch (error) {
+        throw new Error("Error al obtener el inventario: " + error.message);
+    }
+    return response;
+}
+
+export {setBulkInventory, getAllInventory};

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 
 import UploadFiles from "./uploadFiles";
 import { ClipLoader } from 'react-spinners';
-import setBulkInvenory from './actionsInventory';
+import {setBulkInventory} from './actionsInventory';
 
 import {
   Dialog,
@@ -38,10 +38,9 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
   const [uploadData, setUploadData] = useState();
   
   useEffect(() => {
-    console.log(uploadData)
     if(activeStep == 0 && uploadData) {
       setActiveStep(2);
-      setBulkInvenory(uploadData).then(() => {
+      setBulkInventory(uploadData).then(() => {
         resolveModal("Se Completo Exitosamente");
       });
     } 
@@ -85,7 +84,7 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
     switch (activeStep) {
       case 1:
         setPromiseCSR(promiseCSR.resolve(selectedPerson));
-        setBulkInvenory(uploadData).then(() => {
+        setBulkInventory(uploadData).then(() => {
           resolveModal("Se Completo Exitosamente");
         });
       break;

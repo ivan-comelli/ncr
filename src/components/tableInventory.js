@@ -8,6 +8,7 @@ import { useTree } from "@table-library/react-table-library/tree";
 import { IconButton } from '@mui/material';
 import IconIsolate from '@mui/icons-material/VisibilityOutlined';
 import { ClipLoader } from 'react-spinners';
+import { getAllInventory } from './actionsInventory';
 
 
 const TableInventory = ({filter, status, minified}) => {
@@ -30,40 +31,28 @@ const TableInventory = ({filter, status, minified}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const snapInventory = await getDocs(collection(db, "Inventory")); // Cambia "Inventory" por el nombre de tu colección
-        const inventoryData = await Promise.all(
-          snapInventory.docs.map(async (inventoryDoc) => {
-            try {
-              // Obtén los documentos de la colección "technician"
-              const snapTechnician = await getDocs(collection(inventoryDoc.ref, "technicians"));
-              const snapStock = await getDocs(collection(inventoryDoc.ref, "stock"));
-
-              let sumPPK = 0;
-              let sumOnHand = 0;
-              let techniciansData = [];
-              snapTechnician.forEach((technicianDoc) => {
-                techniciansData.push({
-                  partNumber: "",
-                  description: technicianDoc.data().name,
-                  onHand: technicianDoc.data().onHand,
-                  ppk: technicianDoc.data().ppk
-                });
-                sumPPK += Number(technicianDoc.data().ppk); // Asegúrate de que ppk sea un número
-                sumOnHand += Number(technicianDoc.data().onHand); // Asegúrate de que onHand sea un número
-              });
-              return { ...inventoryDoc.data(), stock: !snapStock.empty ? snapStock.docs[0].data().quantity : 0, onHand: sumOnHand, ppk: sumPPK, id: inventoryDoc.id, nodes: techniciansData };
-            } catch (error) {
-              console.error(
-                "Fallo en recuperar la colección de técnicos del número de parte: " +
-                  inventoryDoc.data().partNumber +
-                  " | " +
-                  error.message
-              );
-              return { ...inventoryDoc.data(), onHand: 0, ppk: 0, id: inventoryDoc.id }; // Retorna datos con valores por defecto si hay un error
-            }
-          })
-        );
-        setData(inventoryData);
+        const allInventory = await getAllInventory();
+        console.log("Inventarios encontrados:", allInventory);
+        setData(allInventory.map((item => {
+          return {
+            id: item.id,
+            partNumber: item.partNumber,
+            description: item.description,
+            stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
+            ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
+            onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,
+            nodes: item.technicians.map((node) => {
+              return {
+                id: node.id,
+                partNumber: [],
+                description: node.name,
+                ppk: node.ppk,
+                onHand: node.onHand,
+                stock: item.stock.total[node.csr] || 0
+              }
+            })
+          }
+        })));
         setLoading(false);
       } catch (error) {
         console.error("Error al recuperar el inventario: " + error.message);
@@ -76,7 +65,6 @@ const TableInventory = ({filter, status, minified}) => {
 
   useEffect(() => {
     const search = filter;
-    console.log(filter)
     const filteredData = data.filter((item) => {
       if(search && search !="") {
         const descriptionMatch = item.description && item.description
@@ -90,40 +78,56 @@ const TableInventory = ({filter, status, minified}) => {
       }
       return data;
     });
-    console.log(filteredData.length)
-    if(filteredData.length == 0 && !loading) {
-      status({empty: true, partIsolate: null});
-    }
-    else if(filteredData.length == 1) {
-      status({empty: false, partIsolate: filteredData[0]});
+    if (selected) {
+      const selectedIndex = filteredData.findIndex(item => item.id === selected.id);
+  
+      // Si 'selected' no está en 'filteredData', lo agregamos al principio
+      if (selectedIndex === -1) {
+        filteredData.unshift(selected);
+      } else {
+        // Si está presente, lo movemos al principio (por si fue desplazado)
+        const selectedItem = filteredData.splice(selectedIndex, 1)[0];
+        filteredData.unshift(selectedItem);
+      }
+      status({empty: false, partIsolate: selected});
     }
     else {
-      status({empty: false, partIsolate: null});
+      if(filteredData.length == 0 && !loading) {
+        status({empty: true, partIsolate: null});
+      }
+      else if(filteredData.length == 1) {
+        status({empty: false, partIsolate: filteredData[0]});
+      }
+      else {
+        status({empty: false, partIsolate: null});
 
+      }
     }
     setCollectionData(filteredData);
-  }, [data, filter]);
+  }, [data, filter, selected]);
 
   let COLUMNS = [];
   if(minified) {
     COLUMNS = [
       { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
       { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
-      { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
+      { label: 'Stock', renderCell: (item) => item.stock.total, resize:{resizerWidth:100}},
       {
         label: '',
         renderCell: (item) => (
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={() => handleAction(item)}
-            sx={{
-              color: selected ? "primary.main" : "secondary.main", 
-              "&:hover": { color: "primary.main" }, 
-            }}
-          >
-            <IconIsolate></IconIsolate>
-          </IconButton>
+          item.nodes.length != 0 && (
+            <IconButton
+              variant="contained"
+              color="primary"
+              onClick={() => handleAction(item)}
+              sx={{
+                color: selected && selected.id === item.id ? "primary.main" : "secondary.main",
+                "&:hover": { color: "primary.main" },
+              }}
+            >
+              <IconIsolate />
+            </IconButton>
+          )
         ),
         resize: { resizerWidth: 100 },
       },
@@ -139,17 +143,19 @@ const TableInventory = ({filter, status, minified}) => {
       {
         label: '',
         renderCell: (item) => (
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={() => handleAction(item)}
-            sx={{
-              color: selected ? "primary.main" : "secondary.main", 
-              "&:hover": { color: "primary.main" }, 
-            }}
-          >
-            <IconIsolate></IconIsolate>
-          </IconButton>
+          item.nodes.length != 0 && (
+            <IconButton
+              variant="contained"
+              color="primary"
+              onClick={() => handleAction(item)}
+              sx={{
+                color: selected && selected.id === item.id ? "primary.main" : "secondary.main",
+                "&:hover": { color: "primary.main" },
+              }}
+            >
+              <IconIsolate />
+            </IconButton>
+          )
         ),
         resize: { resizerWidth: 100 },
       },
@@ -163,14 +169,19 @@ const TableInventory = ({filter, status, minified}) => {
 
   const handleAction = (item) => {
     console.log("Acción sobre el item:", item);
-    setSelected(item)
+    if(item.id === selected.id) {
+      setSelected(null)
+    }
+    else {
+      setSelected(item)
+    }
     // Aquí puedes agregar la lógica que desees para el botón de cada fila
   };
 
 
   return (
     <div className="view-table">
-      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } tree={tree} theme={theme} layout={{ fixedHeader: true }}/>
+      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }}/>
     </div>
   );
 };

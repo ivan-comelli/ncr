@@ -1,15 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { Box, Autocomplete, Chip, TextField, Button, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
+import { Box, Autocomplete, ClickAwayListener, Chip, TextField, Button, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { Remove } from '@mui/icons-material';
 import { ArrowDropDown } from '@mui/icons-material';
 import { Add, Close } from "@mui/icons-material";
-import StockManager from './stockInput';
 
 const PartNumberForm = ({active, item}) => {
-  const [value, setValue] = useState(0);
-  const [partNumber, setPartNumber] = useState('');
-  const [anchorEl, setAnchorEl] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -52,37 +48,96 @@ const PartNumberForm = ({active, item}) => {
     }
   }, [active, item])
 
-  const handleAddPartNumber = (event) => {
-    if (event.key === 'Enter' && event.target.value) {
-      setData({...data, partNumber: [...data.partNumber, event.target.value]});
-      event.target.value = ''; // Limpiar el input después de agregar
-    }
-  };
-
-  const handleDelete = (index) => {
-    const updatedPartNumbers = [...data.partNumbers];
-    updatedPartNumbers.splice(index, 1);
-    setData({...data, partNumber: updatedPartNumbers});
-  };
-
-  const handleSelectPartNumber = (selectedPart) => {
-    setPartNumber(selectedPart); // Actualiza el campo con el número seleccionado
-    handleCloseMenu();
-  };
-
-  const handleOpenMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleCloseMenu = () => {
-    setAnchorEl(null);
-  };
 
   const toggleAddingState = () => {
     setIsAdding(!isAdding);
     if (!isAdding) {
       setInputValue(""); // Resetea el campo al cambiar a estado de agregar
     }
+  };
+
+  const StockManager = () => {
+    const [currentStockChange, setCurrentStockChange] = useState('');
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [history, setHistory] = useState([
+      { date: '2024-11-28', value: 10 },
+      { date: '2024-11-29', value: -5 },
+    ]);
+  
+    const toggleMenu = () => {
+      setMenuOpen((prev) => !prev);
+    };
+  
+    const handleMenuClose = () => {
+      setMenuOpen(false);
+    };
+  
+    return (
+      <ClickAwayListener onClickAway={handleMenuClose} >
+        <Box position="relative" className="stock">
+          <TextField
+            label="Agregar Stock o Ver Historial"
+            value={currentStockChange}
+            fullWidth
+            margin="none"
+            onClick={toggleMenu} // Despliega el menú al hacer clic
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <IconButton
+                    onClick={(e) => {
+                      e.stopPropagation(); // Evita que se cierre el menú al interactuar
+                      setCurrentStockChange((prev) => (parseFloat(prev) || 0) - 1);
+                    }}
+                  >
+                    <Remove />
+                  </IconButton>
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={(e) => {
+                      e.stopPropagation(); // Evita que se cierre el menú al interactuar
+                      setCurrentStockChange((prev) => (parseFloat(prev) || 0) + 1);
+                    }}
+                  >
+                    <Add />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+  
+          {/* Menú dentro del TextField */}
+          {menuOpen && (
+            <Box
+              position="absolute"
+              top="100%"
+              left="0"
+              width="100%"
+              bgcolor="white"
+              border="1px solid rgba(0, 0, 0, 0.23)"
+              borderRadius="4px"
+              zIndex="10"
+              boxShadow="0px 4px 6px rgba(0, 0, 0, 0.1)"
+            >
+              {history.map((record, index) => (
+                <MenuItem
+                  key={index}
+                  onClick={() => {
+                    setCurrentStockChange(record.value); // Actualiza el valor al seleccionar un ítem
+                    handleMenuClose();
+                  }}
+                >
+                  {record.date} - {record.value > 0 ? `+${record.value}` : record.value}
+                </MenuItem>
+              ))}
+            </Box>
+          )}
+        </Box>
+      </ClickAwayListener>
+    );
   };
 
   return (
