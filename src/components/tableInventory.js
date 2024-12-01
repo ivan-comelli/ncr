@@ -20,7 +20,7 @@ const TableInventory = ({filter, status, minified}) => {
   const theme = useTheme(materialTheme);
 
 
-  const tree = useTree({nodes: data}, {
+  const tree = useTree({nodes: collectionData}, {
     onChange: onTreeChange,
   });
 
@@ -50,7 +50,7 @@ const TableInventory = ({filter, status, minified}) => {
                 onHand: node.onHand,
                 stock: item.stock.total[node.csr] || 0
               }
-            })
+            }) 
           }
         })));
         setLoading(false);
@@ -76,20 +76,20 @@ const TableInventory = ({filter, status, minified}) => {
 
         return descriptionMatch || partNumberMatch;
       }
-      return data;
+      return true;
     });
     if (selected) {
       const selectedIndex = filteredData.findIndex(item => item.id === selected.id);
-  
-      // Si 'selected' no está en 'filteredData', lo agregamos al principio
+
+      // Si no se encuentra el ítem seleccionado, lo agregamos al principio
       if (selectedIndex === -1) {
         filteredData.unshift(selected);
       } else {
-        // Si está presente, lo movemos al principio (por si fue desplazado)
-        const selectedItem = filteredData.splice(selectedIndex, 1)[0];
-        filteredData.unshift(selectedItem);
+        // Si ya está, lo movemos al principio
+        filteredData.sort((a, b) => (a.id === selected.id ? -1 : 1)); // Aseguramos que el seleccionado esté al principio
       }
-      status({empty: false, partIsolate: selected});
+    
+      status({ empty: false, partIsolate: selected });
     }
     else {
       if(filteredData.length == 0 && !loading) {
@@ -111,11 +111,11 @@ const TableInventory = ({filter, status, minified}) => {
     COLUMNS = [
       { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
       { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
-      { label: 'Stock', renderCell: (item) => item.stock.total, resize:{resizerWidth:100}},
+      { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
       {
         label: '',
         renderCell: (item) => (
-          item.nodes.length != 0 && (
+          (item.nodes && item.nodes.length != 0) && (
             <IconButton
               variant="contained"
               color="primary"
@@ -143,7 +143,7 @@ const TableInventory = ({filter, status, minified}) => {
       {
         label: '',
         renderCell: (item) => (
-          item.nodes.length != 0 && (
+          (item.nodes && item.nodes.length != 0) && (
             <IconButton
               variant="contained"
               color="primary"
@@ -169,7 +169,7 @@ const TableInventory = ({filter, status, minified}) => {
 
   const handleAction = (item) => {
     console.log("Acción sobre el item:", item);
-    if(item.id === selected.id) {
+    if(selected && item.id === selected.id) {
       setSelected(null)
     }
     else {
