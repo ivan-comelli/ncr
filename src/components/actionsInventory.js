@@ -279,6 +279,8 @@ async function updateStockWithPart(partNumber, newData) {
         const inventoryDoc = await getInventoryByPartNumber(partNumber);
         const result = await setStockToSomePart(doc(collection(inventoryDoc.ref, "stock")), { quantity: newData.quantity, csr: newData.csr });
         result.commit();
+        const lastUpdateFlag = doc(db, 'config', 'generalSettings');
+        await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
     } catch(error){
         console.error(error.message)
     }
