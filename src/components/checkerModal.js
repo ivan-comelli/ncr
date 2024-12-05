@@ -38,13 +38,13 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
   const [uploadData, setUploadData] = useState();
   
   useEffect(() => {
-    if(activeStep == 0 && uploadData) {
-      setActiveStep(2);
+    if(activeStep == 2 && uploadData) {
       setBulkInventory(uploadData).then(() => {
+        setActiveStep(0);
         resolveModal("Se Completo Exitosamente");
       });
     } 
-  }, [uploadData]);
+  }, [uploadData, activeStep]);
   const presetSelectedPerson = (possibleOption) => {
     const normalizeString = (str) => {
       return str
@@ -57,7 +57,8 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
         const normalizedName2 = normalizeString(option).split(" ").sort().join(" ");
         return normalizedName1 === normalizedName2;
       }
-      setSelectedPerson(selectedPerson && options.find(option => isEqualNames(option.name, possibleOption)));
+      const optionCoincide = options.find(option => isEqualNames(option.name));
+      setSelectedPerson((prev) => optionCoincide ? optionCoincide : prev);
   }
 
   const queryCSR = async () => {
@@ -84,9 +85,6 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
     switch (activeStep) {
       case 1:
         setPromiseCSR(promiseCSR.resolve(selectedPerson));
-        setBulkInventory(uploadData).then(() => {
-          resolveModal("Se Completo Exitosamente");
-        });
       break;
     }
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -173,7 +171,7 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
           <Button  style={{ display: activeStep == 3 && 'none'}} onClick={handleCancel}>
             { activeStep == 0 ? 'Salir' : 'Cancelar' }
           </Button>
-          <Button  style={{ display: activeStep != 1 && 'none'}}  onClick={handleNext}>
+          <Button  style={{ display: activeStep != 1 && 'none'}} disabled={activeStep == 1 && !selectedPerson} onClick={handleNext}>
             Confirmar
           </Button>
         </DialogActions>

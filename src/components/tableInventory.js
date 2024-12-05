@@ -110,7 +110,7 @@ const TableInventory = ({filter, status, minified}) => {
   if(minified) {
     COLUMNS = [
       { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
-      { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
+      { label: 'Descripcion', renderCell: (item) => item.description, resize:{resizerWidth:100}},
       { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
       {
         label: '',
@@ -136,7 +136,7 @@ const TableInventory = ({filter, status, minified}) => {
   else {
     COLUMNS = [
       { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize:{resizerWidth:1000} },
-      { label: 'Descripcion', renderCell: (item) => item.description || "Fuera de Sistema", resize:{resizerWidth:100}},
+      { label: 'Descripcion', renderCell: (item) => item.description, resize:{resizerWidth:100}},
       { label: 'Stock', renderCell: (item) => item.stock, resize:{resizerWidth:100}},
       { label: 'On Hand', renderCell: (item) => item.onHand, resize:{resizerWidth:100}},
       { label: 'PPK', renderCell: (item) => item.ppk, hide: false, resize:{resizerWidth:100}},

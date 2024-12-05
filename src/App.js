@@ -51,7 +51,6 @@ function App() {
     };
   }, [search]); // Solo se ejecuta cuando `search` cambia
 
-
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };

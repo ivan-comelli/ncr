@@ -4,6 +4,7 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { Remove } from '@mui/icons-material';
 import { ArrowDropDown } from '@mui/icons-material';
 import { Add, Close } from "@mui/icons-material";
+import { updateStockWithPart } from './actionsInventory';
 
 const PartNumberForm = ({active, item}) => {
   const [isAdding, setIsAdding] = useState(false);
@@ -12,7 +13,7 @@ const PartNumberForm = ({active, item}) => {
   const [data, setData] = useState({
     partNumber: [],
     description: "",
-    stock: null,
+    stock: 0,
     csr: null
   });
   const options = [
@@ -23,10 +24,11 @@ const PartNumberForm = ({active, item}) => {
     { name: "Ivan Comelli", csr: "AR903S48" }
   ];
 
-  const [selectedCsr, setSelectedCsr] = useState('');
-
   const handleChange = (event) => {
-    setSelectedCsr(event.target.value);
+    setData((prev) => ({
+      ...prev,
+      csr: event.target.value
+    }));
   };
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const PartNumberForm = ({active, item}) => {
       setData({
         partNumber: item.partNumber,
         description: item.description,
-        stock: item.stock,
+        stock: 0,
         csr: null
       })
     }
@@ -42,7 +44,7 @@ const PartNumberForm = ({active, item}) => {
       setData({
         partNumber: [],
         description: "",
-        stock: null,
+        stock: 0,
         csr: null
       })
     }
@@ -56,6 +58,14 @@ const PartNumberForm = ({active, item}) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();    if(data.stock && data.partNumber.length > 0) {
+      updateStockWithPart(data.partNumber, {quantity: data.stock, csr: data.csr}).then(() => {
+        setData((prev) => ({...prev, stock: 0, csr: null}))
+      })
+    }
+  }
+
   const StockManager = () => {
     const [currentStockChange, setCurrentStockChange] = useState('');
     const [menuOpen, setMenuOpen] = useState(false);
@@ -65,29 +75,39 @@ const PartNumberForm = ({active, item}) => {
     ]);
   
     const toggleMenu = () => {
-      setMenuOpen((prev) => !prev);
+      //setMenuOpen((prev) => !prev);
     };
   
     const handleMenuClose = () => {
-      setMenuOpen(false);
+      //setMenuOpen(false);
     };
-  
+    const handleStockChange = (e) => {
+      // Asegúrate de solo aceptar números
+      const value = e.target.value;
+      if (!isNaN(value)) {
+        setData((prev) => ({
+          ...prev,
+          stock: Number(value)
+        }));
+      }
+    };
     return (
       <ClickAwayListener onClickAway={handleMenuClose} >
         <Box position="relative" className="stock">
           <TextField
             label="Agregar Stock o Ver Historial"
-            value={currentStockChange}
+            value={data.stock}
             fullWidth
             margin="none"
             onClick={toggleMenu} // Despliega el menú al hacer clic
+            onChange={handleStockChange}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
                   <IconButton
                     onClick={(e) => {
                       e.stopPropagation(); // Evita que se cierre el menú al interactuar
-                      setCurrentStockChange((prev) => (parseFloat(prev) || 0) - 1);
+                      setData((prev) => ({...prev, stock: prev.stock - 1}));
                     }}
                   >
                     <Remove />
@@ -99,7 +119,7 @@ const PartNumberForm = ({active, item}) => {
                   <IconButton
                     onClick={(e) => {
                       e.stopPropagation(); // Evita que se cierre el menú al interactuar
-                      setCurrentStockChange((prev) => (parseFloat(prev) || 0) + 1);
+                      setData((prev) => ({...prev, stock: (prev.stock + 1)}));
                     }}
                   >
                     <Add />
@@ -198,7 +218,7 @@ const PartNumberForm = ({active, item}) => {
           
               <Select
               className='select'
-                value={selectedCsr}
+                value={data.csr}
                 onChange={handleChange}
                 displayEmpty
               >
@@ -214,7 +234,7 @@ const PartNumberForm = ({active, item}) => {
 
               <StockManager></StockManager>
      
-            <Button className='submit' variant="contained" color="primary">
+            <Button className='submit' variant="contained" color="primary" onClick={handleSubmit}>
               Submit
             </Button>
         </FormControl>

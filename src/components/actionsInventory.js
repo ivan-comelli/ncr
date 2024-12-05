@@ -1,5 +1,12 @@
-import { collection, writeBatch, doc, getDocs, getDoc, query, where, Timestamp, or } from "firebase/firestore";
+import { collection, writeBatch, doc, getDocs, getDoc, setDoc, query, where, Timestamp, or } from "firebase/firestore";
 import { db } from '../firebase';
+const options = [
+    { name: "Diego Molina", csr: "AR103S42" },
+    { name: "Nahuel DeLuca", csr: "AR103S44" },
+    { name: "Adrian Santarelli", csr: "AR103S45" },
+    { name: "Juan Valenzuela", csr: "AR903S49" },
+    { name: "Ivan Comelli", csr: "AR903S48" }
+  ];
 
 async function getTechnicianOfSomePart(refInventory, identity) {
     let response = null;
@@ -30,6 +37,7 @@ async function getTechnicianOfSomePart(refInventory, identity) {
 }
 
 async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
+    //hay que preguntarse si el nuevo tecnico ya existe en la coleccion y actualizar
     try {
         if(!refTechnician) {
             throw new Error("No hay referencia para actualizar");
@@ -83,17 +91,20 @@ async function getAllStockOfSomePart(refInventory) {
 }
 
 async function setStockToSomePart(refStock, newStock, batch) {
+    if(!batch) {
+        batch = writeBatch(db);
+    }
     try {
         if(!refStock) {
             throw new Error("No hay referencia para actualizar");
         }
         batch.set(refStock, {
-            ...newStock,
+            name: options.find(option => option.csr === newStock.csr) || "ANY",
+            csr: newStock.csr || "ANY",
             quantity: newStock.quantity || 0,
             lastUpdate: Timestamp.now()
 
-        }, 
-        { merge: true });
+        });
     } catch(error) {
         throw new Error("No se pudo agregar el stock: " + error.message);
     }
@@ -128,9 +139,10 @@ async function setInventoryPart(refInventory, newInventory, batch) {
             }, 
             { merge: true });
         }
-        else {
+        else if (!snapInventory.data() && newInventory.description) {
             batch.set(refInventory, {
                 partNumber: snapInventory.data() ? arrayUnion(snapInventory.data().partNumber, newInventory.partNumber) : newInventory.partNumber,
+                description: newInventory.description,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -164,17 +176,13 @@ async function getInventoryByPartNumber(partNumber) {
 }
 
 async function setBulkInventory(data) {
-    console.log(data)
     let batch = writeBatch(db);
     try {
         for (const item of data) {
             let snapShotInventory = await getInventoryByPartNumber(item.partNumber);
-            console.log(snapShotInventory)
             let refInventory = snapShotInventory && snapShotInventory.ref;
-            console.log(refInventory)
 
             if (!refInventory) {
-                console.log("entre")
                 refInventory = doc(collection(db, "Inventory")); 
             }
         
@@ -184,64 +192,148 @@ async function setBulkInventory(data) {
                 batch = await setStockToSomePart(doc(collection(refInventory, "stock")), item.stock, batch);
             }
             if (Object.keys(item.technician).length !== 0) {
-                batch = await setTechnicianToSomePart(refInventory, item.technician, batch);
+                //deberia buscar si ya existe ese tecnico antes
+                const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
+                const technicianExists = existingTechnicians.docs.find(
+                    (doc) => doc.data().csr === item.technician.csr
+                );
+
+                if (!technicianExists) {
+                    batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
+                }
+                else {
+                    batch = await setTechnicianToSomePart(technicianExists.ref, item.technician, batch);
+                }
             }    
         }
-        console.log(batch)
-        batch.commit();
+        await batch.commit();
+        const lastUpdateFlag = doc(db, 'config', 'generalSettings');
+        await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
     } catch(error){
         throw new Error(error.message);
     }
 }
 
 async function getAllInventory() {
+    const lastUpdateFlag = await (await getDoc(doc(db, 'config', 'generalSettings'))).data().lastUpdate.toDate();
     const inventoryCollectionRef = collection(db, "Inventory");
     let response = [];
     try {
-        // Obtener todos los documentos de la colección "Inventory"
-        const inventorySnapshot = await getDocs(inventoryCollectionRef);
+        if((localStorage.getItem('db') && lastUpdateFlag > new Date(JSON.parse(localStorage.getItem('db')).lastUpdate) || !localStorage.getItem('db'))) {
+            // Obtener todos los documentos de la colección "Inventory"
+            const inventorySnapshot = await getDocs(inventoryCollectionRef);
 
-        if (inventorySnapshot.empty) {
-            throw new Error("No se encontraron documentos en la colección de inventario.");
+            if (inventorySnapshot.empty) {
+                throw new Error("No se encontraron documentos en la colección de inventario.");
+            }
+
+            // Procesar documentos concurrentemente
+            response = await Promise.all(inventorySnapshot.docs.map(async (inventoryDoc) => {
+                const inventoryData = {
+                    id: inventoryDoc.id,
+                    partNumber: inventoryDoc.data().partNumber,
+                    description: inventoryDoc.data().description
+                };
+
+                const refInventory = inventoryDoc.ref;
+
+                // Obtener datos de technicians
+                let technicians = [];
+                try {
+                    technicians = await getTechnicianOfSomePart(refInventory);
+                } catch (error) {
+                    console.error("Error al obtener técnicos:", error.message);
+                }
+
+                // Obtener datos de stock
+                let stock = [];
+                try {
+                    stock = await getAllStockOfSomePart(refInventory);
+                } catch (error) {
+                    console.error("Error al obtener stock:", error.message);
+                }
+
+                // Añadir información al inventario
+                return {
+                    ...inventoryData,
+                    technicians,
+                    stock
+                };
+            }));
         }
-
-        // Procesar documentos concurrentemente
-        response = await Promise.all(inventorySnapshot.docs.map(async (inventoryDoc) => {
-            const inventoryData = {
-                id: inventoryDoc.id,
-                partNumber: inventoryDoc.data().partNumber,
-                description: inventoryDoc.data().description
-            };
-
-            const refInventory = inventoryDoc.ref;
-
-            // Obtener datos de technicians
-            let technicians = [];
-            try {
-                technicians = await getTechnicianOfSomePart(refInventory);
-            } catch (error) {
-                console.error("Error al obtener técnicos:", error.message);
-            }
-
-            // Obtener datos de stock
-            let stock = [];
-            try {
-                stock = await getAllStockOfSomePart(refInventory);
-            } catch (error) {
-                console.error("Error al obtener stock:", error.message);
-            }
-
-            // Añadir información al inventario
-            return {
-                ...inventoryData,
-                technicians,
-                stock
-            };
-        }));
     } catch (error) {
         throw new Error("Error al obtener el inventario: " + error.message);
     }
+    if(response.length > 0) {
+        localStorage.setItem('db', JSON.stringify({data: response, lastUpdate: lastUpdateFlag}));
+    }
+    else {
+        response = JSON.parse(localStorage.getItem('db')).data;
+    }
+
     return response;
 }
 
-export {setBulkInventory, getAllInventory};
+async function updateStockWithPart(partNumber, newData) {
+    try {
+        const inventoryDoc = await getInventoryByPartNumber(partNumber);
+        const result = await setStockToSomePart(doc(collection(inventoryDoc.ref, "stock")), { quantity: newData.quantity, csr: newData.csr });
+        result.commit();
+    } catch(error){
+        console.error(error.message)
+    }
+}
+async function verifyAndAddMissingTechnicians() {
+    const inventoryCollectionRef = collection(db, "Inventory");
+    console.log("Iniciando verificación de técnicos...");
+
+    try {
+        // Obtener todos los documentos de inventario
+        const inventorySnapshot = await getDocs(inventoryCollectionRef);
+
+        if (inventorySnapshot.empty) {
+            console.log("No se encontraron documentos en la colección de inventario.");
+            return;
+        }
+
+        // Procesar cada documento de inventario en paralelo
+        const batchOps = inventorySnapshot.docs.map(async (inventoryDoc) => {
+            const batch = writeBatch(db);
+            const inventoryRef = inventoryDoc.ref;
+            const techniciansCollectionRef = collection(inventoryRef, "technicians");
+
+            // Obtener los técnicos existentes
+            const techniciansSnapshot = await getDocs(techniciansCollectionRef);
+            const existingCsrs = techniciansSnapshot.docs.map(doc => doc.data().csr);
+
+            // Encontrar los técnicos faltantes
+            const missingTechnicians = options.filter(option => !existingCsrs.includes(option.csr));
+
+            // Agregar técnicos faltantes al batch
+            missingTechnicians.forEach(missingTech => {
+                const newTechnicianRef = doc(techniciansCollectionRef);
+                batch.set(newTechnicianRef, {
+                    csr: missingTech.csr,
+                    name: missingTech.name,
+                    onHand: 0,
+                    ppk: 0,
+                    createdAt: Timestamp.now(),
+                    lastUpdate: Timestamp.now()
+                });
+            });
+
+            // Ejecutar el batch para este inventario
+            await batch.commit();
+        });
+
+        // Esperar a que todas las operaciones de batch terminen
+        await Promise.all(batchOps);
+
+        console.log("Se completó la verificación y actualización de técnicos faltantes.");
+    } catch (error) {
+        console.error("Error al verificar y agregar técnicos faltantes:", error.message);
+    }
+}
+
+
+export {setBulkInventory, getAllInventory, updateStockWithPart, verifyAndAddMissingTechnicians};
