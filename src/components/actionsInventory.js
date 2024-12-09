@@ -44,6 +44,7 @@ async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
         }
         batch.set(refTechnician, {
             ...newTechnician,
+            csr: newTechnician.csr.toLowerCase(),
             onHand: newTechnician.onHand || 0,
             ppk: newTechnician.ppk || 0,
             lastUpdate: Timestamp.now()
@@ -70,12 +71,12 @@ async function getAllStockOfSomePart(refInventory) {
             };
         }
         let balance = [];
-        let commonCount = [];
+        let commonCount = {};
         stockSnapshot.docs.forEach((doc) => {
-            if(!commonCount[doc.data().csr ? doc.data().csr : "ANY"]) commonCount[doc.data().csr ? doc.data().csr : "ANY"] = 0;
-            commonCount[doc.data().csr ? doc.data().csr : "ANY"] += Number(doc.data().quantity);
+            if(!commonCount[doc.data().csr ? doc.data().csr : "any"]) commonCount[doc.data().csr ? doc.data().csr : "any"] = 0;
+            commonCount[doc.data().csr ? doc.data().csr : "any"] += Number(doc.data().quantity);
             balance.push({
-                csr: doc.data().csr ? doc.data().csr : "ANY",
+                csr: doc.data().csr ? doc.data().csr : "any",
                 stock: Number(doc.data().quantity),
                 lastUpdate: doc.data().lastUpdate,
                 total: commonCount[doc.data().csr]
@@ -99,8 +100,8 @@ async function setStockToSomePart(refStock, newStock, batch) {
             throw new Error("No hay referencia para actualizar");
         }
         batch.set(refStock, {
-            name: options.find(option => option.csr === newStock.csr) || "ANY",
-            csr: newStock.csr || "ANY",
+            name: options.find(option => option.csr.toLowerCase() === newStock.csr && newStock.csr.toLowerCase()) || "any",
+            csr: newStock.csr ? newStock.csr.toLowerCase() : "any",
             quantity: newStock.quantity || 0,
             lastUpdate: Timestamp.now()
 
@@ -176,6 +177,7 @@ async function getInventoryByPartNumber(partNumber) {
 }
 
 async function setBulkInventory(data) {
+    console.log(data)
     let batch = writeBatch(db);
     try {
         for (const item of data) {
@@ -193,9 +195,10 @@ async function setBulkInventory(data) {
             }
             if (Object.keys(item.technician).length !== 0) {
                 //deberia buscar si ya existe ese tecnico antes
+                //LPM
                 const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
                 const technicianExists = existingTechnicians.docs.find(
-                    (doc) => doc.data().csr === item.technician.csr
+                    (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
                 );
 
                 if (!technicianExists) {
@@ -265,6 +268,8 @@ async function getAllInventory() {
         throw new Error("Error al obtener el inventario: " + error.message);
     }
     if(response.length > 0) {
+        console.log(response)
+        console.log(JSON.stringify({data: response, lastUpdate: lastUpdateFlag}))
         localStorage.setItem('db', JSON.stringify({data: response, lastUpdate: lastUpdateFlag}));
     }
     else {
