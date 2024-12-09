@@ -81,12 +81,13 @@ const PartNumberForm = ({active, item}) => {
               stock: Number(data.stock),
               total: countTotal + data.stock
             })
-            part.stock.total[data.csr.toLowerCase()] = part.stock.total[data.csr.toLowerCase()] + data.stock
+            part.stock.total[data.csr.toLowerCase()] = (part.stock.total[data.csr.toLowerCase()] ? part.stock.total[data.csr.toLowerCase()] : 0) + Number(data.stock)
             console.log(part)
 
           }
           return part
         })
+        console.log(localData)
         localStorage.setItem('db', JSON.stringify({data: localData, lastUpdate: null}));
         window.dispatchEvent(new Event("storage"));
         setData((prev) => ({...prev, stock: 0, csr: null}))

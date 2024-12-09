@@ -36,10 +36,14 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
   const steps = ['Subi un Archivo', 'Confirmacion', 'Importando'];
   const [promiseCSR, setPromiseCSR] = useState({resolve: null, reject: null});
   const [uploadData, setUploadData] = useState();
+  const [flagSubmit, setFlagSubmit] = useState(false);
   
   useEffect(() => {
-    if(uploadData) {
+    if(uploadData && !flagSubmit) {
+      setFlagSubmit(true);
       setBulkInventory(uploadData).then(() => {
+        setFlagSubmit(false);
+        setUploadData(false);
         setActiveStep(0);
         resolveModal("Se Completo Exitosamente");
       });

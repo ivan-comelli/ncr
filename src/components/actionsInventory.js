@@ -182,11 +182,24 @@ async function setBulkInventory(data) {
     try {
         for (const item of data) {
             let snapShotInventory = await getInventoryByPartNumber(item.partNumber);
-            let refInventory = snapShotInventory && snapShotInventory.ref;
+            console.log(item.partNumber)
+            console.log(batch._mutations)
+            let batchFindInventoryId = batch._mutations.find((doc) => { 
+                let partNumberDocBatch = doc.data.value.mapValue.fields.partNumber;
+                if(partNumberDocBatch) { 
+                    return partNumberDocBatch.arrayValue.values.find((part) => item.partNumber == part.stringValue);
+                }
+                else {
+                    return false
+                }
+            });
+            console.log(batchFindInventoryId)
 
-            if (!refInventory) {
-                refInventory = doc(collection(db, "Inventory")); 
-            }
+            if(batchFindInventoryId) batchFindInventoryId = batchFindInventoryId.key.path.segments[1];
+            console.log(snapShotInventory)
+            let refInventory = snapShotInventory ? snapShotInventory.ref : batchFindInventoryId ? doc(db, "Inventory", batchFindInventoryId) : doc(collection(db, "Inventory"));
+            console.log(refInventory)
+ 
         
             batch = await setInventoryPart(refInventory, item, batch);
 
@@ -197,18 +210,34 @@ async function setBulkInventory(data) {
                 //deberia buscar si ya existe ese tecnico antes
                 //LPM
                 const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
-                const technicianExists = existingTechnicians.docs.find(
-                    (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
-                );
+                const technicianExists = (() => {
+                    let existingTechniciansInDb = existingTechnicians.docs.find(
+                        (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
+                    );
+                    let existingTechniciansInBatch = batch._mutations.find(
+                        (doc) => {
+                            console.log(doc.key.path.segments)
+                            if(doc.key.path.segments[2] == "technicians" && doc.key.path.segments[1] == refInventory.id) {
+                                return doc.data.value.mapValue.fields.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase()
+                            }
+                            return false
+                        }
+                    );
+                    if(existingTechniciansInDb) existingTechniciansInDb = existingTechniciansInDb.ref;
+                    if(existingTechniciansInBatch) existingTechniciansInBatch = doc(db, ...existingTechniciansInBatch.key.path.segments)
+                    return existingTechniciansInDb || existingTechniciansInBatch
+                })();
 
+                console.log(technicianExists)
                 if (!technicianExists) {
                     batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
                 }
                 else {
-                    batch = await setTechnicianToSomePart(technicianExists.ref, item.technician, batch);
+                    batch = await setTechnicianToSomePart(technicianExists, item.technician, batch);
                 }
             }    
         }
+        console.log(batch._mutations)
         await batch.commit();
         const lastUpdateFlag = doc(db, 'config', 'generalSettings');
         await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
