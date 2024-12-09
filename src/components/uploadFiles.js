@@ -73,6 +73,10 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
             delete cleanedObj.name;
             delete cleanedObj.csr;
         }
+        if (Object.keys(cleanedObj).length === 1 && (cleanedObj.name || cleanedObj.csr)) {
+          delete cleanedObj.name;
+          delete cleanedObj.csr;
+        }
         return cleanedObj;
     };
 
@@ -142,7 +146,7 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
             if (fileType === 'text/csv') {
                 possibleName(fileName.replace(/\.[^/.]+$/, ''));
                 const collectionData = await handleCSV(async(row, rows) => {
-                  if (!row["CSR"] && !queryCSR) {
+                  if (!Object.keys(row).find((key) => key.toLowerCase() === 'csr') && !queryCSR) {
                     previewDetail("Hay " + rows.length + " registros preparados para ser insertado");
                     queryCSR = await askCSR();
                   }

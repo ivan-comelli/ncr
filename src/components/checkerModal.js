@@ -38,7 +38,7 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
   const [uploadData, setUploadData] = useState();
   
   useEffect(() => {
-    if(activeStep == 2 && uploadData) {
+    if(uploadData) {
       setBulkInventory(uploadData).then(() => {
         setActiveStep(0);
         resolveModal("Se Completo Exitosamente");

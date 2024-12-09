@@ -27,12 +27,33 @@ const TableInventory = ({filter, status, minified}) => {
   function onTreeChange(action, state) {
     console.log(action, state);
   }
-
+  window.addEventListener("storage", (e)=> {
+    console.log(e)
+    setData(JSON.parse(localStorage.getItem('db')).data.map((item => {
+      return {
+        id: item.id,
+        partNumber: item.partNumber,
+        description: item.description,
+        stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
+        ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
+        onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,
+        nodes: item.technicians.map((node) => {
+          return {
+            id: node.id,
+            partNumber: [],
+            description: node.name,
+            ppk: node.ppk,
+            onHand: node.onHand,
+            stock: item.stock.total[node.csr] || 0
+          }
+        }) 
+      }
+    })));
+  });
   useEffect(() => {
     const fetchData = async () => {
       try {
         const allInventory = await getAllInventory();
-        console.log("Inventarios encontrados:", allInventory);
         setData(allInventory.map((item => {
           return {
             id: item.id,
