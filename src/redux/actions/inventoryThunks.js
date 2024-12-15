@@ -12,7 +12,8 @@ import {
     fetchInventorySuccess, 
     fetchInventoryStart,
     searchInTable,
-    setTable
+    setTable,
+    isolatePartInTable
 } from './actions';
 
 let timer;
@@ -205,7 +206,11 @@ export const formatTableWithFilters = (hasFilter = false) => {
         }));
         dispatch(setTable(dataTable));
         if(hasFilter) {
-            dispatch(searchInTable())
+            dispatch(searchInTable(null))
+        }
+        else {
+            dispatch(searchInTable(''))
+
         }
     })
 }
@@ -218,6 +223,9 @@ export function lazySearch(value) {
         timer = setTimeout(() => {
             dispatch(formatTableWithFilters());
             dispatch(searchInTable(value)); // Cambia el estado final después del debounce
+            if (value == '') {
+                dispatch(isolatePartInTable(null));
+            }
         }, 1000); // Ventana de 1 segundo
     })
 }

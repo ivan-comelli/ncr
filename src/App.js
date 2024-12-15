@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
 import SearchIcon from '@mui/icons-material/Search';
 import UploadIcon from '@mui/icons-material/Upload';
+import { ClipLoader } from 'react-spinners';
 
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
@@ -36,10 +37,11 @@ const useWindowDimensions = () => {
 function App() {
   const [modalPromise, setModalPromise] = useState();
   const [showModal, setShowModal] = useState(false);
-  const [showEditor, setShowEditor] = useState(false);
-  const [partIsolate, setPartIsolate] = useState();//UID
+  const partIsolate = useSelector((state) => state.inventory.isolated);
+  const forceOpenForm = useSelector((state) => (state.inventory.table.length == 0 || state.inventory.isolated != null));
   const { width, height } = useWindowDimensions();
   const [search, setSearch] = useState('');
+  const isLoading = useSelector((state) => state.inventory.isLoading);
 
   const searchGlobal = useSelector(state => state.inventory.search)
   const dispatch = useDispatch();
@@ -91,39 +93,36 @@ function App() {
           />
       </div>
       </header>
-      <PartNumberForm active={showEditor} item={partIsolate}/>
-
-      <div
-        style={{
-          display: showEditor && !partIsolate ? 'none' : 'block',
-        }}
-      >
-        <TableInventory
-          minified={width < 768 ? true : false}
-          status={(response) => {
-            if (response.empty || response.partIsolate) {
-              setShowEditor(true);
-              setPartIsolate(response.partIsolate);
-            } else {
-              setShowEditor(false);
-              setPartIsolate(response.partIsolate);
-            }
-          }}
-        />
-      </div>
-      {/* Mensaje */}
-      {showEditor && !partIsolate && (
-        <p
-          style={{
-            textAlign: 'center',
-            marginTop: '20px',
-            fontSize: '18px',
-            color: '#666',
-          }}
-        >
-          Agrega una nueva parte para empezar.
-        </p>
-      )}
+      <PartNumberForm active={forceOpenForm} item={partIsolate}/>
+      {
+        isLoading ? (
+          <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
+        ) : (
+          <>
+            <div className='content'      
+              style={{
+                display: forceOpenForm && !partIsolate ? 'none' : 'flex',
+              }}
+            >
+              <TableInventory minified={width < 768 ? true : false} />
+            </div>
+            { forceOpenForm && !partIsolate && (
+              <p
+                style={{
+                  textAlign: 'center',
+                  marginTop: '20px',
+                  fontSize: '18px',
+                  color: '#666',
+                }}
+              >
+                Agrega una nueva parte para empezar.
+              </p>
+            )}
+          </>
+        )
+      }
+      
+      
     </div>
   );
 }

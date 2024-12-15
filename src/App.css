@@ -2,6 +2,8 @@
   text-align: center;
   background: #fbfbfb;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -78,13 +80,14 @@
   }
 
   .view-table > [data-table-library_table] {
-    --data-table-library_grid-template-columns: minmax(0px, 4fr) minmax(0px, 6fr) minmax(0px, 1fr) minmax(0px, 2fr) !important;
+    --data-table-library_grid-template-columns: minmax(8rem, 1fr) minmax(10rem, 2fr) 3rem 3rem !important;
   }
 }
 
 .view-table {
   background: #fefefe;
   padding: 1rem;
+  width: 100%;
 }
 
 table {
@@ -96,6 +99,24 @@ tr {
   font-size: .8rem !important;
   text-align: left;
 }
+
+.td div {
+  display: flex;
+  justify-content: center;
+}
+.td:nth-child(-n+2) div {
+  justify-content: left !important;
+}
+
+.th div {
+  display: flex;
+  justify-content: center;
+  color:rgb(88 114 90);
+}
+.th:nth-child(-n+2) div {
+  justify-content: left !important;
+}
+
 .expand {
   display: flex;
   grid-column: 1 / -1;
@@ -117,7 +138,7 @@ tr {
 
 @media (min-width: 768px) {
   .view-table > [data-table-library_table] {
-    --data-table-library_grid-template-columns: minmax(0px, 5fr) minmax(0px, 10fr) minmax(0px, 2fr) minmax(0px, 2fr) minmax(0px, 2fr) minmax(0px, 1fr)!important;
+    --data-table-library_grid-template-columns: minmax(8rem, 1fr) minmax(10rem, 2fr) 3rem 3rem 3rem 3rem!important;
   }
   .registerForm {
     display: grid !important;
@@ -136,8 +157,8 @@ tr {
 }
 
 .content {
-  display: flex;
-  justify-content: center;
+  flex-grow: 1;
+  align-items: flex-start;
 }
 
 .registerForm {
@@ -160,11 +181,9 @@ tr {
   grid-area: 1 / 9 / 3 / 10;
 }
 .loader {
-  height: 100vh;
-  position: absolute;
-  width: 100%;
+  position: relative;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 1rem;
 }

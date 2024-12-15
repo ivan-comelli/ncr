@@ -16,9 +16,10 @@ export const fetchInventoryFailure = (error) => ({
     payload: error,
 });
 
-export const isolatePartInTable = () => {
-    // Implement logic here
-};
+export const isolatePartInTable = (item) => ({
+    type: TYPES.ISOLATE_PART_IN_TABLE,
+    payload: item
+});
 
 export const openUploadModal = () => {
     // Implement logic here

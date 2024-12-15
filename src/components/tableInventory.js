@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../api/firebase"; // Asegúrate de importar la configuración de Firebase
 import { CompactTable } from '@table-library/react-table-library/compact';
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
 import { IconButton } from '@mui/material';
 import IconIsolate from '@mui/icons-material/VisibilityOutlined';
-import { ClipLoader } from 'react-spinners';
-import { useSelector } from 'react-redux';
+import IconPPK from '@mui/icons-material/AssignmentOutlined';
+import IconOnHand from '@mui/icons-material/PanToolOutlined';
+import IconStock from '@mui/icons-material/Inventory2Outlined';
 
-const TableInventory = ({ status, minified }) => {
+
+import { useSelector, useDispatch } from 'react-redux';
+import { isolatePartInTable } from '../redux/actions/actions';
+
+const TableInventory = ({ minified }) => {
+  const dispatch = useDispatch();
   const mainDataTable = useSelector(state => state.inventory.table);
   const [collectionData, setCollectionData] = useState([]);
-  const loading = useSelector((state) => state.inventory.isLoading);
-  const [selected, setSelected] = useState();
+  const isolated = useSelector((state) => state.inventory.isolated);
   const [COLUMNS, SET_COLUMNS] = useState([]);
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
@@ -25,41 +28,29 @@ const TableInventory = ({ status, minified }) => {
 
   useEffect(() => {
     let data = structuredClone(mainDataTable);
-    if (selected) {
-      const selectedIndex = data.findIndex(item => item.id === selected.id);
+    if (isolated) {
+      const selectedIndex = data.findIndex(item => item.id === isolated.id);
 
       // Si no se encuentra el ítem seleccionado, lo agregamos al principio
       if (selectedIndex === -1) {
-        data.unshift(selected);
+        data.unshift(isolated);
       } else {
         // Si ya está, lo movemos al principio
-        data.sort((a, b) => (a.id === selected.id ? -1 : 1)); // Aseguramos que el seleccionado esté al principio
+        data.sort((a, b) => (a.id === isolated.id ? -1 : 1)); // Aseguramos que el seleccionado esté al principio
       }
-    
-      status({ empty: false, partIsolate: selected });
     }
-    else {
-      if(data.length == 0 && !loading) {
-        status({empty: true, partIsolate: null});
-      }
-      else if(data.length == 1) {
-        status({empty: false, partIsolate: data[0]});
-      }
-      else {
-        status({empty: false, partIsolate: null});
-
-      }
+    else if(data.length == 1) {
+      dispatch(isolatePartInTable(data[0]));
     }
     setCollectionData(data);
-  }, [mainDataTable, selected]);
+  }, [mainDataTable, isolated]);
 
   const handleAction = (item) => {
-    console.log("Acción sobre el item:", item);
-    if(selected && item.id === selected.id) {
-      setSelected(null)
+    if(isolated && item.id == isolated.id) {
+      dispatch(isolatePartInTable(null));
     }
     else {
-      setSelected(item)
+      dispatch(isolatePartInTable(item));
     }
     // Aquí puedes agregar la lógica que desees para el botón de cada fila
   };
@@ -67,62 +58,58 @@ const TableInventory = ({ status, minified }) => {
   useEffect(() => {
     if (minified) {
       SET_COLUMNS([
-        { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize: { resizerWidth: 1000 } },
-        { label: 'Descripcion', renderCell: (item) => item.description, resize: { resizerWidth: 100 } },
-        { label: 'Stock', renderCell: (item) => item.stock, resize: { resizerWidth: 100 } },
+        { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true},
+        { label: 'Descripcion', renderCell: (item) => item?.description},
+        { label: <IconStock fontSize="small"/>, renderCell: (item) => item?.stock},
         {
-          label: '',
+          label: ' ',
           renderCell: (item) => (
-            item.nodes && item.nodes.length !== 0 && (
+            (item.nodes && item.nodes.length !== 0) && (
               <IconButton
                 variant="contained"
                 color="primary"
                 onClick={() => handleAction(item)}
                 sx={{
-                  color: selected && selected.id === item.id ? "primary.main" : "secondary.main",
+                  color: (isolated && isolated.id == item.id) ? "primary.main" : "secondary.main",
                   "&:hover": { color: "primary.main" },
+                  padding: "0"
                 }}
               >
                 <IconIsolate />
               </IconButton>
             )
-          ),
-          resize: { resizerWidth: 100 },
+          )
         },
       ]);
     } else {
       SET_COLUMNS([
-        { label: 'Part Number', renderCell: (item) => item.partNumber[0], tree: true, resize: { resizerWidth: 1000 } },
-        { label: 'Descripcion', renderCell: (item) => item.description, resize: { resizerWidth: 100 } },
-        { label: 'Stock', renderCell: (item) => item.stock, resize: { resizerWidth: 100 } },
-        { label: 'On Hand', renderCell: (item) => item.onHand, resize: { resizerWidth: 100 } },
-        { label: 'PPK', renderCell: (item) => item.ppk, hide: false, resize: { resizerWidth: 100 } },
+        { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true},
+        { label: 'Descripcion', renderCell: (item) => item?.description},
+        { label: <IconStock fontSize="small"/>, renderCell: (item) => item?.stock, align: 'center'},
+        { label: <IconOnHand fontSize="small"/>, renderCell: (item) => item?.onHand},
+        { label: <IconPPK fontSize="small"/>, renderCell: (item) => item?.ppk, hide: false },
         {
-          label: '',
+          label: ' ',
           renderCell: (item) => (
-            item.nodes && item.nodes.length !== 0 && (
+            (item.nodes && item.nodes.length !== 0) && (
               <IconButton
                 variant="contained"
                 color="primary"
                 onClick={() => handleAction(item)}
                 sx={{
-                  color: selected && selected.id === item.id ? "primary.main" : "secondary.main",
+                  color: (isolated && isolated.id == item.id) ? "primary.main" : "secondary.main",
                   "&:hover": { color: "primary.main" },
+                  padding: "0"
                 }}
               >
                 <IconIsolate />
               </IconButton>
             )
           ),
-          resize: { resizerWidth: 100 },
         },
       ]);
     }
-  }, [minified]);
-
-  if (loading) {
-    return <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>;
-  }
+  }, [minified, isolated]);
 
   return (
     <div className="view-table">

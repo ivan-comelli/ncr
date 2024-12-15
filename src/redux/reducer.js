@@ -71,7 +71,7 @@ const mergeData = (newData, data) => {
 
 
 const initialStateInventory = {
-    isLoading: false,
+    isLoading: true,
     data: [],
     table: [],
     search: ''
@@ -101,7 +101,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             return { ...state, table: action.payload }
 
         case TYPES.SEARCH_IN_TABLE: 
-            const search = action.payload || state.search;
+            const search = action.payload || (action.payload == null ? state.search : '');
             let data = structuredClone(state.table);
             data = data.filter((item) => {
             if(search && search !="") {
@@ -120,6 +120,10 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 data = state.table
             }   
             return { ...state, search: search, table: data };   
+
+        case TYPES.ISOLATE_PART_IN_TABLE:
+            return { ...state, isolated: action.payload }
+            
         default:
             return state;
     }
