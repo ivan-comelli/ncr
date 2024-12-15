@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import TableInventory from './components/tableInventory';
+import PartNumberForm from './components/partForm';
 import logo from './ncr-logo.png';
 import './App.css';
 import { TextField } from '@mui/material';
 import { Button } from '@mui/material';
-import CheckerModal from './components/checkerModal';
-import PartNumberForm from './components/partForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
 import SearchIcon from '@mui/icons-material/Search';
 import UploadIcon from '@mui/icons-material/Upload';
 
@@ -33,26 +34,27 @@ const useWindowDimensions = () => {
 };
 
 function App() {
-  const [search, setSearch] = useState('');
-  const [debouncedSearch, setDebouncedSearch] = useState('');
   const [modalPromise, setModalPromise] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showEditor, setShowEditor] = useState(false);
   const [partIsolate, setPartIsolate] = useState();//UID
   const { width, height } = useWindowDimensions();
+  const [search, setSearch] = useState('');
+
+  const searchGlobal = useSelector(state => state.inventory.search)
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(fetchAllInventory());
+  }, []);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearch(search); // Cambia el estado final después del debounce
-    }, 1000); // Ventana de 1 segundo
-
-    return () => {
-      clearTimeout(timer); // Limpia el timeout si el usuario sigue escribiendo
-    };
-  }, [search]); // Solo se ejecuta cuando `search` cambia
-
+    setSearch(searchGlobal);
+  }, [searchGlobal]);
+  
   const handleSearch = (event) => {
-    setSearch(event.target.value);
+    setSearch(event.target.value)
+    dispatch(lazySearch(event.target.value));
   };
 
   const openModal = async () => {
@@ -90,6 +92,7 @@ function App() {
       </div>
       </header>
       <PartNumberForm active={showEditor} item={partIsolate}/>
+
       <div
         style={{
           display: showEditor && !partIsolate ? 'none' : 'block',
@@ -106,10 +109,8 @@ function App() {
               setPartIsolate(response.partIsolate);
             }
           }}
-          filter={debouncedSearch}
         />
       </div>
-
       {/* Mensaje */}
       {showEditor && !partIsolate && (
         <p
@@ -123,7 +124,6 @@ function App() {
           Agrega una nueva parte para empezar.
         </p>
       )}
-      <CheckerModal show={showModal} rejectModal={modalPromise?.reject} resolveModal={modalPromise?.resolve}></CheckerModal>
     </div>
   );
 }

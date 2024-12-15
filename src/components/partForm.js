@@ -4,9 +4,10 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { Remove } from '@mui/icons-material';
 import { ArrowDropDown } from '@mui/icons-material';
 import { Add, Close } from "@mui/icons-material";
-import { updateStockWithPart } from './actionsInventory';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { dispatchBulkInventory } from '../redux/actions/inventoryThunks'
 const PartNumberForm = ({active, item}) => {
+  const dispatch = useDispatch();
   const [isAdding, setIsAdding] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -60,38 +61,16 @@ const PartNumberForm = ({active, item}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(data.stock > 0 && data.partNumber.length > 0) {
-      updateStockWithPart(data.partNumber, {quantity: data.stock, csr: data.csr}).then(() => {
-        let localData = JSON.parse(localStorage.getItem("db")).data;
-    
-        localData.map((part) => {
-          if(part.id == item.id) {
-            let countTotal = 0;
-            part.stock.detail.forEach((op) => {
-              if(op.csr.toLowerCase() == data.csr.toLowerCase()) {
-                  countTotal += Number(op.stock);
-              }
-            });
-            console.log(countTotal)
-            console.log(part)
-
-            part.stock.detail.push({
-              csr: data.csr.toLowerCase(),
-              name: options.find((option) => option.csr.toLowerCase() === data.csr.toLowerCase()).name.toLowerCase(),
-              stock: Number(data.stock),
-              total: countTotal + data.stock
-            })
-            part.stock.total[data.csr.toLowerCase()] = (part.stock.total[data.csr.toLowerCase()] ? part.stock.total[data.csr.toLowerCase()] : 0) + Number(data.stock)
-            console.log(part)
-
-          }
-          return part
-        })
-        console.log(localData)
-        localStorage.setItem('db', JSON.stringify({data: localData, lastUpdate: null}));
-        window.dispatchEvent(new Event("storage"));
-        setData((prev) => ({...prev, stock: 0, csr: null}))
-      })
+    if(data.stock != 0 && data.partNumber.length > 0) {
+      dispatch(dispatchBulkInventory([{
+        id: item.id,
+        ...data,
+        stock: {
+          quantity: data.stock,
+          csr: data.csr
+        }
+      }]));
+      setData((prev) => ({...prev, stock: 0, csr: null}))
     }
   }
 
