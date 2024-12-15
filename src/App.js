@@ -93,12 +93,12 @@ function App() {
           />
       </div>
       </header>
-      <PartNumberForm active={forceOpenForm} item={partIsolate}/>
       {
         isLoading ? (
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
         ) : (
           <>
+            <PartNumberForm active={forceOpenForm} item={partIsolate}/>
             <div className='content'      
               style={{
                 display: forceOpenForm && !partIsolate ? 'none' : 'flex',
