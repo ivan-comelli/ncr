@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { CompactTable } from '@table-library/react-table-library/compact';
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { isolatePartInTable } from '../redux/actions/actions';
 
 const TableInventory = ({ minified }) => {
+  const tableRef = useRef(null);
   const dispatch = useDispatch();
   const mainDataTable = useSelector(state => state.inventory.table);
   const [collectionData, setCollectionData] = useState([]);
@@ -56,64 +57,64 @@ const TableInventory = ({ minified }) => {
   };
 
   useEffect(() => {
-    if (minified) {
-      SET_COLUMNS([
-        { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true},
-        { label: 'Descripcion', renderCell: (item) => item?.description},
-        { label: <IconStock fontSize="small"/>, renderCell: (item) => item?.stock},
-        {
-          label: ' ',
-          renderCell: (item) => (
-            (item.nodes && item.nodes.length !== 0) && (
-              <IconButton
-                variant="contained"
-                color="primary"
-                onClick={() => handleAction(item)}
-                sx={{
-                  color: (isolated && isolated.id == item.id) ? "primary.main" : "secondary.main",
-                  "&:hover": { color: "primary.main" },
-                  padding: "0"
-                }}
-              >
-                <IconIsolate />
-              </IconButton>
-            )
-          )
-        },
-      ]);
-    } else {
-      SET_COLUMNS([
-        { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true},
-        { label: 'Descripcion', renderCell: (item) => item?.description},
-        { label: <IconStock fontSize="small"/>, renderCell: (item) => item?.stock, align: 'center'},
-        { label: <IconOnHand fontSize="small"/>, renderCell: (item) => item?.onHand},
-        { label: <IconPPK fontSize="small"/>, renderCell: (item) => item?.ppk, hide: false },
-        {
-          label: ' ',
-          renderCell: (item) => (
-            (item.nodes && item.nodes.length !== 0) && (
-              <IconButton
-                variant="contained"
-                color="primary"
-                onClick={() => handleAction(item)}
-                sx={{
-                  color: (isolated && isolated.id == item.id) ? "primary.main" : "secondary.main",
-                  "&:hover": { color: "primary.main" },
-                  padding: "0"
-                }}
-              >
-                <IconIsolate />
-              </IconButton>
-            )
-          ),
-        },
-      ]);
-    }
+    SET_COLUMNS(minified ? [
+      { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true },
+      { label: 'Descripcion', renderCell: (item) => item?.description },
+      { label: <IconStock fontSize="small" />, renderCell: (item) => item?.stock },
+      {
+        label: ' ',
+        renderCell: (item) => (
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={() => handleAction(item)}
+            sx={{
+              color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
+              "&:hover": { color: "primary.main" },
+              padding: "0",
+            }}
+          >
+            <IconIsolate />
+          </IconButton>
+        )
+      }
+    ] : [
+      { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true },
+      { label: 'Descripcion', renderCell: (item) => item?.description },
+      { label: <IconStock fontSize="small" />, renderCell: (item) => item?.stock, align: 'center' },
+      { label: <IconOnHand fontSize="small" />, renderCell: (item) => item?.onHand },
+      { label: <IconPPK fontSize="small" />, renderCell: (item) => item?.ppk, hide: false },
+      {
+        label: ' ',
+        renderCell: (item) => (
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={() => handleAction(item)}
+            sx={{
+              color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
+              "&:hover": { color: "primary.main" },
+              padding: "0",
+            }}
+          >
+            <IconIsolate />
+          </IconButton>
+        )
+      }
+    ]);
   }, [minified, isolated]);
-
+  useEffect(() => {
+    if (tableRef.current) {
+      if (minified) {
+        tableRef.current.classList.add('minified');
+      } else {
+        tableRef.current.classList.remove('minified');
+      }
+    }
+  }, [COLUMNS])
   return (
     <div className="view-table">
-      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }}/>
+      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }} ref={tableRef} />
     </div>
   );
 };
