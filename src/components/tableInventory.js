@@ -102,15 +102,15 @@ const TableInventory = ({ minified }) => {
         )
       }
     ]);
+    tableRef.current.classList.add('hidden');
   }, [minified, isolated]);
   useEffect(() => {
-    if (tableRef.current) {
-      if (minified) {
-        tableRef.current.classList.add('minified');
-      } else {
-        tableRef.current.classList.remove('minified');
-      }
+    if (minified) {
+      tableRef.current.classList.add('minified');
+    } else {
+      tableRef.current.classList.remove('minified');
     }
+    tableRef.current.classList.remove('hidden');
   }, [COLUMNS])
   return (
     <div className="view-table">

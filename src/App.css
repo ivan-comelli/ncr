@@ -141,6 +141,10 @@ tr {
   --data-table-library_grid-template-columns: minmax(8rem, 1fr) minmax(10rem, 2fr) 3rem 3rem 3rem 3rem!important;
 }
 
+.view-table > table.hidden {
+  display: none !important;
+}
+
 @media (min-width: 768px) {
 
   .registerForm {
