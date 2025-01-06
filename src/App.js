@@ -10,7 +10,7 @@ import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
 import SearchIcon from '@mui/icons-material/Search';
 import UploadIcon from '@mui/icons-material/Upload';
 import { ClipLoader } from 'react-spinners';
-
+import CheckerModal from './components/checkerModal';
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
@@ -121,7 +121,7 @@ function App() {
           </>
         )
       }
-      
+      <CheckerModal show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
       
     </div>
   );

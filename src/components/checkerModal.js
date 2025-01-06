@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 
 import UploadFiles from "./uploadFiles";
 import { ClipLoader } from 'react-spinners';
-import {setBulkInventory} from './actionsInventory';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { dispatchBulkInventory } from '../redux/actions/inventoryThunks';
 
 import {
   Dialog,
@@ -38,15 +40,18 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
   const [uploadData, setUploadData] = useState();
   const [flagSubmit, setFlagSubmit] = useState(false);
   
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if(uploadData && !flagSubmit) {
       setFlagSubmit(true);
-      setBulkInventory(uploadData).then(() => {
+      dispatch(dispatchBulkInventory(uploadData, true));
+
         setFlagSubmit(false);
         setUploadData(false);
         setActiveStep(0);
         resolveModal("Se Completo Exitosamente");
-      });
+
     } 
   }, [uploadData, activeStep]);
   const presetSelectedPerson = (possibleOption) => {

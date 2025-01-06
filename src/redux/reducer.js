@@ -9,12 +9,9 @@ const options = [
 
 const mergeData = (newData, data) => {
     let oldData = structuredClone(data);
-    console.log(newData)
-    console.log(oldData)
     let result = [];
     if (oldData.length > 0) {
         result = oldData.map(item => {
-            console.log(newData)
             const existingItem = newData.find(dataItem => {
                 let find = false;
                 dataItem.partNumber.forEach((part) => {
@@ -26,7 +23,6 @@ const mergeData = (newData, data) => {
             });
             let updatedTechnicians;
             if (existingItem) {
-                console.log(existingItem)
                 updatedTechnicians = item.technicians.map(technician => {
                     const matchingTechnician = existingItem.technicians.find(tec => tec.csr === technician.csr);
                     if (matchingTechnician) {
@@ -55,7 +51,6 @@ const mergeData = (newData, data) => {
                     item.stock.total[newStock.csr.toLowerCase()] = (item.stock.total[newStock.csr.toLowerCase()] ? item.stock.total[newStock.csr.toLowerCase()] : 0) + Number(newStock.quantity)
                 });
                 
-                console.log(item)
                 newData.splice(newData.indexOf(existingItem), 1);
                 return {
                     ...item,
@@ -104,21 +99,19 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             const search = action.payload || (action.payload == null ? state.search : '');
             let data = structuredClone(state.table);
             data = data.filter((item) => {
-            if(search && search !="") {
-                const descriptionMatch = item.description && item.description
-                .toLowerCase()
-                .includes(search.toLowerCase());
-                const partNumberMatch = item.description && item.partNumber
-                .toString()
-                .includes(search);
-        
-                return descriptionMatch || partNumberMatch;
-            }
-            return true;
-            }); 
-            if(data.length == 0) {
-                data = state.table
-            }   
+                if(search && search !="") {
+                    const descriptionMatch = item.description && item.description
+                    .toLowerCase()
+                    .includes(search.toLowerCase());
+                    const partNumberMatch = item.description && item.partNumber
+                    .toString()
+                    .includes(search);
+            
+                    return descriptionMatch || partNumberMatch;
+                }
+                return true;
+            });
+
             return { ...state, search: search, table: data };   
 
         case TYPES.ISOLATE_PART_IN_TABLE:

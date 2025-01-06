@@ -18,7 +18,7 @@ import {
 
 let timer;
 
-export function dispatchBulkInventory(data) {
+export function dispatchBulkInventory(data, reload = false) {
     return async (dispatch) => {
         const batch = writeBatch(db);
         try {
@@ -50,75 +50,80 @@ export function dispatchBulkInventory(data) {
                     if (!technicianExists) {
                         await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
                     } else {
-                        await setTechnicianToSomePart(technicianExists.ref, item.technician, batch);
+                        await setTechnicianToSomePart(technicianExists.ref, item.technician, batch, technicianExists.data());
                     }
                 }
             }
 
             await batch.commit();
-            
+            console.log(batch)
             const lastUpdateFlag = doc(db, 'config', 'generalSettings');
             await setDoc(lastUpdateFlag, { lastUpdate: Timestamp.now() });
-            let inPart = false;
-            let stock = [];
-            let technicians = [];
-            let part = {};
-            let formatData = [];
-            batch._mutations.forEach((item) => {
-                console.log(item) 
-                let data;
-                let path = item.key.collectionGroup;
+            if(!reload) {
+                let inPart = false;
+                let stock = [];
+                let technicians = [];
+                let part = {};
+                let formatData = [];
+                batch._mutations.forEach((item) => {
+                    console.log(item) 
+                    let data;
+                    let path = item.key.collectionGroup;
 
-                if(item.type == 1){
-                    data = item.data.value.mapValue.fields;
-                }
-                else if (item.type == 0) {
-                    data = item.value.value.mapValue.fields;
-                }
+                    if(item.type == 1){
+                        data = item.data.value.mapValue.fields;
+                    }
+                    else if (item.type == 0) {
+                        data = item.value.value.mapValue.fields;
+                    }
 
-                switch(path) {
-                    case "Inventory":
-                        if(inPart) {
-                            formatData.push({
-                                ...part,
-                                stock: stock,
-                                technicians: technicians
+                    switch(path) {
+                        case "Inventory":
+                            if(inPart) {
+                                formatData.push({
+                                    ...part,
+                                    stock: stock,
+                                    technicians: technicians
+                                });
+                                inPart = false;
+                                part = {};
+                                stock = [];
+                                technicians = [];
+                            }
+                            else {
+                                inPart = true;
+                                part.partNumber = data.partNumber.arrayValue.values.map((value) => value.stringValue);
+                                //VA A FALTAR RECUPERAR OTROS VALORES COO DESCR SI ES QUE EXISTE Y EL LASTUPDATE
+                            }
+                        break;
+                        case "stock":
+                            stock.push({
+                                csr: data.csr?.stringValue,
+                                name: data.name?.stringValue,
+                                quantity: Number(data.quantity.integerValue)
                             });
-                            inPart = false;
-                            part = {};
-                            stock = [];
-                            technicians = [];
-                        }
-                        else {
-                            inPart = true;
-                            part.partNumber = data.partNumber.arrayValue.values.map((value) => value.stringValue);
-                            //VA A FALTAR RECUPERAR OTROS VALORES COO DESCR SI ES QUE EXISTE Y EL LASTUPDATE
-                        }
-                    break;
-                    case "stock":
-                        stock.push({
-                            csr: data.csr.stringValue,
-                            name: data.name.stringValue,
-                            quantity: Number(data.quantity.integerValue)
-                        });
-                    break;
-                    case "technicians":
-                        technicians.push({
-                            csr: data.csr.stringValue,
-                            name: data.name.stringValue,
-                            onHand: Number(data.onHand.integerValue),
-                            ppk: Number(data.ppk.integerValue)
-                        });
-                    break;
-                }
-            });
-            formatData.push({
-                ...part,
-                stock: stock,
-                technicians: technicians
-            });
-            dispatch(dispatchInventorySuccess(formatData));
-            dispatch(formatTableWithFilters(true));
+                        break;
+                        case "technicians":
+                            technicians.push({
+                                csr: data.csr?.stringValue,
+                                name: data.name?.stringValue,
+                                onHand: Number(data.onHand.integerValue),
+                                ppk: Number(data.ppk.integerValue)
+                            });
+                        break;
+                    }
+                });
+                formatData.push({
+                    ...part,
+                    stock: stock,
+                    technicians: technicians
+                });
+                dispatch(dispatchInventorySuccess(formatData));
+                dispatch(formatTableWithFilters(true));
+            }
+            else{
+                dispatch(fetchAllInventory());
+            }
         } catch (error) {
             dispatch(dispatchInventoryFailure(error.message));
             throw error;

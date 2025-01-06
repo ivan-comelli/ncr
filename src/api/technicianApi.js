@@ -1,5 +1,7 @@
 import { collection, writeBatch, doc, getDocs, getDoc, setDoc, query, where, Timestamp, or } from "firebase/firestore";
 import { db } from './firebase';
+import { verifyStockOfSomeTechnicianInPart } from './stockApi';
+
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },
     { name: "Nahuel DeLuca", csr: "AR103S44" },
@@ -36,8 +38,16 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
     return response;
 }
 
-export async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
-    //hay que preguntarse si el nuevo tecnico ya existe en la coleccion y actualizar
+export async function setTechnicianToSomePart(refTechnician, newTechnician, batch, lastLog = {onHand: 0, createdAt: undefined}) {
+    //tengo que calcular la diferencia de OH en la ventana del ultimo periodo registrado
+    //por cada technician de parte hay que ir a validar el stock
+    //ACA FALLA porque si el tecnico no tiene ningun registro de onHand en una pieza tira error
+    console.log(lastLog.onHand)
+    const diff = newTechnician.onHand - lastLog.onHand;
+
+    console.log(newTechnician.csr)
+    await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr, diff, [lastLog.createdAt, newTechnician.createdAt]);
+
     try {
         if(!refTechnician) {
             throw new Error("No hay referencia para actualizar");
@@ -47,6 +57,7 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
             csr: newTechnician.csr.toLowerCase(),
             onHand: newTechnician.onHand || 0,
             ppk: newTechnician.ppk || 0,
+            status: newTechnician.status || "PENDIENT",
             lastUpdate: Timestamp.now()
         }, 
         { merge: true });
