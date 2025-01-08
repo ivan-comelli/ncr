@@ -57,7 +57,6 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
             csr: newTechnician.csr.toLowerCase(),
             onHand: newTechnician.onHand || 0,
             ppk: newTechnician.ppk || 0,
-            status: newTechnician.status || "PENDIENT",
             lastUpdate: Timestamp.now()
         }, 
         { merge: true });

@@ -18,9 +18,11 @@ import {
 
 let timer;
 
+
+
 export function dispatchBulkInventory(data, reload = false) {
     return async (dispatch) => {
-        const batch = writeBatch(db);
+        var batch = writeBatch(db);
         try {
             if (!data) {
                 throw new Error("No hay datos o no son válidos");
@@ -28,37 +30,67 @@ export function dispatchBulkInventory(data, reload = false) {
             dispatch(dispatchInventoryStart());
 
             for (const item of data) {
-                const snapShotInventory = await getInventoryByPartNumber(item.partNumber);
-
-                const refInventory = snapShotInventory
-                    ? snapShotInventory.ref
-                    : doc(collection(db, "Inventory"));
-
-                await setInventoryPart(refInventory, item, batch);
-
-                if (item.stock && Object.keys(item.stock).length !== 0) {
-                    await setStockToSomePart(doc(collection(refInventory, "stock")), item.stock, batch);
-                }
-
-                if (item.technician && Object.keys(item.technician).length !== 0) {
-                    const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
-
-                    const technicianExists = existingTechnicians.docs.find(
-                        (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
-                    );
-
-                    if (!technicianExists) {
-                        await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
-                    } else {
-                        await setTechnicianToSomePart(technicianExists.ref, item.technician, batch, technicianExists.data());
+                let snapShotInventory = await getInventoryByPartNumber(item.partNumber);
+                console.log(item.partNumber)
+                console.log(batch._mutations)
+                let batchFindInventoryId = batch._mutations.find((doc) => { 
+                    let partNumberDocBatch = doc.data?.value.mapValue.fields.partNumber;
+                    if(partNumberDocBatch) { 
+                        return partNumberDocBatch.arrayValue.values.find((part) => item.partNumber == part.stringValue);
                     }
+                    else {
+                        return false
+                    }
+                });
+                console.log(batchFindInventoryId)
+    
+                if(batchFindInventoryId) batchFindInventoryId = batchFindInventoryId.key.path.segments[1];
+                console.log(snapShotInventory)
+                let refInventory = snapShotInventory ? snapShotInventory.ref : batchFindInventoryId ? doc(db, "Inventory", batchFindInventoryId) : doc(collection(db, "Inventory"));
+                console.log(refInventory)
+     
+            
+                batch = await setInventoryPart(refInventory, item, batch);
+    
+                if (Object.keys(item.stock).length !== 0) {
+                    batch = await setStockToSomePart(doc(collection(refInventory, "stock")), item.stock, batch);
                 }
+                if (Object.keys(item.technician).length !== 0) {
+                    //deberia buscar si ya existe ese tecnico antes
+                    //LPM
+                    const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
+                    const technicianExists = (() => {
+                        let existingTechniciansInDb = existingTechnicians.docs.find(
+                            (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
+                        );
+                        let existingTechniciansInBatch = batch._mutations.find(
+                            (doc) => {
+                                console.log(doc.key.path.segments)
+                                if(doc.key.path.segments[2] == "technicians" && doc.key.path.segments[1] == refInventory.id) {
+                                    return doc.data.value.mapValue.fields.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase()
+                                }
+                                return false
+                            }
+                        );
+                        if(existingTechniciansInDb) existingTechniciansInDb = existingTechniciansInDb.ref;
+                        if(existingTechniciansInBatch) existingTechniciansInBatch = doc(db, ...existingTechniciansInBatch.key.path.segments)
+                        return existingTechniciansInDb || existingTechniciansInBatch
+                    })();
+    
+                    console.log(technicianExists)
+                    if (!technicianExists) {
+                        batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
+                    }
+                    else {
+                        batch = await setTechnicianToSomePart(technicianExists, item.technician, batch);
+                    }
+                }    
             }
-
+            console.log(batch._mutations)
             await batch.commit();
-            console.log(batch)
             const lastUpdateFlag = doc(db, 'config', 'generalSettings');
-            await setDoc(lastUpdateFlag, { lastUpdate: Timestamp.now() });
+            await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
+
             if(!reload) {
                 let inPart = false;
                 let stock = [];
@@ -136,13 +168,13 @@ export function fetchAllInventory() {
         try {
             dispatch(fetchInventoryStart());
 
-            const lastUpdateFlag = (await getDoc(doc(db, 'config', 'generalSettings'))).data().lastUpdate.toDate();
+            const lastUpdateFlag = (await getDoc(doc(db, 'config', 'generalSettings'))).data()?.lastUpdate.toDate();
             const inventoryCollectionRef = collection(db, "Inventory");
 
             const localData = localStorage.getItem('db');
             let response = [];
 
-            if (!localData || lastUpdateFlag > new Date(JSON.parse(localData).lastUpdate)) {
+            if (!localData || lastUpdateFlag > new Date(JSON.parse(localData)?.lastUpdate)) {
                 const inventorySnapshot = await getDocs(inventoryCollectionRef);
 
                 if (inventorySnapshot.empty) {

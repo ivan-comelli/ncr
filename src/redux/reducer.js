@@ -84,13 +84,13 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             return { ...state, isLoading: false };
 
         case TYPES.DISPATCH_INVENTORY_START:
-            return { ...state };
+            return { ...state, isLoading: true };
 
         case TYPES.DISPATCH_INVENTORY_SUCCESS:
-            return { ...state, data: mergeData(action.payload, state.data) };
+            return { ...state, data: mergeData(action.payload, state.data),  isLoading: false };
 
         case TYPES.DISPATCH_INVENTORY_FAILURE:
-            return { ...state };
+            return { ...state, isLoading: false };
 
         case TYPES.SET_TABLE:
             return { ...state, table: action.payload }
