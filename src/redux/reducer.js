@@ -7,7 +7,17 @@ const options = [
     { name: "Ivan Comelli", csr: "AR903S48" }
 ];
 
+const STATUS = {
+    PENDIENT: "PENDIENT",
+    FAILED: "FAILED",
+    ADJUST: "ADJUST",
+    DONE: "DONE",
+    SYNC: "SYNC",
+    ISSUE: "ISSUE"
+}
+
 const mergeData = (newData, data) => {
+    console.log(newData)
     let oldData = structuredClone(data);
     let result = [];
     if (oldData.length > 0) {
@@ -24,7 +34,7 @@ const mergeData = (newData, data) => {
             let updatedTechnicians;
             if (existingItem) {
                 updatedTechnicians = item.technicians.map(technician => {
-                    const matchingTechnician = existingItem.technicians.find(tec => tec.csr === technician.csr);
+                    const matchingTechnician = existingItem.technicians?.find(tec => tec.csr === technician.csr);
                     if (matchingTechnician) {
                         return {
                             ...technician,
@@ -44,14 +54,42 @@ const mergeData = (newData, data) => {
                     });
                     item.stock.detail.push({
                         csr: newStock.csr.toLowerCase(),
-                        name: options.find((option) => option.csr.toLowerCase() === newStock.csr.toLowerCase()).name.toLowerCase(),
+                        name: newStock.name.toLowerCase(),
+                        status: newStock.status,
+                        lastUpdate: newStock.lastUpdate,
                         stock: Number(newStock.quantity),
                         total: countTotal + newStock.quantity
-                    })
-                    item.stock.total[newStock.csr.toLowerCase()] = (item.stock.total[newStock.csr.toLowerCase()] ? item.stock.total[newStock.csr.toLowerCase()] : 0) + Number(newStock.quantity)
+                    });
+                    let quantitySum = 0;
+                    switch (newStock.status) {
+                        case STATUS.PENDIENT:
+                            quantitySum = Number(newStock.quantity);
+                        break;
+                        case STATUS.FAILED:
+                        break;
+                        case STATUS.SYNC:
+                            quantitySum = Number(newStock.quantity);
+                        break;
+                        case STATUS.ADJUST:
+                            quantitySum = Number(newStock.quantity);
+                        break;
+                        case STATUS.ISSUE:
+                            quantitySum = Number(newStock.quantity);
+                        break;
+                        case STATUS.DONE:
+                            quantitySum = 0;
+                        break;
+                        default:
+                            quantitySum = Number(newStock.quantity);
+                        break;
+                                
+                    }
+
+                    item.stock.total[newStock.csr.toLowerCase()] = (item.stock.total[newStock.csr.toLowerCase()] ? item.stock.total[newStock.csr.toLowerCase()] : 0) + Number(quantitySum)
                 });
                 
                 newData.splice(newData.indexOf(existingItem), 1);
+                console.log(item)
                 return {
                     ...item,
                     technicians: updatedTechnicians,

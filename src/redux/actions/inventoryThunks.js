@@ -2,7 +2,7 @@ import { collection, writeBatch, doc, getDocs, getDoc, setDoc, query, where, Tim
 import { db } from '../../api/firebase';
 import { getInventoryByPartNumber, setInventoryPart } from '../../api/inventoryApi'
 import { setStockToSomePart, getAllStockOfSomePart } from '../../api/stockApi'
-import { setTechnicianToSomePart, getTechnicianOfSomePart } from '../../api/technicianApi'
+import { setTechnicianToSomePart, getTechnicianOfSomePart, initTechnicianToSomePart } from '../../api/technicianApi'
 
 import { 
     dispatchInventoryFailure, 
@@ -34,7 +34,13 @@ export function dispatchBulkInventory(data, reload = false) {
                 console.log(item.partNumber)
                 console.log(batch._mutations)
                 let batchFindInventoryId = batch._mutations.find((doc) => { 
-                    let partNumberDocBatch = doc.data?.value.mapValue.fields.partNumber;
+                    if(doc.type == 1){
+                        data = doc?.data.value.mapValue.fields;
+                    }
+                    else if (doc.type == 0) {
+                        data = doc?.value.value.mapValue.fields;
+                    }
+                    let partNumberDocBatch = data.partNumber;
                     if(partNumberDocBatch) { 
                         return partNumberDocBatch.arrayValue.values.find((part) => item.partNumber == part.stringValue);
                     }
@@ -46,43 +52,59 @@ export function dispatchBulkInventory(data, reload = false) {
     
                 if(batchFindInventoryId) batchFindInventoryId = batchFindInventoryId.key.path.segments[1];
                 console.log(snapShotInventory)
-                let refInventory = snapShotInventory ? snapShotInventory.ref : batchFindInventoryId ? doc(db, "Inventory", batchFindInventoryId) : doc(collection(db, "Inventory"));
+                let refInventory;
+                if (snapShotInventory) {
+                    refInventory = snapShotInventory.ref;
+                } else if (batchFindInventoryId) {
+                    refInventory = doc(db, "Inventory", batchFindInventoryId);
+                } else {
+                    refInventory = doc(collection(db, "Inventory"));
+                    batch = await initTechnicianToSomePart(refInventory, batch);
+                }
                 console.log(refInventory)
      
-            
+                
                 batch = await setInventoryPart(refInventory, item, batch);
     
-                if (Object.keys(item.stock).length !== 0) {
+                if (Object.keys(item?.stock || {}).length > 0) {
                     batch = await setStockToSomePart(doc(collection(refInventory, "stock")), item.stock, batch);
                 }
-                if (Object.keys(item.technician).length !== 0) {
+                if (Object.keys(item?.technician || {}).length > 0) {
                     //deberia buscar si ya existe ese tecnico antes
                     //LPM
                     const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
+                    console.log(item)
                     const technicianExists = (() => {
                         let existingTechniciansInDb = existingTechnicians.docs.find(
                             (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
                         );
                         let existingTechniciansInBatch = batch._mutations.find(
                             (doc) => {
+                                if(doc.type == 1){
+                                    data = doc?.data.value.mapValue.fields;
+                                }
+                                else if (doc.type == 0) {
+                                    data = doc?.value.value.mapValue.fields;
+                                }
+            
                                 console.log(doc.key.path.segments)
-                                if(doc.key.path.segments[2] == "technicians" && doc.key.path.segments[1] == refInventory.id) {
-                                    return doc.data.value.mapValue.fields.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase()
+                                if(doc.key.path.segments[2] === "technicians" && doc.key.path.segments[1] === refInventory.id) {
+                                    return data.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase()
                                 }
                                 return false
                             }
                         );
-                        if(existingTechniciansInDb) existingTechniciansInDb = existingTechniciansInDb.ref;
+                        if(existingTechniciansInDb) existingTechniciansInDb = existingTechniciansInDb;
                         if(existingTechniciansInBatch) existingTechniciansInBatch = doc(db, ...existingTechniciansInBatch.key.path.segments)
                         return existingTechniciansInDb || existingTechniciansInBatch
                     })();
     
-                    console.log(technicianExists)
+                    console.log("Existe: ", technicianExists)
                     if (!technicianExists) {
                         batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
                     }
                     else {
-                        batch = await setTechnicianToSomePart(technicianExists, item.technician, batch);
+                        batch = await setTechnicianToSomePart(technicianExists.ref, item.technician, batch, technicianExists.data());
                     }
                 }    
             }
@@ -93,8 +115,8 @@ export function dispatchBulkInventory(data, reload = false) {
 
             if(!reload) {
                 let inPart = false;
-                let stock = [];
-                let technicians = [];
+                let lotStock = [];
+                let lotTec = [];
                 let part = {};
                 let formatData = [];
                 batch._mutations.forEach((item) => {
@@ -114,13 +136,13 @@ export function dispatchBulkInventory(data, reload = false) {
                             if(inPart) {
                                 formatData.push({
                                     ...part,
-                                    stock: stock,
-                                    technicians: technicians
+                                    stock: [...lotStock],
+                                    technicians: [...lotTec]
                                 });
                                 inPart = false;
                                 part = {};
-                                stock = [];
-                                technicians = [];
+                                lotStock = [];
+                                lotTec = [];
                             }
                             else {
                                 inPart = true;
@@ -129,14 +151,16 @@ export function dispatchBulkInventory(data, reload = false) {
                             }
                         break;
                         case "stock":
-                            stock.push({
+                            lotStock.push({
                                 csr: data.csr?.stringValue,
                                 name: data.name?.stringValue,
-                                quantity: Number(data.quantity.integerValue)
+                                quantity: Number(data.quantity.integerValue),
+                                status: data.status?.stringValue,
+                                note: data.note?.stringValue
                             });
                         break;
                         case "technicians":
-                            technicians.push({
+                            lotTec.push({
                                 csr: data.csr?.stringValue,
                                 name: data.name?.stringValue,
                                 onHand: Number(data.onHand.integerValue),
@@ -147,8 +171,8 @@ export function dispatchBulkInventory(data, reload = false) {
                 });
                 formatData.push({
                     ...part,
-                    stock: stock,
-                    technicians: technicians
+                    stock: [...lotStock],
+                    technician: [...lotTec],
                 });
                 dispatch(dispatchInventorySuccess(formatData));
                 dispatch(formatTableWithFilters(true));
@@ -229,7 +253,12 @@ export const formatTableWithFilters = (hasFilter = false) => {
                 stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
                 ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
                 onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,
-                nodes: item.technicians.map((node) => {
+                nodes: item.technicians
+                .filter((node) => {
+                    // Filtrar nodos donde ppk, onHand y stock no sean todos 0
+                    return !(node.ppk === 0 && node.onHand === 0 && (item.stock.total[node.csr] || 0) === 0);
+                })
+                .map((node) => {
                     return {
                         id: node.id,
                         partNumber: [],
@@ -237,8 +266,12 @@ export const formatTableWithFilters = (hasFilter = false) => {
                         ppk: node.ppk,
                         onHand: node.onHand,
                         stock: item.stock.total[node.csr] || 0
-                    }
-                }) 
+                    };
+                })
+                .sort((a, b) => {
+                    // Ordenar alfabéticamente por description
+                    return a.description.localeCompare(b.description);
+                })
             }
         }));
         dispatch(setTable(dataTable));

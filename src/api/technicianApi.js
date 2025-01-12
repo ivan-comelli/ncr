@@ -38,6 +38,26 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
     return response;
 }
 
+export async function initTechnicianToSomePart(refInventory, batch) {
+    try {
+        options.forEach((item) => {
+            console.log(item)
+            batch.set(doc(collection(refInventory, "technicians")), {
+                name: item.name,
+                csr: item.csr.toLowerCase(),
+                onHand: 0,
+                ppk: 0,
+                lastUpdate: Timestamp.now()
+            });
+        })
+    }
+    catch(e) {
+
+    }
+    return batch
+
+}
+
 export async function setTechnicianToSomePart(refTechnician, newTechnician, batch, lastLog = {onHand: 0, createdAt: undefined}) {
     //tengo que calcular la diferencia de OH en la ventana del ultimo periodo registrado
     //por cada technician de parte hay que ir a validar el stock

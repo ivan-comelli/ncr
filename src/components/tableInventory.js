@@ -64,18 +64,20 @@ const TableInventory = ({ minified }) => {
       {
         label: ' ',
         renderCell: (item) => (
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={() => handleAction(item)}
-            sx={{
-              color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
-              "&:hover": { color: "primary.main" },
-              padding: "0",
-            }}
-          >
-            <IconIsolate />
-          </IconButton>
+          (item.nodes && item.nodes.length != 0) && (
+            <IconButton
+              variant="contained"
+              color="primary"
+              onClick={() => handleAction(item)}
+              sx={{
+                color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
+                "&:hover": { color: "primary.main" },
+                padding: "0",
+              }}
+            >
+              <IconIsolate />
+            </IconButton>
+          )
         )
       }
     ] : [
@@ -87,18 +89,20 @@ const TableInventory = ({ minified }) => {
       {
         label: ' ',
         renderCell: (item) => (
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={() => handleAction(item)}
-            sx={{
-              color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
-              "&:hover": { color: "primary.main" },
-              padding: "0",
-            }}
-          >
-            <IconIsolate />
-          </IconButton>
+          (item.nodes && item.nodes.length != 0) && (
+            <IconButton
+              variant="contained"
+              color="primary"
+              onClick={() => handleAction(item)}
+              sx={{
+                color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
+                "&:hover": { color: "primary.main" },
+                padding: "0",
+              }}
+            >
+              <IconIsolate />
+            </IconButton>
+          )
         )
       }
     ]);
@@ -114,7 +118,9 @@ const TableInventory = ({ minified }) => {
   }, [COLUMNS])
   return (
     <div className="view-table">
-      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }} ref={tableRef} />
+      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }} ref={tableRef} rowProps={(item) => ({
+          className: "caca",
+        })} />
     </div>
   );
 };

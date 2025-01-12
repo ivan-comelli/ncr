@@ -14,7 +14,8 @@ const STATUS = {
     FAILED: "FAILED",
     ADJUST: "ADJUST",
     DONE: "DONE",
-    SYNC: "SYNC"
+    SYNC: "SYNC",
+    ISSUE: "ISSUE"
 }
 
 export async function getAllStockOfSomePart(refInventory) {
@@ -34,11 +35,37 @@ export async function getAllStockOfSomePart(refInventory) {
         let balance = [];
         let commonCount = {};
         stockSnapshot.docs.forEach((doc) => {
-            if(!commonCount[doc.data().csr ? doc.data().csr : "any"]) commonCount[doc.data().csr ? doc.data().csr : "any"] = 0;
-            commonCount[doc.data().csr ? doc.data().csr : "any"] += Number(doc.data().quantity);
+            if(!commonCount[doc.data().csr]) commonCount[doc.data().csr] = 0;
+            switch (doc.data().status) {
+                case STATUS.PENDIENT:
+                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                break;
+                case STATUS.FAILED:
+                    commonCount[doc.data().csr] += 0;
+                break;
+                case STATUS.SYNC:
+                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                break;
+                case STATUS.ADJUST:
+                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                break;
+                case STATUS.ISSUE:
+                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                break;
+                case STATUS.DONE:
+                     commonCount[doc.data().csr] += 0;
+                break;
+                default:
+                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                break;
+                        
+            }
             balance.push({
-                csr: doc.data().csr ? doc.data().csr : "any",
+                csr: doc.data().csr,
+                name: doc.data().name,
                 stock: Number(doc.data().quantity),
+                status: doc.data().status,
+                note: doc.data().note,
                 lastUpdate: doc.data().lastUpdate,
                 total: commonCount[doc.data().csr]
             });
@@ -53,6 +80,7 @@ export async function getAllStockOfSomePart(refInventory) {
 }
 
 export async function setStockToSomePart(refStock, newStock, batch) {
+    console.log(newStock)
     if(!batch) {
         batch = writeBatch(db);
     }
@@ -61,9 +89,11 @@ export async function setStockToSomePart(refStock, newStock, batch) {
             throw new Error("No hay referencia para actualizar");
         }
         batch.set(refStock, {
-            name: options.find(option => option.csr.toLowerCase() == (newStock.csr && newStock.csr.toLowerCase())).name || "any",
-            csr: newStock.csr ? newStock.csr.toLowerCase() : "any",
+            name: options.find(option => option.csr.toLowerCase() == (newStock.csr && newStock.csr.toLowerCase())).name,
+            csr: newStock.csr.toLowerCase(),
             quantity: newStock.quantity || 0,
+            status: newStock.status,
+            note: newStock.note || "",
             lastUpdate: Timestamp.now()
 
         });
@@ -106,7 +136,8 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diff
                 failed: 0,
                 sync: 0,
                 done: 0,
-                pendient: 0
+                pendient: 0,
+                issue: 0
             }
             lastPeriodCollection.forEach((doc) => {
                 let quantity = doc.data().quantity;
@@ -135,6 +166,9 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diff
                         batch.update(doc.ref, {
                             status: STATUS.DONE
                         });
+                    break;
+                    case STATUS.ISSUE:
+                        balance.issue += quantity;
                     break;
                     default:
                         //SE ASUME QUE ES UN PENDIENTE
@@ -169,6 +203,9 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diff
                         //SE COMPUTA Y NEUTRALIZA EL ESTADO PARA DEJAR REGISTRO
                         batch.delete(doc.ref);
                     break;
+                    case STATUS.ISSUE:
+                        balance.issue += quantity;
+                    break;
                     default:
                         //SE ASUME QUE ES UN PENDIENTE
                         batch.delete(doc.ref);
@@ -178,16 +215,17 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diff
             console.log(balance)
             //El resto se recorre para hacer una wipe
             //Necesito saber si las pendientes
-            if(diffOnHand != 0) {
+            console.log(diffOnHand)
+            if(diffOnHand !== 0) {
                 batch.set(doc(collection(tecRef.parent.parent, "stock")), {
                     status: STATUS.SYNC,
                     quantity: diffOnHand,
-                    name: options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name || "any",
-                    csr: csr ? csr.toLowerCase() : "any",
+                    name: options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name,
+                    csr: csr.toLowerCase(),
                     lastUpdate: Timestamp.now()
                 });
             }
-            if(balance.pendient != diffOnHand) {
+            if(balance.pendient !== diffOnHand) {
                 if(diffOnHand >= 0) {
                     surplus = balance.pendient - diffOnHand; //No puede quedar excedentes positivos
                     if(surplus < 0) {
@@ -205,8 +243,8 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diff
                 batch.set(doc(collection(tecRef.parent.parent, "stock")), {
                     status: STATUS.FAILED,
                     quantity: surplus,
-                    name: options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name || "any",
-                    csr: csr ? csr.toLowerCase() : "any",
+                    name: options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name,
+                    csr: csr.toLowerCase(),
                     lastUpdate: Timestamp.now()
                 });
             }
