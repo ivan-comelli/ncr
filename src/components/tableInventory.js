@@ -118,9 +118,7 @@ const TableInventory = ({ minified }) => {
   }, [COLUMNS])
   return (
     <div className="view-table">
-      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }} ref={tableRef} rowProps={(item) => ({
-          className: "caca",
-        })} />
+      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }} ref={tableRef}  />
     </div>
   );
 };

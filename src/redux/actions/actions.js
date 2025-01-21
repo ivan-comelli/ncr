@@ -21,16 +21,18 @@ export const isolatePartInTable = (item) => ({
     payload: item
 });
 
-export const openUploadModal = () => {
-    // Implement logic here
-};
-
-export const closeUploadModal = () => {
-    // Implement logic here
-};
+export const findDetailStock = (id) => ({
+    type: TYPES.FIND_DETAIL_STOCK,
+    payload: id
+});
 
 export const searchInTable = (value) => ({
     type: TYPES.SEARCH_IN_TABLE,
+    payload: value
+});
+
+export const updateStock = (value) => ({
+    type: TYPES.UPDATE_STOCK,
     payload: value
 });
 

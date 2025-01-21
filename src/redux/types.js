@@ -14,8 +14,11 @@ const OPEN_UPLOAD_MODAL = 'OPEN_UPLOAD_MODAL'; // Para abrir el modal de subida
 const CLOSE_UPLOAD_MODAL = 'CLOSE_UPLOAD_MODAL'; // Para cerrar el modal de subida
 const SEARCH_IN_TABLE = 'SEARCH_IN_TABLE'; // Para buscar en la tabla
 const SET_TABLE = 'SET_TABLE';
+const UPDATE_STOCK = 'UPDATE_STOCK';
+const FIND_DETAIL_STOCK = "FIND_DETAIL_STOCK";
 // Exportar como default
 export default {
+    UPDATE_STOCK,
     DISPATCH_INVENTORY_START,
     DISPATCH_INVENTORY_SUCCESS,
     DISPATCH_INVENTORY_FAILURE,
@@ -26,5 +29,6 @@ export default {
     OPEN_UPLOAD_MODAL,
     CLOSE_UPLOAD_MODAL,
     SEARCH_IN_TABLE,
-    SET_TABLE
+    SET_TABLE,
+    FIND_DETAIL_STOCK
 };

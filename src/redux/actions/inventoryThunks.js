@@ -1,4 +1,6 @@
-import { collection, writeBatch, doc, getDocs, getDoc, setDoc, query, where, Timestamp, or } from "firebase/firestore";
+import { collection, writeBatch, doc, getDocs, getDoc, setDoc, query, where, Timestamp, or, updateDoc } from "firebase/firestore";
+import { format } from "path-browserify";
+import { CardText } from "react-bootstrap";
 import { db } from '../../api/firebase';
 import { getInventoryByPartNumber, setInventoryPart } from '../../api/inventoryApi'
 import { setStockToSomePart, getAllStockOfSomePart } from '../../api/stockApi'
@@ -13,12 +15,57 @@ import {
     fetchInventoryStart,
     searchInTable,
     setTable,
-    isolatePartInTable
+    isolatePartInTable,
+    findDetailStock,
+    updateStock
 } from './actions';
 
 let timer;
 
+export function dispatchUpdateStateStock(path, action) {
+    return async (dispatch) => {
+        try {
+            console.log(path)
+            const stockRef = doc(db, `Inventory/${path[0]}/stock/${path[1]}`);
+    
+            const Doc = await getDoc(stockRef);
+            var updatedData = {
+                idInventory: path[0],
+                idStock: path[1],
+                status: null
+            }
 
+            if (Doc.exists()) {
+                console.log("Documento actual:", Doc.data());
+                switch (Doc.data().status) {
+                    case "PENDIENT":
+                        !action && (updatedData.status = "DONE");
+                    break;
+                    case "ISSUE":
+                        !action && (updatedData.status = "DONE");
+                    break;
+                    case "FAILED":
+                        action ? (updatedData.status = "ADJUST") : (updatedData.status = "DONE");
+                    break;
+                }
+
+                updatedData.status != null && (await updateDoc(stockRef, updatedData));
+
+                const lastUpdateFlag = doc(db, 'config', 'generalSettings');
+                await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
+
+                dispatch(updateStock(updatedData))
+                dispatch(formatTableWithFilters(true));
+                dispatch(findDetailStock());
+
+            } else {
+                console.error("El documento no existe");
+            }
+        } catch (error) {
+            console.error("Error al actualizar el documento:", error);
+        }
+    }
+}
 
 export function dispatchBulkInventory(data, reload = false) {
     return async (dispatch) => {
@@ -104,7 +151,7 @@ export function dispatchBulkInventory(data, reload = false) {
                         batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
                     }
                     else {
-                        batch = await setTechnicianToSomePart(technicianExists.ref, item.technician, batch, technicianExists.data());
+                        batch = await setTechnicianToSomePart(technicianExists.ref ? technicianExists.ref : technicianExists, item.technician, batch, technicianExists.data && technicianExists.data());
                     }
                 }    
             }
@@ -152,11 +199,15 @@ export function dispatchBulkInventory(data, reload = false) {
                         break;
                         case "stock":
                             lotStock.push({
+                                id: item.key.path.segments[3],
                                 csr: data.csr?.stringValue,
                                 name: data.name?.stringValue,
                                 quantity: Number(data.quantity.integerValue),
                                 status: data.status?.stringValue,
-                                note: data.note?.stringValue
+                                note: data.note?.stringValue,
+                                lastUpdate: {
+                                    seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000)
+                                }
                             });
                         break;
                         case "technicians":
@@ -164,7 +215,11 @@ export function dispatchBulkInventory(data, reload = false) {
                                 csr: data.csr?.stringValue,
                                 name: data.name?.stringValue,
                                 onHand: Number(data.onHand.integerValue),
-                                ppk: Number(data.ppk.integerValue)
+                                ppk: Number(data.ppk.integerValue),
+                                lastUpdate: {
+                                    seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000)
+                                }
+                                //FALTA PONER EL LASTUPDATE
                             });
                         break;
                     }
@@ -174,8 +229,10 @@ export function dispatchBulkInventory(data, reload = false) {
                     stock: [...lotStock],
                     technician: [...lotTec],
                 });
+                console.log(formatData)
                 dispatch(dispatchInventorySuccess(formatData));
                 dispatch(formatTableWithFilters(true));
+                dispatch(findDetailStock());
             }
             else{
                 dispatch(fetchAllInventory());

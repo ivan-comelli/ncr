@@ -6,7 +6,9 @@ import { ArrowDropDown } from '@mui/icons-material';
 import { Add, Close } from "@mui/icons-material";
 import { useDispatch, useSelector } from 'react-redux';
 import { dispatchBulkInventory } from '../redux/actions/inventoryThunks'
-const PartNumberForm = ({active, item}) => {
+import { findDetailStock } from '../redux/actions/actions'
+
+const PartNumberForm = ({active, item, goContent}) => {
   const dispatch = useDispatch();
   const [isAdding, setIsAdding] = useState(false);
   const [helperError, setHelperError] = useState();
@@ -237,6 +239,10 @@ const PartNumberForm = ({active, item}) => {
             className='history'
             variant="contained" 
             color="primary" 
+            onClick={() => {
+              dispatch(findDetailStock(item.id));
+              goContent(prev => !prev)
+            }}
           >
             Historial
         </Button>

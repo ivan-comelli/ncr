@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TableInventory from './components/tableInventory';
+import TableHistory from './components/tableHistory';
 import PartNumberForm from './components/partForm';
 import logo from './ncr-logo.png';
 import './App.css';
@@ -41,6 +42,7 @@ function App() {
   const forceOpenForm = useSelector((state) => (state.inventory.table.length == 0 || state.inventory.isolated != null));
   const { width, height } = useWindowDimensions();
   const [search, setSearch] = useState('');
+  const [ dualStateContent, setDualStateContent ] = useState(true);
   const isLoading = useSelector((state) => state.inventory.isLoading);
 
   const searchGlobal = useSelector(state => state.inventory.search)
@@ -93,18 +95,24 @@ function App() {
           />
       </div>
       </header>
+      <div className='container'>
       {
         isLoading ? (
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
         ) : (
           <>
-            <PartNumberForm active={forceOpenForm} item={partIsolate}/>
+            <PartNumberForm active={forceOpenForm} item={partIsolate} goContent={setDualStateContent}/>
             <div className='content'      
               style={{
                 display: forceOpenForm && !partIsolate ? 'none' : 'flex',
               }}
             >
-              <TableInventory minified={width < 768 ? true : false} />
+              {
+                dualStateContent && (<TableInventory minified={width < 768 ? true : false} />)
+              }
+              {
+                !dualStateContent && (<TableHistory goContent={setDualStateContent} />)
+              }
             </div>
             { forceOpenForm && !partIsolate && (
               <p
@@ -122,7 +130,7 @@ function App() {
         )
       }
       <CheckerModal show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
-      
+      </div>
     </div>
   );
 }

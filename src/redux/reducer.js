@@ -24,11 +24,12 @@ const mergeData = (newData, data) => {
         result = oldData.map(item => {
             const existingItem = newData.find(dataItem => {
                 let find = false;
-                dataItem.partNumber.forEach((part) => {
+                dataItem.partNumber?.forEach((part) => {
                     if(item.partNumber.includes(part)) {
                         find = true;
                     }
                 })
+                !find && dataItem.id === item.id && (find = true)
                 return find;
             });
             let updatedTechnicians;
@@ -46,46 +47,67 @@ const mergeData = (newData, data) => {
                     return technician;
                 });
                 let countTotal = 0;
+                console.log(existingItem)
                 existingItem.stock.forEach((newStock) => {
+                    let existStockOp = item.stock.detail.find((item) => item.id === newStock.id);
+                    console.log(existStockOp)
+                    let mergeStockData = {
+                        id: newStock.id || existStockOp.id,
+                        csr: newStock.csr?.toLowerCase() || existStockOp.csr.toLowerCase(),
+                        name: newStock.name || existStockOp.name,
+                        status: newStock.status || existStockOp.status,
+                        lastUpdate: newStock.lastUpdate || existStockOp.lastUpdate,
+                        stock: Number(newStock.quantity) || existStockOp.stock,
+                    }
+                    console.log(mergeStockData)
                     item.stock.detail.forEach((op) => {
-                        if(op.csr.toLowerCase() == newStock.csr.toLowerCase()) {
+                        if(op.csr.toLowerCase() == mergeStockData.csr.toLowerCase()) {
                             countTotal += Number(op.stock);
                         }
                     });
-                    item.stock.detail.push({
-                        csr: newStock.csr.toLowerCase(),
-                        name: newStock.name.toLowerCase(),
-                        status: newStock.status,
-                        lastUpdate: newStock.lastUpdate,
-                        stock: Number(newStock.quantity),
-                        total: countTotal + newStock.quantity
-                    });
+
                     let quantitySum = 0;
-                    switch (newStock.status) {
+
+                    existStockOp ? (
+                        Object.assign(existStockOp, mergeStockData)
+                    ) : (
+                        item.stock.detail.push(mergeStockData)
+                    )
+
+                    switch (mergeStockData.status) {
                         case STATUS.PENDIENT:
-                            quantitySum = Number(newStock.quantity);
+                            quantitySum = Number(mergeStockData.stock);
                         break;
+
                         case STATUS.FAILED:
                         break;
+
                         case STATUS.SYNC:
-                            quantitySum = Number(newStock.quantity);
+                            quantitySum = Number(mergeStockData.stock);
                         break;
+
                         case STATUS.ADJUST:
-                            quantitySum = Number(newStock.quantity);
+                            quantitySum = Number(mergeStockData.stock);
                         break;
+
                         case STATUS.ISSUE:
-                            quantitySum = Number(newStock.quantity);
+                            quantitySum = Number(mergeStockData.stock);
                         break;
+
                         case STATUS.DONE:
-                            quantitySum = 0;
+                            quantitySum = Number(mergeStockData.stock) * (-1)
                         break;
+
                         default:
-                            quantitySum = Number(newStock.quantity);
+                            quantitySum = Number(mergeStockData.stock);
                         break;
                                 
                     }
 
-                    item.stock.total[newStock.csr.toLowerCase()] = (item.stock.total[newStock.csr.toLowerCase()] ? item.stock.total[newStock.csr.toLowerCase()] : 0) + Number(quantitySum)
+
+                    console.log(quantitySum)
+
+                    item.stock.total[mergeStockData.csr.toLowerCase()] = (item.stock.total[mergeStockData.csr.toLowerCase()] ? item.stock.total[mergeStockData.csr.toLowerCase()] : 0) + quantitySum
                 });
                 
                 newData.splice(newData.indexOf(existingItem), 1);
@@ -152,8 +174,51 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
 
             return { ...state, search: search, table: data };   
 
+        case TYPES.FIND_DETAIL_STOCK:
+            var item;
+            if(action.payload == null) {
+                item = state.data
+                .find((element) => element.id === state.detail.id);
+                
+            }
+            else {
+                item = state.data
+                .find((element) => element.id === action.payload);
+            }
+
+            const sortedDetails = item?.stock?.detail
+            ? [...item.stock.detail].sort(
+                (a, b) =>
+                    new Date(b.lastUpdate.seconds * 1000) - new Date(a.lastUpdate.seconds * 1000)
+            ).filter((item) => item.status !== "DONE")
+            : null;
+
+
+
+            return {
+                ...state,
+                detail: {
+                    id: action.payload || state.detail.id,
+                    data: sortedDetails || null,
+                },
+            };
+
         case TYPES.ISOLATE_PART_IN_TABLE:
             return { ...state, isolated: action.payload }
+
+        case TYPES.UPDATE_STOCK:
+            const newData = mergeData([
+                {
+                    id: action.payload.idInventory,
+                    stock:[
+                        {
+                            id: action.payload.idStock, 
+                            status: action.payload.status
+                        }
+                    ]
+                }
+            ], state.data)
+            return { ...state, data: newData }
 
         default:
             return state;

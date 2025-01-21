@@ -61,6 +61,7 @@ export async function getAllStockOfSomePart(refInventory) {
                         
             }
             balance.push({
+                id: doc.id,
                 csr: doc.data().csr,
                 name: doc.data().name,
                 stock: Number(doc.data().quantity),
