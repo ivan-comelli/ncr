@@ -1,0 +1,35 @@
+{
+  "todo": [
+    {
+      "assignedTo": {
+        "name": "Ivan Comelli"
+      },
+      "category": "Backend",
+      "creation_time": "2025-01-24T14:40:02.064Z",
+      "description": {
+        "content": "La base de datos tiene que registrar los dispositivos que hicieron fetch y en que instante para devolverle en un nuevo fetch los datos nuevos.\nExiste la excepcion de que el dispositivo halla perdido el localstorage, asi que por ahi deberia de guardar el local el id del registro en base de datos del estado de sincronizacion",
+        "mime": "text/markdown"
+      },
+      "id": "1",
+      "references": [],
+      "title": "Optimizacion"
+    },
+    {
+      "assignedTo": {
+        "name": "Ivan Comelli"
+      },
+      "category": "Frontend",
+      "creation_time": "2025-01-24T23:11:00.207Z",
+      "description": {
+        "content": "Hay que poner una barra de funciones relacionadas a acciones sobre el stock de forma simple y directa\nEn Desktop se encuentra en el lateral izquierdo\nEn Mobil en la parte inferior\n",
+        "mime": "text/markdown"
+      },
+      "id": "2",
+      "references": [],
+      "title": "Inteface Nueva"
+    }
+  ],
+  "in-progress": [],
+  "testing": [],
+  "done": []
+}

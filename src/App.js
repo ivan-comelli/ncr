@@ -12,6 +12,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import UploadIcon from '@mui/icons-material/Upload';
 import { ClipLoader } from 'react-spinners';
 import CheckerModal from './components/checkerModal';
+
+import { Box, Autocomplete, ClickAwayListener, Chip, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
+import { Remove } from '@mui/icons-material';
+import { ArrowDropDown } from '@mui/icons-material';
+import { Add, Close } from "@mui/icons-material";
+import StockUp from '@mui/icons-material/MoveToInbox';
+import StockDown from '@mui/icons-material/Outbox';
+import DetailsIcon from '@mui/icons-material/Description';
+
+
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
@@ -95,6 +106,78 @@ function App() {
           />
       </div>
       </header>
+      <div className='stock-bar'>
+      <IconButton
+          sx={{
+            backgroundColor: '#fefefe', 
+            borderRadius: '1rem',              
+            padding: '12px',                 
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <DetailsIcon />
+        </IconButton>
+        <IconButton
+          sx={{
+            backgroundColor: '#fefefe', 
+            borderRadius: '1rem',              
+            padding: '12px',                 
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <StockUp />
+        </IconButton>
+        <TextField
+          className='stock'
+          fullWidth
+          margin="none"
+          variant='standard'
+          value={1}
+          sx={{
+            backgroundColor: '#fefefe',
+          }}
+          InputProps={{
+            disableUnderline: true,
+            endAdornment: (
+              <InputAdornment position="start">
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
+                  <Remove />
+                </IconButton>
+              </InputAdornment>
+            ),
+            startAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation(); // Evita que se cierre el menú al interactuar
+                  }}
+                >
+                  <Add />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+        <IconButton
+          sx={{
+            backgroundColor: '#fefefe', 
+            borderRadius: '1rem',              
+            padding: '12px',                 
+          }}          onClick={(e) => {
+            e.stopPropagation(); // Evita que se cierre el menú al interactuar
+          }}
+        >
+          <StockDown />
+        </IconButton>
+      </div>
       <div className='container'>
       {
         isLoading ? (

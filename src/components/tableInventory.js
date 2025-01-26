@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { CompactTable } from '@table-library/react-table-library/compact';
+import {
+  Table,
+  Header,
+  HeaderRow,
+  Body,
+  Row,
+  HeaderCell,
+  Cell,
+} from '@table-library/react-table-library/table';
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
@@ -19,17 +27,20 @@ const TableInventory = ({ minified }) => {
   const mainDataTable = useSelector(state => state.inventory.table);
   const [collectionData, setCollectionData] = useState([]);
   const isolated = useSelector((state) => state.inventory.isolated);
-  const [COLUMNS, SET_COLUMNS] = useState([]);
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
 
 
-  const tree = useTree({nodes: collectionData});
-
+  const tree = useTree({nodes: collectionData}, {onChange: onTreeChange});
+  function onTreeChange(action) {
+      tree.fns.onRemoveAll();
+      tree.fns.onAddById(action.payload.id)
+    
+  }
   useEffect(() => {
     let data = structuredClone(mainDataTable);
-    if (isolated) {
+    /**if (isolated) {
       const selectedIndex = data.findIndex(item => item.id === isolated.id);
 
       // Si no se encuentra el ítem seleccionado, lo agregamos al principio
@@ -42,11 +53,14 @@ const TableInventory = ({ minified }) => {
     }
     else if(data.length == 1) {
       dispatch(isolatePartInTable(data[0]));
-    }
+    }**/
     setCollectionData(data);
   }, [mainDataTable, isolated]);
 
-  const handleAction = (item) => {
+  const isolateItem = (item, e) => {
+
+    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
     if(isolated && item.id == isolated.id) {
       dispatch(isolatePartInTable(null));
     }
@@ -56,69 +70,35 @@ const TableInventory = ({ minified }) => {
     // Aquí puedes agregar la lógica que desees para el botón de cada fila
   };
 
-  useEffect(() => {
-    SET_COLUMNS(minified ? [
-      { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true },
-      { label: 'Descripcion', renderCell: (item) => item?.description },
-      { label: <IconStock fontSize="small" />, renderCell: (item) => item?.stock },
-      {
-        label: ' ',
-        renderCell: (item) => (
-          (item.nodes && item.nodes.length != 0) && (
-            <IconButton
-              variant="contained"
-              color="primary"
-              onClick={() => handleAction(item)}
-              sx={{
-                color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
-                "&:hover": { color: "primary.main" },
-                padding: "0",
-              }}
-            >
-              <IconIsolate />
-            </IconButton>
-          )
-        )
-      }
-    ] : [
-      { label: 'Part Number', renderCell: (item) => item?.partNumber[0], tree: true },
-      { label: 'Descripcion', renderCell: (item) => item?.description },
-      { label: <IconStock fontSize="small" />, renderCell: (item) => item?.stock, align: 'center' },
-      { label: <IconOnHand fontSize="small" />, renderCell: (item) => item?.onHand },
-      { label: <IconPPK fontSize="small" />, renderCell: (item) => item?.ppk, hide: false },
-      {
-        label: ' ',
-        renderCell: (item) => (
-          (item.nodes && item.nodes.length != 0) && (
-            <IconButton
-              variant="contained"
-              color="primary"
-              onClick={() => handleAction(item)}
-              sx={{
-                color: (isolated && isolated.id === item.id) ? "primary.main" : "secondary.main",
-                "&:hover": { color: "primary.main" },
-                padding: "0",
-              }}
-            >
-              <IconIsolate />
-            </IconButton>
-          )
-        )
-      }
-    ]);
-    tableRef.current.classList.add('hidden');
-  }, [minified, isolated]);
-  useEffect(() => {
-    if (minified) {
-      tableRef.current.classList.add('minified');
-    } else {
-      tableRef.current.classList.remove('minified');
-    }
-    tableRef.current.classList.remove('hidden');
-  }, [COLUMNS])
   return (
     <div className="view-table">
-      <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} tree={tree} theme={theme} layout={{ fixedHeader: true }} ref={tableRef}  />
+      <Table data={ {nodes: collectionData} } theme={theme} tree={tree} ref={tableRef}>
+       {(tableList) => (
+         <>
+         <Header>
+           <HeaderRow>
+             <HeaderCell>Part Number</HeaderCell>
+             <HeaderCell>Description</HeaderCell>
+             <HeaderCell><IconStock fontSize="small" /></HeaderCell>
+             {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
+             {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
+           </HeaderRow>
+         </Header>
+
+         <Body>
+           {tableList.map((item) => (
+             <Row key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)}>
+               <Cell>{item?.partNumber[0]}</Cell>
+               <Cell>{item?.description}</Cell>
+               <Cell>{item?.stock}</Cell>
+               {!minified && <Cell>{item?.onHand}</Cell>}
+               {!minified && <Cell>{item?.ppk}</Cell>}
+             </Row>
+           ))}
+         </Body>
+       </>
+       )}
+      </Table>
     </div>
   );
 };
