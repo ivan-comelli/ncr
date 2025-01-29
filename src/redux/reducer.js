@@ -1,4 +1,5 @@
 import TYPES from './types';
+
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },
     { name: "Nahuel DeLuca", csr: "AR103S44" },
@@ -132,6 +133,28 @@ const initialStateInventory = {
     search: ''
 };
 
+const sortedDetails = (id, state) => {
+    var item;
+    if(id == null) {
+        item = state.data
+        .find((element) => element.id === state.detail.id);
+        
+    }
+    else {
+        item = state.data
+        .find((element) => element.id === id);
+    }
+
+    const sortedDetails = item?.stock?.detail
+    ? [...item.stock.detail].sort(
+        (a, b) =>
+            new Date(b.lastUpdate.seconds * 1000) - new Date(a.lastUpdate.seconds * 1000)
+    ).filter((item) => item.status !== "DONE")
+    : null;
+    
+    return sortedDetails;
+}
+
 export const inventoryReducer = (state = initialStateInventory, action) => {
     switch (action.type) {
         case TYPES.FETCH_INVENTORY_START:
@@ -171,40 +194,25 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 }
                 return true;
             });
-
-            return { ...state, search: search, table: data };   
+            
+            return { ...state, search: search, table: data, isolated: data.length === 1 ? data[0] : state.isolated };   
 
         case TYPES.FIND_DETAIL_STOCK:
-            var item;
-            if(action.payload == null) {
-                item = state.data
-                .find((element) => element.id === state.detail.id);
-                
-            }
-            else {
-                item = state.data
-                .find((element) => element.id === action.payload);
-            }
-
-            const sortedDetails = item?.stock?.detail
-            ? [...item.stock.detail].sort(
-                (a, b) =>
-                    new Date(b.lastUpdate.seconds * 1000) - new Date(a.lastUpdate.seconds * 1000)
-            ).filter((item) => item.status !== "DONE")
-            : null;
-
-
-
             return {
                 ...state,
                 detail: {
                     id: action.payload || state.detail.id,
-                    data: sortedDetails || null,
+                    data: sortedDetails(action.payload, state) || null,
                 },
             };
 
         case TYPES.ISOLATE_PART_IN_TABLE:
-            return { ...state, isolated: action.payload }
+            return { ...state, isolated: action.payload, 
+                detail: {
+                    id: action.payload.id || state.detail.id,
+                    data: sortedDetails(action.payload.id, state) || null,
+                }, 
+            }
 
         case TYPES.UPDATE_STOCK:
             const newData = mergeData([

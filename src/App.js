@@ -21,6 +21,8 @@ import { Add, Close } from "@mui/icons-material";
 import StockUp from '@mui/icons-material/MoveToInbox';
 import StockDown from '@mui/icons-material/Outbox';
 import DetailsIcon from '@mui/icons-material/Description';
+import { icon } from '@fortawesome/fontawesome-svg-core';
+import { minHeight } from '@mui/system';
 
 
 const useWindowDimensions = () => {
@@ -55,7 +57,7 @@ function App() {
   const [search, setSearch] = useState('');
   const [ dualStateContent, setDualStateContent ] = useState(true);
   const isLoading = useSelector((state) => state.inventory.isLoading);
-
+  const [ minified, setMinified ] = useState(false);
   const searchGlobal = useSelector(state => state.inventory.search)
   const dispatch = useDispatch();
   
@@ -66,6 +68,10 @@ function App() {
   useEffect(() => {
     setSearch(searchGlobal);
   }, [searchGlobal]);
+
+  useEffect(() => {
+    setMinified(width < 768 ? true : false);
+  }, [width]);
   
   const handleSearch = (event) => {
     setSearch(event.target.value)
@@ -87,8 +93,14 @@ function App() {
     }
   };
 
+  const iconButtonStyle = {
+    backgroundColor: '#fefefe', 
+    borderRadius: '1rem',              
+    padding: '12px',                 
+  };
+
   return (
-    <div className="App">
+    <div className={`App without-aditional ${minified ? 'minified' : ''}`}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="Logo"/>
         <div className='tool-bar'>
@@ -108,11 +120,7 @@ function App() {
       </header>
       <div className='stock-bar'>
       <IconButton
-          sx={{
-            backgroundColor: '#fefefe', 
-            borderRadius: '1rem',              
-            padding: '12px',                 
-          }}
+          sx={iconButtonStyle}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -120,11 +128,7 @@ function App() {
           <DetailsIcon />
         </IconButton>
         <IconButton
-          sx={{
-            backgroundColor: '#fefefe', 
-            borderRadius: '1rem',              
-            padding: '12px',                 
-          }}
+          sx={iconButtonStyle}
           onClick={(e) => {
             e.stopPropagation();
           }}
@@ -137,9 +141,6 @@ function App() {
           margin="none"
           variant='standard'
           value={1}
-          sx={{
-            backgroundColor: '#fefefe',
-          }}
           InputProps={{
             disableUnderline: true,
             endAdornment: (
@@ -167,35 +168,24 @@ function App() {
           }}
         />
         <IconButton
-          sx={{
-            backgroundColor: '#fefefe', 
-            borderRadius: '1rem',              
-            padding: '12px',                 
-          }}          onClick={(e) => {
+          sx={iconButtonStyle}          
+          onClick={(e) => {
             e.stopPropagation(); // Evita que se cierre el menú al interactuar
           }}
         >
           <StockDown />
         </IconButton>
       </div>
-      <div className='container'>
       {
         isLoading ? (
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
         ) : (
           <>
-            <PartNumberForm active={forceOpenForm} item={partIsolate} goContent={setDualStateContent}/>
-            <div className='content'      
-              style={{
-                display: forceOpenForm && !partIsolate ? 'none' : 'flex',
-              }}
-            >
-              {
-                dualStateContent && (<TableInventory minified={width < 768 ? true : false} />)
-              }
-              {
-                !dualStateContent && (<TableHistory goContent={setDualStateContent} />)
-              }
+            <div className={`container ${minified ? 'full' : ''}`}>
+              <TableInventory />
+            </div>
+            <div className='aditional'>
+              <TableHistory/>
             </div>
             { forceOpenForm && !partIsolate && (
               <p
@@ -213,7 +203,6 @@ function App() {
         )
       }
       <CheckerModal show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
-      </div>
     </div>
   );
 }

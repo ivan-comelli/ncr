@@ -5,6 +5,20 @@
         "name": "Ivan Comelli"
       },
       "category": "Backend",
+      "creation_time": "2025-01-27T12:42:12.660Z",
+      "description": {
+        "content": "Cada que se actualice algun subcoleccion de un documento en inventory se debe de actualizar el lastupdate de inventory que va se el utilizado en la query para traer todos los datos de sincronizacion para los usuarios",
+        "mime": "text/markdown"
+      },
+      "id": "3",
+      "references": [],
+      "title": "Dispatch"
+    },
+    {
+      "assignedTo": {
+        "name": "Ivan Comelli"
+      },
+      "category": "Backend",
       "creation_time": "2025-01-24T14:40:02.064Z",
       "description": {
         "content": "La base de datos tiene que registrar los dispositivos que hicieron fetch y en que instante para devolverle en un nuevo fetch los datos nuevos.\nExiste la excepcion de que el dispositivo halla perdido el localstorage, asi que por ahi deberia de guardar el local el id del registro en base de datos del estado de sincronizacion",
@@ -14,6 +28,36 @@
       "references": [],
       "title": "Optimizacion"
     },
+    {
+      "assignedTo": {
+        "name": "Ivan Comelli"
+      },
+      "category": "Backend",
+      "creation_time": "2025-01-27T12:44:59.541Z",
+      "description": {
+        "content": "Mi idea es guardar el date de actualizacion de la operacion en cuestion en un documento de logs de la base de dato. Para atender la excepcion de que si dos peticiones de actualizacion entran al mismo tiempo y aun asi saber cual de las dos se hizo primero.",
+        "mime": "text/markdown"
+      },
+      "id": "4",
+      "references": [],
+      "title": "Set in log DB"
+    },
+    {
+      "assignedTo": {
+        "name": "Ivan Comelli"
+      },
+      "category": "Backend",
+      "creation_time": "2025-01-27T15:42:21.545Z",
+      "description": {
+        "content": "Al hacaer la primera peticion ",
+        "mime": "text/markdown"
+      },
+      "id": "5",
+      "references": [],
+      "title": "First Fetch"
+    }
+  ],
+  "in-progress": [
     {
       "assignedTo": {
         "name": "Ivan Comelli"
@@ -29,7 +73,6 @@
       "title": "Inteface Nueva"
     }
   ],
-  "in-progress": [],
   "testing": [],
   "done": []
 }

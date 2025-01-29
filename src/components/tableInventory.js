@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   Header,
@@ -12,7 +12,6 @@ import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
 import { IconButton } from '@mui/material';
-import IconIsolate from '@mui/icons-material/VisibilityOutlined';
 import IconPPK from '@mui/icons-material/AssignmentOutlined';
 import IconOnHand from '@mui/icons-material/PanToolOutlined';
 import IconStock from '@mui/icons-material/Inventory2Outlined';
@@ -20,59 +19,48 @@ import IconStock from '@mui/icons-material/Inventory2Outlined';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { isolatePartInTable } from '../redux/actions/actions';
+import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 const TableInventory = ({ minified }) => {
-  const tableRef = useRef(null);
   const dispatch = useDispatch();
-  const mainDataTable = useSelector(state => state.inventory.table);
-  const [collectionData, setCollectionData] = useState([]);
+  const collectionData = useSelector(state => state.inventory.table);
   const isolated = useSelector((state) => state.inventory.isolated);
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
 
 
-  const tree = useTree({nodes: collectionData}, {onChange: onTreeChange});
-  function onTreeChange(action) {
-      tree.fns.onRemoveAll();
-      tree.fns.onAddById(action.payload.id)
-    
-  }
+  const tree = useTree({nodes: collectionData});
+
   useEffect(() => {
-    let data = structuredClone(mainDataTable);
-    /**if (isolated) {
-      const selectedIndex = data.findIndex(item => item.id === isolated.id);
-
-      // Si no se encuentra el ítem seleccionado, lo agregamos al principio
-      if (selectedIndex === -1) {
-        data.unshift(isolated);
-      } else {
-        // Si ya está, lo movemos al principio
-        data.sort((a, b) => (a.id === isolated.id ? -1 : 1)); // Aseguramos que el seleccionado esté al principio
+    tree.state.ids.forEach(node => {
+      if (!isolated || node !== isolated.id) {
+        tree.fns.onRemoveById(node);
       }
+    });
+    if(isolated && tree.state.ids.length === 0) {
+      tree.fns.onAddById(isolated.id);
     }
-    else if(data.length == 1) {
-      dispatch(isolatePartInTable(data[0]));
-    }**/
-    setCollectionData(data);
-  }, [mainDataTable, isolated]);
+  }, [isolated])
 
+  useEffect(() => {
+    if(isolated && tree.state.ids.length === 0) {
+      tree.fns.onAddById(isolated.id);
+    }
+  }, [tree.state.ids])
+  
   const isolateItem = (item, e) => {
-
-    e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    if(isolated && item.id == isolated.id) {
-      dispatch(isolatePartInTable(null));
-    }
-    else {
+    console.log(isolated?.id)
+    console.log(item.id)
+    if(!isolated || item.id !== isolated?.id) {
+      e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       dispatch(isolatePartInTable(item));
     }
-    // Aquí puedes agregar la lógica que desees para el botón de cada fila
   };
 
   return (
     <div className="view-table">
-      <Table data={ {nodes: collectionData} } theme={theme} tree={tree} ref={tableRef}>
+      <Table data={ {nodes: collectionData} } theme={theme} tree={tree}>
        {(tableList) => (
          <>
          <Header>

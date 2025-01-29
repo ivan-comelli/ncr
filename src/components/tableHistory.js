@@ -58,11 +58,11 @@ const TableHistory = () => {
 
     }, []);
     useEffect(() => {
-        if (Array.isArray(mainDataTable.data)) {
+        if (Array.isArray(mainDataTable?.data)) {
             const data = mainDataTable.data.filter((item) => item.status !== "SYNC");
             setCollectionData(data);
         }
-    }, [mainDataTable.data]);
+    }, [mainDataTable?.data]);
     return (
         <>
             <div className="view-table-history">
