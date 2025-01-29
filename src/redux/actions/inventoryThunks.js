@@ -157,9 +157,10 @@ export function dispatchBulkInventory(data, reload = false) {
             }
             console.log(batch._mutations)
             await batch.commit();
+
             const lastUpdateFlag = doc(db, 'config', 'generalSettings');
             await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
-
+            //Ya que se procesa el batch, debo de recuperar el lastupdate mas nuevo, para guardarlo en el estado de sync de la db
             if(!reload) {
                 let inPart = false;
                 let lotStock = [];
@@ -194,6 +195,7 @@ export function dispatchBulkInventory(data, reload = false) {
                             else {
                                 inPart = true;
                                 part.partNumber = data.partNumber.arrayValue.values.map((value) => value.stringValue);
+                                
                                 //VA A FALTAR RECUPERAR OTROS VALORES COO DESCR SI ES QUE EXISTE Y EL LASTUPDATE
                             }
                         break;
