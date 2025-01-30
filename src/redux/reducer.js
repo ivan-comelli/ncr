@@ -207,6 +207,9 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             };
 
         case TYPES.ISOLATE_PART_IN_TABLE:
+            if(!action.payload) {
+                return { ...state, isolated: action.payload, detail: null };
+            }
             return { ...state, isolated: action.payload, 
                 detail: {
                     id: action.payload.id || state.detail.id,

@@ -56,6 +56,10 @@ const TableInventory = ({ minified }) => {
       e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       dispatch(isolatePartInTable(item));
     }
+    else if(!isolated || item.id === isolated?.id) {
+      e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      dispatch(isolatePartInTable(null));
+    }
   };
 
   return (

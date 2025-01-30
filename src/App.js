@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import TableInventory from './components/tableInventory';
 import TableHistory from './components/tableHistory';
-import PartNumberForm from './components/partForm';
 import logo from './ncr-logo.png';
 import './App.css';
 import { TextField } from '@mui/material';
@@ -12,17 +11,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import UploadIcon from '@mui/icons-material/Upload';
 import { ClipLoader } from 'react-spinners';
 import CheckerModal from './components/checkerModal';
+import { StockBar } from './components/stockBar';
+import { ModalForm } from './components/modalForm';
 
-import { Box, Autocomplete, ClickAwayListener, Chip, Stack, Menu, Select, MenuItem, InputLabel, FormControl, FormHelperText, InputAdornment, IconButton, Typography, ListItemIcon  } from '@mui/material';
-import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
-import { Remove } from '@mui/icons-material';
-import { ArrowDropDown } from '@mui/icons-material';
-import { Add, Close } from "@mui/icons-material";
-import StockUp from '@mui/icons-material/MoveToInbox';
-import StockDown from '@mui/icons-material/Outbox';
-import DetailsIcon from '@mui/icons-material/Description';
-import { icon } from '@fortawesome/fontawesome-svg-core';
-import { minHeight } from '@mui/system';
 
 
 const useWindowDimensions = () => {
@@ -38,7 +29,6 @@ const useWindowDimensions = () => {
         height: window.innerHeight,
       });
     };
-
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -51,15 +41,15 @@ const useWindowDimensions = () => {
 function App() {
   const [modalPromise, setModalPromise] = useState();
   const [showModal, setShowModal] = useState(false);
-  const partIsolate = useSelector((state) => state.inventory.isolated);
-  const forceOpenForm = useSelector((state) => (state.inventory.table.length == 0 || state.inventory.isolated != null));
   const { width, height } = useWindowDimensions();
   const [search, setSearch] = useState('');
-  const [ dualStateContent, setDualStateContent ] = useState(true);
   const isLoading = useSelector((state) => state.inventory.isLoading);
-  const [ minified, setMinified ] = useState(false);
-  const searchGlobal = useSelector(state => state.inventory.search)
+  const [minified, setMinified] = useState(false);
+  const searchGlobal = useSelector(state => state.inventory.search);
+  const [activeDetail, setActiveDetail] = useState(false);
+  const [petitionSubmit, setPetitionSubmit] = useState();
   const dispatch = useDispatch();
+
   
   useEffect(() => {
     dispatch(fetchAllInventory());
@@ -78,6 +68,10 @@ function App() {
     dispatch(lazySearch(event.target.value));
   };
 
+  const toggleActiveDetail = useCallback(() => {
+    setActiveDetail(prev => !prev);
+  }, []);
+
   const openModal = async () => {
     try {
       const result = await new Promise((resolve, reject) => {
@@ -93,14 +87,8 @@ function App() {
     }
   };
 
-  const iconButtonStyle = {
-    backgroundColor: '#fefefe', 
-    borderRadius: '1rem',              
-    padding: '12px',                 
-  };
-
   return (
-    <div className={`App without-aditional ${minified ? 'minified' : ''}`}>
+    <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="Logo"/>
         <div className='tool-bar'>
@@ -118,64 +106,7 @@ function App() {
           />
       </div>
       </header>
-      <div className='stock-bar'>
-      <IconButton
-          sx={iconButtonStyle}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <DetailsIcon />
-        </IconButton>
-        <IconButton
-          sx={iconButtonStyle}
-          onClick={(e) => {
-            e.stopPropagation();
-          }}
-        >
-          <StockUp />
-        </IconButton>
-        <TextField
-          className='stock'
-          fullWidth
-          margin="none"
-          variant='standard'
-          value={1}
-          InputProps={{
-            disableUnderline: true,
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton
-                  onClick={(e) => {
-                    e.stopPropagation();
-                  }}
-                >
-                  <Remove />
-                </IconButton>
-              </InputAdornment>
-            ),
-            startAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={(e) => {
-                    e.stopPropagation(); // Evita que se cierre el menú al interactuar
-                  }}
-                >
-                  <Add />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-        <IconButton
-          sx={iconButtonStyle}          
-          onClick={(e) => {
-            e.stopPropagation(); // Evita que se cierre el menú al interactuar
-          }}
-        >
-          <StockDown />
-        </IconButton>
-      </div>
+      <StockBar toggleActiveDetail={ toggleActiveDetail } submit={ setPetitionSubmit } />
       {
         isLoading ? (
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
@@ -187,21 +118,10 @@ function App() {
             <div className='aditional'>
               <TableHistory/>
             </div>
-            { forceOpenForm && !partIsolate && (
-              <p
-                style={{
-                  textAlign: 'center',
-                  marginTop: '20px',
-                  fontSize: '18px',
-                  color: '#666',
-                }}
-              >
-                Agrega una nueva parte para empezar.
-              </p>
-            )}
           </>
         )
       }
+      <ModalForm petition={ petitionSubmit }/>
       <CheckerModal show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
     </div>
   );
