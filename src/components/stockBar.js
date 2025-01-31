@@ -71,7 +71,7 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
                     disabled={ partIsolate ? false : true }
                     onClick={(e) => {
                         e.stopPropagation();
-                        setCounterStock((prev) => prev > 0 ? (prev - 1) : 0);
+                        setCounterStock((prev) => prev - 1);
                     }}
                     >
                     <Remove />
