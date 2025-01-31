@@ -3,15 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { InputAdornment, IconButton, TextField } from '@mui/material';
 import { Remove } from '@mui/icons-material';
 import { Add } from "@mui/icons-material";
-import StockUp from '@mui/icons-material/MoveToInbox';
-import StockDown from '@mui/icons-material/Outbox';
-import DetailsIcon from '@mui/icons-material/Description';
-import { counter } from '@fortawesome/fontawesome-svg-core';
+import Snackbar from '@mui/material/Snackbar';
+
+
+import DetailsIcon from '@mui/icons-material/DescriptionOutlined';
+import TuneIcon from '@mui/icons-material/SquareOutlined';
+import SendIcon from '@mui/icons-material/PlayArrowOutlined';
 
 
 export const StockBar = ({ toggleActiveDetail, submit }) => {
     const partIsolate = useSelector((state) => state.inventory.isolated);
     const [counterStock, setCounterStock] = useState(0);
+    const secuenceStatus = ["Pendiente", "Ajuste", "Conflicto"];
+    const [indexSecuenceStatus, setIndexSecuenceStatus] = useState(0);
 
     useEffect(() => {
         setCounterStock(0);
@@ -23,7 +27,12 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
         borderRadius: '1rem',              
         padding: '12px',                 
     };
-    
+    const [open, setOpen] = useState(false);
+
+    const handleClose = (_, reason) => {
+      if (reason === "clickaway") return;
+      setOpen(false);
+    };
     return (
         <div className='stock-bar'>
             <IconButton
@@ -36,14 +45,16 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
             <DetailsIcon />
             </IconButton>
             <IconButton
-            disabled={ partIsolate ? false : true }
-            sx={iconButtonStyle}
-            onClick={(e) => {
-                e.stopPropagation();
-                submit({quantity: counterStock, type: 'UP'})
-            }}
+                disabled={ partIsolate ? false : true }
+                sx={iconButtonStyle}
+                className={secuenceStatus[indexSecuenceStatus]}
+                onClick={(e) => {
+                    e.stopPropagation();
+                    setIndexSecuenceStatus(prev => (prev + 1) % secuenceStatus.length);
+                    setOpen(true);
+                }}
             >
-            <StockUp />
+            <TuneIcon fontSize='small'/>
             </IconButton>
             <TextField
             disabled={ partIsolate ? false : true }
@@ -90,8 +101,16 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
                 submit({quantity: counterStock, type: 'DOWN'})
             }}
             >
-            <StockDown />
+            <SendIcon />
             </IconButton>
+            <Snackbar
+               
+                open={open}
+                autoHideDuration={1000} // Cierra después de 3 segundos
+                onClose={handleClose}
+                message={`Estado de operacion ${secuenceStatus[indexSecuenceStatus]}`}
+                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            />
         </div>
     );
 }

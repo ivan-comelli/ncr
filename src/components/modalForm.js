@@ -18,6 +18,20 @@ export const ModalForm = ({ petition }) => {
     owner: false
   });
 
+  const STATUS = {
+    PENDIENT: "Pendiente",
+    ADJUST: "Ajuste",
+    ISSUE: "Conflicto"
+  } 
+
+  const options = [
+    { name: "Diego Molina", csr: "AR103S42" },
+    { name: "Nahuel DeLuca", csr: "AR103S44" },
+    { name: "Adrian Santarelli", csr: "AR103S45" },
+    { name: "Juan Valenzuela", csr: "AR903S49" },
+    { name: "Ivan Comelli", csr: "AR903S48" }
+  ];
+
   const [data, setData] = useState({
     partNumber: [],
     description: "",
@@ -94,6 +108,7 @@ export const ModalForm = ({ petition }) => {
     >
       <Fade in={open}>
         <Box
+          className='registerForm'
           sx={{
             position: 'absolute',
             top: '50%',
@@ -107,21 +122,21 @@ export const ModalForm = ({ petition }) => {
             borderRadius: 2,
           }}
         >
-          <Typography variant="h6" component="h2">
+          <Typography variant="h6" component="h2" className="title">
             Formulario de Inventario
           </Typography>
 
           <TextField
+            className="description"
             fullWidth
             label="Descripción"
             value={data.description}
             onChange={(e) => setData({ ...data, description: e.target.value })}
             margin="normal"
-            error={error.note}
-            helperText={error.note && "Descripción es requerida"}
           />
 
           <TextField
+            className="counter-stock"
             fullWidth
             label="Stock"
             type="number"
@@ -132,24 +147,38 @@ export const ModalForm = ({ petition }) => {
             helperText={error.stock && "Stock es requerido"}
           />
 
-          <FormControl fullWidth margin="normal">
-            <InputLabel>Cargo del CSR</InputLabel>
-            <Select
-              value={data.csr}
-              onChange={handleChange}
-              error={error.owner}
-            >
-              <MenuItem value="DEFAULT">Seleccione un CSR</MenuItem>
-              <MenuItem value="AR103S42">Diego Molina</MenuItem>
-              <MenuItem value="AR103S44">Nahuel DeLuca</MenuItem>
-              <MenuItem value="AR103S45">Adrian Santarelli</MenuItem>
-              <MenuItem value="AR903S49">Juan Valenzuela</MenuItem>
-              <MenuItem value="AR903S48">Ivan Comelli</MenuItem>
-            </Select>
-            {error.owner && <FormHelperText>Seleccione un CSR</FormHelperText>}
-          </FormControl>
+          <Select
+            className="owner"
+            value={data.csr}
+            error={error.owner}
+            onChange={handleChange}
+          >
+            <MenuItem value={"DEFAULT"}>
+              <em>Selecciona un empleado</em>
+            </MenuItem>
+            {options.map((option) => (
+              <MenuItem key={option.csr} value={option.csr}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </Select>
+
+          <Select
+            className="status"
+            value={data.status}
+            onChange={(value) => {
+              setData((prev) => ({ ...prev, status: value.target.value }));
+            }}
+          >
+            {Object.entries(STATUS).map(([key, status]) => (
+              <MenuItem key={key} value={key}>
+                {status}
+              </MenuItem>
+            ))}
+          </Select>
 
           <TextField
+            className="notes"
             fullWidth
             label="Nota"
             value={data.note}
@@ -161,7 +190,7 @@ export const ModalForm = ({ petition }) => {
             helperText={error.note && "La nota es requerida"}
           />
 
-          <Stack direction="row" spacing={2} sx={{ marginTop: 2 }}>
+          <Stack className="actions" direction="row" spacing={2} sx={{ marginTop: 2 }}>
             <Button
               variant="outlined"
               color="error"
