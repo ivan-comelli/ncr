@@ -49,34 +49,16 @@ export const ModalForm = ({ petition }) => {
       note: false,
       owner: false
     });
-
-    if(petition) {
-      setOpen(true);
-    }
-    else {
-      setOpen(false);
-    }
-
-    if (partIsolate) {
-      setData({
-        partNumber: partIsolate.partNumber,
-        description: partIsolate.description,
-        stock: 0,
-        csr: "DEFAULT",
-        status: "PENDIENT",
-        note: ""
-      });
-    } else {
-      setData({
-        partNumber: [],
-        description: "",
-        stock: 0,
-        csr: "DEFAULT",
-        status: "PENDIENT",
-        note: ""
-      });
-    }
-  }, [petition, partIsolate]);
+    setOpen(true);
+    setData({
+      partNumber: partIsolate?.partNumber || '',
+      description: partIsolate?.description || '',
+      stock: petition?.quantity || 0,
+      csr: localStorage.getItem('csr') || "DEFAULT",
+      status: petition ? Object.entries(STATUS).find(([key, value]) => value === petition.type)[0] : 'PENDIENT',
+      note: ""
+    });
+  }, [petition]);
 
   const handleChange = (event) => {
     setData((prev) => ({
@@ -92,7 +74,17 @@ export const ModalForm = ({ petition }) => {
   const submitForm = () => {
     // Lógica para enviar el formulario
     // Por ejemplo, podrías hacer un dispatch de la acción correspondiente:
-    dispatch(dispatchBulkInventory(data));
+    dispatch(dispatchBulkInventory([{
+      partNumber: data.partNumber,
+      description: data.description,
+      stock: {
+        quantity: data.stock,
+        csr: data.csr,
+        status: data.status,
+        note: data.note
+      }
+    }]));
+    localStorage.setItem('csr', data.csr);
     handleClose(); // Cerrar el modal después de enviar el formulario
   };
 

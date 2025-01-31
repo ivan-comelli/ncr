@@ -19,7 +19,7 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
 
     useEffect(() => {
         setCounterStock(0);
-        submit(null);
+        setIndexSecuenceStatus(0);
     }, [partIsolate])
 
     const iconButtonStyle = {
@@ -98,7 +98,7 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
             sx={iconButtonStyle}          
             onClick={(e) => {
                 e.stopPropagation();
-                submit({quantity: counterStock, type: 'DOWN'})
+                submit({quantity: counterStock, type: secuenceStatus[indexSecuenceStatus]})
             }}
             >
             <SendIcon />
