@@ -102,18 +102,6 @@ function App() {
     <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
       <header className="App-header">
         <img src={minified ? logoMinified : logo} className="App-logo" alt="Logo"/>
-        <IconButton 
-          className="sync"
-          variant="contained" 
-          color="primary" 
-          onClick={openModal}
-          sx={{
-            borderRadius: '1rem',              
-            padding: '12px',
-          }}
-        >
-          <UploadIcon></UploadIcon>
-        </IconButton>
         <TextField
           className="search"
           variant="outlined"
@@ -149,7 +137,23 @@ function App() {
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
         ) : (
           <>
+            
             <div className={`container ${minified ? 'full' : ''}`}>
+              <div className='tool-bar'>
+                <IconButton 
+                  className="sync"
+                  variant="contained" 
+                  color="primary" 
+                  onClick={openModal}
+                  sx={{
+                    borderRadius: '1rem',              
+                    padding: '12px',
+                  }}
+                > 
+                  <UploadIcon></UploadIcon>
+                </IconButton>
+              </div>
+           
               <TableInventory />
             </div>
             <div className='aditional'>

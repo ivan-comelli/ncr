@@ -4,17 +4,6 @@
   width: 100dvw;
 }
 
-@media screen and (orientation: landscape) {
-  body {
-    transform: rotate(90deg);
-    transform-origin: center;
-    width: 100dvh;
-    height: 100dvw;
-    overflow: hidden;
-    position: fixed;
-  }
-}
-
 .App-logo {
   height: 4rem;
   pointer-events: none;
@@ -22,11 +11,9 @@
 
 .App-header {
   background-color: #fbfbfb;
-  display: grid;
-  column-gap: .5rem;
-  grid-template-columns: 1fr 3rem auto;
+  display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   width: 100%;
   color: white;
   box-shadow: inset 0px -5px 4px -8px rgba(0, 0, 0, 0.75);
@@ -144,12 +131,9 @@ tr {
   display: none !important;
 }
 
-@media (min-width: 768px) {
-
-  .registerForm {
-
-  }
-  
+.tool-bar {
+  padding: 1rem;
+  border-bottom: solid .1rem #f3f3f3;
 }
 
 .hide {
@@ -225,6 +209,7 @@ tr {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 
