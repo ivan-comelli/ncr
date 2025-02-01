@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import TableInventory from './components/tableInventory';
 import TableHistory from './components/tableHistory';
 import logo from './ncr-logo.png';
+import logoMinified from './ncr-logo-minified.png';
 import './App.css';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
 import { Button } from '@mui/material';
@@ -100,7 +101,7 @@ function App() {
   return (
     <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="Logo"/>
+        <img src={minified ? logoMinified : logo} className="App-logo" alt="Logo"/>
         <IconButton 
           className="sync"
           variant="contained" 

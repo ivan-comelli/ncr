@@ -4,6 +4,17 @@
   width: 100dvw;
 }
 
+@media screen and (orientation: landscape) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: center;
+    width: 100dvh;
+    height: 100dvw;
+    overflow: hidden;
+    position: fixed;
+  }
+}
+
 .App-logo {
   height: 4rem;
   pointer-events: none;
