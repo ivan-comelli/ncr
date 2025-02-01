@@ -83,7 +83,7 @@ export const ModalForm = ({ petition }) => {
         status: data.status,
         note: data.note
       }
-    }]));
+    }], false));
     localStorage.setItem('csr', data.csr);
     handleClose(); // Cerrar el modal después de enviar el formulario
   };

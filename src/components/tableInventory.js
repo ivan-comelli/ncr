@@ -79,7 +79,7 @@ const TableInventory = ({ minified }) => {
 
          <Body>
            {tableList.map((item) => (
-             <Row key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)}>
+             <Row key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
                <Cell>{item?.partNumber[0]}</Cell>
                <Cell>{item?.description}</Cell>
                <Cell>{item?.stock}</Cell>

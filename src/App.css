@@ -1,6 +1,7 @@
 .App {
   background: #fdfdfd;
   height: 100dvh;
+  width: 100dvw;
 }
 
 .App-logo {
@@ -265,14 +266,14 @@ tr {
 
 .App {
   display: grid;
-  grid-template-columns: 6rem auto 35rem;
-  grid-template-rows: auto auto 6rem;
+  grid-template-columns: 6rem 1fr 35rem;
+  grid-template-rows: auto 1fr 6rem;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
 .App.without-aditional {
-  grid-template-columns: 6rem auto 0;
+  grid-template-columns: 6rem 1fr 0;
 
 }
 
@@ -320,7 +321,7 @@ tr {
 }
 
 .row-tree-expanded > td {
-  background: #54b94845 !important;
+  background: #f4fcf3 !important;
 }
 
 .stock {
@@ -358,4 +359,8 @@ tr {
 .MuiSnackbar-root > :only-child {
   background: #cfd9ce;
   color: #4b4b4b;
+}
+
+.issue > :first-child {
+  border-left: solid .3rem #e4d2d2;
 }

@@ -74,7 +74,7 @@ export function dispatchBulkInventory(data, reload = false) {
             if (!data) {
                 throw new Error("No hay datos o no son válidos");
             }
-            dispatch(dispatchInventoryStart());
+            dispatch(dispatchInventoryStart(false));
 
             for (const item of data) {
                 let snapShotInventory = await getInventoryByPartNumber(item.partNumber);
@@ -305,6 +305,10 @@ export const formatTableWithFilters = (hasFilter = false) => {
     return ((dispatch, getState) => {
         let dataTable = structuredClone(getState().inventory.data);
         dataTable = dataTable.map((item => {
+            var issue = false;
+            item.stock.detail.forEach(op => {
+                op.status === 'ISSUE' && (issue = true);
+            });
             return {
                 id: item.id,
                 partNumber: item.partNumber,
@@ -330,7 +334,8 @@ export const formatTableWithFilters = (hasFilter = false) => {
                 .sort((a, b) => {
                     // Ordenar alfabéticamente por description
                     return a.description.localeCompare(b.description);
-                })
+                }),
+                issue: issue
             }
         }));
         dispatch(setTable(dataTable));
