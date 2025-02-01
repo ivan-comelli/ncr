@@ -11,13 +11,15 @@
 
 .App-header {
   background-color: #fbfbfb;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  column-gap: .5rem;
+  grid-template-columns: 1fr 3rem auto;
   align-items: center;
   justify-content: flex-start;
+  width: 100%;
   color: white;
   box-shadow: inset 0px -5px 4px -8px rgba(0, 0, 0, 0.75);
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
 }
 
 .App-link {
@@ -52,31 +54,6 @@
   color: rgb(255, 255, 255);
   padding: .3rem 1rem;
   border: none;
-}
-.tool-bar {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-@media (max-width: 768px) {
-  .App-header {
-    gap: 2rem;
-    flex-direction: column;
-
-
-  }
-
-  .tool-bar {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    justify-content: center;
-    width: 100%;
-  }
-
 }
 
 .view-table {

@@ -49,15 +49,17 @@ export const ModalForm = ({ petition }) => {
       note: false,
       owner: false
     });
-    setOpen(true);
-    setData({
-      partNumber: partIsolate?.partNumber || '',
-      description: partIsolate?.description || '',
-      stock: petition?.quantity || 0,
-      csr: localStorage.getItem('csr') || "DEFAULT",
-      status: petition ? Object.entries(STATUS).find(([key, value]) => value === petition.type)[0] : 'PENDIENT',
-      note: ""
-    });
+    if(partIsolate) {
+      setOpen(true);
+      setData({
+        partNumber: partIsolate?.partNumber || '',
+        description: partIsolate?.description || '',
+        stock: petition?.quantity || 0,
+        csr: localStorage.getItem('csr') || "DEFAULT",
+        status: petition ? Object.entries(STATUS).find(([key, value]) => value === petition.type)[0] : 'PENDIENT',
+        note: ""
+      });
+    }
   }, [petition]);
 
   const handleChange = (event) => {

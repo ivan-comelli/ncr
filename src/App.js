@@ -3,7 +3,7 @@ import TableInventory from './components/tableInventory';
 import TableHistory from './components/tableHistory';
 import logo from './ncr-logo.png';
 import './App.css';
-import { TextField } from '@mui/material';
+import { TextField, InputAdornment, IconButton } from '@mui/material';
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
@@ -13,7 +13,7 @@ import { ClipLoader } from 'react-spinners';
 import CheckerModal from './components/checkerModal';
 import { StockBar } from './components/stockBar';
 import { ModalForm } from './components/modalForm';
-
+import CloseIcon from "@mui/icons-material/Close";
 
 
 const useWindowDimensions = () => {
@@ -48,6 +48,8 @@ function App() {
   const searchGlobal = useSelector(state => state.inventory.search);
   const [activeDetail, setActiveDetail] = useState(false);
   const [petitionSubmit, setPetitionSubmit] = useState();
+  const [open, setOpen] = useState(false);
+
   const dispatch = useDispatch();
 
   
@@ -66,6 +68,14 @@ function App() {
   const handleSearch = (event) => {
     setSearch(event.target.value)
     dispatch(lazySearch(event.target.value));
+  };
+
+  const handleIconClick = () => {
+    if (open && search) {
+      setSearch(""); // Borra el texto si la barra está abierta y tiene contenido
+    } else {
+      setOpen(!open); // Alterna la visibilidad si está vacía
+    }
   };
 
   const toggleActiveDetail = useCallback(() => {
@@ -91,20 +101,46 @@ function App() {
     <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="Logo"/>
-        <div className='tool-bar'>
-          <Button 
-            variant="contained" 
-            color="primary" 
-            onClick={openModal}
-          >
-            <UploadIcon></UploadIcon>
-          </Button>
-          <TextField label="Busca una parte" value={search} icon={<SearchIcon></SearchIcon>} onChange={handleSearch} sx={{ width: '20rem' }} 
-            InputProps={{
-              style: { height: "3rem"},
-            }}
-          />
-      </div>
+        <IconButton 
+          className="sync"
+          variant="contained" 
+          color="primary" 
+          onClick={openModal}
+          sx={{
+            borderRadius: '1rem',              
+            padding: '12px',
+          }}
+        >
+          <UploadIcon></UploadIcon>
+        </IconButton>
+        <TextField
+          className="search"
+          variant="outlined"
+          size="small"
+          placeholder={open ? "Buscar..." : ""}
+          value={search}
+          onChange={handleSearch}
+          sx={{
+            width: open ? "200px" : "40px",
+            transition: "width 0.3s ease",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "1rem",
+              paddingLeft: "0.3rem",
+            },
+            "& .MuiOutlinedInput-input": {
+              paddingLeft: open ? "0.3rem" : "0",
+            },
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={handleIconClick} edge="start">
+                  {open ? <CloseIcon /> : <SearchIcon />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
       </header>
       <StockBar toggleActiveDetail={ toggleActiveDetail } submit={ setPetitionSubmit } />
       {
