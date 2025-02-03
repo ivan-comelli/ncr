@@ -74,6 +74,7 @@ function App() {
   const handleIconClick = () => {
     if (open && search) {
       setSearch(""); // Borra el texto si la barra está abierta y tiene contenido
+      dispatch(lazySearch(""));
     } else {
       setOpen(!open); // Alterna la visibilidad si está vacía
     }
