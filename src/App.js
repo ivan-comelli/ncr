@@ -131,7 +131,7 @@ function App() {
           }}
         />
       </header>
-      <StockBar toggleActiveDetail={ toggleActiveDetail } submit={ setPetitionSubmit } />
+      <StockBar toggleActiveDetail={ toggleActiveDetail } submit={ setPetitionSubmit } minified={minified} />
       {
         isLoading ? (
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>

@@ -11,7 +11,7 @@ import TuneIcon from '@mui/icons-material/SquareOutlined';
 import SendIcon from '@mui/icons-material/PlayArrowOutlined';
 
 
-export const StockBar = ({ toggleActiveDetail, submit }) => {
+export const StockBar = ({ toggleActiveDetail, submit, minified }) => {
     const partIsolate = useSelector((state) => state.inventory.isolated);
     const [counterStock, setCounterStock] = useState(0);
     const secuenceStatus = ["Pendiente", "Ajuste", "Conflicto"];
@@ -109,7 +109,7 @@ export const StockBar = ({ toggleActiveDetail, submit }) => {
                 autoHideDuration={1000} // Cierra después de 3 segundos
                 onClose={handleClose}
                 message={`Estado de operacion ${secuenceStatus[indexSecuenceStatus]}`}
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                anchorOrigin={{ vertical: !minified ? "bottom" : "top", horizontal: "right" }}
             />
         </div>
     );
