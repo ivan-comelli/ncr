@@ -146,6 +146,7 @@ tr {
 
 .tool-bar button {
   border-radius: 1rem;
+  height: 2.5rem;
 }
 
 .tool-bar .MuiSelect-select {
