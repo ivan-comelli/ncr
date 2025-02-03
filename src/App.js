@@ -4,17 +4,21 @@ import TableHistory from './components/tableHistory';
 import logo from './ncr-logo.png';
 import logoMinified from './ncr-logo-minified.png';
 import './App.css';
-import { TextField, InputAdornment, IconButton } from '@mui/material';
+import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/material';
 import { Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
 import SearchIcon from '@mui/icons-material/Search';
-import UploadIcon from '@mui/icons-material/Upload';
+import UploadIcon from '@mui/icons-material/Sync';
 import { ClipLoader } from 'react-spinners';
 import CheckerModal from './components/checkerModal';
 import { StockBar } from './components/stockBar';
 import { ModalForm } from './components/modalForm';
 import CloseIcon from "@mui/icons-material/Close";
+import FavIcon from "@mui/icons-material/BookmarkBorder";
+
+import OutDoorIcon from "@mui/icons-material/LogoutOutlined";
+
 
 
 const useWindowDimensions = () => {
@@ -141,18 +145,58 @@ function App() {
             
             <div className={`container ${minified ? 'full' : ''}`}>
               <div className='tool-bar'>
-                <IconButton 
+                <Button 
                   className="sync"
                   variant="contained" 
                   color="primary" 
                   onClick={openModal}
+                > 
+                  <span>Cargar Datos </span>
+                  <UploadIcon fontSize="small"></UploadIcon>
+                </Button>
+                
+                <Select
+                  className="status-filter"
+                  value={"DEFAULT"}
                   sx={{
                     borderRadius: '1rem',              
                     padding: '12px',
+                    height: '2.5rem'
                   }}
-                > 
-                  <UploadIcon></UploadIcon>
-                </IconButton>
+                >
+                  <MenuItem value={"DEFAULT"}>Estados</MenuItem>
+                  <MenuItem value={"ISSUE"}>Conflictos</MenuItem>
+                  <MenuItem value={"FAILED"}>Fallas</MenuItem>
+                  <MenuItem value={"ADJUST"}>Ajustes</MenuItem>
+                  <MenuItem value={"CRITICAL"}>Criticos</MenuItem>
+                </Select>
+              
+                <Select
+                  className="type-filter"
+                  value={"DEFAULT"}
+                  sx={{
+                    borderRadius: '1rem',              
+                    padding: '12px',
+                    height: '2.5rem'
+                  }}
+                >
+                  <MenuItem value={"DEFAULT"}>Tipos</MenuItem>
+                  <MenuItem value={"NOTRW"}>Consumibles</MenuItem>
+                  <MenuItem value={"RW"}>ReWorks</MenuItem>
+                </Select>
+                <Button
+                  variant="contained" 
+                  color="secondary">
+                  <span>Marcados </span>
+                  <FavIcon fontSize="small"/>
+                </Button>
+                <Button
+                  variant="contained" 
+                  color="secondary">
+                  <span>Fuera de Depo </span>
+                  <OutDoorIcon fontSize="small"/>
+                </Button>
+
               </div>
            
               <TableInventory />

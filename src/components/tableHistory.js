@@ -68,7 +68,7 @@ const TableHistory = () => {
             <div className="view-table-history">
                 {
                     collectionData?.length > 0 ? <CompactTable columns={COLUMNS} data={ {nodes: collectionData} } keyExtractor={(node) => node.id} theme={theme} layout={{ fixedHeader: true }} /> :
-                    <h4>No Hay Operaciones Temporales</h4>
+                    <span>No Hay Operaciones Temporales</span>
                 }
             </div>
         </>

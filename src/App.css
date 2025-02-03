@@ -35,6 +35,9 @@
   margin: 0 3rem;
 
 }
+
+
+
 .submit-input {
   background: rgb(102, 119, 104);
   color: rgb(255, 255, 255);
@@ -130,6 +133,27 @@ tr {
 .tool-bar {
   padding: 1rem;
   border-bottom: solid .1rem #f3f3f3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tool-bar button span {
+  margin-top: 0.1rem;
+  padding-right: 0.3rem;
+  font-size: 0.7rem;
+}
+
+.tool-bar button {
+  border-radius: 1rem;
+}
+
+.tool-bar .MuiSelect-select {
+  font-size: .8rem;
+}
+
+.App.minified .tool-bar button span {
+  display: none;
 }
 
 .hide {
@@ -200,7 +224,7 @@ tr {
 
 
 .loader {
-  grid-area: 2 / 1 / 3 / 3;
+  grid-area: 2 / 1 / 3 / 4;
   position: relative;
   display: flex;
   justify-content: center;
@@ -245,6 +269,11 @@ tr {
 
 }
 
+.App.minified {
+  grid-template-columns: 6rem 0fr 1fr !important;
+
+}
+
 .App.minified > .App-header {
   grid-area: 1 / 1 / 2 / 4 !important;
 }
@@ -253,8 +282,9 @@ tr {
   grid-area: 1 / 1 / 2 / 4;
 }
 
-.App.App.minified .container {
+.App.minified .container {
   grid-area: 2 / 1 / 3 / 4 !important;
+  display: none;
 }
 
 .container {
@@ -262,13 +292,23 @@ tr {
   overflow-y: scroll;
 }
 
-.App.minified .aditional {
-  display: none;
+.App.without-aditional.minified .container  {
+  display: block !important;
 }
 
 .aditional {
   background: #fbfbfb;
   grid-area: 2 / 3 / 4 / 4;
+  display: block;
+  margin: 1rem 3rem;
+}
+
+.App.minified .aditional {
+  grid-area: 2 / 1 / 4 / 4 !important;
+}
+
+.App.without-aditional.minified .aditional  {
+  display: none !important;
 }
 
 .App.minified > .stock-bar {
