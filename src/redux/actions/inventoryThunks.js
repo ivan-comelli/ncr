@@ -187,6 +187,7 @@ export function dispatchBulkInventory(data, reload = false) {
                                     stock: [...lotStock],
                                     technicians: [...lotTec]
                                 });
+
                                 inPart = false;
                                 part = {};
                                 lotStock = [];
@@ -250,48 +251,66 @@ export function fetchAllInventory() {
     return async (dispatch) => {
         try {
             dispatch(fetchInventoryStart());
-
-            const lastUpdateFlag = (await getDoc(doc(db, 'config', 'generalSettings'))).data()?.lastUpdate.toDate();
             const inventoryCollectionRef = collection(db, "Inventory");
+            var inventoryQuery;
+            const lastUpdateTimestamp = localStorage.getItem('session');
+            var updateMostNew = lastUpdateTimestamp || new Date(0);
+            let storedData = JSON.parse(localStorage.getItem('db')) || [];
+            if (lastUpdateTimestamp && storedData !== []) {
+                // Si lastUpdateTimestamp es válido, hacer la consulta con el filtro
+                console.log(Timestamp.fromDate(new Date(lastUpdateTimestamp)))
+                inventoryQuery = query(
+                    inventoryCollectionRef,
+                    where("lastUpdate", ">", Timestamp.fromDate(new Date(lastUpdateTimestamp)))
+                );
+            } else {
+                // Si lastUpdateTimestamp no es válido, traer todos los documentos
+                inventoryQuery = inventoryCollectionRef;  // No hay filtro
+            }
+            const inventorySnapshot = await getDocs(inventoryQuery);
 
-            const localData = localStorage.getItem('db');
-            let response = [];
+            if (inventorySnapshot.empty) {
+                //throw new Error("No se encontraron documentos en la colección de inventario.");
+            }
 
-            if (!localData || lastUpdateFlag > new Date(JSON.parse(localData)?.lastUpdate)) {
-                const inventorySnapshot = await getDocs(inventoryCollectionRef);
+            await Promise.all(
+                inventorySnapshot.docs.map(async (inventoryDoc) => {
+                    console.log(inventoryDoc)
+                    const inventoryData = {
+                        id: inventoryDoc.id,
+                        partNumber: inventoryDoc.data().partNumber,
+                        description: inventoryDoc.data().description,
+                    };
+                    new Date(inventoryDoc.data().lastUpdate.toDate()).getTime() > new Date(updateMostNew).getTime() && (updateMostNew = inventoryDoc.data().lastUpdate.toDate());
+                    const refInventory = inventoryDoc.ref;
+                    const technicians = await getTechnicianOfSomePart(refInventory);
+                    const stock = await getAllStockOfSomePart(refInventory);
 
-                if (inventorySnapshot.empty) {
-                    throw new Error("No se encontraron documentos en la colección de inventario.");
-                }
-
-                response = await Promise.all(
-                    inventorySnapshot.docs.map(async (inventoryDoc) => {
-                        const inventoryData = {
-                            id: inventoryDoc.id,
-                            partNumber: inventoryDoc.data().partNumber,
-                            description: inventoryDoc.data().description,
-                        };
-
-                        const refInventory = inventoryDoc.ref;
-
-                        const technicians = await getTechnicianOfSomePart(refInventory);
-                        const stock = await getAllStockOfSomePart(refInventory);
-
-                        return {
+                    const index = storedData.findIndex(existingItem => existingItem.id === inventoryDoc.id);
+                    if (index !== -1) {
+                        storedData[index] = {
                             ...inventoryData,
                             technicians,
                             stock,
                         };
-                    })
-                );
+                    } else {
+                        storedData.push({
+                            ...inventoryData,
+                            technicians,
+                            stock,
+                        });
+                    }
 
-                localStorage.setItem('db', JSON.stringify({ data: response, lastUpdate: lastUpdateFlag }));
-            } else {
-                response = JSON.parse(localData).data;
-            }
-            console.log("FETCH")
-
-            dispatch(fetchInventorySuccess(response));
+                    return {
+                        ...inventoryData,
+                        technicians,
+                        stock,
+                    };
+                })
+            );
+            localStorage.setItem('db', JSON.stringify(storedData));
+            localStorage.setItem('session', updateMostNew);
+            dispatch(fetchInventorySuccess(storedData));
             dispatch(formatTableWithFilters(true));
         } catch (error) {
             dispatch(fetchInventoryFailure(error.message));
