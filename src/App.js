@@ -76,12 +76,8 @@ function App() {
   };
 
   const handleIconClick = () => {
-    if (open && search) {
       setSearch(""); // Borra el texto si la barra está abierta y tiene contenido
       dispatch(lazySearch(""));
-    } else {
-      setOpen(!open); // Alterna la visibilidad si está vacía
-    }
   };
 
   const toggleActiveDetail = useCallback(() => {
@@ -111,25 +107,25 @@ function App() {
           className="search"
           variant="outlined"
           size="small"
-          placeholder={open ? "Buscar..." : ""}
+          placeholder={"Buscar..."}
           value={search}
           onChange={handleSearch}
           sx={{
-            width: open ? "200px" : "40px",
+            width: "200px",
             transition: "width 0.3s ease",
             "& .MuiOutlinedInput-root": {
               borderRadius: "1rem",
               paddingLeft: "0.3rem",
             },
             "& .MuiOutlinedInput-input": {
-              paddingLeft: open ? "0.3rem" : "0",
+              paddingLeft: "0.3rem",
             },
           }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={handleIconClick} edge="start">
-                  {open ? <CloseIcon /> : <SearchIcon />}
+                  <CloseIcon />
                 </IconButton>
               </InputAdornment>
             ),

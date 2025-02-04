@@ -17,7 +17,7 @@
   width: 100%;
   color: white;
   box-shadow: inset 0px -5px 4px -8px rgba(0, 0, 0, 0.75);
-  padding: 1rem 2.5rem 1rem 1.5rem;
+  padding: 1rem 2rem 1rem 1.5rem;
 }
 
 .App-link {
@@ -302,11 +302,21 @@ tr {
 .aditional {
   background: #fbfbfb;
   grid-area: 2 / 3 / 4 / 4;
-  display: block;
   margin: 1rem 3rem;
 }
 
+.App .aditional {
+  display: block !important;
+
+}
+
+.App.App.without-aditional .aditional {
+  display: none !important;
+
+}
+
 .App.minified .aditional {
+  display: block !important;
   grid-area: 2 / 1 / 4 / 4 !important;
 }
 
