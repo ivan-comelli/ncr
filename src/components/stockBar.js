@@ -35,15 +35,19 @@ export const StockBar = ({ toggleActiveDetail, submit, minified }) => {
     };
     return (
         <div className='stock-bar'>
-            <IconButton
-            sx={iconButtonStyle}
-            onClick={(e) => {
-                e.stopPropagation();
-                toggleActiveDetail();
-            }}
-            >
-            <DetailsIcon />
-            </IconButton>
+            {
+                minified && (
+                    <IconButton
+                        sx={iconButtonStyle}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            toggleActiveDetail();
+                        }}
+                        >
+                        <DetailsIcon />
+                    </IconButton>)
+            }
+            
             <IconButton
                 disabled={ partIsolate ? false : true }
                 sx={iconButtonStyle}

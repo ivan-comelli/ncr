@@ -141,15 +141,14 @@ function App() {
             
             <div className={`container ${minified ? 'full' : ''}`}>
               <div className='tool-bar'>
-                <Button 
+                <IconButton 
                   className="sync"
                   variant="contained" 
                   color="primary" 
                   onClick={openModal}
                 > 
-                  <span>Cargar Datos </span>
                   <UploadIcon fontSize="small"></UploadIcon>
-                </Button>
+                </IconButton>
                 
                 <Select
                   className="status-filter"
@@ -180,18 +179,16 @@ function App() {
                   <MenuItem value={"NOTRW"}>Consumibles</MenuItem>
                   <MenuItem value={"RW"}>ReWorks</MenuItem>
                 </Select>
-                <Button
+                <IconButton
                   variant="contained" 
                   color="secondary">
-                  <span>Marcados </span>
                   <FavIcon fontSize="small"/>
-                </Button>
-                <Button
+                </IconButton>
+                <IconButton
                   variant="contained" 
                   color="secondary">
-                  <span>Fuera de Depo </span>
                   <OutDoorIcon fontSize="small"/>
-                </Button>
+                </IconButton>
 
               </div>
            
