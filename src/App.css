@@ -335,9 +335,14 @@ tr {
   grid-area: 2 / 1 / 4 / 2;
 }
 
+.view-table:is(.isIsolated) .tr-body:not(.row-tree-expanded):not(.row-tree-leaf) > td {
+  filter: blur(0.05rem)
+}
+
 .row-tree-expanded > td {
   background: #f4fcf3 !important;
 }
+
 
 .stock {
   max-width: 10rem;

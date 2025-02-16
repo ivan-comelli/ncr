@@ -11,11 +11,15 @@ import {
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
-import { IconButton } from '@mui/material';
+import { Menu, MenuItem } from "@mui/material";
 import IconPPK from '@mui/icons-material/AssignmentOutlined';
 import IconOnHand from '@mui/icons-material/PanToolOutlined';
 import IconStock from '@mui/icons-material/Inventory2Outlined';
-
+import PushPinIcon from "@mui/icons-material/PushPin";
+import CheckIcon from "@mui/icons-material/Check";
+import LowPriorityIcon from "@mui/icons-material/ArrowDownward";
+import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
+import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { isolatePartInTable } from '../redux/actions/actions';
@@ -29,6 +33,23 @@ const TableInventory = ({ minified }) => {
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
 
+  const [menuPosition, setMenuPosition] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [pinnedItems, setPinnedItems] = useState({});
+  const [markedItems, setMarkedItems] = useState({});
+  const [priorityItems, setPriorityItems] = useState({});
+
+  const handleContextMenu = (event, item) => {
+    event.preventDefault(); // Bloquea el menú predeterminado del navegador
+    setSelectedItem(item);
+    setMenuPosition({ mouseX: event.clientX, mouseY: event.clientY });
+  };
+
+  // Cierra el menú
+  const handleClose = () => {
+    setMenuPosition(null);
+    setSelectedItem(null);
+  };
 
   const tree = useTree({nodes: collectionData});
 
@@ -62,8 +83,34 @@ const TableInventory = ({ minified }) => {
     }
   };
 
+  const handlePin = () => {
+    setPinnedItems((prev) => ({
+      ...prev,
+      [selectedItem.id]: !prev[selectedItem.id],
+    }));
+    handleClose();
+  };
+
+  // Marcar ítem
+  const handleMark = () => {
+    setMarkedItems((prev) => ({
+      ...prev,
+      [selectedItem.id]: !prev[selectedItem.id],
+    }));
+    handleClose();
+  };
+
+  // Establecer prioridad
+  const handleSetPriority = (priority) => {
+    setPriorityItems((prev) => ({
+      ...prev,
+      [selectedItem.id]: prev[selectedItem.id] === priority ? null : priority,
+    }));
+    handleClose();
+  };
+
   return (
-    <div className="view-table">
+    <div className={`view-table ${isolated ? 'isIsolated' : ''}`} >
       <Table data={ {nodes: collectionData} } theme={theme} tree={tree}>
        {(tableList) => (
          <>
@@ -79,7 +126,9 @@ const TableInventory = ({ minified }) => {
 
          <Body>
            {tableList.map((item) => (
-             <Row key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
+             <Row 
+              onContextMenu={(e) => handleContextMenu(e, item)}
+              key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
                <Cell>{item?.partNumber[0]}</Cell>
                <Cell>{item?.description}</Cell>
                <Cell>{item?.stock}</Cell>
@@ -91,6 +140,32 @@ const TableInventory = ({ minified }) => {
        </>
        )}
       </Table>
+      <Menu
+        open={!!menuPosition}
+        onClose={handleClose}
+        anchorReference="anchorPosition"
+        anchorPosition={menuPosition ? { top: menuPosition.mouseY, left: menuPosition.mouseX } : undefined}
+      >
+                <MenuItem onClick={handlePin}>
+          <PushPinIcon /> {pinnedItems[selectedItem?.id] ? "Desfijar" : "Fijar"}
+        </MenuItem>
+        <MenuItem onClick={handleMark}>
+          <CheckIcon /> {markedItems[selectedItem?.id] ? "Desmarcar" : "Marcar"}
+        </MenuItem>
+        <MenuItem onClick={() => handleSetPriority("low")}>
+          <LowPriorityIcon color={priorityItems[selectedItem?.id] === "low" ? "primary" : "inherit"} />
+          Baja Prioridad
+        </MenuItem>
+        <MenuItem onClick={() => handleSetPriority("medium")}>
+          <MediumPriorityIcon color={priorityItems[selectedItem?.id] === "medium" ? "primary" : "inherit"} />
+          Media Prioridad
+        </MenuItem>
+        <MenuItem onClick={() => handleSetPriority("high")}>
+          <HighPriorityIcon color={priorityItems[selectedItem?.id] === "high" ? "primary" : "inherit"} />
+          Alta Prioridad
+        </MenuItem>
+
+      </Menu>
     </div>
   );
 };
