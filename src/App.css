@@ -122,7 +122,7 @@ tr {
 }
 
 .view-table > table {
-  --data-table-library_grid-template-columns: minmax(6rem, 1fr) minmax(8rem, 3fr) 3rem 3rem 3rem 3rem !important;
+  --data-table-library_grid-template-columns: minmax(4rem, 1fr) minmax(6rem, 3fr) 3rem 3rem 3rem 3rem !important;
 }
 
 .view-table-history > table {
@@ -398,12 +398,20 @@ tr {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
-  background: radial-gradient(circle, rgba(182,255,134,1) 0%, rgba(186,243,131,1) 44%, rgb(255, 255, 255) 47%, rgb(255, 255, 255) 55%, rgba(228,248,122,1) 56%, rgba(254,255,0,1) 100%);
+  background: rgb(157, 235, 157);
   border-radius: 50%; /* Hace que el elemento sea un círculo */
 }
 .priority-icon.MID {
-  color:yellow
+  content: ''; /* Necesario para que se muestre el pseudo-elemento */
+  width: .8rem; /* Tamaño del círculo */
+  height: .8rem; /* Tamaño del círculo */
+  background: rgb(251, 255, 171);
+  border-radius: 50%; 
 }
 .priority-icon.HIGH {
-  color:red
+  content: ''; /* Necesario para que se muestre el pseudo-elemento */
+  width: .8rem; /* Tamaño del círculo */
+  height: .8rem; /* Tamaño del círculo */
+  background: rgb(255, 188, 188);
+  border-radius: 50%; 
 }
