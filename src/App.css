@@ -408,6 +408,6 @@ tr {
   border-radius: 50%; 
 }
 
-.issue > :first-child {
-  background: #e4d2d2;
+.issue > td {
+  background: #fff4f4 !important;
 }
