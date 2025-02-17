@@ -340,11 +340,6 @@ tr {
   color: gray;
 }
 
-.row-tree-expanded > td {
-  background: #f4fcf3 !important;
-}
-
-
 .stock {
   max-width: 10rem;
 }
@@ -382,9 +377,6 @@ tr {
   color: #4b4b4b;
 }
 
-.issue > :first-child {
-  border-left: solid .3rem #e4d2d2;
-}
 
 .priority-icon {
   display: flex;
@@ -398,20 +390,24 @@ tr {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
-  background: rgb(157, 235, 157);
+  background: rgb(205, 238, 205);
   border-radius: 50%; /* Hace que el elemento sea un círculo */
 }
 .priority-icon.MID {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
-  background: rgb(251, 255, 171);
+  background: rgb(253, 255, 221);
   border-radius: 50%; 
 }
 .priority-icon.HIGH {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
-  background: rgb(255, 188, 188);
+  background: rgb(247, 221, 221);
   border-radius: 50%; 
+}
+
+.issue > :first-child {
+  background: #e4d2d2;
 }
