@@ -38,3 +38,24 @@ export const updateStock = (value) => ({
 
 export const setTable = (newTable) => ({ type: TYPES.SET_TABLE, payload: newTable });
 
+export const setMarkItem = (id, type) => {
+    var resultType;
+    switch (type) {
+        case "LOW":
+            resultType = TYPES.SET_MARK_LOW;
+        break;
+        case "MID":
+            resultType = TYPES.SET_MARK_MID;
+        break;
+        case "HIGH":
+            resultType = TYPES.SET_MARK_HIGH;
+        break;
+        default:
+            resultType = TYPES.SET_MARK_LOW;
+    }
+
+    return {
+        type: resultType,
+        payload: id
+    }
+}

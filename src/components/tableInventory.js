@@ -20,9 +20,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import LowPriorityIcon from "@mui/icons-material/ArrowDownward";
 import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
-
+import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
-import { isolatePartInTable } from '../redux/actions/actions';
+import { isolatePartInTable, setMarkItem } from '../redux/actions/actions';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 const TableInventory = ({ minified }) => {
@@ -102,10 +102,7 @@ const TableInventory = ({ minified }) => {
 
   // Establecer prioridad
   const handleSetPriority = (priority) => {
-    setPriorityItems((prev) => ({
-      ...prev,
-      [selectedItem.id]: prev[selectedItem.id] === priority ? null : priority,
-    }));
+    dispatch(setMarkItem(selectedItem.id, priority))
     handleClose();
   };
 
@@ -121,6 +118,7 @@ const TableInventory = ({ minified }) => {
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
              {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
+             <HeaderCell></HeaderCell>
            </HeaderRow>
          </Header>
 
@@ -134,6 +132,7 @@ const TableInventory = ({ minified }) => {
                <Cell>{item?.stock}</Cell>
                {!minified && <Cell>{item?.onHand}</Cell>}
                {!minified && <Cell>{item?.ppk}</Cell>}
+               <Cell><span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/></Cell>
              </Row>
            ))}
          </Body>
@@ -146,22 +145,25 @@ const TableInventory = ({ minified }) => {
         anchorReference="anchorPosition"
         anchorPosition={menuPosition ? { top: menuPosition.mouseY, left: menuPosition.mouseX } : undefined}
       >
-                <MenuItem onClick={handlePin}>
+        <MenuItem onClick={handlePin}>
+          {
+
+          }
           <PushPinIcon /> {pinnedItems[selectedItem?.id] ? "Desfijar" : "Fijar"}
         </MenuItem>
         <MenuItem onClick={handleMark}>
           <CheckIcon /> {markedItems[selectedItem?.id] ? "Desmarcar" : "Marcar"}
         </MenuItem>
-        <MenuItem onClick={() => handleSetPriority("low")}>
-          <LowPriorityIcon color={priorityItems[selectedItem?.id] === "low" ? "primary" : "inherit"} />
+        <MenuItem onClick={() => handleSetPriority('LOW')}>
+          <LowPriorityIcon/>
           Baja Prioridad
         </MenuItem>
-        <MenuItem onClick={() => handleSetPriority("medium")}>
-          <MediumPriorityIcon color={priorityItems[selectedItem?.id] === "medium" ? "primary" : "inherit"} />
+        <MenuItem onClick={() => handleSetPriority('MID')}>
+          <MediumPriorityIcon/>
           Media Prioridad
         </MenuItem>
-        <MenuItem onClick={() => handleSetPriority("high")}>
-          <HighPriorityIcon color={priorityItems[selectedItem?.id] === "high" ? "primary" : "inherit"} />
+        <MenuItem onClick={() => handleSetPriority('HIGH')}>
+          <HighPriorityIcon/>
           Alta Prioridad
         </MenuItem>
 

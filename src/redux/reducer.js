@@ -18,7 +18,6 @@ const STATUS = {
 }
 
 const mergeData = (newData, data) => {
-    console.log(newData)
     let oldData = structuredClone(data);
     let result = [];
     if (oldData.length > 0) {
@@ -178,7 +177,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
         case TYPES.SET_TABLE:
             return { ...state, table: action.payload }
 
-        case TYPES.SEARCH_IN_TABLE: 
+        case TYPES.SEARCH_IN_TABLE: { 
             const search = action.payload || (action.payload == null ? state.search : '');
             let data = structuredClone(state.table);
             data = data.filter((item) => {
@@ -195,9 +194,10 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 return true;
             });
             
-            return { ...state, search: search, table: data, isolated: data.length === 1 ? data[0] : state.isolated };   
+            return { ...state, search: search, table: data, isolated: data.length === 1 ? data[0] : undefined };   
+        }
 
-        case TYPES.FIND_DETAIL_STOCK:
+        case TYPES.FIND_DETAIL_STOCK: {
             return {
                 ...state,
                 detail: {
@@ -205,8 +205,9 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                     data: sortedDetails(action.payload, state) || null,
                 },
             };
+        }
 
-        case TYPES.ISOLATE_PART_IN_TABLE:
+        case TYPES.ISOLATE_PART_IN_TABLE: {
             if(!action.payload) {
                 return { ...state, isolated: action.payload, detail: null };
             }
@@ -216,9 +217,10 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                     data: sortedDetails(action.payload.id, state) || null,
                 }, 
             }
+        }
 
-        case TYPES.UPDATE_STOCK:
-            const newData = mergeData([
+        case TYPES.UPDATE_STOCK: {
+            let newData = mergeData([
                 {
                     id: action.payload.idInventory,
                     stock:[
@@ -230,7 +232,35 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 }
             ], state.data)
             return { ...state, data: newData }
+        }
 
+        case TYPES.SET_MARK_LOW: {
+            let newData = structuredClone(state.data);
+            let existItem = newData.find((item) => item.id === action.payload);
+            existItem.priority = 'LOW';
+            let newDataTable = structuredClone(state.table);
+            let existItemTable = newDataTable.find((item) => item.id === action.payload);
+            existItemTable.priority = 'LOW';
+            return { ...state, data: newData, table: newDataTable  }
+        }
+        case TYPES.SET_MARK_MID: {
+            let newData = structuredClone(state.data);
+            let existItem = newData.find((item) => item.id === action.payload);
+            existItem.priority = 'MID';
+            let newDataTable = structuredClone(state.table);
+            let existItemTable = newDataTable.find((item) => item.id === action.payload);
+            existItemTable.priority = 'MID';
+            return { ...state, data: newData, table: newDataTable }
+        }
+        case TYPES.SET_MARK_HIGH: {
+            let newData = structuredClone(state.data);
+            let existItem = newData.find((item) => item.id === action.payload);
+            existItem.priority = 'HIGH';
+            let newDataTable = structuredClone(state.table);
+            let existItemTable = newDataTable.find((item) => item.id === action.payload);
+            existItemTable.priority = 'HIGH';
+            return { ...state, data: newData, table: newDataTable  }
+        }
         default:
             return state;
     }

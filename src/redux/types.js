@@ -16,6 +16,9 @@ const SEARCH_IN_TABLE = 'SEARCH_IN_TABLE'; // Para buscar en la tabla
 const SET_TABLE = 'SET_TABLE';
 const UPDATE_STOCK = 'UPDATE_STOCK';
 const FIND_DETAIL_STOCK = "FIND_DETAIL_STOCK";
+const SET_MARK_HIGH = "SET_MARK_HIGH";
+const SET_MARK_MID = "SET_MARK_MID";
+const SET_MARK_LOW = "SET_MARK_LOW";
 // Exportar como default
 export default {
     UPDATE_STOCK,
@@ -30,5 +33,8 @@ export default {
     CLOSE_UPLOAD_MODAL,
     SEARCH_IN_TABLE,
     SET_TABLE,
-    FIND_DETAIL_STOCK
+    FIND_DETAIL_STOCK,
+    SET_MARK_LOW,
+    SET_MARK_MID,
+    SET_MARK_HIGH
 };
