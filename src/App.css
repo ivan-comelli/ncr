@@ -61,6 +61,7 @@
   background: #fefefe;
   padding: 1rem;
   width: 100%;
+  user-select: none;
 }
 
 .view-table-history {
