@@ -36,6 +36,11 @@ export const updateStock = (value) => ({
     payload: value
 });
 
+export const setLoaderDispatch = (step) => ({
+    type: TYPES.SET_LOADER_DISPATCH,
+    payload: step
+});
+
 export const setTable = (newTable) => ({ type: TYPES.SET_TABLE, payload: newTable });
 
 export const setMarkItem = (id, type) => {

@@ -19,6 +19,7 @@ const FIND_DETAIL_STOCK = "FIND_DETAIL_STOCK";
 const SET_MARK_HIGH = "SET_MARK_HIGH";
 const SET_MARK_MID = "SET_MARK_MID";
 const SET_MARK_LOW = "SET_MARK_LOW";
+const SET_LOADER_DISPATCH = "SET_LOADER_DISPATCH";
 // Exportar como default
 export default {
     UPDATE_STOCK,
@@ -36,5 +37,6 @@ export default {
     FIND_DETAIL_STOCK,
     SET_MARK_LOW,
     SET_MARK_MID,
-    SET_MARK_HIGH
+    SET_MARK_HIGH,
+    SET_LOADER_DISPATCH,
 };

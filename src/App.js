@@ -5,7 +5,7 @@ import logo from './ncr-logo.png';
 import logoMinified from './ncr-logo-minified.png';
 import './App.css';
 import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/material';
-import { Button } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
 import SearchIcon from '@mui/icons-material/Search';
@@ -49,6 +49,7 @@ function App() {
   const { width, height } = useWindowDimensions();
   const [search, setSearch] = useState('');
   const isLoading = useSelector((state) => state.inventory.isLoading);
+  const loaderDispatch = useSelector((state) => state.inventory.loaderDispatch);
   const [minified, setMinified] = useState(false);
   const searchGlobal = useSelector(state => state.inventory.search);
   const [activeDetail, setActiveDetail] = useState(false);
@@ -140,57 +141,64 @@ function App() {
           <>
             
             <div className={`container ${minified ? 'full' : ''}`}>
-              <div className='tool-bar'>
-                <IconButton 
-                  className="sync"
-                  variant="contained" 
-                  color="primary" 
-                  onClick={openModal}
-                > 
-                  <UploadIcon fontSize="small"></UploadIcon>
-                </IconButton>
-                
-                <Select
-                  className="status-filter"
-                  value={"DEFAULT"}
-                  sx={{
-                    borderRadius: '1rem',              
-                    padding: '12px',
-                    height: '2.5rem'
-                  }}
-                >
-                  <MenuItem value={"DEFAULT"}>Estados</MenuItem>
-                  <MenuItem value={"ISSUE"}>Conflictos</MenuItem>
-                  <MenuItem value={"FAILED"}>Fallas</MenuItem>
-                  <MenuItem value={"ADJUST"}>Ajustes</MenuItem>
-                  <MenuItem value={"CRITICAL"}>Criticos</MenuItem>
-                </Select>
-              
-                <Select
-                  className="type-filter"
-                  value={"DEFAULT"}
-                  sx={{
-                    borderRadius: '1rem',              
-                    padding: '12px',
-                    height: '2.5rem'
-                  }}
-                >
-                  <MenuItem value={"DEFAULT"}>Tipos</MenuItem>
-                  <MenuItem value={"NOTRW"}>Consumibles</MenuItem>
-                  <MenuItem value={"RW"}>ReWorks</MenuItem>
-                </Select>
-                <IconButton
-                  variant="contained" 
-                  color="secondary">
-                  <FavIcon fontSize="small"/>
-                </IconButton>
-                <IconButton
-                  variant="contained" 
-                  color="secondary">
-                  <OutDoorIcon fontSize="small"/>
-                </IconButton>
+              {
+                !loaderDispatch ? (
+                  <div className='tool-bar'>
+                    <IconButton 
+                      className="sync"
+                      variant="contained" 
+                      color="primary" 
+                      onClick={openModal}
+                    > 
+                      <UploadIcon fontSize="small"></UploadIcon>
+                    </IconButton>
+                    
+                    <Select
+                      className="status-filter"
+                      value={"DEFAULT"}
+                      sx={{
+                        borderRadius: '1rem',              
+                        padding: '12px',
+                        height: '2.5rem'
+                      }}
+                    >
+                      <MenuItem value={"DEFAULT"}>Estados</MenuItem>
+                      <MenuItem value={"ISSUE"}>Conflictos</MenuItem>
+                      <MenuItem value={"FAILED"}>Fallas</MenuItem>
+                      <MenuItem value={"ADJUST"}>Ajustes</MenuItem>
+                      <MenuItem value={"CRITICAL"}>Criticos</MenuItem>
+                    </Select>
+                  
+                    <Select
+                      className="type-filter"
+                      value={"DEFAULT"}
+                      sx={{
+                        borderRadius: '1rem',              
+                        padding: '12px',
+                        height: '2.5rem'
+                      }}
+                    >
+                      <MenuItem value={"DEFAULT"}>Tipos</MenuItem>
+                      <MenuItem value={"NOTRW"}>Consumibles</MenuItem>
+                      <MenuItem value={"RW"}>ReWorks</MenuItem>
+                    </Select>
+                    <IconButton
+                      variant="contained" 
+                      color="secondary">
+                      <FavIcon fontSize="small"/>
+                    </IconButton>
+                    <IconButton
+                      variant="contained" 
+                      color="secondary">
+                      <OutDoorIcon fontSize="small"/>
+                    </IconButton>
 
-              </div>
+                  </div>
+                ) : (
+                  <LinearProgress variant="determinate" value={loaderDispatch} />
+                )
+              }
+              
            
               <TableInventory />
             </div>

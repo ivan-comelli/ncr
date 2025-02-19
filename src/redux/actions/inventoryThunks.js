@@ -17,7 +17,8 @@ import {
     setTable,
     isolatePartInTable,
     findDetailStock,
-    updateStock
+    updateStock,
+    setLoaderDispatch
 } from './actions';
 
 let timer;
@@ -25,7 +26,6 @@ let timer;
 export function dispatchUpdateStateStock(path, action) {
     return async (dispatch) => {
         try {
-            console.log(path)
             const stockRef = doc(db, `Inventory/${path[0]}/stock/${path[1]}`);
     
             const Doc = await getDoc(stockRef);
@@ -36,7 +36,6 @@ export function dispatchUpdateStateStock(path, action) {
             }
 
             if (Doc.exists()) {
-                console.log("Documento actual:", Doc.data());
                 switch (Doc.data().status) {
                     case "PENDIENT":
                         !action && (updatedData.status = "DONE");
@@ -70,16 +69,18 @@ export function dispatchUpdateStateStock(path, action) {
 export function dispatchBulkInventory(data, reload = false) {
     return async (dispatch) => {
         var batch = writeBatch(db);
+        let loadingProgress = 0;
         try {
             if (!data) {
                 throw new Error("No hay datos o no son válidos");
             }
             dispatch(dispatchInventoryStart(false));
-
+            let index = 1;
+            const length = data.length;
             for (const item of data) {
+                loadingProgress = (index / length) * 100;
+                index += 1;
                 let snapShotInventory = await getInventoryByPartNumber(item.partNumber);
-                console.log(item.partNumber)
-                console.log(batch._mutations)
                 let batchFindInventoryId = batch._mutations.find((doc) => { 
                     if(doc.type == 1){
                         data = doc?.data.value.mapValue.fields;
@@ -95,10 +96,8 @@ export function dispatchBulkInventory(data, reload = false) {
                         return false
                     }
                 });
-                console.log(batchFindInventoryId)
     
                 if(batchFindInventoryId) batchFindInventoryId = batchFindInventoryId.key.path.segments[1];
-                console.log(snapShotInventory)
                 let refInventory;
                 if (snapShotInventory) {
                     refInventory = snapShotInventory.ref;
@@ -108,7 +107,6 @@ export function dispatchBulkInventory(data, reload = false) {
                     refInventory = doc(collection(db, "Inventory"));
                     batch = await initTechnicianToSomePart(refInventory, batch);
                 }
-                console.log(refInventory)
      
                 
                 batch = await setInventoryPart(refInventory, item, batch);
@@ -120,7 +118,6 @@ export function dispatchBulkInventory(data, reload = false) {
                     //deberia buscar si ya existe ese tecnico antes
                     //LPM
                     const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
-                    console.log(item)
                     const technicianExists = (() => {
                         let existingTechniciansInDb = existingTechnicians.docs.find(
                             (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
@@ -134,7 +131,6 @@ export function dispatchBulkInventory(data, reload = false) {
                                     data = doc?.value.value.mapValue.fields;
                                 }
             
-                                console.log(doc.key.path.segments)
                                 if(doc.key.path.segments[2] === "technicians" && doc.key.path.segments[1] === refInventory.id) {
                                     return data.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase()
                                 }
@@ -146,16 +142,15 @@ export function dispatchBulkInventory(data, reload = false) {
                         return existingTechniciansInDb || existingTechniciansInBatch
                     })();
     
-                    console.log("Existe: ", technicianExists)
                     if (!technicianExists) {
                         batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
                     }
                     else {
                         batch = await setTechnicianToSomePart(technicianExists.ref ? technicianExists.ref : technicianExists, item.technician, batch, technicianExists.data && technicianExists.data());
                     }
-                }    
+                } 
+                dispatch(setLoaderDispatch(Math.floor(loadingProgress))); 
             }
-            console.log(batch._mutations)
             await batch.commit();
 
             const lastUpdateFlag = doc(db, 'config', 'generalSettings');
@@ -167,8 +162,10 @@ export function dispatchBulkInventory(data, reload = false) {
                 let lotTec = [];
                 let part = {};
                 let formatData = [];
-                batch._mutations.forEach((item) => {
-                    console.log(item) 
+                loadingProgress = 0;
+                batch._mutations.forEach((item, index) => {
+                    loadingProgress = ((index + 1) / batch._mutations.length) * 100;
+                    dispatch()
                     let data;
                     let path = item.key.collectionGroup;
 
@@ -226,13 +223,13 @@ export function dispatchBulkInventory(data, reload = false) {
                             });
                         break;
                     }
+                    dispatch(setLoaderDispatch(loadingProgress)); 
                 });
                 formatData.push({
                     ...part,
                     stock: [...lotStock],
                     technician: [...lotTec],
                 });
-                console.log(formatData)
                 dispatch(dispatchInventorySuccess(formatData));
                 dispatch(formatTableWithFilters(true));
                 dispatch(findDetailStock());
@@ -240,8 +237,10 @@ export function dispatchBulkInventory(data, reload = false) {
             else{
                 dispatch(fetchAllInventory());
             }
+            dispatch(setLoaderDispatch(null)); 
         } catch (error) {
             dispatch(dispatchInventoryFailure(error.message));
+            dispatch(setLoaderDispatch(null)); 
             throw error;
         }
     };
@@ -258,7 +257,6 @@ export function fetchAllInventory() {
             let storedData = JSON.parse(localStorage.getItem('db')) || [];
             if (lastUpdateTimestamp && storedData !== []) {
                 // Si lastUpdateTimestamp es válido, hacer la consulta con el filtro
-                console.log(Timestamp.fromDate(new Date(lastUpdateTimestamp)))
                 inventoryQuery = query(
                     inventoryCollectionRef,
                     where("lastUpdate", ">", Timestamp.fromDate(new Date(lastUpdateTimestamp)))
@@ -275,7 +273,6 @@ export function fetchAllInventory() {
 
             await Promise.all(
                 inventorySnapshot.docs.map(async (inventoryDoc) => {
-                    console.log(inventoryDoc)
                     const inventoryData = {
                         id: inventoryDoc.id,
                         partNumber: inventoryDoc.data().partNumber,

@@ -261,6 +261,9 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             existItemTable.priority = 'HIGH';
             return { ...state, data: newData, table: newDataTable  }
         }
+        case TYPES.SET_LOADER_DISPATCH: {
+            return { ...state, loaderDispatch: action.payload }
+        }
         default:
             return state;
     }
