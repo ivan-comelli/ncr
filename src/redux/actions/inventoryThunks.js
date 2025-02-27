@@ -165,7 +165,7 @@ export function dispatchBulkInventory(data, reload = false) {
                 loadingProgress = 0;
                 batch._mutations.forEach((item, index) => {
                     loadingProgress = ((index + 1) / batch._mutations.length) * 100;
-                    dispatch()
+                    dispatch(setLoaderDispatch(Math.floor(loadingProgress)));
                     let data;
                     let path = item.key.collectionGroup;
 

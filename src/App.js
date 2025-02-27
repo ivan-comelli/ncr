@@ -50,9 +50,9 @@ function App() {
   const [search, setSearch] = useState('');
   const isLoading = useSelector((state) => state.inventory.isLoading);
   const loaderDispatch = useSelector((state) => state.inventory.loaderDispatch);
+  const activeDetail = useSelector((state) => state.inventory.activeDetail);
   const [minified, setMinified] = useState(false);
   const searchGlobal = useSelector(state => state.inventory.search);
-  const [activeDetail, setActiveDetail] = useState(false);
   const [petitionSubmit, setPetitionSubmit] = useState();
   const [open, setOpen] = useState(false);
 
@@ -80,10 +80,6 @@ function App() {
       setSearch(""); // Borra el texto si la barra está abierta y tiene contenido
       dispatch(lazySearch(""));
   };
-
-  const toggleActiveDetail = useCallback(() => {
-    setActiveDetail(prev => !prev);
-  }, []);
 
   const openModal = async () => {
     try {
@@ -133,7 +129,7 @@ function App() {
           }}
         />
       </header>
-      <StockBar toggleActiveDetail={ toggleActiveDetail } submit={ setPetitionSubmit } minified={minified} />
+      <StockBar submit={ setPetitionSubmit } minified={minified} />
       {
         isLoading ? (
           <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>

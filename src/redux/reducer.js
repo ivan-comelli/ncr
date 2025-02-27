@@ -264,6 +264,9 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
         case TYPES.SET_LOADER_DISPATCH: {
             return { ...state, loaderDispatch: action.payload }
         }
+        case TYPES.TOGGLE_ACTIVE_DETAIL: {
+            return { ...state, activeDetail: action.payload ? false : !state.activeDetail }
+        }
         default:
             return state;
     }

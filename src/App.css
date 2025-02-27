@@ -269,7 +269,7 @@ tr {
   grid-row-gap: 0px;
 }
 
-.App.minified.without-aditional {
+.App.without-aditional {
   grid-template-columns: 6rem 1fr 0;
 
 }

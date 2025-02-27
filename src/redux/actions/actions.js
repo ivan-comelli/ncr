@@ -64,3 +64,8 @@ export const setMarkItem = (id, type) => {
         payload: id
     }
 }
+
+export const toggleActiveDetail = (clear) => ({
+    type: TYPES.TOGGLE_ACTIVE_DETAIL,
+    payload: clear
+})

@@ -22,7 +22,7 @@ import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
-import { isolatePartInTable, setMarkItem } from '../redux/actions/actions';
+import { isolatePartInTable, setMarkItem, toggleActiveDetail } from '../redux/actions/actions';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 const TableInventory = ({ minified }) => {
@@ -70,6 +70,10 @@ const TableInventory = ({ minified }) => {
     }
   }, [tree.state.ids])
   
+  const showDetail = (item, e) => {
+    dispatch(toggleActiveDetail());
+  }
+
   const isolateItem = (item, e) => {
     console.log(isolated?.id)
     console.log(item.id)
@@ -126,7 +130,7 @@ const TableInventory = ({ minified }) => {
            {tableList.map((item) => (
              <Row 
               onContextMenu={(e) => handleContextMenu(e, item)}
-              key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
+              key={item.id} item={item} onDoubleClick={showDetail} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
                <Cell>{item?.partNumber[0]}</Cell>
                <Cell>{item?.description}</Cell>
                <Cell>{item?.stock}</Cell>

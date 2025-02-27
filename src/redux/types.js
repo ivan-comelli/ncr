@@ -20,6 +20,8 @@ const SET_MARK_HIGH = "SET_MARK_HIGH";
 const SET_MARK_MID = "SET_MARK_MID";
 const SET_MARK_LOW = "SET_MARK_LOW";
 const SET_LOADER_DISPATCH = "SET_LOADER_DISPATCH";
+const TOGGLE_ACTIVE_DETAIL = "TOGGLE_ACTIVE_DETAIL";
+
 // Exportar como default
 export default {
     UPDATE_STOCK,
@@ -39,4 +41,5 @@ export default {
     SET_MARK_MID,
     SET_MARK_HIGH,
     SET_LOADER_DISPATCH,
+    TOGGLE_ACTIVE_DETAIL
 };

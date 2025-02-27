@@ -11,7 +11,7 @@ import TuneIcon from '@mui/icons-material/SquareOutlined';
 import SendIcon from '@mui/icons-material/PlayArrowOutlined';
 
 
-export const StockBar = ({ toggleActiveDetail, submit, minified }) => {
+export const StockBar = ({ submit, minified }) => {
     const partIsolate = useSelector((state) => state.inventory.isolated);
     const [counterStock, setCounterStock] = useState(0);
     const secuenceStatus = ["Pendiente", "Ajuste", "Conflicto"];
@@ -35,19 +35,6 @@ export const StockBar = ({ toggleActiveDetail, submit, minified }) => {
     };
     return (
         <div className='stock-bar'>
-            {
-                minified && (
-                    <IconButton
-                        sx={iconButtonStyle}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            toggleActiveDetail();
-                        }}
-                        >
-                        <DetailsIcon />
-                    </IconButton>)
-            }
-            
             <IconButton
                 disabled={ partIsolate ? false : true }
                 sx={iconButtonStyle}
