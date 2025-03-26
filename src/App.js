@@ -8,16 +8,15 @@ import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/ma
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
-import SearchIcon from '@mui/icons-material/Search';
 import UploadIcon from '@mui/icons-material/Sync';
 import { ClipLoader } from 'react-spinners';
 import CheckerModal from './components/checkerModal';
 import { StockBar } from './components/stockBar';
 import { ModalForm } from './components/modalForm';
 import CloseIcon from "@mui/icons-material/Close";
-import FavIcon from "@mui/icons-material/BookmarkBorder";
-
-import OutDoorIcon from "@mui/icons-material/LogoutOutlined";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { Chip, Box, FormControl } from '@mui/material';
 
 
 
@@ -55,6 +54,8 @@ function App() {
   const searchGlobal = useSelector(state => state.inventory.search);
   const [petitionSubmit, setPetitionSubmit] = useState();
   const [open, setOpen] = useState(false);
+  const [statusSelect, setStatusSelect] = useState("default")
+  const [typeSelect, setTypeSelect] = useState("default")
 
   const dispatch = useDispatch();
 
@@ -140,55 +141,72 @@ function App() {
               {
                 !loaderDispatch ? (
                   <div className='tool-bar'>
-                    <IconButton 
-                      className="sync"
-                      variant="contained" 
-                      color="primary" 
-                      onClick={openModal}
-                    > 
-                      <UploadIcon fontSize="small"></UploadIcon>
-                    </IconButton>
-                    
-                    <Select
-                      className="status-filter"
-                      value={"DEFAULT"}
-                      sx={{
-                        borderRadius: '1rem',              
-                        padding: '12px',
-                        height: '2.5rem'
-                      }}
-                    >
-                      <MenuItem value={"DEFAULT"}>Estados</MenuItem>
-                      <MenuItem value={"ISSUE"}>Conflictos</MenuItem>
-                      <MenuItem value={"FAILED"}>Fallas</MenuItem>
-                      <MenuItem value={"ADJUST"}>Ajustes</MenuItem>
-                      <MenuItem value={"CRITICAL"}>Criticos</MenuItem>
-                    </Select>
-                  
-                    <Select
-                      className="type-filter"
-                      value={"DEFAULT"}
-                      sx={{
-                        borderRadius: '1rem',              
-                        padding: '12px',
-                        height: '2.5rem'
-                      }}
-                    >
-                      <MenuItem value={"DEFAULT"}>Tipos</MenuItem>
-                      <MenuItem value={"NOTRW"}>Consumibles</MenuItem>
-                      <MenuItem value={"RW"}>ReWorks</MenuItem>
-                    </Select>
-                    <IconButton
-                      variant="contained" 
-                      color="secondary">
-                      <FavIcon fontSize="small"/>
-                    </IconButton>
-                    <IconButton
-                      variant="contained" 
-                      color="secondary">
-                      <OutDoorIcon fontSize="small"/>
-                    </IconButton>
+                    <FormControl size="small" className='first'>
+                      <IconButton 
+                        className="sync"
+                        variant="contained" 
+                        color="primary" 
+                        onClick={openModal}
+                      > 
+                        <UploadIcon fontSize="small"></UploadIcon>
+                      </IconButton>
+                      
+                      <ToggleButtonGroup
+                        value={statusSelect}
+                        onChange={(event, value) => setStatusSelect(value)}
+                        exclusive
+                        autoFocus={false}
+                        aria-label="Estados"
+                      >
+                        <ToggleButton value="default" aria-label="Ninguno">
+                          Todos
+                        </ToggleButton>
+                        <ToggleButton value="issue" aria-label="Conflictivos">
+                          Conflictos
+                        </ToggleButton>
+                        <ToggleButton value="failed" aria-label="Fallos">
+                          Fallos
+                        </ToggleButton>
+                        <ToggleButton value="adjust" aria-label="Ajustados">
+                          Ajustados
+                        </ToggleButton>
+                        <ToggleButton value="critical" aria-label="Criticos">
+                          Criticos
+                        </ToggleButton>
+                      </ToggleButtonGroup>
 
+                      <ToggleButtonGroup
+                        value={typeSelect}
+                        onChange={(event, value) => setTypeSelect(value)}
+                        exclusive
+                        autoFocus={false}
+                        aria-label="Tipo"
+                      >
+                        <ToggleButton value="default" aria-label="Ninguno">
+                          Cualquiera
+                        </ToggleButton>
+                        <ToggleButton value="RW" aria-label="ReWork">
+                          ReWork
+                        </ToggleButton>
+                        <ToggleButton value="noRW" aria-label="Consumible">
+                          Consumible
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                      <Select
+                        value={"LOW"}
+                      >
+                        <MenuItem value={"LOW"}><span className="priority-icon LOW"/></MenuItem>
+                        <MenuItem value={"MID"}><span className="priority-icon MID"/></MenuItem>
+                        <MenuItem value={"HIGH"}><span className="priority-icon HIGH"/></MenuItem>
+                      </Select>
+                    </FormControl>
+                    <div className='category'>
+                      <Chip label="S1-S2" variant="outlined" />
+                      <Chip label="ATM" variant="outlined" />
+                      <Chip label="GBRU" variant="outlined" />
+                      <Chip label="SRU" variant="outlined" />
+                      <Chip label="BRM" variant="outlined" />
+                    </div>
                   </div>
                 ) : (
                   <LinearProgress variant="determinate" value={loaderDispatch} />

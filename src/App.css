@@ -134,10 +134,23 @@ tr {
 
 .tool-bar {
   padding: 1rem;
-  border-bottom: solid .1rem #f3f3f3;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 1rem;
+}
+
+.tool-bar .first {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+
+  width: 100%;
+}
+
+.tool-bar .category {
+  display: flex;
+  gap: 1rem;
 }
 
 .tool-bar button span {
@@ -396,7 +409,7 @@ tr {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
-  background: rgb(253, 255, 221);
+  background: rgb(184, 186, 153);
   border-radius: 50%; 
 }
 .priority-icon.HIGH {
@@ -409,4 +422,8 @@ tr {
 
 .issue > td {
   background: #fff4f4 !important;
+}
+
+.MuiToggleButton-root {
+  font-size: .7rem !important;
 }

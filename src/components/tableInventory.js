@@ -12,6 +12,8 @@ import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
 import { Menu, MenuItem } from "@mui/material";
+import CategoryIcon from "@mui/icons-material/ViewListOutlined";
+import IconPrio from '@mui/icons-material/PriorityHigh';
 import IconPPK from '@mui/icons-material/AssignmentOutlined';
 import IconOnHand from '@mui/icons-material/PanToolOutlined';
 import IconStock from '@mui/icons-material/Inventory2Outlined';
@@ -34,6 +36,7 @@ const TableInventory = ({ minified }) => {
   const theme = useTheme(materialTheme);
 
   const [menuPosition, setMenuPosition] = useState(null);
+  const [menuPositionCategory, setMenuPositionCategory] = useState(false)
   const [selectedItem, setSelectedItem] = useState(null);
   const [pinnedItems, setPinnedItems] = useState({});
   const [markedItems, setMarkedItems] = useState({});
@@ -48,6 +51,7 @@ const TableInventory = ({ minified }) => {
   // Cierra el menú
   const handleClose = () => {
     setMenuPosition(null);
+    setMenuPositionCategory(false);
     setSelectedItem(null);
   };
 
@@ -122,7 +126,7 @@ const TableInventory = ({ minified }) => {
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
              {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
-             <HeaderCell></HeaderCell>
+             <HeaderCell><IconPrio fontSize="small" /></HeaderCell>
            </HeaderRow>
          </Header>
 
@@ -143,32 +147,42 @@ const TableInventory = ({ minified }) => {
        </>
        )}
       </Table>
+
       <Menu
         open={!!menuPosition}
         onClose={handleClose}
         anchorReference="anchorPosition"
         anchorPosition={menuPosition ? { top: menuPosition.mouseY, left: menuPosition.mouseX } : undefined}
+        disableAutoFocusItem
       >
-        <MenuItem onClick={handlePin}>
-          {
-
-          }
-          <PushPinIcon /> {pinnedItems[selectedItem?.id] ? "Desfijar" : "Fijar"}
-        </MenuItem>
-        <MenuItem onClick={handleMark}>
-          <CheckIcon /> {markedItems[selectedItem?.id] ? "Desmarcar" : "Marcar"}
+        <MenuItem  onClick={() => setMenuPositionCategory((prev) => !prev)}>
+          <Menu
+            open={!!menuPositionCategory}
+            disableAutoFocusItem
+            anchorReference="anchorPosition"
+            transformOrigin={{ vertical: "top", horizontal: "right" }} // Despliega el menú hacia la izquierda
+            anchorPosition={menuPosition ? { top: menuPosition.mouseY, left: menuPosition.mouseX } : undefined}
+          >
+            <MenuItem>S1-S2</MenuItem>
+            <MenuItem>ATM</MenuItem>
+            <MenuItem>GBRU</MenuItem>
+            <MenuItem>BRM</MenuItem>
+            <MenuItem>SRU</MenuItem>
+          </Menu>
+          <CategoryIcon style={{marginLeft: "-.4rem", color: "#e1e1e1"}}/>
+          <span style={{marginLeft : "0.7rem"}}>Categoria</span>
         </MenuItem>
         <MenuItem onClick={() => handleSetPriority('LOW')}>
-          <LowPriorityIcon/>
-          Baja Prioridad
+          <span className="priority-icon LOW"/>
+          <span style={{marginLeft : "1rem"}}>Baja Prioridad</span>
         </MenuItem>
         <MenuItem onClick={() => handleSetPriority('MID')}>
-          <MediumPriorityIcon/>
-          Media Prioridad
+          <span className="priority-icon MID"/>
+          <span style={{marginLeft : "1rem"}}>Media Prioridad</span>
         </MenuItem>
         <MenuItem onClick={() => handleSetPriority('HIGH')}>
-          <HighPriorityIcon/>
-          Alta Prioridad
+          <span className="priority-icon HIGH"/>
+          <span style={{marginLeft : "1rem"}}>Alta Prioridad</span>
         </MenuItem>
 
       </Menu>
