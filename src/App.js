@@ -17,7 +17,10 @@ import CloseIcon from "@mui/icons-material/Close";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chip, Box, FormControl } from '@mui/material';
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { resolve } from 'path-browserify';
 
 
 const useWindowDimensions = () => {
@@ -56,10 +59,14 @@ function App() {
   const [open, setOpen] = useState(false);
   const [statusSelect, setStatusSelect] = useState("default")
   const [typeSelect, setTypeSelect] = useState("default")
-
+  const [indexPrio, setIndexPrio] = useState(0)
+  const PRIO = ["HIGH", "MID", "LOW"]
   const dispatch = useDispatch();
 
-  
+  const items = ["S1-S2", "BNA3", "GBRU", "BRM", "SRU", "ATM", "SCPM", "S1-S2", "BNA3", "GBRU", "BRM", "SRU", "ATM", "SCPM", "S1-S2", "BNA3", "GBRU", "BRM", "SRU", "ATM", "SCPM"];
+
+  const [settings, setSettings] = useState(null);
+
   useEffect(() => {
     dispatch(fetchAllInventory());
   }, []);
@@ -70,6 +77,18 @@ function App() {
 
   useEffect(() => {
     setMinified(width < 768 ? true : false);
+    let newToShow = Math.floor(width * 12) / 1920;
+    setSettings({
+      infinite: true,
+      speed: 3000,
+      slidesToShow: newToShow,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 1,
+      cssEase: "linear",
+      pauseOnHover: true
+    });
+
   }, [width]);
   
   const handleSearch = (event) => {
@@ -192,21 +211,20 @@ function App() {
                           Consumible
                         </ToggleButton>
                       </ToggleButtonGroup>
-                      <Select
-                        value={"LOW"}
-                      >
-                        <MenuItem value={"LOW"}><span className="priority-icon LOW"/></MenuItem>
-                        <MenuItem value={"MID"}><span className="priority-icon MID"/></MenuItem>
-                        <MenuItem value={"HIGH"}><span className="priority-icon HIGH"/></MenuItem>
-                      </Select>
-                    </FormControl>
-                    <div className='category'>
-                      <Chip label="S1-S2" variant="outlined" />
-                      <Chip label="ATM" variant="outlined" />
-                      <Chip label="GBRU" variant="outlined" />
-                      <Chip label="SRU" variant="outlined" />
-                      <Chip label="BRM" variant="outlined" />
-                    </div>
+                      <IconButton 
+                        variant="contained" 
+                        color="primary" 
+                        className={`priority-icon ${PRIO[indexPrio]}`} 
+                        onClick={() => setIndexPrio(prev => (prev + 1) % 3)}
+                      />
+                      </FormControl>
+                      <Slider {...settings} className='category'>
+                        {items.map((item, index) => (
+                          <div>
+                           <Chip key={index} variant="outlined" label={item} sx={{p: "1rem"}}/>
+                          </div>
+                        ))}
+                      </Slider>
                   </div>
                 ) : (
                   <LinearProgress variant="determinate" value={loaderDispatch} />

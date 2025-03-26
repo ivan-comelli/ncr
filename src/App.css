@@ -151,6 +151,12 @@ tr {
 .tool-bar .category {
   display: flex;
   gap: 1rem;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+.tool-bar .category::-webkit-scrollbar {
+  display: none;
 }
 
 .tool-bar button span {
@@ -315,12 +321,15 @@ tr {
 }
 
 .App .aditional {
-  display: block !important;
+  display: block;
   grid-area: 2 / 3 / 4 / 4;
   margin: 1rem 2rem;
 
 }
 
+.App.without-aditional .aditional {
+  display: none !important;
+}
 .App.minified .aditional {
   display: block !important;
   grid-area: 2 / 1 / 4 / 4 !important;
@@ -403,21 +412,21 @@ tr {
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
   background: rgb(205, 238, 205);
-  border-radius: 50%; /* Hace que el elemento sea un círculo */
+  border-radius: 15%; /* Hace que el elemento sea un círculo */
 }
-.priority-icon.MID {
+.priority-icon.MID::before {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
   background: rgb(184, 186, 153);
-  border-radius: 50%; 
+  border-radius: 15%; 
 }
-.priority-icon.HIGH {
+.priority-icon.HIGH::before {
   content: ''; /* Necesario para que se muestre el pseudo-elemento */
   width: .8rem; /* Tamaño del círculo */
   height: .8rem; /* Tamaño del círculo */
   background: rgb(247, 221, 221);
-  border-radius: 50%; 
+  border-radius: 15%; 
 }
 
 .issue > td {
@@ -426,4 +435,8 @@ tr {
 
 .MuiToggleButton-root {
   font-size: .7rem !important;
+}
+
+.Mui-selected {
+  background-color: rgba(0, 0, 0, 0.04) !important;
 }
