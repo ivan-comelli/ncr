@@ -8,7 +8,9 @@ import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/ma
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
+import { toggleActiveDetail } from './redux/actions/actions';
 import UploadIcon from '@mui/icons-material/Sync';
+import BackIcon from '@mui/icons-material/ArrowBack';
 import { ClipLoader } from 'react-spinners';
 import CheckerModal from './components/checkerModal';
 import { StockBar } from './components/stockBar';
@@ -17,11 +19,11 @@ import CloseIcon from "@mui/icons-material/Close";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chip, Box, FormControl } from '@mui/material';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { resolve } from 'path-browserify';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
 
+import { Autoplay } from "swiper/modules";
 
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
@@ -78,18 +80,9 @@ function App() {
   useEffect(() => {
     setMinified(width < 768 ? true : false);
     let newToShow = Math.floor(width * 12) / 1920;
-    setSettings({
-      infinite: true,
-      speed: 3000,
-      slidesToShow: newToShow,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 1,
-      cssEase: "linear",
-      pauseOnHover: true
-    });
+    setSettings(activeDetail ? newToShow / 2 : newToShow);
 
-  }, [width]);
+  }, [width, activeDetail]);
   
   const handleSearch = (event) => {
     setSearch(event.target.value)
@@ -159,73 +152,83 @@ function App() {
             <div className={`container ${minified ? 'full' : ''}`}>
               {
                 !loaderDispatch ? (
-                  <div className='tool-bar'>
-                    <FormControl size="small" className='first'>
-                      <IconButton 
-                        className="sync"
-                        variant="contained" 
-                        color="primary" 
-                        onClick={openModal}
-                      > 
-                        <UploadIcon fontSize="small"></UploadIcon>
-                      </IconButton>
-                      
-                      <ToggleButtonGroup
-                        value={statusSelect}
-                        onChange={(event, value) => setStatusSelect(value)}
-                        exclusive
-                        autoFocus={false}
-                        aria-label="Estados"
-                      >
-                        <ToggleButton value="default" aria-label="Ninguno">
-                          Todos
-                        </ToggleButton>
-                        <ToggleButton value="issue" aria-label="Conflictivos">
-                          Conflictos
-                        </ToggleButton>
-                        <ToggleButton value="failed" aria-label="Fallos">
-                          Fallos
-                        </ToggleButton>
-                        <ToggleButton value="adjust" aria-label="Ajustados">
-                          Ajustados
-                        </ToggleButton>
-                        <ToggleButton value="critical" aria-label="Criticos">
-                          Criticos
-                        </ToggleButton>
-                      </ToggleButtonGroup>
-
-                      <ToggleButtonGroup
-                        value={typeSelect}
-                        onChange={(event, value) => setTypeSelect(value)}
-                        exclusive
-                        autoFocus={false}
-                        aria-label="Tipo"
-                      >
-                        <ToggleButton value="default" aria-label="Ninguno">
-                          Cualquiera
-                        </ToggleButton>
-                        <ToggleButton value="RW" aria-label="ReWork">
-                          ReWork
-                        </ToggleButton>
-                        <ToggleButton value="noRW" aria-label="Consumible">
-                          Consumible
-                        </ToggleButton>
-                      </ToggleButtonGroup>
-                      <IconButton 
-                        variant="contained" 
-                        color="primary" 
-                        className={`priority-icon ${PRIO[indexPrio]}`} 
-                        onClick={() => setIndexPrio(prev => (prev + 1) % 3)}
-                      />
-                      </FormControl>
-                      <Slider {...settings} className='category'>
-                        {items.map((item, index) => (
-                          <div>
-                           <Chip key={index} variant="outlined" label={item} sx={{p: "1rem"}}/>
-                          </div>
-                        ))}
-                      </Slider>
-                  </div>
+                  <FormControl size="small" className={`tool-bar ${minified || activeDetail ? 'minified' : ''}`}>
+                    <IconButton 
+                      className="sync"
+                      variant="contained" 
+                      color="primary" 
+                      onClick={openModal}
+                    > 
+                      <UploadIcon fontSize="small"></UploadIcon>
+                    </IconButton>
+                
+                    <ToggleButtonGroup
+                      value={typeSelect}
+                      onChange={(event, value) => setTypeSelect(value)}
+                      exclusive
+                      autoFocus={false}
+                      aria-label="Tipo"
+                      className='select-type'
+                    >
+                      <ToggleButton value="default" aria-label="Ninguno">
+                        Cualquiera
+                      </ToggleButton>
+                      <ToggleButton value="RW" aria-label="ReWork">
+                        ReWork
+                      </ToggleButton>
+                      <ToggleButton value="noRW" aria-label="Consumible">
+                        Consumible
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                    <IconButton 
+                      variant="contained" 
+                      color="primary" 
+                      className={`priority-icon ${PRIO[indexPrio]}`} 
+                      onClick={() => setIndexPrio(prev => (prev + 1) % 3)}
+                    />
+                    <ToggleButtonGroup
+                      value={statusSelect}
+                      onChange={(event, value) => setStatusSelect(value)}
+                      exclusive
+                      autoFocus={false}
+                      aria-label="Estados"
+                      className='select-status'
+                    >
+                      <ToggleButton value="default" aria-label="Ninguno">
+                        Todos
+                      </ToggleButton>
+                      <ToggleButton value="issue" aria-label="Conflictivos">
+                        Conflictos
+                      </ToggleButton>
+                      <ToggleButton value="failed" aria-label="Fallos">
+                        Fallos
+                      </ToggleButton>
+                      <ToggleButton value="adjust" aria-label="Ajustados">
+                        Ajustados
+                      </ToggleButton>
+                      <ToggleButton value="critical" aria-label="Criticos">
+                        Criticos
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                    <Swiper
+                      modules={[Autoplay]}  
+                      slidesPerView={settings}     
+                      spaceBetween={10}      
+                      loop={true}            
+                      autoplay={{
+                        delay: 0,          
+                        disableOnInteraction: false, 
+                      }}
+                      speed={2000}      
+                      className="category"
+                    >
+                      {items.map((item, index) => (
+                        <SwiperSlide>
+                          <Chip key={index} variant="outlined" label={item} sx={{p: "1rem"}}/>
+                        </SwiperSlide>
+                      ))}
+                    </Swiper>
+                  </FormControl>
                 ) : (
                   <LinearProgress variant="determinate" value={loaderDispatch} />
                 )
@@ -235,6 +238,7 @@ function App() {
               <TableInventory />
             </div>
             <div className='aditional'>
+              <IconButton variant="contained" color="primary" className="middle-back" onClick={() => dispatch(toggleActiveDetail(true))}><BackIcon></BackIcon></IconButton>
               <TableHistory/>
             </div>
           </>

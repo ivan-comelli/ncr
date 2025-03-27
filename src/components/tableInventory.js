@@ -140,7 +140,7 @@ const TableInventory = ({ minified }) => {
                <Cell>{item?.stock}</Cell>
                {!minified && <Cell>{item?.onHand}</Cell>}
                {!minified && <Cell>{item?.ppk}</Cell>}
-               <Cell><span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/></Cell>
+               <Cell>{item?.partNumber != "" && <span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/>}</Cell>
              </Row>
            ))}
          </Body>
