@@ -1,0 +1,207 @@
+{
+  "main": {
+    "id": "f7c33e69b594c696",
+    "type": "split",
+    "children": [
+      {
+        "id": "f30a2bc98262dcd8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "deb5b3562d94e0ec",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "72ac8c83a3606ea3",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c6929f85909670f6",
+    "type": "split",
+    "children": [
+      {
+        "id": "347c01f01f1cb2d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f8d85462de39892",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5fbefd17cb92a7a0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "944d369a087563e7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b5e543b73babc929",
+    "type": "split",
+    "children": [
+      {
+        "id": "5799f849fd71e99f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e809a4f33d32d815",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "b66cb88ca5117ea1",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "3a51c6249c5043b2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "f21a806a05f3ea21",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "72ac8c83a3606ea3",
+  "lastOpenFiles": [
+    "API.md",
+    "Redux/Format DataTable Inventory.md",
+    "Redux/Fetch All Inventory/Format DataTable Inventory.md",
+    "Components/Checker Modal Component.md",
+    "APP.md",
+    "Redux/Fetch All Inventory/Fetch All Inventory.md",
+    "Components/Table History Component.md",
+    "Redux/Fetch All Inventory/Dispatch In Bulk Inventory.md",
+    "Redux/Fetch All Inventory/Dispatch State Stock Of Inventory.md",
+    "Redux/Fetch All Inventory/Lazy Search Action.md",
+    "dispatchUpdateStateStock.md",
+    "setTechnicianToSomePart.md",
+    "Set Technician To Some Part API.md",
+    "Init Technician To Some Part API.md",
+    "Set Stock To Some Part API.md",
+    "Set Inventory Part API.md",
+    "Get All Some Part API.md",
+    "Get Inventory By PartNumber API.md",
+    "getInventoryByPartNumber.md",
+    "setStockToSomePart.md",
+    "setInventoryPart.md",
+    "initTechnicianToSomePart.md",
+    "Redux/Fetch All Inventory",
+    "Components/Modal Form Component.md",
+    "Redux.md",
+    "Search Lazy.md",
+    "App.md",
+    "Components",
+    "Redux"
+  ]
+}

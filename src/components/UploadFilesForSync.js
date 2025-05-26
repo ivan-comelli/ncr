@@ -54,7 +54,7 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
     }
   };
 
-  const formatData = (data, defaultCSR) => {
+  const formatDataInventoryToModelDB = (data, defaultCSR) => {
     // Filtrar valores nulos dentro de un array y agregar ceros a la izquierda si es necesario
     const cleanArray = (arr) => arr
         .filter((item) => item !== null && item !== undefined && item !== 'undefined')
@@ -84,6 +84,8 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
     const formattedData = {
         partNumber: cleanArray([String(data["Part Nbr"]), String(data["TMP"]), String(data["Part#"]), String(data["partNumber"])]),
         description: data["Description"],
+        reWork: data["RW"] === 'Y',
+        cost: data["Cost"],
         stock: cleanObject({
             csr: data["CSR"] || defaultCSR && defaultCSR.csr,
             name: data["Name"] || defaultCSR && defaultCSR.name,
@@ -150,7 +152,7 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
                     previewDetail("Hay " + rows.length + " registros preparados para ser insertado");
                     queryCSR = await askCSR();
                   }
-                  return formatData(row, queryCSR);
+                  return formatDataInventoryToModelDB(row, queryCSR);
                 });
                 submit(collectionData)  
             } else if (fileType === 'image/jpeg' || fileType === 'image/png') {
@@ -162,7 +164,7 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
                 ]} 
                 data={{ nodes: responseData.items }} theme={theme} layout={{ fixedHeader: true }} />);
                 queryCSR = await askCSR();
-                submit(responseData.items.map((item) => formatData(item, queryCSR)));
+                submit(responseData.items.map((item) => formatDataInventoryToModelDB(item, queryCSR)));
             } else {
                 throw new Error("Tipo de Archivo no permitido.");
             }

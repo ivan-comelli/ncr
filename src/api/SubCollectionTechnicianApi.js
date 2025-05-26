@@ -1,6 +1,6 @@
 import { collection, writeBatch, doc, getDocs, getDoc, setDoc, query, where, Timestamp, or } from "firebase/firestore";
 import { db } from './firebase';
-import { verifyStockOfSomeTechnicianInPart } from './stockApi';
+import { verifyStockOfSomeTechnicianInPart } from './SubCollectionStockApi';
 
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },

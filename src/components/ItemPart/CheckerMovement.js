@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Box, Modal, TextField, Button, Typography, Backdrop, Fade, Stack, InputLabel, FormControl, MenuItem, Select, FormHelperText } from '@mui/material';
 import { Close, Add } from "@mui/icons-material";
 import { useDispatch, useSelector } from 'react-redux';
-import { dispatchBulkInventory } from '../redux/actions/inventoryThunks';
-import { findDetailStock } from '../redux/actions/actions';
+import { dispatchBulkInventory } from '../../redux/actions/async';
 
-export const ModalForm = ({ petition }) => {
+const CheckerMovement = ({ petition }) => {
   const partIsolate = useSelector((state) => state.inventory.isolated);
 
   const dispatch = useDispatch();
@@ -207,3 +206,5 @@ export const ModalForm = ({ petition }) => {
     </Modal>
   );
 };
+
+export default CheckerMovement;

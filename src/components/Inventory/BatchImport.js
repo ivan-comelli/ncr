@@ -1,11 +1,11 @@
 
 import React, { useEffect, useState } from 'react';
 
-import UploadFiles from "./uploadFiles";
+import UploadFiles from "../UploadFilesForSync";
 import { ClipLoader } from 'react-spinners';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { dispatchBulkInventory } from '../redux/actions/inventoryThunks';
+import { dispatchBulkInventory } from '../../redux/actions/async';
 
 import {
   Dialog,

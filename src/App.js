@@ -1,20 +1,20 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import TableInventory from './components/tableInventory';
-import TableHistory from './components/tableHistory';
+import TableInventory from './components/Inventory/MainDataTable';
+import OverviewItem from './components/ItemPart/Overview';
 import logo from './ncr-logo.png';
 import logoMinified from './ncr-logo-minified.png';
 import './App.css';
 import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/material';
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAllInventory, lazySearch } from './redux/actions/inventoryThunks';
-import { toggleActiveDetail } from './redux/actions/actions';
+import { fetchAllInventory, lazySearch } from './redux/actions/async';
+import { openOverview, closeOverview } from './redux/actions/sync';
 import UploadIcon from '@mui/icons-material/Sync';
 import BackIcon from '@mui/icons-material/ArrowBack';
 import { ClipLoader } from 'react-spinners';
-import CheckerModal from './components/checkerModal';
-import { StockBar } from './components/stockBar';
-import { ModalForm } from './components/modalForm';
+import BatchImport from './components/Inventory/BatchImport';
+import { StockBar } from './components/Inventory/QuickActionsBar';
+import CheckerMovement from './components/ItemPart/CheckerMovement';
 import CloseIcon from "@mui/icons-material/Close";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -238,14 +238,14 @@ function App() {
               <TableInventory />
             </div>
             <div className='aditional'>
-              <IconButton variant="contained" color="primary" className="middle-back" onClick={() => dispatch(toggleActiveDetail(true))}><BackIcon></BackIcon></IconButton>
-              <TableHistory/>
+              <IconButton variant="contained" color="primary" className="middle-back" onClick={() => dispatch(closeOverview())}><BackIcon></BackIcon></IconButton>
+              <OverviewItem/>
             </div>
           </>
         )
       }
-      <ModalForm petition={ petitionSubmit }/>
-      <CheckerModal show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
+      <CheckerMovement petition={ petitionSubmit }/>
+      <BatchImport show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
     </div>
   );
 }

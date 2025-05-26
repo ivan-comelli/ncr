@@ -8,8 +8,6 @@ import IconCheck from '@mui/icons-material/Check';
 import IconCancel from '@mui/icons-material/Close';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { isolatePartInTable, findDetailStock } from '../redux/actions/actions';
-import { dispatchUpdateStateStock } from '../redux/actions/inventoryThunks';
 const TableHistory = () => {
     const COLUMNS = [
         { label: 'Dueño', renderCell: (item) => item.name },
@@ -26,7 +24,7 @@ const TableHistory = () => {
                 <IconButton
                     variant="contained"
                     color="primary"
-                    onClick={() => {dispatch(dispatchUpdateStateStock([mainDataTable.id, item.id], true))}}
+                    onClick={() => {}}
                 >
                     <IconCheck />
                 </IconButton>
@@ -36,7 +34,7 @@ const TableHistory = () => {
             label: 'Cancelar', renderCell: (item) => (
                 <IconButton
                     variant="contained"
-                    onClick={() => {dispatch(dispatchUpdateStateStock([mainDataTable.id, item.id], false))}}
+                    onClick={() => {}}
                     xs={{
                         color: '#cd0000'
                       }}

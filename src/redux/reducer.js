@@ -1,3 +1,4 @@
+import { format } from 'path-browserify';
 import TYPES from './types';
 
 const options = [
@@ -17,7 +18,39 @@ const STATUS = {
     ISSUE: "ISSUE"
 }
 
-const mergeData = (newData, data) => {
+//Destaco que el stepLoading se activa cuando su valor es mayor a 0
+const initialStateInventory = {
+    stepLoading: 0,
+    nativeData: [],
+    dataTable: [],
+    renderTable: [],
+    overView: {
+        active: false,
+        data: null   
+    },
+    isolated: null,
+    filters: {
+        search: '',
+        status: {
+            values: ["Conflicto"],
+            key: null
+        },
+        category: {
+            values: [],
+            key: null
+        },
+        priority: {
+            values: ["Low", "Mid", "High", "All"],
+            key: null
+        },
+        reWork: {
+            values: ["Non Rework", "Rework", "All"],
+            key: null
+        }
+    }
+};
+
+const mergeDataTable = (newData, data) => {
     let oldData = structuredClone(data);
     let result = [];
     if (oldData.length > 0) {
@@ -124,149 +157,240 @@ const mergeData = (newData, data) => {
     return result;
 }
 
+//Este se usar para buscar las operaciones para el overview del isolated
+const sortedDetails = (id, nativeData) => {
+    let response
+    if(id) {
+        var item = nativeData.find((element) => element.id === id);
 
-const initialStateInventory = {
-    isLoading: true,
-    data: [],
-    table: [],
-    search: ''
-};
-
-const sortedDetails = (id, state) => {
-    var item;
-    if(id == null) {
-        item = state.data
-        .find((element) => element.id === state.detail.id);
+        response = item?.stock?.detail? [...item.stock.detail].sort(
+            (a, b) =>
+                new Date(b.lastUpdate.seconds * 1000) - new Date(a.lastUpdate.seconds * 1000)
+        ).filter((item) => 
+            item.status !== "DONE") : null;
+    }
         
-    }
-    else {
-        item = state.data
-        .find((element) => element.id === id);
-    }
+    return response;
+}
 
-    const sortedDetails = item?.stock?.detail
-    ? [...item.stock.detail].sort(
-        (a, b) =>
-            new Date(b.lastUpdate.seconds * 1000) - new Date(a.lastUpdate.seconds * 1000)
-    ).filter((item) => item.status !== "DONE")
-    : null;
-    
-    return sortedDetails;
+//Esta funcion de contemplar el filtrado en conjucion
+const filterDataTable = (filters, dataState) => {
+    let dataTable = structuredClone(dataState);
+    let response = dataTable?.filter((item) => {
+        if(filters.search && filters.search != "") {
+            const descriptionMatch = item.description && item.description
+            .toLowerCase()
+            .includes(filters.search.toLowerCase());
+            const partNumberMatch = item.description && item.partNumber
+            .toString()
+            .includes(filters.search);
+            return descriptionMatch || partNumberMatch;
+        }
+        return false;
+    });
+    return response.length == 0 && filters.search == '' ? dataState : response;
+
+
+    //var response = structuredClone(dataTable);
+    //response = response.filter((item) => item.reWork === filters.reWork)
+}
+
+const formatDataTable = (dataState) => {
+    let dataTable = structuredClone(dataState);
+    dataTable = dataTable.map((item => {
+        var issue = false;
+        item.stock.detail.forEach(op => {
+            op.status === 'ISSUE' && (issue = true);
+        });
+        return {
+            id: item.id,
+            partNumber: item.partNumber,
+            description: item.description,
+            reWork: item.reWork,
+            stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
+            ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
+            onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,
+            nodes: item.technicians
+            .filter((node) => {
+                // Filtrar nodos donde ppk, onHand y stock no sean todos 0
+                return !(node.ppk === 0 && node.onHand === 0 && (item.stock.total[node.csr] || 0) === 0);
+            })
+            .map((node) => {
+                return {
+                    id: node.id,
+                    partNumber: [],
+                    description: node.name,
+                    reWork: null,
+                    ppk: node.ppk,
+                    onHand: node.onHand,
+                    stock: item.stock.total[node.csr] || 0
+                };
+            })
+            .sort((a, b) => {
+                // Ordenar alfabéticamente por description
+                return a.description.localeCompare(b.description);
+            }),
+            issue: issue
+        }
+    }));
+    return dataTable;
 }
 
 export const inventoryReducer = (state = initialStateInventory, action) => {
+    let newDataTable;
     switch (action.type) {
+        //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH
         case TYPES.FETCH_INVENTORY_START:
-            return { ...state, isLoading: true };
+            return { ...state, stepLoading: 1 };
 
         case TYPES.FETCH_INVENTORY_SUCCESS:
-            return { ...state, isLoading: false, data: action.payload };
+            newDataTable = formatDataTable(action.payload) || [];
+            console.log(newDataTable)
+            return { 
+                ...state, 
+                stepLoading: 0, 
+                nativeData: action.payload,
+                dataTable: newDataTable, 
+                renderTable: filterDataTable(state.filters, newDataTable),
+                overView: {
+                    active: state.overView.active,
+                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                }
+            }
 
         case TYPES.FETCH_INVENTORY_FAILURE:
-            return { ...state, isLoading: false };
+            return { ...state, stepLoading: 0 };
 
+        //DISPATCH //DISPATCH //DISPATCH //DISPATCH //DISPATCH //DISPATCH //DISPATCH //DISPATCH
         case TYPES.DISPATCH_INVENTORY_START:
-            return { ...state, isLoading: action.payload };
+            return { ...state, stepLoading: 1 };
 
         case TYPES.DISPATCH_INVENTORY_SUCCESS:
-            return { ...state, data: mergeData(action.payload, state.data),  isLoading: false };
+            let newNativeData = mergeDataTable(action.payload, state.nativeData);
+            newDataTable = formatDataTable(newNativeData) || [];
+            return { 
+                ...state, 
+                nativeData: newNativeData,
+                dataTable: newDataTable, 
+                renderTable: filterDataTable(state.filters, newDataTable),
+                overView: {
+                    active: state.overView.active,
+                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                }, 
+                stepLoading: 0 
+            };
 
         case TYPES.DISPATCH_INVENTORY_FAILURE:
-            return { ...state, isLoading: false };
+            return { ...state, stepLoading: 0 };
 
+        //UPDATE //UPDATE //UPDATE //UPDATE //UPDATE //UPDATE //UPDATE //UPDATE //UPDATE //UPDATE
         case TYPES.SET_TABLE:
-            return { ...state, table: action.payload }
-
-        case TYPES.SEARCH_IN_TABLE: { 
-            const search = action.payload || (action.payload == null ? state.search : '');
-            let data = structuredClone(state.table);
-            data = data.filter((item) => {
-                if(search && search !="") {
-                    const descriptionMatch = item.description && item.description
-                    .toLowerCase()
-                    .includes(search.toLowerCase());
-                    const partNumberMatch = item.description && item.partNumber
-                    .toString()
-                    .includes(search);
-            
-                    return descriptionMatch || partNumberMatch;
+            return { 
+                ...state, 
+                dataTable: action.dataTable, 
+                renderTable: filterDataTable(state.filters, action.dataTable),
+                overView: {
+                    active: state.overView.active,
+                    data: sortedDetails(state.isolated?.id, state.nativeData),
                 }
-                return true;
-            });
-            
-            return { ...state, search: search, table: data, isolated: data.length === 1 ? data[0] : undefined };   
-        }
-
-        case TYPES.FIND_DETAIL_STOCK: {
-            return {
-                ...state,
-                detail: {
-                    id: action.payload || state.detail.id,
-                    data: sortedDetails(action.payload, state) || null,
-                },
-            };
-        }
-
-        case TYPES.ISOLATE_PART_IN_TABLE: {
-            if(!action.payload) {
-                return { ...state, isolated: action.payload, detail: null };
             }
-            return { ...state, isolated: action.payload, 
-                detail: {
-                    id: action.payload.id || state.detail.id,
-                    data: sortedDetails(action.payload.id, state) || null,
-                }, 
-            }
-        }
 
-        case TYPES.UPDATE_STOCK: {
-            let newData = mergeData([
-                {
-                    id: action.payload.idInventory,
-                    stock:[
-                        {
-                            id: action.payload.idStock, 
-                            status: action.payload.status
-                        }
-                    ]
-                }
-            ], state.data)
-            return { ...state, data: newData }
+        case TYPES.SET_STOCK: {
+            let newData = mergeDataTable(state.nativeData)
+            return { ...state, nativeData: newData }
         }
-
-        case TYPES.SET_MARK_LOW: {
+        
+        case TYPES.SET_PRIORITY: {
+            //HAY QUE ADAPTARLO FALLAA
             let newData = structuredClone(state.data);
             let existItem = newData.find((item) => item.id === action.payload);
             existItem.priority = 'LOW';
             let newDataTable = structuredClone(state.table);
             let existItemTable = newDataTable.find((item) => item.id === action.payload);
             existItemTable.priority = 'LOW';
-            return { ...state, data: newData, table: newDataTable  }
+            return { ...state, nativeData: newData }
         }
-        case TYPES.SET_MARK_MID: {
-            let newData = structuredClone(state.data);
-            let existItem = newData.find((item) => item.id === action.payload);
-            existItem.priority = 'MID';
-            let newDataTable = structuredClone(state.table);
-            let existItemTable = newDataTable.find((item) => item.id === action.payload);
-            existItemTable.priority = 'MID';
-            return { ...state, data: newData, table: newDataTable }
+
+        //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS
+
+        //Hay contemplar que cada vez que se cambia un filtro hay que reformatear la tabla y luego recargar filtros
+        case TYPES.SEARCH_IN_TABLE: { 
+            let filters = { ...state.filters, search: action.search }  
+            let filteredData = filterDataTable(filters, state.dataTable) 
+            return { ...state, filters: filters, renderTable: filteredData, isolated: filteredData.length === 1 ? filteredData[0] : undefined };   
         }
-        case TYPES.SET_MARK_HIGH: {
-            let newData = structuredClone(state.data);
-            let existItem = newData.find((item) => item.id === action.payload);
-            existItem.priority = 'HIGH';
-            let newDataTable = structuredClone(state.table);
-            let existItemTable = newDataTable.find((item) => item.id === action.payload);
-            existItemTable.priority = 'HIGH';
-            return { ...state, data: newData, table: newDataTable  }
+
+        case TYPES.RELOAD_FILTERS: {
+            return { ...state, renderTable: filterDataTable(filters, state.dataTable) }
         }
-        case TYPES.SET_LOADER_DISPATCH: {
-            return { ...state, loaderDispatch: action.payload }
+
+        case TYPES.CLEAR_FILTERS: {
+            return { ...state, filters: initialStateInventory.filters, renderTable: state.dataTable }
         }
-        case TYPES.TOGGLE_ACTIVE_DETAIL: {
-            return { ...state, activeDetail: action.payload ? false : !state.activeDetail }
+
+        case TYPES.FILTER_REWORK: {
+            var filters = structuredClone(state.filters);
+            filters.reWork.key = action.key
+            return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
+
+        case TYPES.FILTER_CATEGORY: {
+            var filters = structuredClone(state.filters);
+            filters.reWork.key = action.key
+            return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
+        }
+
+        case TYPES.FILTER_PRIORITY: {
+            var filters = structuredClone(state.filters);
+            filters.reWork.key = action.key
+            return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
+        }
+
+        case TYPES.FILTER_STATUS: {
+            var filters = structuredClone(state.filters);
+            filters.reWork.key = action.key
+            return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
+        }
+
+        //TRIGGER //TRIGGER //TRIGGER //TRIGGER //TRIGGER //TRIGGER //TRIGGER //TRIGGER //TRIGGER //TRIGGER
+        case TYPES.CLOSE_OVERVIEW: {
+            return {
+                ...state,
+                overView: {
+                    active: false,
+                    data: null,
+                },
+            };
+        }
+
+        case TYPES.OPEN_OVERVIEW: {
+            return {
+                ...state,
+                overView: {
+                    active: true,
+                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                },
+            };
+        }
+
+        case TYPES.ISOLATE_PART_IN_TABLE: {
+            return { 
+                ...state, 
+                isolated: action.dataItem, 
+                overView: {
+                    active: state.overView.active,
+                    data: sortedDetails(action.dataItem.id, state.nativeData),
+                }
+            }
+        }
+
+        case TYPES.STEP_LOADER: {
+            return {
+                ...state,
+                stepLoading: action.step
+            }
+        }
+
         default:
             return state;
     }

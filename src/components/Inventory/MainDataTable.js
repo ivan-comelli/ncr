@@ -24,12 +24,12 @@ import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
-import { isolatePartInTable, setMarkItem, toggleActiveDetail } from '../redux/actions/actions';
+import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../redux/actions/sync';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 const TableInventory = ({ minified }) => {
   const dispatch = useDispatch();
-  const collectionData = useSelector(state => state.inventory.table);
+  const collectionData = useSelector(state => state.inventory.renderTable);
   const isolated = useSelector((state) => state.inventory.isolated);
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
@@ -75,7 +75,7 @@ const TableInventory = ({ minified }) => {
   }, [tree.state.ids])
   
   const showDetail = (item, e) => {
-    dispatch(toggleActiveDetail());
+    dispatch(openOverview());
   }
 
   const isolateItem = (item, e) => {
@@ -110,7 +110,7 @@ const TableInventory = ({ minified }) => {
 
   // Establecer prioridad
   const handleSetPriority = (priority) => {
-    dispatch(setMarkItem(selectedItem.id, priority))
+    dispatch(setPriority(selectedItem.id, priority))
     handleClose();
   };
 

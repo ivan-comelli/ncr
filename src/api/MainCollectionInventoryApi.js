@@ -44,6 +44,8 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
             batch.set(refInventory, {
                 partNumber: arrayUnion(snapInventory.data().partNumber, newInventory.partNumber),
                 description: newInventory.description,
+                reWork: newInventory.reWork,
+                cost: newInventory.cost,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -51,6 +53,8 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
         else if(snapInventory.data() && snapInventory.data().description) {
             batch.set(refInventory, {
                 partNumber: arrayUnion(snapInventory.data().partNumber, newInventory.partNumber),
+                reWork: newInventory.reWork,
+                cost: newInventory.cost,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -59,6 +63,8 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
             batch.set(refInventory, {
                 partNumber: newInventory.partNumber,
                 description: OUT_SYS,
+                reWork: newInventory.reWork,
+                cost: newInventory.cost,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -67,6 +73,8 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
             batch.set(refInventory, {
                 partNumber: newInventory.partNumber,
                 description: newInventory.description,
+                reWork: newInventory.reWork,
+                cost: newInventory.cost,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
