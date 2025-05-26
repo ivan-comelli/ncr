@@ -52,8 +52,8 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const { width, height } = useWindowDimensions();
   const [search, setSearch] = useState('');
-  const isLoading = useSelector((state) => state.inventory.isLoading);
-  const loaderDispatch = useSelector((state) => state.inventory.loaderDispatch);
+  const isLoading = useSelector((state) => state.inventory.stepLoading);
+  const loaderDispatch = useSelector((state) => state.inventory.stepLoading);
   const activeDetail = useSelector((state) => state.inventory.activeDetail);
   const [minified, setMinified] = useState(false);
   const searchGlobal = useSelector(state => state.inventory.search);
@@ -144,11 +144,7 @@ function App() {
       </header>
       <StockBar submit={ setPetitionSubmit } minified={minified} />
       {
-        isLoading ? (
-          <div className="loader"><ClipLoader size={50} color={"#54b948"} loading={true} /></div>
-        ) : (
           <>
-            
             <div className={`container ${minified ? 'full' : ''}`}>
               {
                 !loaderDispatch ? (
@@ -242,7 +238,6 @@ function App() {
               <OverviewItem/>
             </div>
           </>
-        )
       }
       <CheckerMovement petition={ petitionSubmit }/>
       <BatchImport show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />

@@ -44,6 +44,8 @@ export function fetchAllInventory() {
                 inventorySnapshot.docs.map(async (inventoryDoc) => {
                     const inventoryData = {
                         id: inventoryDoc.id,
+                        cost: Number(inventoryDoc.data().cost),
+                        reWork: inventoryDoc.data().reWork,
                         partNumber: inventoryDoc.data().partNumber,
                         description: inventoryDoc.data().description,
                     };
