@@ -207,6 +207,7 @@ const formatDataTable = (dataState) => {
             partNumber: item.partNumber,
             description: item.description,
             reWork: item.reWork,
+            cost: item.cost,
             stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
             onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,

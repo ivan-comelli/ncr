@@ -126,8 +126,8 @@ const TableInventory = ({ minified }) => {
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
              {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
-             {!minified && <HeaderCell>RW</HeaderCell>}
              {!minified && <HeaderCell>$</HeaderCell>}
+             {!minified && <HeaderCell>RW</HeaderCell>}
 
              <HeaderCell><IconPrio fontSize="small" /></HeaderCell>
            </HeaderRow>
