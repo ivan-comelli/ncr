@@ -126,6 +126,9 @@ const TableInventory = ({ minified }) => {
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
              {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
+             {!minified && <HeaderCell>RW</HeaderCell>}
+             {!minified && <HeaderCell>$</HeaderCell>}
+
              <HeaderCell><IconPrio fontSize="small" /></HeaderCell>
            </HeaderRow>
          </Header>
@@ -140,6 +143,8 @@ const TableInventory = ({ minified }) => {
                <Cell>{item?.stock}</Cell>
                {!minified && <Cell>{item?.onHand}</Cell>}
                {!minified && <Cell>{item?.ppk}</Cell>}
+               {!minified && <Cell>{item?.cost}</Cell>}
+               {!minified && <Cell>{item?.reWork ? "T" : "F"}</Cell>}
                <Cell>{item?.partNumber != "" && <span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/>}</Cell>
              </Row>
            ))}
