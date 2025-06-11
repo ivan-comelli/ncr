@@ -50,17 +50,18 @@ const TableHistory = () => {
     const [collectionData, setCollectionData] = useState();
 
     const theme = useTheme(materialTheme);
-    const mainDataTable = useSelector(state => state.inventory.detail);
+    const mainDataTable = useSelector(state => state.inventory.overView.data);
 
     useEffect(() => {
 
     }, []);
     useEffect(() => {
-        if (Array.isArray(mainDataTable?.data)) {
-            const data = mainDataTable.data.filter((item) => item.status !== "SYNC");
+        if (Array.isArray(mainDataTable)) {
+            const data = mainDataTable.filter((item) => item.status !== "SYNC");
             setCollectionData(data);
+            console.log(data)
         }
-    }, [mainDataTable?.data]);
+    }, [mainDataTable]);
     return (
         <>
             <div className="view-table-history">

@@ -8,7 +8,7 @@ import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/ma
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/async';
-import { openOverview, closeOverview, filterReWork, filterPriority } from './redux/actions/sync';
+import { closeOverview, filterReWork, filterPriority } from './redux/actions/sync';
 import UploadIcon from '@mui/icons-material/Sync';
 import BackIcon from '@mui/icons-material/ArrowBack';
 import BatchImport from './components/Inventory/BatchImport';
@@ -61,7 +61,7 @@ function App() {
   const [search, setSearch] = useState('');
   const isLoading = useSelector((state) => state.inventory.stepLoading);
   const loaderDispatch = useSelector((state) => state.inventory.stepLoading);
-  const activeDetail = useSelector((state) => state.inventory.activeDetail);
+  const activeDetail = useSelector((state) => state.inventory.overView.active);
 
   const [minified, setMinified] = useState(false);
   const [petitionSubmit, setPetitionSubmit] = useState();
@@ -249,8 +249,12 @@ function App() {
                       sx={{
                         width: '100%',
                         '.MuiSelect-select': {
-                          display: 'flex',
-                          flexWrap: 'wrap',
+                          paddingTop: '3px',    // 🔽 menos padding vertical
+                          paddingBottom: '3px',
+                          minHeight: 'unset',   // elimina alto mínimo fijo
+                        },
+                        '&.MuiOutlinedInput-root': {
+                          minHeight: '28px',    // 🔽 altura total menor (puede ajustarse aún más)
                         },
                       }}
                     >
