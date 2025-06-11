@@ -17,6 +17,8 @@ import IconPrio from '@mui/icons-material/PriorityHigh';
 import IconPPK from '@mui/icons-material/AssignmentOutlined';
 import IconOnHand from '@mui/icons-material/PanToolOutlined';
 import IconStock from '@mui/icons-material/Inventory2Outlined';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
 import PushPinIcon from "@mui/icons-material/PushPin";
 import CheckIcon from "@mui/icons-material/Check";
 import LowPriorityIcon from "@mui/icons-material/ArrowDownward";
@@ -24,7 +26,7 @@ import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
-import { dispatchUpdatePriority } from '../../redux/actions/async';
+import { dispatchUpdatePriority, dispatchUpdateCategory } from '../../redux/actions/async';
 import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../redux/actions/sync';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
@@ -32,6 +34,8 @@ const TableInventory = ({ minified }) => {
   const dispatch = useDispatch();
   const collectionData = useSelector(state => state.inventory.renderTable);
   const isolated = useSelector((state) => state.inventory.isolated);
+  const overView = useSelector((state) => state.inventory.overView.active);
+  const category = useSelector((state) => state.inventory.filters.category);
 
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
@@ -45,8 +49,11 @@ const TableInventory = ({ minified }) => {
 
   const handleContextMenu = (event, item) => {
     event.preventDefault(); // Bloquea el menú predeterminado del navegador
-    setSelectedItem(item);
     setMenuPosition({ mouseX: event.clientX, mouseY: event.clientY });
+    if(item.partNumber.length > 0) {
+      setSelectedItem(item);
+      dispatch(isolatePartInTable(item))
+    }
   };
 
   // Cierra el menú
@@ -75,18 +82,17 @@ const TableInventory = ({ minified }) => {
     }
   }, [tree.state.ids])
   
-  const showDetail = (item, e) => {
+  const showDetail = () => {
     dispatch(openOverview());
+    handleClose();
   }
 
   const isolateItem = (item, e) => {
-    console.log(isolated?.id)
-    console.log(item.id)
-    if(!isolated || item.id !== isolated?.id) {
+    if((!isolated || item.id !== isolated?.id) && item.partNumber.length > 0) {
       e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       dispatch(isolatePartInTable(item));
     }
-    else if(!isolated || item.id === isolated?.id) {
+    else if(!isolated || item.id === isolated?.id || item.partNumber.length == 0) {
       e.target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       dispatch(isolatePartInTable(null));
     }
@@ -115,6 +121,12 @@ const TableInventory = ({ minified }) => {
     handleClose();
   };
 
+  const handleSetCategory = (category) => {
+    dispatch(dispatchUpdateCategory({...selectedItem, category: category}));
+    handleClose();
+  };
+
+
   return (
     <div className={`view-table ${isolated ? 'isIsolated' : ''}`} >
       <Table data={ {nodes: collectionData} } theme={theme} tree={tree}>
@@ -124,6 +136,7 @@ const TableInventory = ({ minified }) => {
            <HeaderRow>
              <HeaderCell>Part Number</HeaderCell>
              <HeaderCell>Description</HeaderCell>
+             <HeaderCell>Categoria</HeaderCell>
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
              {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
@@ -138,9 +151,10 @@ const TableInventory = ({ minified }) => {
            {tableList.map((item) => (
              <Row 
               onContextMenu={(e) => handleContextMenu(e, item)}
-              key={item.id} item={item} onDoubleClick={showDetail} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
+              key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
                <Cell>{item?.partNumber[0]}</Cell>
                <Cell>{item?.description}</Cell>
+               <Cell>{item?.category}</Cell>
                <Cell>{item?.stock}</Cell>
                {!minified && <Cell>{item?.onHand}</Cell>}
                {!minified && <Cell>{item?.ppk}</Cell>}
@@ -161,31 +175,44 @@ const TableInventory = ({ minified }) => {
         anchorPosition={menuPosition ? { top: menuPosition.mouseY, left: menuPosition.mouseX } : undefined}
         disableAutoFocusItem
       >
+
+        <MenuItem onClick={() => showDetail()} disabled={overView}>
+            <VisibilityIcon style={{marginLeft: "-.4rem", color: "#e1e1e1"}}/>
+            <span style={{marginLeft : "1rem"}}>Ver Detalles</span>
+        </MenuItem>
+
         <MenuItem  onClick={() => setMenuPositionCategory((prev) => !prev)}>
           <Menu
             open={!!menuPositionCategory}
             disableAutoFocusItem
             anchorReference="anchorPosition"
             transformOrigin={{ vertical: "top", horizontal: "right" }} // Despliega el menú hacia la izquierda
-            anchorPosition={menuPosition ? { top: menuPosition.mouseY, left: menuPosition.mouseX } : undefined}
+            anchorPosition={
+              menuPosition && menuPosition.mouseX != null && menuPosition.mouseY != null
+                ? { top: menuPosition.mouseY, left: menuPosition.mouseX }
+                : { top: 0, left: 0 } // fallback para evitar crash
+            }          
           >
-            <MenuItem>S1-S2</MenuItem>
-            <MenuItem>ATM</MenuItem>
-            <MenuItem>GBRU</MenuItem>
-            <MenuItem>BRM</MenuItem>
-            <MenuItem>SRU</MenuItem>
+            {
+              category.values.map((item, index) => (
+                <MenuItem key={index} onClick={() => handleSetCategory(item)}>{item}</MenuItem>
+              ))
+            }
           </Menu>
           <CategoryIcon style={{marginLeft: "-.4rem", color: "#e1e1e1"}}/>
           <span style={{marginLeft : "0.7rem"}}>Categoria</span>
         </MenuItem>
+
         <MenuItem onClick={() => handleSetPriority('LOW')}>
           <span className="priority-icon LOW"/>
           <span style={{marginLeft : "1rem"}}>Baja Prioridad</span>
         </MenuItem>
+
         <MenuItem onClick={() => handleSetPriority('MID')}>
           <span className="priority-icon MID"/>
           <span style={{marginLeft : "1rem"}}>Media Prioridad</span>
         </MenuItem>
+
         <MenuItem onClick={() => handleSetPriority('HIGH')}>
           <span className="priority-icon HIGH"/>
           <span style={{marginLeft : "1rem"}}>Alta Prioridad</span>

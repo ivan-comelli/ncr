@@ -8,7 +8,7 @@ import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/ma
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/async';
-import { closeOverview, filterReWork, filterPriority } from './redux/actions/sync';
+import { closeOverview, filterReWork, filterPriority, filterCategory } from './redux/actions/sync';
 import UploadIcon from '@mui/icons-material/Sync';
 import BackIcon from '@mui/icons-material/ArrowBack';
 import BatchImport from './components/Inventory/BatchImport';
@@ -69,7 +69,7 @@ function App() {
   const [statusSelect, setStatusSelect] = useState("default");
   const [typeSelect, setTypeSelect] = useState();
   const [indexPrio, setIndexPrio] = useState();
-  const [categoryValues, setCategoryValues] = useState([]);  
+  const [categoryValues, setCategoryValues] = useState(Array());  
 
   const searchGlobal = useSelector(state => state.inventory.search);
   const priority = useSelector(state => state.inventory.filters.priority)
@@ -99,7 +99,15 @@ function App() {
   }, [priority.key])
 
   useEffect(() => {
-    setCategoryValues([category.key])
+    if(category.key != null) {
+      setCategoryValues(
+        typeof value === 'string' ? category.key.split(',') : category.key,
+      );
+      setCategoryValues(category.key)
+    }
+    else {
+      setCategoryValues([])
+    }
   }, [category.key])
 
   useEffect(() => {
@@ -131,9 +139,8 @@ function App() {
     const {
       target: { value },
     } = event;
-    setCategoryValues(
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    dispatch(filterCategory(value))
+    console.log(value)
   };
   
 
@@ -261,7 +268,7 @@ function App() {
                       {category.values.map((name, index) => (
                         <MenuItem
                           key={index}
-                          value={index}
+                          value={name}
                           sx={{
                             whiteSpace: 'normal',
                             wordWrap: 'break-word',

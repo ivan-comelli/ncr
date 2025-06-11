@@ -121,7 +121,7 @@ tr {
 }
 
 .view-table > table {
-  --data-table-library_grid-template-columns: minmax(4rem, 1fr) minmax(6rem, 3fr) 3rem 3rem 3rem 3rem 3rem 3rem !important;
+  --data-table-library_grid-template-columns: minmax(4rem, 1fr) minmax(6rem, 3fr) 6rem 3rem 3rem 3rem 3rem 3rem 3rem !important;
 }
 
 .view-table-history > table {

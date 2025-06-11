@@ -47,6 +47,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
                 priority: 'LOW',
+                category: null,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -57,6 +58,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
                 priority: 'LOW',
+                category: null,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -68,6 +70,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
                 priority: 'LOW',
+                category: null,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -79,6 +82,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
                 priority: 'LOW',
+                category: null,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -108,6 +112,8 @@ export async function setCategoryOfInventoryPart(partNumber, newCategory) {
         }, { merge: true });
 
         console.log("Categoría actualizada correctamente.");
+        return inventoryDoc.id
+
     } catch (error) {
         throw new Error("No se pudo actualizar la categoría: " + error.message);
     }

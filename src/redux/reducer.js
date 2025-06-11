@@ -36,8 +36,8 @@ const initialStateInventory = {
             key: null
         },
         category: {
-            values: ['S2', 'BNA3'],
-            key: null
+            values: ['CASH', 'BNA3', 'SRU', 'GBRU', 'BRM', 'CPU', 'ATM'],
+            key: []
         },
         priority: {
             values: ["LOW", "MID", "HIGH", "ALL"],
@@ -180,6 +180,7 @@ const filterDataTable = (filters, dataState) => {
         let partNumberMatch = true;
         let reworkMatch = false;
         let priorityMatch = false;
+        let categoryMatch = false;
 
         if (filters.search && filters.search !== "") {
             descriptionMatch = item.description?.toLowerCase().includes(filters.search.toLowerCase()) ?? false;
@@ -213,7 +214,13 @@ const filterDataTable = (filters, dataState) => {
                 break;
         }
 
-        return (descriptionMatch || partNumberMatch) && reworkMatch && priorityMatch;
+        filters.category.key?.map((name, index) => {
+            if(item.category == name) {
+                categoryMatch = true;
+            }
+        });
+        if(filters.category.key.length == 0) categoryMatch = true
+        return (descriptionMatch || partNumberMatch) && reworkMatch && priorityMatch && categoryMatch;
     });
 
     return response;
@@ -232,6 +239,7 @@ const formatDataTable = (dataState) => {
             partNumber: item.partNumber,
             description: item.description,
             reWork: item.reWork,
+            category: item.category || null,
             cost: item.cost,
             stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
@@ -350,6 +358,23 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             };
         }
 
+        case TYPES.UPDATE_CATEGORY: {
+            let newData = structuredClone(state.nativeData);
+            newData.forEach((item) => {
+                if (item.id === action.dataItem.id) {
+                    item.category = action.dataItem.name;
+                }
+            });
+
+            newDataTable = formatDataTable(newData) || [];
+            return { 
+                ...state, 
+                nativeData: newData,
+                dataTable: newDataTable, 
+                renderTable: filterDataTable(state.filters, newDataTable),
+            };
+        }
+
         //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS
 
         //Hay contemplar que cada vez que se cambia un filtro hay que reformatear la tabla y luego recargar filtros
@@ -375,7 +400,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
 
         case TYPES.FILTER_CATEGORY: {
             var filters = structuredClone(state.filters);
-            filters.reWork.key = action.key
+            filters.category.key = action.key
             return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
 

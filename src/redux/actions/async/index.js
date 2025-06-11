@@ -48,7 +48,8 @@ export function fetchAllInventory() {
                         reWork: inventoryDoc.data().reWork,
                         partNumber: inventoryDoc.data().partNumber,
                         description: inventoryDoc.data().description,
-                        priority: inventoryDoc.data().priority
+                        priority: inventoryDoc.data().priority,
+                        category: inventoryDoc.data().category || null
                     };
                     new Date(inventoryDoc.data().lastUpdate.toDate()).getTime() > new Date(updateMostNew).getTime() && (updateMostNew = inventoryDoc.data().lastUpdate.toDate());
                     const refInventory = inventoryDoc.ref;

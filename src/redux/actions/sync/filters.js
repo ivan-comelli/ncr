@@ -12,8 +12,9 @@ export const filterPriority = (value) => ({
     key: value
 })
 
-export const filterCategory = () => ({
-    
+export const filterCategory = (value) => ({
+    type: TYPES.FILTER_CATEGORY,
+    key: value 
 })
 
 export const filterStatus = () => ({

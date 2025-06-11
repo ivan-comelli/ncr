@@ -23,7 +23,7 @@ export const setTable = (value) => ({
 });
 
 //Actualiza las categorias de partes en el inventario
-export const updateCategory = ({ idPartRef, newCategory }) => ({
+export const updateCategory = (idPartRef, newCategory) => ({
     type: TYPES.UPDATE_CATEGORY,
     dataItem: {
         id: idPartRef,
