@@ -36,16 +36,16 @@ const initialStateInventory = {
             key: null
         },
         category: {
-            values: [],
+            values: ['S2', 'BNA3'],
             key: null
         },
         priority: {
-            values: ["Low", "Mid", "High", "All"],
-            key: null
+            values: ["LOW", "MID", "HIGH", "ALL"],
+            key: 3
         },
         reWork: {
             values: ["Non Rework", "Rework", "All"],
-            key: null
+            key: 2
         }
     }
 };
@@ -173,27 +173,52 @@ const sortedDetails = (id, nativeData) => {
     return response;
 }
 
-//Esta funcion de contemplar el filtrado en conjucion
 const filterDataTable = (filters, dataState) => {
     let dataTable = structuredClone(dataState);
     let response = dataTable?.filter((item) => {
-        if(filters.search && filters.search != "") {
-            const descriptionMatch = item.description && item.description
-            .toLowerCase()
-            .includes(filters.search.toLowerCase());
-            const partNumberMatch = item.description && item.partNumber
-            .toString()
-            .includes(filters.search);
-            return descriptionMatch || partNumberMatch;
+        let descriptionMatch = true;
+        let partNumberMatch = true;
+        let reworkMatch = false;
+        let priorityMatch = false;
+
+        if (filters.search && filters.search !== "") {
+            descriptionMatch = item.description?.toLowerCase().includes(filters.search.toLowerCase()) ?? false;
+            partNumberMatch = item.partNumber?.toString().includes(filters.search) ?? false;
         }
-        return false;
+
+        switch (filters.reWork.key) {
+            case 0:
+                reworkMatch = item.reWork === false;
+                break;
+            case 1:
+                reworkMatch = item.reWork === true;
+                break;
+            default:
+                reworkMatch = true;
+                break;
+        }
+
+        switch (filters.priority.key) {
+            case 0:
+                priorityMatch = item.priority === 'LOW';
+                break;
+            case 1:
+                priorityMatch = item.priority === 'MID';
+                break;
+            case 2:
+                priorityMatch = item.priority === 'HIGH';
+                break;
+            default:
+                priorityMatch = true;
+                break;
+        }
+
+        return (descriptionMatch || partNumberMatch) && reworkMatch && priorityMatch;
     });
-    return response.length == 0 && filters.search == '' ? dataState : response;
 
-
-    //var response = structuredClone(dataTable);
-    //response = response.filter((item) => item.reWork === filters.reWork)
+    return response;
 }
+
 
 const formatDataTable = (dataState) => {
     let dataTable = structuredClone(dataState);
@@ -211,6 +236,7 @@ const formatDataTable = (dataState) => {
             stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
             onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,
+            priority: item.priority || 'LOW',
             nodes: item.technicians
             .filter((node) => {
                 // Filtrar nodos donde ppk, onHand y stock no sean todos 0
@@ -301,15 +327,27 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             return { ...state, nativeData: newData }
         }
         
-        case TYPES.SET_PRIORITY: {
-            //HAY QUE ADAPTARLO FALLAA
-            let newData = structuredClone(state.data);
-            let existItem = newData.find((item) => item.id === action.payload);
-            existItem.priority = 'LOW';
-            let newDataTable = structuredClone(state.table);
-            let existItemTable = newDataTable.find((item) => item.id === action.payload);
-            existItemTable.priority = 'LOW';
+        
+        case TYPES.UPDATE_TABLE: {
+            let newData = mergeDataTable(state.nativeData)
             return { ...state, nativeData: newData }
+        }
+        
+        case TYPES.UPDATE_PRIORITY: {
+            let newData = structuredClone(state.nativeData);
+            newData.forEach((item) => {
+                if (item.id === action.dataItem.id) {
+                    item.priority = action.dataItem.status;
+                }
+            });
+
+            newDataTable = formatDataTable(newData) || [];
+            return { 
+                ...state, 
+                nativeData: newData,
+                dataTable: newDataTable, 
+                renderTable: filterDataTable(state.filters, newDataTable),
+            };
         }
 
         //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS //FILTERS
@@ -343,7 +381,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
 
         case TYPES.FILTER_PRIORITY: {
             var filters = structuredClone(state.filters);
-            filters.reWork.key = action.key
+            filters.priority.key = action.key
             return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
 
@@ -380,7 +418,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 isolated: action.dataItem, 
                 overView: {
                     active: state.overView.active,
-                    data: sortedDetails(action.dataItem.id, state.nativeData),
+                    data: sortedDetails(action.dataItem?.id, state.nativeData),
                 }
             }
         }

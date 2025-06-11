@@ -46,6 +46,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 description: newInventory.description,
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
+                priority: 'LOW',
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -55,6 +56,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 partNumber: arrayUnion(snapInventory.data().partNumber, newInventory.partNumber),
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
+                priority: 'LOW',
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -65,6 +67,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 description: OUT_SYS,
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
+                priority: 'LOW',
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -75,6 +78,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
                 description: newInventory.description,
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
+                priority: 'LOW',
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
@@ -85,4 +89,50 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
         throw new Error("No se pudo agregar la parte: " + error.message);
     }
     return batch;
+}
+
+export async function setCategoryOfInventoryPart(partNumber, newCategory) {
+    try {
+        // Obtener el documento
+        const inventoryDoc = await getInventoryByPartNumber(partNumber);
+        if (!inventoryDoc) {
+            throw new Error("No se encontró un documento de inventario para ese partNumber.");
+        }
+
+        const refInventory = doc(db, "Inventory", inventoryDoc.id);
+
+        // Actualizar directamente con setDoc
+        await setDoc(refInventory, {
+            category: newCategory,
+            lastUpdate: Timestamp.now()
+        }, { merge: true });
+
+        console.log("Categoría actualizada correctamente.");
+    } catch (error) {
+        throw new Error("No se pudo actualizar la categoría: " + error.message);
+    }
+}
+
+export async function setPriorityOfInventoryPart(partNumber, newPriority) {
+    console.log(partNumber)
+    try {
+        // Obtener el documento
+        const inventoryDoc = await getInventoryByPartNumber(partNumber);
+        if (!inventoryDoc) {
+            throw new Error("No se encontró un documento de inventario para ese partNumber.");
+        }
+
+        const refInventory = doc(db, "Inventory", inventoryDoc.id);
+
+        // Actualizar directamente con setDoc
+        await setDoc(refInventory, {
+            priority: newPriority,
+            lastUpdate: Timestamp.now()
+        }, { merge: true });
+        console.log("Prioridad actualizada correctamente.");
+
+        return inventoryDoc.id
+    } catch (error) {
+        throw new Error("No se pudo actualizar la prioridad: " + error.message);
+    }
 }

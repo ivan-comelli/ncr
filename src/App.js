@@ -8,10 +8,9 @@ import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/ma
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/async';
-import { openOverview, closeOverview } from './redux/actions/sync';
+import { openOverview, closeOverview, filterReWork, filterPriority } from './redux/actions/sync';
 import UploadIcon from '@mui/icons-material/Sync';
 import BackIcon from '@mui/icons-material/ArrowBack';
-import { ClipLoader } from 'react-spinners';
 import BatchImport from './components/Inventory/BatchImport';
 import { StockBar } from './components/Inventory/QuickActionsBar';
 import CheckerMovement from './components/ItemPart/CheckerMovement';
@@ -19,11 +18,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chip, Box, FormControl } from '@mui/material';
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/autoplay";
 
-import { Autoplay } from "swiper/modules";
 
 const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState({
@@ -48,6 +43,18 @@ const useWindowDimensions = () => {
 };
 
 function App() {
+
+  const ITEM_HEIGHT = 48;
+  const ITEM_PADDING_TOP = 8;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  };
+
   const [modalPromise, setModalPromise] = useState();
   const [showModal, setShowModal] = useState(false);
   const { width, height } = useWindowDimensions();
@@ -55,17 +62,23 @@ function App() {
   const isLoading = useSelector((state) => state.inventory.stepLoading);
   const loaderDispatch = useSelector((state) => state.inventory.stepLoading);
   const activeDetail = useSelector((state) => state.inventory.activeDetail);
+
   const [minified, setMinified] = useState(false);
-  const searchGlobal = useSelector(state => state.inventory.search);
   const [petitionSubmit, setPetitionSubmit] = useState();
   const [open, setOpen] = useState(false);
-  const [statusSelect, setStatusSelect] = useState("default")
-  const [typeSelect, setTypeSelect] = useState("default")
-  const [indexPrio, setIndexPrio] = useState(0)
-  const PRIO = ["HIGH", "MID", "LOW"]
+  const [statusSelect, setStatusSelect] = useState("default");
+  const [typeSelect, setTypeSelect] = useState();
+  const [indexPrio, setIndexPrio] = useState();
+  const [categoryValues, setCategoryValues] = useState([]);  
+
+  const searchGlobal = useSelector(state => state.inventory.search);
+  const priority = useSelector(state => state.inventory.filters.priority)
+  const reWork = useSelector((state) => state.inventory.filters.reWork);
+  const status = useSelector((state) => state.inventory.filters.status);
+  const category = useSelector((state) => state.inventory.filters.category);
+
   const dispatch = useDispatch();
 
-  const items = ["S1-S2", "BNA3", "GBRU", "BRM", "SRU", "ATM", "SCPM", "S1-S2", "BNA3", "GBRU", "BRM", "SRU", "ATM", "SCPM", "S1-S2", "BNA3", "GBRU", "BRM", "SRU", "ATM", "SCPM"];
 
   const [settings, setSettings] = useState(null);
 
@@ -76,6 +89,18 @@ function App() {
   useEffect(() => {
     setSearch(searchGlobal);
   }, [searchGlobal]);
+
+  useEffect(() => {
+    setTypeSelect(reWork.key)
+  }, [reWork.key])
+
+  useEffect(() => {
+    setIndexPrio(priority.key)
+  }, [priority.key])
+
+  useEffect(() => {
+    setCategoryValues([category.key])
+  }, [category.key])
 
   useEffect(() => {
     setMinified(width < 768 ? true : false);
@@ -93,6 +118,24 @@ function App() {
       setSearch(""); // Borra el texto si la barra está abierta y tiene contenido
       dispatch(lazySearch(""));
   };
+
+  const changeTypeFilter = (event, value) => {
+    dispatch(filterReWork(value));
+  }
+
+  const changePriorityFilter = (event, value) => {
+    dispatch(filterPriority((indexPrio + 1) % 4));
+  }
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setCategoryValues(
+      typeof value === 'string' ? value.split(',') : value,
+    );
+  };
+  
 
   const openModal = async () => {
     try {
@@ -160,70 +203,70 @@ function App() {
                 
                     <ToggleButtonGroup
                       value={typeSelect}
-                      onChange={(event, value) => setTypeSelect(value)}
+                      onChange={changeTypeFilter}
                       exclusive
                       autoFocus={false}
                       aria-label="Tipo"
                       className='select-type'
                     >
-                      <ToggleButton value="default" aria-label="Ninguno">
-                        Cualquiera
-                      </ToggleButton>
-                      <ToggleButton value="RW" aria-label="ReWork">
-                        ReWork
-                      </ToggleButton>
-                      <ToggleButton value="noRW" aria-label="Consumible">
-                        Consumible
-                      </ToggleButton>
+                      {
+                        reWork.values.map((item, index) => (
+                          <ToggleButton key={index} value={index} aria-label="Ninguno">
+                            { item }
+                          </ToggleButton>
+                        ))
+                      }
                     </ToggleButtonGroup>
                     <IconButton 
                       variant="contained" 
                       color="primary" 
-                      className={`priority-icon ${PRIO[indexPrio]}`} 
-                      onClick={() => setIndexPrio(prev => (prev + 1) % 3)}
+                      className={`priority-icon ${priority.values[indexPrio]}`} 
+                      onClick={() => changePriorityFilter()}
                     />
-                    <ToggleButtonGroup
-                      value={statusSelect}
-                      onChange={(event, value) => setStatusSelect(value)}
-                      exclusive
-                      autoFocus={false}
-                      aria-label="Estados"
-                      className='select-status'
-                    >
-                      <ToggleButton value="default" aria-label="Ninguno">
-                        Todos
-                      </ToggleButton>
-                      <ToggleButton value="issue" aria-label="Conflictivos">
-                        Conflictos
-                      </ToggleButton>
-                      <ToggleButton value="failed" aria-label="Fallos">
-                        Fallos
-                      </ToggleButton>
-                      <ToggleButton value="adjust" aria-label="Ajustados">
-                        Ajustados
-                      </ToggleButton>
-                      <ToggleButton value="critical" aria-label="Criticos">
-                        Criticos
-                      </ToggleButton>
-                    </ToggleButtonGroup>
-                    <Swiper
-                      modules={[Autoplay]}  
-                      slidesPerView={settings}     
-                      spaceBetween={10}      
-                      loop={true}            
-                      autoplay={{
-                        delay: 0,          
-                        disableOnInteraction: false, 
+                    <Select
+                      id="category-multiple-chip"
+                      className='category'
+                      multiple
+                      fullWidth
+                      value={categoryValues}
+                      onChange={handleChange}
+                      renderValue={(selected) => (
+                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                          {selected.map((value) => (
+                            <Chip
+                              key={value}
+                              label={category.values[value] || value}
+                              sx={{
+                                maxWidth: '100%',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap',
+                              }}
+                            />
+                          ))}
+                        </Box>
+                      )}
+                      sx={{
+                        width: '100%',
+                        '.MuiSelect-select': {
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                        },
                       }}
-                      speed={2000}      
-                      className="category"
                     >
-                      {items.map((item, index) => (
-                        <SwiperSlide>
-                          <Chip key={index} variant="outlined" label={item} sx={{p: "1rem"}}/>
-                        </SwiperSlide>
+                      {category.values.map((name, index) => (
+                        <MenuItem
+                          key={index}
+                          value={index}
+                          sx={{
+                            whiteSpace: 'normal',
+                            wordWrap: 'break-word',
+                          }}
+                        >
+                          {name}
+                        </MenuItem>
                       ))}
-                    </Swiper>
+                    </Select>
                   </FormControl>
                 ) : (
                   <LinearProgress variant="determinate" value={loaderDispatch} />

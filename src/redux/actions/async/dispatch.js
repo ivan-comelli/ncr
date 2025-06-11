@@ -1,6 +1,6 @@
 import { collection, writeBatch, doc, getDocs, getDoc, setDoc, Timestamp, updateDoc } from "firebase/firestore";
 import { db } from '../../../api/firebase';
-import { getInventoryByPartNumber, setInventoryPart } from '../../../api/MainCollectionInventoryApi'
+import { getInventoryByPartNumber, setInventoryPart, setPriorityOfInventoryPart } from '../../../api/MainCollectionInventoryApi'
 import { setStockToSomePart } from '../../../api/SubCollectionStockApi'
 import { setTechnicianToSomePart, initTechnicianToSomePart } from '../../../api/SubCollectionTechnicianApi'
 
@@ -8,8 +8,8 @@ import {
     dispatchInventoryFailure, 
     dispatchInventorySuccess, 
     dispatchInventoryStart, 
-    setStock,
-    setStepLoader
+    setStepLoader,
+    updatePriority
 } from '../sync';
 
 export function dispatchBulkInventory(data) {
@@ -180,6 +180,19 @@ export function dispatchBulkInventory(data) {
             dispatch(dispatchInventoryFailure(error.message));
             dispatch(setStepLoader(0)); 
             throw error;
+        }
+    };
+}
+
+export function dispatchUpdatePriority(item) {
+    return async (dispatch) => {
+        try {
+            const response = await setPriorityOfInventoryPart(item.partNumber, item.priority);
+            console.log("API response:", response);
+
+            dispatch(updatePriority(response, item.priority));
+        } catch (err) {
+            console.error("Fallo el seteo", err);
         }
     };
 }

@@ -24,6 +24,7 @@ import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
+import { dispatchUpdatePriority } from '../../redux/actions/async';
 import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../redux/actions/sync';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
@@ -110,7 +111,7 @@ const TableInventory = ({ minified }) => {
 
   // Establecer prioridad
   const handleSetPriority = (priority) => {
-    dispatch(setPriority(selectedItem.id, priority))
+    dispatch(dispatchUpdatePriority({...selectedItem, priority: priority}));
     handleClose();
   };
 
@@ -144,7 +145,7 @@ const TableInventory = ({ minified }) => {
                {!minified && <Cell>{item?.onHand}</Cell>}
                {!minified && <Cell>{item?.ppk}</Cell>}
                {!minified && <Cell>{item?.cost}</Cell>}
-               {!minified && <Cell>{item?.reWork ? "T" : "F"}</Cell>}
+               {!minified && <Cell>{item.reWork != null ? (item.reWork ? "T" : "F") : ''}</Cell>}
                <Cell>{item?.partNumber != "" && <span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/>}</Cell>
              </Row>
            ))}
