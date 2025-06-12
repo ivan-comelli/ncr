@@ -36,7 +36,7 @@ const initialStateInventory = {
             key: null
         },
         category: {
-            values: ['CASH', 'BNA3', 'SCPM', 'SRU', 'GBRU', 'BRM', 'CPU', 'ATM', 'TOOL'],
+            values: ['CASH', 'BNA3', 'SCPM', 'SRU', 'GBRU', 'BRM', 'CPU', 'ATM', 'READ', 'TOOL', 'PRINT'],
             key: []
         },
         priority: {
