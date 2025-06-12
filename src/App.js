@@ -197,7 +197,7 @@ function App() {
           <>
             <div className={`container ${minified ? 'full' : ''}`}>
               {
-                loaderDispatch ? ( <LinearProgress variant="determinate" value={loaderDispatch} />):(<></>)
+                loaderDispatch ? ( <LinearProgress variant="determinate" value={loaderDispatch} />):(<div className='emty-bar'></div>)
               } 
                 <FormControl size="small" className={`tool-bar ${minified || activeDetail ? 'minified' : ''}`}>
                   <IconButton 

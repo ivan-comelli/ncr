@@ -445,3 +445,7 @@ tr {
 .layout-table button {
   width: 100%;
 }
+.emty-bar {
+  height: .2rem;
+  width: 100%;
+}
