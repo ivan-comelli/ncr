@@ -11,7 +11,7 @@ import {
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import { useTree } from "@table-library/react-table-library/tree";
-import { Menu, MenuItem } from "@mui/material";
+import { Menu, MenuItem, Button } from "@mui/material";
 import CategoryIcon from "@mui/icons-material/ViewListOutlined";
 import IconPrio from '@mui/icons-material/PriorityHigh';
 import IconPPK from '@mui/icons-material/AssignmentOutlined';
@@ -129,6 +129,11 @@ const TableInventory = ({ minified }) => {
 
   return (
     <div className={`view-table ${isolated ? 'isIsolated' : ''}`} >
+      <div className="layout-table">
+        <Button variant="outlined">Explorador</Button>
+        <Button variant="outlined">Analitico</Button>
+        <Button variant="outlined">Avanzado</Button>
+      </div>
       <Table data={ {nodes: collectionData} } theme={theme} tree={tree}>
        {(tableList) => (
          <>

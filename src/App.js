@@ -262,6 +262,7 @@ function App() {
                         },
                         '&.MuiOutlinedInput-root': {
                           minHeight: '28px',    // 🔽 altura total menor (puede ajustarse aún más)
+                          borderRadius: '1rem',
                         },
                       }}
                     >
