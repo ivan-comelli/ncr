@@ -197,95 +197,90 @@ function App() {
           <>
             <div className={`container ${minified ? 'full' : ''}`}>
               {
-                !loaderDispatch ? (
-                  <FormControl size="small" className={`tool-bar ${minified || activeDetail ? 'minified' : ''}`}>
-                    <IconButton 
-                      className="sync"
-                      variant="contained" 
-                      color="primary" 
-                      onClick={openModal}
-                    > 
-                      <UploadIcon fontSize="small"></UploadIcon>
-                    </IconButton>
-                
-                    <ToggleButtonGroup
-                      value={typeSelect}
-                      onChange={changeTypeFilter}
-                      exclusive
-                      autoFocus={false}
-                      aria-label="Tipo"
-                      className='select-type'
-                    >
-                      {
-                        reWork.values.map((item, index) => (
-                          <ToggleButton key={index} value={index} aria-label="Ninguno">
-                            { item }
-                          </ToggleButton>
-                        ))
-                      }
-                    </ToggleButtonGroup>
-                    <IconButton 
-                      variant="contained" 
-                      color="primary" 
-                      className={`priority-icon ${priority.values[indexPrio]}`} 
-                      onClick={() => changePriorityFilter()}
-                    />
-                    <Select
-                      id="category-multiple-chip"
-                      className='category'
-                      multiple
-                      fullWidth
-                      value={categoryValues}
-                      onChange={handleChange}
-                      renderValue={(selected) => (
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                          {selected.map((value) => (
-                            <Chip
-                              key={value}
-                              label={category.values[value] || value}
-                              sx={{
-                                maxWidth: '100%',
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                                whiteSpace: 'nowrap',
-                              }}
-                            />
-                          ))}
-                        </Box>
-                      )}
-                      sx={{
-                        width: '100%',
-                        '.MuiSelect-select': {
-                          paddingTop: '3px',    // 🔽 menos padding vertical
-                          paddingBottom: '3px',
-                          minHeight: 'unset',   // elimina alto mínimo fijo
-                        },
-                        '&.MuiOutlinedInput-root': {
-                          minHeight: '28px',    // 🔽 altura total menor (puede ajustarse aún más)
-                          borderRadius: '1rem',
-                        },
-                      }}
-                    >
-                      {category.values.map((name, index) => (
-                        <MenuItem
-                          key={index}
-                          value={name}
-                          sx={{
-                            whiteSpace: 'normal',
-                            wordWrap: 'break-word',
-                          }}
-                        >
-                          {name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                ) : (
-                  <LinearProgress variant="determinate" value={loaderDispatch} />
-                )
-              }
+                loaderDispatch ? ( <LinearProgress variant="determinate" value={loaderDispatch} />):(<></>)
+              } 
+                <FormControl size="small" className={`tool-bar ${minified || activeDetail ? 'minified' : ''}`}>
+                  <IconButton 
+                    className="sync"
+                    variant="contained" 
+                    color="primary" 
+                    onClick={openModal}
+                  > 
+                    <UploadIcon fontSize="small"></UploadIcon>
+                  </IconButton>
               
-           
+                  <ToggleButtonGroup
+                    value={typeSelect}
+                    onChange={changeTypeFilter}
+                    exclusive
+                    autoFocus={false}
+                    aria-label="Tipo"
+                    className='select-type'
+                  >
+                    {
+                      reWork.values.map((item, index) => (
+                        <ToggleButton key={index} value={index} aria-label="Ninguno">
+                          { item }
+                        </ToggleButton>
+                      ))
+                    }
+                  </ToggleButtonGroup>
+                  <IconButton 
+                    variant="contained" 
+                    color="primary" 
+                    className={`priority-icon ${priority.values[indexPrio]}`} 
+                    onClick={() => changePriorityFilter()}
+                  />
+                  <Select
+                    id="category-multiple-chip"
+                    className='category'
+                    multiple
+                    fullWidth
+                    value={categoryValues}
+                    onChange={handleChange}
+                    renderValue={(selected) => (
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {selected.map((value) => (
+                          <Chip
+                            key={value}
+                            label={category.values[value] || value}
+                            sx={{
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap',
+                            }}
+                          />
+                        ))}
+                      </Box>
+                    )}
+                    sx={{
+                      width: '100%',
+                      '.MuiSelect-select': {
+                        paddingTop: '3px',    // 🔽 menos padding vertical
+                        paddingBottom: '3px',
+                        minHeight: 'unset',   // elimina alto mínimo fijo
+                      },
+                      '&.MuiOutlinedInput-root': {
+                        minHeight: '28px',    // 🔽 altura total menor (puede ajustarse aún más)
+                        borderRadius: '1rem',
+                      },
+                    }}
+                  >
+                    {category.values.map((name, index) => (
+                      <MenuItem
+                        key={index}
+                        value={name}
+                        sx={{
+                          whiteSpace: 'normal',
+                          wordWrap: 'break-word',
+                        }}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               <TableInventory />
             </div>
             <div className='aditional'>
