@@ -83,7 +83,20 @@ const mergeDataTable = (newData, data) => {
                 console.log(existingItem)
                 existingItem.stock.forEach((newStock) => {
                     let existStockOp = item.stock.detail.find((item) => item.id === newStock.id);
+
+                    if (newStock.req === 'DELETE') {
+                        if (existStockOp) {
+                            item.stock.detail = item.stock.detail.filter((item) => item.id !== newStock.id);
+                            // También podría ser necesario restar su cantidad del total:
+                            const csrKey = existStockOp.csr.toLowerCase();
+                            const quantity = Number(existStockOp.stock);
+                            item.stock.total[csrKey] = (item.stock.total[csrKey] || 0) - quantity;
+                        }
+                        return; // saltar al siguiente newStock
+                    }
+                
                     console.log(existStockOp)
+
                     let mergeStockData = {
                         id: newStock.id || existStockOp.id,
                         csr: newStock.csr?.toLowerCase() || existStockOp.csr.toLowerCase(),

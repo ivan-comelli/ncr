@@ -11,6 +11,7 @@ const options = [
 export async function getInventoryByPartNumber(partNumber) {
     const inventoryCollectionRef = collection(db, "Inventory");
     let inventoryDoc = null;
+    console.log(`PartNumber To Search is ${partNumber}`);
     try {
         if (!Array.isArray(partNumber) || partNumber.length === 0 || partNumber[0] === '') {
             throw new Error("Error 'partNumbers' no es un array válido o está vacío.");
@@ -18,6 +19,7 @@ export async function getInventoryByPartNumber(partNumber) {
         const q = query(inventoryCollectionRef, where("partNumber", "array-contains-any", partNumber));
         const allDocs = await getDocs(q);
         if (!allDocs.empty) {
+            console.log('Coincidence');
             inventoryDoc = allDocs.docs[0];
         } else if(allDocs.size > 1) {
             throw new Error("Hay mas de una coincidencia"); 
@@ -35,38 +37,47 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
     };
 
     try {
+        console.groupCollapsed(`Set Part in Inventory ${refInventory}`);
         if(!refInventory) {
             throw new Error("No hay referencia para actualizar");
         }
-
+        console.log(`Array of PartNumbers`);
+        console.log(arrayUnion);
+        console.log(`Description ${newInventory.description}`);
+        console.log(`ReWork ${newInventory.reWork}`);
+        console.log(`Cost ${newInventory.cost}`);
         const snapInventory = await getDoc(refInventory);
+        
         if(snapInventory.data() && snapInventory.data().description == OUT_SYS && newInventory.description) {
+            console.log(`Exist Part On Reference But Not Have Description`);
             batch.set(refInventory, {
                 partNumber: arrayUnion(snapInventory.data().partNumber, newInventory.partNumber),
-                description: newInventory.description,
-                reWork: newInventory.reWork,
-                cost: newInventory.cost,
-                priority: 'LOW',
-                category: null,
+                description: newInventory.description || snapInventory.data().description,
+                reWork: newInventory.reWork || snapInventory.data().reWork,
+                cost: newInventory.cost || snapInventory.data().cost,
+                priority: snapInventory.data().priority || 'LOW',
+                category: snapInventory.data().category ||  null,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
         }
         else if(snapInventory.data() && snapInventory.data().description) {
+            console.log(`Exist Part On Reference With Description`);
             batch.set(refInventory, {
                 partNumber: arrayUnion(snapInventory.data().partNumber, newInventory.partNumber),
-                reWork: newInventory.reWork,
-                cost: newInventory.cost,
-                priority: 'LOW',
-                category: null,
+                reWork: newInventory.reWork || snapInventory.data().reWork,
+                cost: newInventory.cost || snapInventory.data().cost,
+                priority: snapInventory.data().priority || 'LOW',
+                category: snapInventory.data().category ||  null,
                 lastUpdate: Timestamp.now()
             }, 
             { merge: true });
         }
-        else if(!snapInventory.data() && !newInventory.description){
+        else if(!snapInventory.data()){
+            console.log(`Not Exist Part On Reference`);
             batch.set(refInventory, {
                 partNumber: newInventory.partNumber,
-                description: OUT_SYS,
+                description: newInventory.description || OUT_SYS,
                 reWork: newInventory.reWork,
                 cost: newInventory.cost,
                 priority: 'LOW',
@@ -75,19 +86,7 @@ export async function setInventoryPart(refInventory, newInventory, batch) {
             }, 
             { merge: true });
         }
-        else if (!snapInventory.data() && newInventory.description) {
-            batch.set(refInventory, {
-                partNumber: newInventory.partNumber,
-                description: newInventory.description,
-                reWork: newInventory.reWork,
-                cost: newInventory.cost,
-                priority: 'LOW',
-                category: null,
-                lastUpdate: Timestamp.now()
-            }, 
-            { merge: true });
-        }
-
+        console.groupEnd();
        
     } catch(error) {
         throw new Error("No se pudo agregar la parte: " + error.message);
@@ -111,7 +110,7 @@ export async function setCategoryOfInventoryPart(partNumber, newCategory) {
             lastUpdate: Timestamp.now()
         }, { merge: true });
 
-        console.log("Categoría actualizada correctamente.");
+        console.info("Categoría actualizada correctamente.");
         return inventoryDoc.id
 
     } catch (error) {
@@ -120,7 +119,6 @@ export async function setCategoryOfInventoryPart(partNumber, newCategory) {
 }
 
 export async function setPriorityOfInventoryPart(partNumber, newPriority) {
-    console.log(partNumber)
     try {
         // Obtener el documento
         const inventoryDoc = await getInventoryByPartNumber(partNumber);
@@ -135,7 +133,7 @@ export async function setPriorityOfInventoryPart(partNumber, newPriority) {
             priority: newPriority,
             lastUpdate: Timestamp.now()
         }, { merge: true });
-        console.log("Prioridad actualizada correctamente.");
+        console.info("Prioridad actualizada correctamente.");
 
         return inventoryDoc.id
     } catch (error) {

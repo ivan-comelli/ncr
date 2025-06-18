@@ -56,10 +56,9 @@ const TableHistory = () => {
 
     }, []);
     useEffect(() => {
+
         if (Array.isArray(mainDataTable)) {
-            const data = mainDataTable.filter((item) => item.status !== "SYNC");
-            setCollectionData(data);
-            console.log(data)
+            setCollectionData(mainDataTable);
         }
     }, [mainDataTable]);
     return (

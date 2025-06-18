@@ -40,8 +40,9 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
 
 export async function initTechnicianToSomePart(refInventory, batch) {
     try {
+        console.groupCollapsed(`Initialization Teechnician in Part: ${refInventory}`);
         options.forEach((item) => {
-            console.log(item)
+            console.log(`Init ${item.name}`);
             batch.set(doc(collection(refInventory, "technicians")), {
                 name: item.name,
                 csr: item.csr.toLowerCase(),
@@ -50,6 +51,7 @@ export async function initTechnicianToSomePart(refInventory, batch) {
                 lastUpdate: Timestamp.now()
             });
         })
+        console.groupEnd();
     }
     catch(e) {
 
@@ -62,11 +64,11 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
     //tengo que calcular la diferencia de OH en la ventana del ultimo periodo registrado
     //por cada technician de parte hay que ir a validar el stock
     //ACA FALLA porque si el tecnico no tiene ningun registro de onHand en una pieza tira error
+    console.groupCollapsed(`Setting Technician`);
     console.log(lastLog.onHand)
-    const diff = newTechnician.onHand - lastLog.onHand;
 
     console.log(newTechnician.csr)
-    await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr, diff, [lastLog.createdAt, newTechnician.createdAt]);
+    await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr,  newTechnician.onHand);
 
     try {
         if(!refTechnician) {
@@ -83,5 +85,6 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
     } catch(error) {
         throw new Error("No se pudo agregar al tecnico: " + error.message);
     }
+    console.groupEnd();
     return batch;
 }

@@ -79,12 +79,28 @@ function App() {
 
   const dispatch = useDispatch();
 
-
+  const data = useSelector((state) => state.inventory.renderTable);
+  const [neto, setNeto] = useState(0);
   const [settings, setSettings] = useState(null);
 
   useEffect(() => {
     dispatch(fetchAllInventory());
   }, []);
+
+  useEffect(() => {
+    let value = 0;
+    data.forEach(element => {
+      value += (element.cost * element.onHand);
+    });
+    setNeto(Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(value));
+  }, [data]);
+
+
 
   useEffect(() => {
     setSearch(searchGlobal);
@@ -282,13 +298,18 @@ function App() {
                   </Select>
                 </FormControl>
               <TableInventory />
+              <div className='info'>
+        Capital Neto es de <span>{ neto }</span> de dolares
+      </div>
             </div>
             <div className='aditional'>
               <IconButton variant="contained" color="primary" className="middle-back" onClick={() => dispatch(closeOverview())}><BackIcon></BackIcon></IconButton>
               <OverviewItem/>
             </div>
+            
           </>
       }
+   
       <CheckerMovement petition={ petitionSubmit }/>
       <BatchImport show={showModal} resolveModal={modalPromise?.resolve} rejectModal={modalPromise?.reject} />
     </div>

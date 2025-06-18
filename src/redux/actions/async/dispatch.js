@@ -14,6 +14,7 @@ import {
 } from '../sync';
 
 export function dispatchBulkInventory(data) {
+    console.groupCollapsed("Start Dispatch in Bulk Invetory Parts...");
     return async (dispatch) => {
         var batch = writeBatch(db);
         let loadingProgress = 0;
@@ -24,17 +25,26 @@ export function dispatchBulkInventory(data) {
             dispatch(dispatchInventoryStart(false));
             let index = 1;
             const length = data.length;
+            console.group(`Exist ${length} Registers to Process`);
             for (const item of data) {
+                console.groupCollapsed(`Iteration: ${index}`);
+                console.groupCollapsed(`Item of New Part to Input`);
+                console.debug(item);
                 loadingProgress = (index / length) * 100;
                 index += 1;
                 let snapShotInventory = await getInventoryByPartNumber(item.partNumber);
+                console.info(`Response of Get Inventory By Part Number`);
+                console.debug(snapShotInventory);
+
                 let batchFindInventoryId = batch._mutations.find((doc) => { 
+
                     if(doc.type == 1){
                         data = doc?.data.value.mapValue.fields;
                     }
                     else if (doc.type == 0) {
                         data = doc?.value.value.mapValue.fields;
                     }
+                   
                     let partNumberDocBatch = data.partNumber;
                     if(partNumberDocBatch) { 
                         return partNumberDocBatch.arrayValue.values.find((part) => item.partNumber == part.stringValue);
@@ -42,52 +52,78 @@ export function dispatchBulkInventory(data) {
                     else {
                         return false
                     }
+
                 });
-    
+
                 if(batchFindInventoryId) batchFindInventoryId = batchFindInventoryId.key.path.segments[1];
+                console.log(`Is ${batchFindInventoryId ? 'ID: ' + batchFindInventoryId : 'Not'} Find Repeat PartNumber In Batch`)
+
                 let refInventory;
+
+                console.info('Option For Capture Document Reference Is:')
                 if (snapShotInventory) {
+                    console.info('With SnapShot');
                     refInventory = snapShotInventory.ref;
                 } else if (batchFindInventoryId) {
+                    console.info('With Batch Coincidence');
                     refInventory = doc(db, "Inventory", batchFindInventoryId);
                 } else {
+                    console.info('With Create a New Document');
                     refInventory = doc(collection(db, "Inventory"));
+                    console.groupCollapsed('Initialized Technician for Part Emty');
                     batch = await initTechnicianToSomePart(refInventory, batch);
+                    console.groupEnd();
                 }
-     
-                
+                console.groupEnd();
+                console.groupCollapsed('Setter Inventory Part All Batch');
                 batch = await setInventoryPart(refInventory, item, batch);
-    
+                console.log(batch);
+                console.groupEnd();
+                
                 if (Object.keys(item?.stock || {}).length > 0) {
+                    console.groupCollapsed('Setter Stock in Inventory Parts');
                     batch = await setStockToSomePart(doc(collection(refInventory, "stock")), item.stock, batch);
+                    console.groupEnd();
                 }
+                
                 if (Object.keys(item?.technician || {}).length > 0) {
+                    console.groupCollapsed('Verify If Exist Action in Inventory For Same Part');
                     //deberia buscar si ya existe ese tecnico antes
-                    const existingTechnicians = await getDocs(collection(refInventory, "technicians"));
+                    const getTechniciansOfPart = await getDocs(collection(refInventory, "technicians"));
                     const technicianExists = (() => {
-                        let existingTechniciansInDb = existingTechnicians.docs.find(
+                        let existingTechniciansInDb = getTechniciansOfPart.docs.find(
                             (doc) => doc.data().csr.toLowerCase() === item.technician.csr.toLowerCase()
                         );
                         let existingTechniciansInBatch = batch._mutations.find(
-                            (doc) => {
+                            (doc, index) => {
+                                console.groupCollapsed(`Iteracion Batch Doc ${index}`);
+                                let isCoincident = false;
                                 if(doc.type == 1){
                                     data = doc?.data.value.mapValue.fields;
                                 }
                                 else if (doc.type == 0) {
                                     data = doc?.value.value.mapValue.fields;
                                 }
-            
+                                console.log('Data in Batch');
+                                console.log(data);
                                 if(doc.key.path.segments[2] === "technicians" && doc.key.path.segments[1] === refInventory.id) {
-                                    return data.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase()
+                                    isCoincident = data.csr.stringValue.toLowerCase() === item.technician.csr.toLowerCase();
                                 }
-                                return false
+                                console.log(`Technician Muted is ${isCoincident}`);
+                                console.groupEnd();
+                                return isCoincident;
                             }
                         );
-                        if(existingTechniciansInDb) existingTechniciansInDb = existingTechniciansInDb;
-                        if(existingTechniciansInBatch) existingTechniciansInBatch = doc(db, ...existingTechniciansInBatch.key.path.segments)
-                        return existingTechniciansInDb || existingTechniciansInBatch
+                        if(existingTechniciansInDb) console.log('Exist in DataBase');
+                        if(existingTechniciansInBatch) {
+                            existingTechniciansInBatch = doc(db, ...existingTechniciansInBatch.key.path.segments);
+                            console.log('Exist in Batch');
+                        }
+                        console.log('Response is: ');
+                        console.log(existingTechniciansInDb || existingTechniciansInBatch);
+                        console.groupEnd();
+                        return existingTechniciansInDb || existingTechniciansInBatch;
                     })();
-    
                     if (!technicianExists) {
                         batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians")), item.technician, batch);
                     }
@@ -96,9 +132,13 @@ export function dispatchBulkInventory(data) {
                     }
                 } 
                 dispatch(setStepLoader(Math.floor(loadingProgress))); 
+
+                console.groupEnd();
             }
+            console.groupEnd();
             await batch.commit();
 
+            console.groupCollapsed('Formating Batch for Response to Store');
             const lastUpdateFlag = doc(db, 'config', 'generalSettings');
             await setDoc(lastUpdateFlag, {lastUpdate: Timestamp.now()});
             //Ya que se procesa el batch, debo de recuperar el lastupdate mas nuevo, para guardarlo en el estado de sync de la db
@@ -143,17 +183,29 @@ export function dispatchBulkInventory(data) {
                         }
                     break;
                     case "stock":
-                        lotStock.push({
-                            id: item.key.path.segments[3],
-                            csr: data.csr?.stringValue,
-                            name: data.name?.stringValue,
-                            quantity: Number(data.quantity.integerValue),
-                            status: data.status?.stringValue,
-                            note: data.note?.stringValue,
-                            lastUpdate: {
-                                seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000)
-                            }
-                        });
+                        if(item.type == 2 && item.key.path.segments[7] == 'stock' ) {
+                            //Es elemento borrado
+                            lotStock.push({
+                                id: item.key.path.segments[8],
+                                req: 'DELETE'                            
+                            });
+
+                        }
+                        else {
+                            lotStock.push({
+                                id: item.key.path.segments[3],
+                                req: "POST",
+                                csr: data.csr?.stringValue,
+                                name: data.name?.stringValue,
+                                quantity: Number(data.quantity.integerValue),
+                                status: data.status?.stringValue,
+                                note: data.note?.stringValue,
+                                lastUpdate: {
+                                    seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000)
+                                }
+                            });
+                        }
+                  
                     break;
                     case "technicians":
                         lotTec.push({
@@ -173,16 +225,18 @@ export function dispatchBulkInventory(data) {
             formatData.push({
                 ...part,
                 stock: [...lotStock],
-                technician: [...lotTec],
+                technicians: [...lotTec],
             });
             dispatch(dispatchInventorySuccess(formatData));
             dispatch(setStepLoader(0)); 
+            console.groupEnd();
         } catch (error) {
             dispatch(dispatchInventoryFailure(error.message));
             dispatch(setStepLoader(0)); 
             throw error;
         }
     };
+    console.groupEnd();
 }
 
 export function dispatchUpdatePriority(item) {

@@ -81,7 +81,7 @@ export async function getAllStockOfSomePart(refInventory) {
 }
 
 export async function setStockToSomePart(refStock, newStock, batch) {
-    console.log(newStock)
+    console.log(`Set Stock ${newStock.quantity} To ${newStock.csr} On State ${newStock.status}`)
     if(!batch) {
         batch = writeBatch(db);
     }
@@ -104,7 +104,7 @@ export async function setStockToSomePart(refStock, newStock, batch) {
     return batch;
 }
 
-export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diffOnHand, period) {
+export async function verifyStockOfSomeTechnicianInPartBETA(batch, tecRef, csr, diffOnHand, period) {
     //aqui buscamos desde el inicio del periodo hacia atras hasta fichar como corrupto todo los pendientes
     //luego acumular todo el stock del periodo y eh ir verificando desde el ultimo registro si se puede validar siendo exacto el acumulado y el diferencia
     //si falla desestima el ultimo stock y trata de que coincida con el anterior
@@ -260,6 +260,87 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, diff
             console.log(period);
         }
             
+    } catch(e) {
+        console.error(e)
+    }
+    
+    //tengo que formatear el createDate para poder buscar con where en stock usando lastUpdaate
+    //El algoritmo va a borrar todas las operaciones de la ventana para simplificar y asi ahorrar memoria y gasto de recursos
+    return batch;
+}
+
+export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, onHand) {
+    //aqui buscamos desde el inicio del periodo hacia atras hasta fichar como corrupto todo los pendientes
+    //luego acumular todo el stock del periodo y eh ir verificando desde el ultimo registro si se puede validar siendo exacto el acumulado y el diferencia
+    //si falla desestima el ultimo stock y trata de que coincida con el anterior
+    //si falla en todos los casos busca el instante que estuvo mas cerca y catalogo los consiguientes como corruptos
+    //tambien estoy pensando si deberia simplificar las operaciones para reducir costes de almacenamiento4
+    if(!batch) {
+        batch = writeBatch(db);
+        
+    }
+    try {
+            const q = query(collection(tecRef.parent.parent, "stock"), where("csr", "==", csr.toLowerCase()));
+            const querySnapshot = await getDocs(q);
+
+            let balance = {
+                adjust: 0,
+                failed: 0,
+                sync: 0,
+                done: 0,
+                pendient: 0,
+                issue: 0
+            }
+
+            querySnapshot.forEach((doc) => {
+                let quantity = doc.data().quantity;
+                switch (doc.data().status) {
+                    case STATUS.ADJUST:
+                        //INMUTABLE
+                        balance.adjust += quantity;
+                        batch.delete(doc.ref);
+                    break;
+                    case STATUS.FAILED:
+                        //SE BORRA LUEGO DE UN PERIODO
+                        balance.failed += quantity;
+                        batch.delete(doc.ref);
+                    break;
+                    case STATUS.SYNC:
+                        //INMUTABLE
+                        balance.sync += quantity;
+                        batch.delete(doc.ref);
+                    break;
+                    case STATUS.DONE:
+                        //SE BORRAN LUEGO DE UN PERIODO SIENDO EL TRANSCURRIDO NO COMMPUTADO
+                        balance.done += quantity;
+                        batch.delete(doc.ref);
+                    break;
+                    case STATUS.PENDIENT:
+                        //SE COMPUTA Y NEUTRALIZA EL ESTADO PARA DEJAR REGISTRO
+                        balance.pendient += quantity;
+                        batch.delete(doc.ref);
+                    break;
+                    case STATUS.ISSUE:
+                        balance.issue += quantity;
+                    break;
+                    default:
+                        //SE ASUME QUE ES UN PENDIENTE
+                        balance.pendient += quantity;
+                        batch.delete(doc.ref);
+                    break;
+                }
+            });            
+            batch.set(doc(collection(tecRef.parent.parent, "stock")), {
+                status: STATUS.ISSUE,
+                quantity: onHand + balance.issue,
+                name: options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name,
+                csr: csr.toLowerCase(),
+                lastUpdate: Timestamp.now()
+            });
+            //Actualiza el updateAt del Main Ref, necesario para las actualizaciones optimizadas del fetch cliente
+            batch.set(doc(tecRef.parent.parent), {
+                lastUpdate: Timestamp.now()
+            }, { merge: true });
     } catch(e) {
         console.error(e)
     }
