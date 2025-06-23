@@ -16,6 +16,8 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
         if(!refInventory) {
             throw new Error("No hay referencia de la parte para actualizar");
         }
+        console.groupCollapsed(`Get technician of inventory ${refInventory.id}:`);
+
         const technicianCollectionRef = collection(refInventory, "technicians");
         let technicianSnapshot = null;
         if(identity){
@@ -28,10 +30,13 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
         if (technicianSnapshot.size > 1 && identity) {
             throw new Error("Hay mas de una coincidencia.");
         }
-        response = technicianSnapshot.docs.map(doc => ({
-            id: doc.id, // Incluye el ID del documento si es necesario
-            ...doc.data() // Extrae los datos del documento
-        }));
+        response = technicianSnapshot.docs.map(doc => {
+            console.log(`Tech ${doc.data().name} in ${doc.id}`)
+            return {
+                id: doc.id, // Incluye el ID del documento si es necesario
+                ...doc.data() // Extrae los datos del documento
+            }
+        });
     } catch(error) {
         throw new Error("No se pudo obtener el tecnico, " + error.message);
     }
@@ -40,10 +45,11 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
 
 export async function initTechnicianToSomePart(refInventory, batch) {
     try {
-        console.groupCollapsed(`Initialization Teechnician in Part: ${refInventory}`);
+        console.log(`Initialization technician of inventory ${refInventory.id}:`);
         options.forEach((item) => {
-            console.log(`Init ${item.name}`);
-            batch.set(doc(collection(refInventory, "technicians")), {
+            let docTech = doc(collection(refInventory, "technicians"));
+            console.log(`Init ${item.name} in ${docTech.id}`);
+            batch.set(docTech, {
                 name: item.name,
                 csr: item.csr.toLowerCase(),
                 onHand: 0,
@@ -51,7 +57,6 @@ export async function initTechnicianToSomePart(refInventory, batch) {
                 lastUpdate: Timestamp.now()
             });
         })
-        console.groupEnd();
     }
     catch(e) {
 
@@ -64,16 +69,14 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
     //tengo que calcular la diferencia de OH en la ventana del ultimo periodo registrado
     //por cada technician de parte hay que ir a validar el stock
     //ACA FALLA porque si el tecnico no tiene ningun registro de onHand en una pieza tira error
-    console.groupCollapsed(`Setting Technician`);
-    console.log(lastLog.onHand)
-
-    console.log(newTechnician.csr)
-    await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr,  newTechnician.onHand);
+    await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr, newTechnician.onHand);
 
     try {
         if(!refTechnician) {
             throw new Error("No hay referencia para actualizar");
         }
+        console.log(`Setting tech ${newTechnician.csr.toLowerCase()} in reference ${refTechnician.id}`);
+
         batch.set(refTechnician, {
             ...newTechnician,
             csr: newTechnician.csr.toLowerCase(),
@@ -85,6 +88,5 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
     } catch(error) {
         throw new Error("No se pudo agregar al tecnico: " + error.message);
     }
-    console.groupEnd();
     return batch;
 }

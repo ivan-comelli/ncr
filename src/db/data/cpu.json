@@ -1,0 +1,1040 @@
+[
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450790795.jpg",
+    "pn": [
+      "4450790795"
+    ],
+    "desc": "SERVICE PART - COMETLAKE MOTHERBOARD (COMETLAKE)",
+    "id": "8530a75c-40cc-4192-83b5-64e868b3c6b2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450792080.jpg",
+    "pn": [
+      "4450792080",
+      "4450770712"
+    ],
+    "desc": "SERVICE PART - MOTHERBOARD MISANO(SKYLAKE/KABYLAKE) CON 1 PUERTO LAN (2 puertos 4450770712 )(MISANO)",
+    "id": "05f78fe7-df9b-40a1-b694-bc8041599ba6"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450787152.jpg",
+    "pn": [
+      "4450787152",
+      "4450768317",
+      "4450767382",
+      "4450764456",
+      "4450761748"
+    ],
+    "desc": "SERVICE PART - ESTORIL MOTHERBOARD (INTEL HASWELL - ESTORIL)",
+    "id": "cb4c03a0-1d23-48e3-b62f-c1bdb7cd0a0f"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970475399.jpg",
+    "pn": [
+      "4970475399",
+      "4970470511"
+    ],
+    "desc": "Motherboard, Micro–ATX, Intel Sugar Bay, Pocono\t",
+    "id": "c798fecc-39a6-47d0-b4c5-6bb799cc548c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477586.jpg",
+    "pn": [
+      "4970477586",
+      "4970464481",
+      "4970464207",
+      "4970457004"
+    ],
+    "desc": "PCB-MAIN INTEL Q965, LGA 775 (TALLADEGA)\t",
+    "id": "cf42b3d6-d8eb-49cb-958f-a8bcb37ef0f8"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450771990.jpg",
+    "pn": [
+      "4450771990",
+      "4450765766",
+      "4450752088",
+      "4450746109",
+      "4450746025"
+    ],
+    "desc": "MOTHERBOARD, RIVERSIDE, INTEL",
+    "id": "519c3c45-9457-4597-ba0a-59827c5253e0"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450728233.jpg",
+    "pn": [
+      "4450728233",
+      "4970471130"
+    ],
+    "desc": "MOTHERBOARD - INTEL GL40 CHIPSET - MINI ITX (KINGSWAY)\t",
+    "id": "d8aa1bbb-3749-44e5-aaec-cceea056fc3d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450764018.jpg",
+    "pn": [
+      "4450764018"
+    ],
+    "desc": "I/O SHIELD ASSY - w/o RS232 (X1)/USB 2\t(MISANO)",
+    "id": "cdc37f08-cbe1-4235-ae3a-99561fff4632"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450766515.jpg",
+    "pn": [
+      "4450766515"
+    ],
+    "desc": "I/O SHIELD w/o RS232 (X1) / U (Estoril)\t",
+    "id": "1cd4b5a1-c8f8-4611-a209-cc39566a9920"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450734845.jpg",
+    "pn": [
+      "4450734845"
+    ],
+    "desc": "IO SHIELD - POCONO CORE\t",
+    "id": "9638956c-48b6-4542-8af3-9e5cc402bc68"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450708988.jpg",
+    "pn": [
+      "4450708988"
+    ],
+    "desc": "IO SHIELD - TALLADEGA CORE (TALLADEGA)\t",
+    "id": "2b0ba26e-f1db-4709-b2c3-411b03f8e4cf"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450725315.jpg",
+    "pn": [
+      "4450725315"
+    ],
+    "desc": "LANIER IO SHIELD (LANIER - KINGSWAY - RIVERSIDE\t)",
+    "id": "5dfc6e6f-b5ba-4dd4-8943-4db42cea564c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450743022.jpg",
+    "pn": [
+      "4450743022"
+    ],
+    "desc": "BRACKET ASSY - CORE I/O PANEL (LANIER - KINGSWAY - RIVERSIDE)\t",
+    "id": "62cd1629-4c86-435a-8578-8e298109e159"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068612565.jpg",
+    "pn": [
+      "0068612565"
+    ],
+    "desc": "SHIN ETSU X23 7783D THERMAL GREASE W/SYRINGE - 1 B\t",
+    "id": "73aa0277-473a-4422-9759-55440372fa39"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/6039015079.jpg",
+    "pn": [
+      "6039015079"
+    ],
+    "desc": "Tool-CPU Processor Removal/Insertion w/Repl. Cups\t",
+    "id": "32042ff3-79aa-4e49-8ea2-a62016465b9d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450790796.jpg",
+    "pn": [
+      "4450790796"
+    ],
+    "desc": "SERVICE PART - INTEL PROCESSOR CORE I5-10500E COMETLAKE\t",
+    "id": "49435780-7253-4568-af39-5f47d12706f9"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450790797.jpg",
+    "pn": [
+      "4450790797"
+    ],
+    "desc": "SERVICE PART - INTEL PROCESSOR CORE I7-10700TE COMETLAKE",
+    "id": "fda7ae1a-4db9-4beb-8548-56c065d45106"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970509805.jpg",
+    "pn": [
+      "4970509805"
+    ],
+    "desc": "SERVICE ASSEMBLY - Intel Processor Core i3-6100TE(SKYLAKE MISANO)\t",
+    "id": "a61d4a7d-a527-46f5-b8a4-77e93c94995c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970509808.jpg",
+    "pn": [
+      "4970509808"
+    ],
+    "desc": "SERVICE ASSEMBLY - Intel Processor Core i5-6500TE(SKYLAKE -MISANO )\t",
+    "id": "cbd514fc-0fed-4af2-80e3-e18c77c9002e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450777830.jpg",
+    "pn": [
+      "4450777830"
+    ],
+    "desc": "INTEL SKYLAKE I7-6700TE PROCESSOR 35W (SKYLAKE )- MISANO",
+    "id": "dae4d5ae-cff3-4d60-9e21-25afd71fde93"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970521233.jpg",
+    "pn": [
+      "4970521233"
+    ],
+    "desc": "SERVICE ASSEMBLY - INTEL CORE I3-7101TE PROCESSOR (KABYLAKE - MISANO)\t",
+    "id": "fd211c5d-1d91-44fe-a6d9-8e6c025c4db3"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970521234.jpg",
+    "pn": [
+      "4970521234"
+    ],
+    "desc": "SERVICE ASSEMBLY - INTEL CORE I5-7500T PROCESSOR (KABYLAKE - MISANO)\t",
+    "id": "1dc25ccb-1acb-47bc-b1cf-0950d04ea92e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450784249.jpg",
+    "pn": [
+      "4450784249"
+    ],
+    "desc": "INTEL CORE I7-7700T PROCESSOR (8M CACHE UP TO 3.8)(KABYLAKE - MISANO)",
+    "id": "a6a9a93e-8d29-4dea-9363-6cdaaa17bb61"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970502747.jpg",
+    "pn": [
+      "4970502747"
+    ],
+    "desc": "SERVICE ASSY - 7702 CELERON G1820TE - 2.2GHZ - LGA1150 (HASWELL - ESTORIL)\t",
+    "id": "fc795e63-0689-49e0-a367-4fc3c271df80"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970465231.jpg",
+    "pn": [
+      "4970465231"
+    ],
+    "desc": "CPU-INTEL E7400 PROCESSOR CORE 2 DUO 2.8GHZ (WOLFDALE - TALLADEGA)",
+    "id": "d7aab2b9-9af8-48b9-aee4-b50aef3c3a81"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477859.jpg",
+    "pn": [
+      "4970477859"
+    ],
+    "desc": "PROCESSOR INTEL CELERON G530T - 2.0 GHZ - LGA1155 (SANDY BRIDGE - POCONO)",
+    "id": "bda592e1-9f30-40aa-8677-bf7dbd96b068"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477861.jpg",
+    "pn": [
+      "4970477861"
+    ],
+    "desc": "PROCESSOR INTEL CORE i3 2120T - 2.6 GHZ - LGA1155 (RIVERSIDE - BRISTOL II\t)",
+    "id": "8c292d35-bacb-4cee-ab2a-692f7a35b9b1"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477862.jpg",
+    "pn": [
+      "4970477862"
+    ],
+    "desc": "PROCESSOR INTEL CORE i5 2390T - 2.7 GHZ - LGA1155 (RIVERSIDE - BRISTOL II)\t",
+    "id": "2b334e3f-88b7-4a38-824a-0552f63d5748"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507673.jpg",
+    "pn": [
+      "4970507673"
+    ],
+    "desc": "PROCESSOR INTEL CORE i5 3470T - 2.9 GHZ - LGA1155( BRISTOL II )",
+    "id": "c2dd0326-3ec0-41a2-bf5e-1c4a06186726"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507338.jpg",
+    "pn": [
+      "4970507338"
+    ],
+    "desc": "SERVICE ASSY - 7702 INTEL CORE I3 4330TE 2.4 GHZ - LGA1150\t(ESTORIL - MONACO)",
+    "id": "50052dee-1aa2-41be-99ff-1ed7b3423583"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507339.jpg",
+    "pn": [
+      "4970507339"
+    ],
+    "desc": "SERVICE ASSY - 7702 INTEL CORE I5 4590T - 2.0GHZ - LGA1150\t(ESTORIL - MONACO)",
+    "id": "b19fd251-fb88-42ed-8662-266394f8f864"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450775205.jpg",
+    "pn": [
+      "4450775205"
+    ],
+    "desc": "SERVICE ASY – 7702 INTEL CORE I7 4770TE 2.3GHZ - LGA1150\t(ESTORIL)",
+    "id": "d44bd3e7-51d1-4b17-af9f-96adac935e41"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970474786.jpg",
+    "pn": [
+      "4970474786"
+    ],
+    "desc": "PROCESSOR INTEL CELERON G540 - 2.5 GHZ - LGA1155\t(POCONO)",
+    "id": "f3c03982-2335-4a9b-8c7f-65507dcb6c41"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970474788.jpg",
+    "pn": [
+      "4970474788"
+    ],
+    "desc": "PROCESSOR INTEL CORE i3 2120 - 3.3 GHZ - LGA1155\t(POCONO)",
+    "id": "6572b3b3-1b58-4790-9dee-d77bfc98af90"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970474790.jpg",
+    "pn": [
+      "4970474790"
+    ],
+    "desc": "PROCESSOR INTEL CORE i5 2400 - 3.1 GHZ - LGA1155\t(POCONO)",
+    "id": "3bbda916-8464-46e7-9a7b-2926ff1d9df3"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068613815.jpg",
+    "pn": [
+      "0068613815",
+      "4970460031"
+    ],
+    "desc": "INTEL CORE 2 DUO PROCESSOR T7500\t(KINGSWAY)",
+    "id": "e311dfc7-a671-44ef-9bc3-a122fdb64d9a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068616154.jpg",
+    "pn": [
+      "0068616154"
+    ],
+    "desc": "CPU-INTEL PROCESOR 900\t(KINGSWAY)",
+    "id": "abb09fdb-e10a-4dea-a783-7c311ae42efa"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090024080.jpg",
+    "pn": [
+      "0090024080"
+    ],
+    "desc": "PROCESSOR - INTEL CONROE L440 - 2GHZ 800MHZ FSB\t(TALLADEGA)",
+    "id": "106a05e8-0e96-446c-b13d-12d8e0945625"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090023325.jpg",
+    "pn": [
+      "0090023325"
+    ],
+    "desc": "CPU-INTEL E6400 PROCESSOR CORE 2 DUO 2.13GHZ\t(TALLADEGA)",
+    "id": "a134616f-2841-4ba9-b800-205176febc31"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037350.jpg",
+    "pn": [
+      "0090037350"
+    ],
+    "desc": "MEMORY MODULE - 32GB DDR4 SODIM 1.2v 2133 Mbps\t(COMETLAKE)",
+    "id": "c70356db-4fdd-4102-803a-7bc8521379ca"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507658.jpg",
+    "pn": [
+      "4970507658"
+    ],
+    "desc": "MEMORY MODULE - 4GB DDR4 SODIM 1.2v 2133 Mbps\t(MISANO)",
+    "id": "7b2a3075-431a-4d96-b9bb-08cf2f3ae569"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507659.jpg",
+    "pn": [
+      "4970507659"
+    ],
+    "desc": "MEMORY MODULE - 8GB DDR4 SODIM 1.2v 2133 Mbps\tMISANO",
+    "id": "ee85ebeb-727c-48bd-9873-ff0c6e8b6b28"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970510688.jpg",
+    "pn": [
+      "4970510688"
+    ],
+    "desc": "MEMORY MODULE - 16GB DDR4 SODIM 1.2v 2133 Mbps\tMISANO",
+    "id": "d078ee34-4141-43a1-9370-992bbbb013ee"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970506041.jpg",
+    "pn": [
+      "4970506041"
+    ],
+    "desc": "MEMORY MODULE - 8GB 1600MHZ DDR3 SODIMM\tESTORIL",
+    "id": "1cd3e49b-25e8-49c2-99ff-3113e3f49a55"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970502339.jpg",
+    "pn": [
+      "4970502339"
+    ],
+    "desc": "MEMORY MODULE - 4GB 1600MHZ DDR3 SODIMM\tESTORIL",
+    "id": "72f986c2-41b8-4d1e-b529-02c765bda2d4"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477362.jpg",
+    "pn": [
+      "4970477362"
+    ],
+    "desc": "MEMORY MODULE - 4GB 1333MHZ DDR3 SODIMM\tRIVERSIDE",
+    "id": "bb63aaee-60ed-42b2-85c5-91919defd8d6"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970469649.jpg",
+    "pn": [
+      "4970469649"
+    ],
+    "desc": "MEMORY MODULE - 2GB 1066MHZ DDR3 SODIMM\tRIVERSIDE - KINGSWAY\t",
+    "id": "8acf995c-0268-43cd-a10f-f5337ac39f80"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970469648.jpg",
+    "pn": [
+      "4970469648"
+    ],
+    "desc": "MEMORY MODULE - 1GB 1066MHZ DDR3 SODIMM\tRIVERSIDE - KINGSWAY\t",
+    "id": "5fa1548b-c194-4c9f-9f05-a3e4ec0aeeac"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970473094.jpg",
+    "pn": [
+      "4970473094"
+    ],
+    "desc": "Memory Module, 2GB, 1333 MHz, DDR3, DIMM, Unbuffered\tPOCONO\t",
+    "id": "fe967b3d-0a5a-43ff-83f1-40fa6fcc9a4d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970473095.jpg",
+    "pn": [
+      "4970473095"
+    ],
+    "desc": "MEMORY 4GB 1333MHZ DDR3 DIMM UNBUFFERED\tPOCONO",
+    "id": "3c992d2c-efdc-4578-a1ba-17185a2a7417"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970464507.jpg",
+    "pn": [
+      "4970464507"
+    ],
+    "desc": "MEMORY-512MB DDR2 667MHZ MODULE\tTALLADEGA",
+    "id": "bf8ccbed-d632-4bef-8481-b4aa936b1eeb"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970455320.jpg",
+    "pn": [
+      "4970455320"
+    ],
+    "desc": "MEMORY-1GB DDR2 667MHZ MODULE\tTALLADEGA",
+    "id": "b6a33a3f-97b3-43d1-8a8c-7562c88e1a59"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970455321.jpg",
+    "pn": [
+      "4970455321"
+    ],
+    "desc": "MEMORY MODULE DDR2 2GB 667 MHZ\tTALLADEGA",
+    "id": "d27e93d4-2648-4cee-85fd-e8f81c453657"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627921.jpg",
+    "pn": [
+      "0068627921",
+      "0068628454",
+      "0068627513"
+    ],
+    "desc": "APACER 120GB SSD, SATA, M.2",
+    "id": "c007f4b9-6e58-4990-8611-5f178673530b"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627414.jpg",
+    "pn": [
+      "0068627414",
+      "0068628115",
+      "0068628119",
+      "0068628456",
+      "4970525647"
+    ],
+    "desc": "DRIVE 240GB M.2 42MM NVME PCIE MODULE APACER\t",
+    "id": "c47970f5-ee7d-472d-bc79-8c142618b23b"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627517.jpg",
+    "pn": [
+      "0068627517",
+      "0068628116",
+      "0068628118"
+    ],
+    "desc": "DRIVE SSD 480GB M.2 42MM NVME (2 Channel)\t",
+    "id": "155996de-8151-4479-8b28-7efa3f12cd15"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037344.jpg",
+    "pn": [
+      "0090037344"
+    ],
+    "desc": "500GB NVME M.2 2242 BICS4\t",
+    "id": "c761baf0-e317-412d-8530-06769d348b19"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627509.jpg",
+    "pn": [
+      "0068627509",
+      "0068627916",
+      "0068628451"
+    ],
+    "desc": "SSD 2.5” SATA 120GB (SOLID STATE DRIVE)\t",
+    "id": "785d68c7-dc27-4f7f-a078-282ef6a14813"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090036131.jpg",
+    "pn": [
+      "0090036131",
+      "0090029875"
+    ],
+    "desc": "SOLID STATA DRIVE(SSD)-240GB-2.5INCH SATA\t",
+    "id": "d0559b0d-240a-4ba9-af38-f45b771fcc91"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627918.jpg",
+    "pn": [
+      "0068627918",
+      "0090036551",
+      "0068627177",
+      "4450771629"
+    ],
+    "desc": "SSD 2.5” SATA 480GB (SOLID STATE DRIVE)\t",
+    "id": "bbc30bf6-0df8-44de-b7bb-c726275bd490"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068626300.jpg",
+    "pn": [
+      "0068626300"
+    ],
+    "desc": "HDD 2.5” SATA 500GB\t",
+    "id": "71000753-5523-4b39-9255-2eb80209c3bd"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090027915.jpg",
+    "pn": [
+      "0090027915"
+    ],
+    "desc": "HARD DISK DRIVE - 1TB 2.5 SATA\t",
+    "id": "37155aae-b9df-4c99-a38d-4ca9bc970d8a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090032136.jpg",
+    "pn": [
+      "0090032136"
+    ],
+    "desc": "SEAGATE 1TB HARD DISK DRIVE-2.5'",
+    "id": "22d6da1e-6d7a-4dd5-ad1b-71a61bc78790"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068625128.jpg",
+    "pn": [
+      "0090040619",
+      "0068625128"
+    ],
+    "desc": "HDD 3.5” SATA 500GB\t",
+    "id": "8bf54fd7-b01d-43bb-82ba-8af654410cbe"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068624668.jpg",
+    "pn": [
+      "0068624668"
+    ],
+    "desc": "Hard Drive - 3.5' Seagate , SATA , 2TB\t",
+    "id": "71d77b96-4041-4650-9c9c-b106ee1ddfd2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068624855.jpg",
+    "pn": [
+      "0068624855"
+    ],
+    "desc": "HARD DRIVE - PRIMARY 1TB SATA 3.5' 4K BYTES\t",
+    "id": "2ef9f5f7-f8d3-4402-bc3f-765a4937dc60"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068625138.jpg",
+    "pn": [
+      "0068625138"
+    ],
+    "desc": "HDD 3.5” SATA 250GB\t",
+    "id": "6bc182d0-8eb1-4322-a2b1-923bdca38621"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090023846.jpg",
+    "pn": [
+      "0090023846"
+    ],
+    "desc": "HDD 3.5” SATA 80GB\t",
+    "id": "718c372f-e893-467e-8cc3-d209b291522d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090024472.jpg",
+    "pn": [
+      "0090024472"
+    ],
+    "desc": "HDD 3.5” SATA 160GB\t",
+    "id": "cdd0cf50-3841-4b5b-8ea7-9f8fe0ead9e5"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090032526.jpg",
+    "pn": [
+      "0090032526"
+    ],
+    "desc": "CPU COOLER - LGA 1150/5\t(COMETLAKE - MISANO - ESTORIL - RIVERSIDE\t)",
+    "id": "e1a23bd9-723c-4691-b27c-15fa70130fb0"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090027663.jpg",
+    "pn": [
+      "0090027663"
+    ],
+    "desc": "HEATSINK WITH FAN LGA 1155\tPOCONO",
+    "id": "d1425e23-cbc9-4f6f-8fe4-a84e8ee2a8dd"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090026115.jpg",
+    "pn": [
+      "0090026115"
+    ],
+    "desc": "HEATSINK-WITH FAN LGA 775\tTALLADEGA",
+    "id": "95535639-387b-4874-8b08-0a53cbac7055"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090028346.jpg",
+    "pn": [
+      "0090028346"
+    ],
+    "desc": "HEATSINK WITH FAN LGA 1155 CPU RIVERSIDE\tRIVERSIDE",
+    "id": "1a341e39-f138-410a-b93d-47fc20a072b2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090026923.jpg",
+    "pn": [
+      "0090026923"
+    ],
+    "desc": "HEATSINK-WITH FAN INTEL SOCKET P PGA478\tKINGSWAY\t",
+    "id": "92a23c3b-bce6-4e92-adba-c02f31d6f641"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090029465.jpg",
+    "pn": [
+      "0090029465"
+    ],
+    "desc": "DC FAN 12V 92MM X 92MM (CORE FULL SIZE)\tMISANO - ESTORIL - RIVERSIDE - KINGSWAY - POCONO - TALLADEGA\t",
+    "id": "011049ea-3c44-4173-9289-806e255888c9"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090026051.jpg",
+    "pn": [
+      "0090026051"
+    ],
+    "desc": "DC FAN 12V 70MM X 70MM (MINI CORE)\tMISANO - ESTORIL - RIVERSIDE - KINGSWAY",
+    "id": "41678115-a67f-4888-b125-7a61ca2ea1b7"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090028192.jpg",
+    "pn": [
+      "0090036666",
+      "0090028192"
+    ],
+    "desc": "DRIVE - SATA DVD-RW - SLIM",
+    "id": "661efbe0-aca4-43f1-bd50-111b91813d98"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090024470.jpg",
+    "pn": [
+      "0090024470"
+    ],
+    "desc": "DRIVE-5.25 HALF-HEIGHT R/W SATA\t",
+    "id": "15529dff-d1ea-4d4f-afe5-69e7a15dba88"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030607.jpg",
+    "pn": [
+      "0090030607"
+    ],
+    "desc": "POWER SUPPLY 24V (CORE FULL SIZE)\tMISANO - ESTORIL\t",
+    "id": "50e14d36-03cb-4f8f-8d50-0816688d19c9"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090029354.jpg",
+    "pn": [
+      "0090037786",
+      "0090029354"
+    ],
+    "desc": "POWER SUPPLY - SWITCHING 250W\tPOCONO - TALLADEGA - PIVAT",
+    "id": "e884faf1-7a5a-4fe6-bdb5-5650928a4e4c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090023318.jpg",
+    "pn": [
+      "0090023318"
+    ],
+    "desc": "USB 2.0 - 4 PORT BREAK-OUT ASSY\tMISANO - ESTORIL - RIVERSIDE - KINGSWAY - POCONO - TALLADEGA",
+    "id": "9de8f73f-19c7-49d8-9a4e-66900c8eb7b2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970466594.jpg",
+    "pn": [
+      "4970466594",
+      "0090026263",
+      "0090029718",
+      "0090025797"
+    ],
+    "desc": "CABLE SATA DATA & POWER (7600 7601 7643) (110mm)\tCOMETLAKE - KINGSWAY - RIVERSIDE - ESTORIL - MISANO",
+    "id": "13f7314c-8106-4910-b34f-b2eb1b038f70"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450759447.jpg",
+    "pn": [
+      "4450759447"
+    ],
+    "desc": "HARNESS - PIRAT TO ESTORIL MOTHERBOARD\tESTORIL - MISANO",
+    "id": "dc0e1af6-291c-48de-8aaf-b64d74fe3a7e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031402.jpg",
+    "pn": [
+      "0090031402"
+    ],
+    "desc": "CABLE ASSEMBLY: DUAL PANEL MOUNT DISPLAYPORT EXTENSION\tESTORIL - MISANO - COMETLAKE",
+    "id": "fbe201b1-ecff-4498-b02a-8ae3f9182ccc"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090029665.jpg",
+    "pn": [
+      "0090029665",
+      "0090027665"
+    ],
+    "desc": "PS2, KB/MS BREAKOUT ASSEMBLY\tPOCONO - ESTORIL - MISANO",
+    "id": "eccb3a23-8afe-4c13-b099-7206eda58e7c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090032523.jpg",
+    "pn": [
+      "0090032523",
+      "0090031261"
+    ],
+    "desc": "DISPLAY PORT TO VGA FEMALE\tESTORIL - MISANO - COMETLAKE\t",
+    "id": "e309187d-4856-4403-8460-56207e5c15a0"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450769630.jpg",
+    "pn": [
+      "4450769630"
+    ],
+    "desc": "DISPLAY PORT TO DVI-D FEMALE\tESTORIL - MISANO - COMETLAKE\t",
+    "id": "873e3ed6-6fb6-40cd-9aeb-8507f718769a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031397.jpg",
+    "pn": [
+      "0090031397",
+      "0090031387",
+      "0090031391",
+      "0090031399",
+      "0090031393",
+      "0090031394",
+      "0090031396",
+      "0090031398"
+    ],
+    "desc": "CABLE ASSEMBLY: DP TO DVI-D (3480mm)\tESTORIL - MISANO - COMETLAKE",
+    "id": "c845e95f-8f09-43ad-9a87-10adedea7972"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450711293.jpg",
+    "pn": [
+      "4450711293"
+    ],
+    "desc": "PIRAT HARNESS\tTALLADEGA - POCONO",
+    "id": "03b6aa4c-5e9c-40c1-92d4-703271f143ee"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030131.jpg",
+    "pn": [
+      "0090030131",
+      "0090037775"
+    ],
+    "desc": "HARNESS - CORE DC 24V 110MM\tCOMETLAKE - MISANO - ESTORIL - RIVERSIDE - KINGSWAY - LANIER",
+    "id": "221dcd0b-1ef2-487a-b8e9-41055ff3bd3a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030954.jpg",
+    "pn": [
+      "0090030954"
+    ],
+    "desc": "HARNESS - RS232 BREAKOUT ESTORIL",
+    "id": "97867234-fa69-44c6-a657-4be992403cc8"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031466.jpg",
+    "pn": [
+      "0090031466"
+    ],
+    "desc": "HARNESS - RS232 BREAKOUT ESTORIL",
+    "id": "9d75bb21-8a99-4c9f-8e60-eab1d262180d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450722303.jpg",
+    "pn": [
+      "4450722303"
+    ],
+    "desc": "PIRAT SELFSERV - PCB ASSY\tTALLADEGA - POCONO - ESTORIL\t",
+    "id": "0393893e-d1f2-4740-a917-9181ced83583"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970500917.jpg",
+    "pn": [
+      "4970500917",
+      "4970455709"
+    ],
+    "desc": "PCBA - TRUSTED PLATFORM MODULE\tTALLADEGA - POCONO",
+    "id": "c480039b-bef9-4b10-a77a-32acc23f78af"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030950.jpg",
+    "pn": [
+      "0090030950",
+      "0090031059"
+    ],
+    "desc": "TPM 2.0 MODULE, 1.27MM ROW PITCH – PCB ASSEMBLY\tESTORIL ",
+    "id": "b8d46f35-6b8e-4a70-b4ca-b36938e47301"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090036116.jpg",
+    "pn": [
+      "0090036116"
+    ],
+    "desc": "EDP TO LVDS CONVERTER BOARD MISANO",
+    "id": "2deb364f-bcb3-4de4-9bcb-6dc8d2f18af5"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450775483.jpg",
+    "pn": [
+      "4450775483"
+    ],
+    "desc": "CABLE - EDP 620MM REVERSIBLE\tMISANO",
+    "id": "7180ea8f-9430-404c-9b91-d8f8fe9288b6"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450749527.jpg",
+    "pn": [
+      "4450749527"
+    ],
+    "desc": "HARNESS LVDS (600MM)\tMISANO",
+    "id": "219452b1-f234-44ed-ba74-3d8e5f56458c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450743831.jpg",
+    "pn": [
+      "4450743831"
+    ],
+    "desc": "HARNESS LVDS 1200MM \tMISANO",
+    "id": "08d52588-23f4-4241-b82f-492c2b418871"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450743832.jpg",
+    "pn": [
+      "4450743832"
+    ],
+    "desc": "HARNESS LVDS POWER 1200MM-1\tMISANO",
+    "id": "62d1b0eb-9e30-49f7-9f80-e38e48766f5b"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450755296.jpg",
+    "pn": [
+      "4450755296"
+    ],
+    "desc": "HARNESS LVDS SUNLIGHT POWER (1140MM)",
+    "id": "7dea9189-0f2b-4b20-892d-889d494fd1a1"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450755110.jpg",
+    "pn": [
+      "4450755110"
+    ],
+    "desc": "HARNESS LVDS SUNLIGHT POWER EXTENSION\tMISANO",
+    "id": "40a87ac4-970b-4d9b-ad4a-4d6addbb31bd"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037113.jpg",
+    "pn": [
+      "0090037113"
+    ],
+    "desc": "UNIFIED PC CORE - 12V DC FAN (60MM X 60MM X 15MM)\tCOMETLAKE",
+    "id": "4a446593-2932-4261-9398-b7d85cf009da"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450757084.jpg",
+    "pn": [
+      "4450757084"
+    ],
+    "desc": "USB EXPANSION BOARD ASSEMBLY\tCOMETLAKE - MISANO",
+    "id": "527693cd-dc30-4ec7-9e9e-809cddf5ea8e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037737.jpg",
+    "pn": [
+      "0090037737",
+      "0090036412"
+    ],
+    "desc": "USB3 TO LAN BOARD INTERCONNECT CABLE\tCOMETLAKE",
+    "id": "b187225a-a48a-4fd9-883a-f9fd7467d8d3"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037736.jpg",
+    "pn": [
+      "0090037736"
+    ],
+    "desc": "USB3 TO LAN CONVERTER\tCOMETLAKE",
+    "id": "6229e691-3256-429f-9fc2-c92fc537c72d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970479927.jpg",
+    "pn": [
+      "4970479927"
+    ],
+    "desc": "CABLE -  PANEL MOUNT AUDIO \tCOMETLAKE\t",
+    "id": "2aa262c9-4d68-4eba-a193-41cf676b786f"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031001.jpg",
+    "pn": [
+      "0090031001"
+    ],
+    "desc": "ABLE ASSEMBLY FP RESET TO 12W CONNECTOR\tCOMETLAKE - MISANO\t",
+    "id": "b1d3be91-e37e-49b6-b32b-e77e59d7fa67"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037735.jpg",
+    "pn": [
+      "0090037735"
+    ],
+    "desc": "CABLE ASSEMBLY USB BREAKOUT 220MM\tCOMETLAKE\t",
+    "id": "a20c8be6-c0c9-44ce-adea-53396f0dc0ad"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0068628453"
+    ],
+    "desc": "APACER 480GB, SSD 2.5'' BICS5",
+    "id": "312444a5-5467-4f66-95bf-98b0a141ad8d"
+  }
+]

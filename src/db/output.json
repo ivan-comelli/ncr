@@ -1,0 +1,7842 @@
+[
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024187.png",
+    "pn": [
+      "0090024187"
+    ],
+    "desc": "BNA3 LONG INFEED",
+    "id": "be015880-d299-4326-bae5-5ed5cf0f37b1"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024189.png",
+    "pn": [
+      "0090027415",
+      "0090024189"
+    ],
+    "desc": "BNA3 SHORT INFEED",
+    "id": "7891e66d-516b-49a4-ab6e-eeef5088b4c5"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024188.png",
+    "pn": [
+      "0090024188"
+    ],
+    "desc": "BNA3 MID INFEED",
+    "id": "1dd4e283-e168-4ec4-ba68-a0e6f4384081"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024190.png",
+    "pn": [
+      "0090024190"
+    ],
+    "desc": "BNA3 ANGLED INFEED",
+    "id": "e5d97e83-f961-41e7-8846-45126e8dc5c7"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024181.png",
+    "pn": [
+      "0090024181"
+    ],
+    "desc": "BNA3 FEED / REJECT UNIT",
+    "id": "bfe00cdc-b425-494c-aacb-d6e6573f5f40"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024180.png",
+    "pn": [
+      "0090024180"
+    ],
+    "desc": "BNA3 MAIN TRANSPORT",
+    "id": "7d202ae0-6234-46a4-8ff6-3c9d8507c0fa"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024182.png",
+    "pn": [
+      "0090024182"
+    ],
+    "desc": "BNA3 GARAGE UNIT F/A",
+    "id": "3ea1d300-ad20-45e9-975d-9bca4474c40b"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024183.png",
+    "pn": [
+      "0090024183"
+    ],
+    "desc": "BNA 3 GARAGE UNIT R/A",
+    "id": "8bc98293-9f29-4b8d-bc31-cdf84b27f587"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090023742.png",
+    "pn": [
+      "0090023742"
+    ],
+    "desc": "RECOGNITION UNIT (MBV)",
+    "id": "b50e738f-bc17-4026-8291-da5586e774d6"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090025434.png",
+    "pn": [
+      "0090025434"
+    ],
+    "desc": "RECOGNITION UNIT (HBV)",
+    "id": "e7f400e3-8cf5-4fe9-a6a3-cecd7f3e2398"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024192.png",
+    "pn": [
+      "0090024192"
+    ],
+    "desc": "BNA3 CASSETTE",
+    "id": "da83f17e-a916-46ca-986a-ba81ed490bc0"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024185.png",
+    "pn": [
+      "0090024185"
+    ],
+    "desc": "BNA3 ESCROW UNIT",
+    "id": "b53cfdaa-6825-4d0c-a001-1b966f7d9cad"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090025436.png",
+    "pn": [
+      "0090025436"
+    ],
+    "desc": "HBV SERIAL NUMBER BOARD",
+    "id": "096625a9-150a-40ea-96e3-41f134147b05"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090025435.png",
+    "pn": [
+      "0090025435"
+    ],
+    "desc": "HBV BOARD FRU",
+    "id": "eba3c16e-53ab-4554-a5d7-3df6e36b3275"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024184.png",
+    "pn": [
+      "0090024184"
+    ],
+    "desc": "BNA3 CONTROL BOARD FRU",
+    "id": "d9c2c534-aa41-48ad-9753-15a9a858f2ff"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024186.png",
+    "pn": [
+      "0090024186"
+    ],
+    "desc": "11 BNA3 DRAWBRIDGE ASSEMBLY FRU R/A",
+    "id": "be7c44d9-74bb-4507-a21a-4cdb24f4731e"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024194.png",
+    "pn": [
+      "0090024194"
+    ],
+    "desc": "11 BNA3 DRAWBRIDGE ASSEMBLY FRU F/A",
+    "id": "1b884def-f12f-425e-8272-3ab654dabfb1"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024191.png",
+    "pn": [
+      "0090024191"
+    ],
+    "desc": "12 BNA3 DOOR SWITCH ASSEMBLY FRU",
+    "id": "b7a6ff95-8f2e-4860-8fbc-26bf3cb7348f"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024197.png",
+    "pn": [
+      "0090024197"
+    ],
+    "desc": "13 BNA3 CASSETTE CONNECTOR FRU R/A",
+    "id": "3c9076a9-5b0d-4b3c-812a-d16de7054a7d"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024198.png",
+    "pn": [
+      "0090024198"
+    ],
+    "desc": "13 BNA3 CASSETTE CONNECTOR FRU F/A",
+    "id": "b4d72d1b-d934-4cc9-aff5-110c6f710051"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024193.png",
+    "pn": [
+      "0090024193"
+    ],
+    "desc": "BNA3 MBV HARNESS ASSEMBLY FRU",
+    "id": "188e43bc-34ee-4d4f-b289-1b75d88f080c"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/4450707544.png",
+    "pn": [
+      "4450707544"
+    ],
+    "desc": "BNA HARNESS",
+    "id": "4cf9e104-360e-47e1-bdc3-aff538852431"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450746108.jpg",
+    "pn": [
+      "4450746108"
+    ],
+    "desc": "ASSY - RECYCLER SHUTTER",
+    "id": "55a9f320-5a85-4bf9-bc50-90738aba2d44"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036583.jpg",
+    "pn": [
+      "0090036583",
+      "0090036583",
+      "0090035943",
+      "0090029370"
+    ],
+    "desc": "BRM POCKET",
+    "id": "95994e30-4052-446a-bd39-f392eb17c83e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029372.jpg",
+    "pn": [
+      "0090029372"
+    ],
+    "desc": "BRM BRIDGE TRANSPORT",
+    "id": "6f79be41-4f95-432b-b56c-7955091c3e3e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030198.jpg",
+    "pn": [
+      "0090030198",
+      "0090029713"
+    ],
+    "desc": "BRM CENTRALIZATION ASSEMBLY",
+    "id": "3ad37b7f-a474-4471-a749-0382c95b1dc6"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029739.jpg",
+    "pn": [
+      "0090029739"
+    ],
+    "desc": "BRM HVD-300U BILL VALIDATOR",
+    "id": "961d39f7-1ea3-4b2a-931b-7ec146d7bfeb"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033344.jpg",
+    "pn": [
+      "0090033344"
+    ],
+    "desc": "BRM ESCROW",
+    "id": "8a565dc9-b44c-4e2a-b0fa-125f61333af1"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033346.jpg",
+    "pn": [
+      "0090033346",
+      "0090029374"
+    ],
+    "desc": "BRM UPPER TRANSPORT",
+    "id": "a66fa077-4a50-49cc-a8d4-b2bf1d690a71"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030514.jpg",
+    "pn": [
+      "0090030514"
+    ],
+    "desc": "BRM SPARE FRONT UPPER FRAME",
+    "id": "eb901646-cceb-4c07-9541-cc0bfbab3508"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030511.jpg",
+    "pn": [
+      "0090030511"
+    ],
+    "desc": "BRM SPARE UPPER TRANSPORT SECTION -BEFORE BV",
+    "id": "c3decbf3-9505-4027-9d81-a098a2288b1f"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030509.jpg",
+    "pn": [
+      "0090030509"
+    ],
+    "desc": "BRM SPARE REAR UPPER FRAME",
+    "id": "9e0e2e23-1920-40dc-ada8-af1164908406"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030513.jpg",
+    "pn": [
+      "0090030513"
+    ],
+    "desc": "BRM SPARE REAR UPPER FRAME",
+    "id": "9879bea1-07ca-4358-b22e-2b8c042a3fa4"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029839.jpg",
+    "pn": [
+      "0090029839",
+      "0090029126"
+    ],
+    "desc": "BRM INTERMEDIATE TRANSPORT",
+    "id": "101d6772-9249-40dc-9527-381268adea8c"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033347.jpg",
+    "pn": [
+      "0090033347",
+      "0090029376"
+    ],
+    "desc": "BRM LOWER TRANSPORT",
+    "id": "b458f38c-4966-413c-8ced-eea8116cdef2"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029377.jpg",
+    "pn": [
+      "0090029377"
+    ],
+    "desc": "BRM VERTICAL TRANSPORT",
+    "id": "edc821ab-57a0-401b-b413-27190ac17389"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036165.jpg",
+    "pn": [
+      "0090036165"
+    ],
+    "desc": "BRM UPPER MODULE CPU BOARD",
+    "id": "25627891-f71e-4661-ab79-ac24e3fd7383"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029379.jpg",
+    "pn": [
+      "0090029379",
+      "0090036165"
+    ],
+    "desc": "OLD - BRM UPPER CPU PCB",
+    "id": "14e88a1e-29a5-4ca7-a2f3-c34d132bbe94"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033345.jpg",
+    "pn": [
+      "0090033345",
+      "0090029375"
+    ],
+    "desc": "BRM LOWER FRAME",
+    "id": "bc7959f8-439f-4450-8ae3-8f8ab1ad5fdb"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036166.jpg",
+    "pn": [
+      "0090036166"
+    ],
+    "desc": "BRM LOWER MODULE CPU BOARD",
+    "id": "64959c7d-0dcc-4b0b-9b08-39cd66a886d5"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029380.jpg",
+    "pn": [
+      "0090029380",
+      "0090036166"
+    ],
+    "desc": "OLD - BRM LOWER CPU PCB",
+    "id": "b45c8b35-d9e3-4292-b28a-b8828d6d7607"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030532.jpg",
+    "pn": [
+      "0090030532"
+    ],
+    "desc": "BRM SPARE I/O-41U PCB",
+    "id": "5d5ebebc-cd46-46bf-9cc1-84ad99c9bee1"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450749831.jpg",
+    "pn": [
+      "4450749831"
+    ],
+    "desc": "UPPER EXCEPTION BIN COVER",
+    "id": "b14834bb-dfde-46de-9868-7d99e8e0348a"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030584.jpg",
+    "pn": [
+      "0090030584",
+      "0090029131"
+    ],
+    "desc": "BRM UPPER EXCEPTION BIN - FRU",
+    "id": "dfd6fb5e-1ef6-49b2-8283-e9cb1d04f82c"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090035723.jpg",
+    "pn": [
+      "0090035723",
+      "0090029128",
+      "0090029127"
+    ],
+    "desc": "BRM RECYCLE CASSETTE - STANDARD",
+    "id": "9c69c0dc-9541-4cb4-9dbe-606affd86f32"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090035724.jpg",
+    "pn": [
+      "0090035724",
+      "0090029129"
+    ],
+    "desc": "BRM LOWER EXCEPTION BIN 1DEPOSIT, 2 EXCEPTION AREA",
+    "id": "1b152bc9-70e0-4ded-8fbf-8f2a16e6a307"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030507.jpg",
+    "pn": [
+      "0090030507"
+    ],
+    "desc": "BRM SPARE CASSETTE LATCH",
+    "id": "6ad2b843-c1d5-42a2-9d4e-7ca5da084727"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029579.jpg",
+    "pn": [
+      "0090029579"
+    ],
+    "desc": "BRM CASSETTE LATCH",
+    "id": "1e62e9c0-bc6e-43f8-976b-6e166a4a52d9"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036036.jpg",
+    "pn": [
+      "0090036036",
+      "0090030525",
+      "0090030526",
+      "0090030527",
+      "0090030528"
+    ],
+    "desc": "",
+    "id": "d6cf3121-8c9c-4550-921b-15b4399bb667"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030525.jpg",
+    "pn": [
+      "0090030525"
+    ],
+    "desc": "BRM SPARE CNL1 HARNESS",
+    "id": "5c398194-85a7-4761-94ee-15f4d774bc14"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030526.jpg",
+    "pn": [
+      "0090030526"
+    ],
+    "desc": "BRM SPARE CNL2 HARNESS",
+    "id": "988b0e05-1697-45f9-a1a4-88d8e52c9395"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030527.jpg",
+    "pn": [
+      "0090030527"
+    ],
+    "desc": "BRM SPARE CNL3 HARNESS",
+    "id": "5a621b46-89c0-4b55-a19d-e6351a7746ca"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030528.jpg",
+    "pn": [
+      "0090030528"
+    ],
+    "desc": "BRM SPARE CNL4 HARNESS",
+    "id": "da3f6085-9eea-40bb-8715-e6895ef67d53"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030529.jpg",
+    "pn": [
+      "0090030529"
+    ],
+    "desc": "BRM SPARE CNW1 HARNESS",
+    "id": "86b67caa-a41c-4cf2-aa1e-7893ee4f3244"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036037"
+    ],
+    "desc": "BRM LOWER EXCEPTION BIN CABLE ASSEMBLY (FRU)",
+    "id": "3bcb990e-2b2e-4d09-a011-c3281cb392e4"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036038"
+    ],
+    "desc": "BRM ENHANCED LOWER EXCEPTION BIN CABLE ASSEMBLY (FRU)",
+    "id": "8d03d5ad-26b7-4e11-9240-380300772388"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030523.jpg",
+    "pn": [
+      "0090030523"
+    ],
+    "desc": "BRM SPARE INTERLOCK SWITCH IN",
+    "id": "2012e031-b63f-4454-85fc-5d81e767ec78"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030499.jpg",
+    "pn": [
+      "0090030499"
+    ],
+    "desc": "BRM SPARE MICROSWITCH",
+    "id": "54ae8bb2-c658-4002-8455-67734a87a915"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029840.jpg",
+    "pn": [
+      "0090029840"
+    ],
+    "desc": "OVERALL STATUS LIGHT",
+    "id": "a0f84892-36ff-4225-adda-b419bafeeb91"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450775289.jpg",
+    "pn": [
+      "4450775289"
+    ],
+    "desc": "BRM - ALIGNMENT GAUGE (2.5MM TOOL ALIGNMENT)",
+    "id": "85609334-2cda-436c-9f99-23b8ce278c73"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030200.jpg",
+    "pn": [
+      "0090030200"
+    ],
+    "desc": "BRM CENTRALIZATION DAMPER ASSEMBLY",
+    "id": "0dbcf643-cb18-4cda-a527-74342aa1e00b"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450750148.jpg",
+    "pn": [
+      "4450750148"
+    ],
+    "desc": "E CHAIN ASSY 44 LINK",
+    "id": "2d56d242-3b5a-48bb-9d2b-9c31fd9fcb8a"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030531.jpg",
+    "pn": [
+      "0090030531"
+    ],
+    "desc": "BRM SPARE BV REAR DRIVE BELT",
+    "id": "7a9e0f3d-5815-4049-854b-7bdda4c78931"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030199.jpg",
+    "pn": [
+      "0090030199"
+    ],
+    "desc": "BRM CENTRALIZATION PCB ASSEMBLY",
+    "id": "da75fbba-8420-451a-bf49-861c3e606f15"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450753409.jpg",
+    "pn": [
+      "4450753409"
+    ],
+    "desc": "RECYCLER SHUTTER - PCB TOP ASSY",
+    "id": "4ccdfefa-8e3c-407f-b342-421198585f82"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030502.jpg",
+    "pn": [
+      "0090030502"
+    ],
+    "desc": "BRM SPARE DC LIFT MOTOR",
+    "id": "4c997951-5be8-4095-8c31-c51c971926ae"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030504.jpg",
+    "pn": [
+      "0090030504"
+    ],
+    "desc": "BRM SPARE DC BRUSHLESS MOTOR (11 pins)",
+    "id": "ee6cf5b9-e132-40f1-b5e9-b5aa84bed93e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090031212.jpg",
+    "pn": [
+      "0090031212"
+    ],
+    "desc": "SPARE CR2/3 LITHIUM BATTERY FOR BRM & BNA",
+    "id": "659c244d-e498-40b0-9f9b-92c2094f6c1a"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030503.jpg",
+    "pn": [
+      "0090030503"
+    ],
+    "desc": "BRM SPARE DC BRUSHLESS MOTOR (9 PINS)",
+    "id": "48ea24b6-dd9b-46bc-86aa-37c337166a13"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030500.jpg",
+    "pn": [
+      "0090030500",
+      "9980912720",
+      "9980912678"
+    ],
+    "desc": "BRM SPARE PICK DRIVE STEPPING",
+    "id": "2fb2b4dc-178a-4e5e-854e-2003ab3e5cd3"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033221.jpg",
+    "pn": [
+      "0090033221"
+    ],
+    "desc": "BRM - SPUR GEAR",
+    "id": "0795a743-04eb-4448-a5d6-d620332c4888"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030522.jpg",
+    "pn": [
+      "0090030522"
+    ],
+    "desc": "BRM SPARE INTERLOCK HARNESS",
+    "id": "019ae829-cb44-417a-95b2-4505b46e34c2"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090033356"
+    ],
+    "desc": "BRM Lift For Pocket",
+    "id": "84cd8e74-06db-4b2c-9c7a-8caeb1dabca7"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090030512"
+    ],
+    "desc": "BRM SPARE CNJ71 HARNESS",
+    "id": "351199f3-1d5b-4248-aeca-8f8f33e10f3e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030498.jpg",
+    "pn": [
+      "0090030498"
+    ],
+    "desc": "BRM HORIZONTAL TRANSPORT TIMING BELT (LT BELT)",
+    "id": "2bf66d15-46ab-49c8-8cd2-6906ba346e3b"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450750127.jpg",
+    "pn": [
+      "4450750127"
+    ],
+    "desc": "HARNESS UPPER MODULE BRM (CNJ3)",
+    "id": "96c07d96-ef5a-404a-a4f4-e0c2ab1a6612"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090030530"
+    ],
+    "desc": "RELEASE OF BRM POCKET FRU WIT",
+    "id": "f7bee1e9-9ccb-475f-abc9-ec256da5c2f7"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090030524"
+    ],
+    "desc": "BRM SPARE LATCH DETECTION ASSY",
+    "id": "84c97895-bd2b-44fd-9a7c-1cd1cdeef510"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450790795.jpg",
+    "pn": [
+      "4450790795"
+    ],
+    "desc": "SERVICE PART - COMETLAKE MOTHERBOARD (COMETLAKE)",
+    "id": "8530a75c-40cc-4192-83b5-64e868b3c6b2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450792080.jpg",
+    "pn": [
+      "4450792080",
+      "4450770712"
+    ],
+    "desc": "SERVICE PART - MOTHERBOARD MISANO(SKYLAKE/KABYLAKE) CON 1 PUERTO LAN (2 puertos 4450770712 )(MISANO)",
+    "id": "05f78fe7-df9b-40a1-b694-bc8041599ba6"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450787152.jpg",
+    "pn": [
+      "4450787152",
+      "4450768317",
+      "4450767382",
+      "4450764456",
+      "4450761748"
+    ],
+    "desc": "SERVICE PART - ESTORIL MOTHERBOARD (INTEL HASWELL - ESTORIL)",
+    "id": "cb4c03a0-1d23-48e3-b62f-c1bdb7cd0a0f"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970475399.jpg",
+    "pn": [
+      "4970475399",
+      "4970470511"
+    ],
+    "desc": "Motherboard, Micro–ATX, Intel Sugar Bay, Pocono\t",
+    "id": "c798fecc-39a6-47d0-b4c5-6bb799cc548c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477586.jpg",
+    "pn": [
+      "4970477586",
+      "4970464481",
+      "4970464207",
+      "4970457004"
+    ],
+    "desc": "PCB-MAIN INTEL Q965, LGA 775 (TALLADEGA)\t",
+    "id": "cf42b3d6-d8eb-49cb-958f-a8bcb37ef0f8"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450771990.jpg",
+    "pn": [
+      "4450771990",
+      "4450765766",
+      "4450752088",
+      "4450746109",
+      "4450746025"
+    ],
+    "desc": "MOTHERBOARD, RIVERSIDE, INTEL",
+    "id": "519c3c45-9457-4597-ba0a-59827c5253e0"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450728233.jpg",
+    "pn": [
+      "4450728233",
+      "4970471130"
+    ],
+    "desc": "MOTHERBOARD - INTEL GL40 CHIPSET - MINI ITX (KINGSWAY)\t",
+    "id": "d8aa1bbb-3749-44e5-aaec-cceea056fc3d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450764018.jpg",
+    "pn": [
+      "4450764018"
+    ],
+    "desc": "I/O SHIELD ASSY - w/o RS232 (X1)/USB 2\t(MISANO)",
+    "id": "cdc37f08-cbe1-4235-ae3a-99561fff4632"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450766515.jpg",
+    "pn": [
+      "4450766515"
+    ],
+    "desc": "I/O SHIELD w/o RS232 (X1) / U (Estoril)\t",
+    "id": "1cd4b5a1-c8f8-4611-a209-cc39566a9920"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450734845.jpg",
+    "pn": [
+      "4450734845"
+    ],
+    "desc": "IO SHIELD - POCONO CORE\t",
+    "id": "9638956c-48b6-4542-8af3-9e5cc402bc68"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450708988.jpg",
+    "pn": [
+      "4450708988"
+    ],
+    "desc": "IO SHIELD - TALLADEGA CORE (TALLADEGA)\t",
+    "id": "2b0ba26e-f1db-4709-b2c3-411b03f8e4cf"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450725315.jpg",
+    "pn": [
+      "4450725315"
+    ],
+    "desc": "LANIER IO SHIELD (LANIER - KINGSWAY - RIVERSIDE\t)",
+    "id": "5dfc6e6f-b5ba-4dd4-8943-4db42cea564c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450743022.jpg",
+    "pn": [
+      "4450743022"
+    ],
+    "desc": "BRACKET ASSY - CORE I/O PANEL (LANIER - KINGSWAY - RIVERSIDE)\t",
+    "id": "62cd1629-4c86-435a-8578-8e298109e159"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068612565.jpg",
+    "pn": [
+      "0068612565"
+    ],
+    "desc": "SHIN ETSU X23 7783D THERMAL GREASE W/SYRINGE - 1 B\t",
+    "id": "73aa0277-473a-4422-9759-55440372fa39"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/6039015079.jpg",
+    "pn": [
+      "6039015079"
+    ],
+    "desc": "Tool-CPU Processor Removal/Insertion w/Repl. Cups\t",
+    "id": "32042ff3-79aa-4e49-8ea2-a62016465b9d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450790796.jpg",
+    "pn": [
+      "4450790796"
+    ],
+    "desc": "SERVICE PART - INTEL PROCESSOR CORE I5-10500E COMETLAKE\t",
+    "id": "49435780-7253-4568-af39-5f47d12706f9"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450790797.jpg",
+    "pn": [
+      "4450790797"
+    ],
+    "desc": "SERVICE PART - INTEL PROCESSOR CORE I7-10700TE COMETLAKE",
+    "id": "fda7ae1a-4db9-4beb-8548-56c065d45106"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970509805.jpg",
+    "pn": [
+      "4970509805"
+    ],
+    "desc": "SERVICE ASSEMBLY - Intel Processor Core i3-6100TE(SKYLAKE MISANO)\t",
+    "id": "a61d4a7d-a527-46f5-b8a4-77e93c94995c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970509808.jpg",
+    "pn": [
+      "4970509808"
+    ],
+    "desc": "SERVICE ASSEMBLY - Intel Processor Core i5-6500TE(SKYLAKE -MISANO )\t",
+    "id": "cbd514fc-0fed-4af2-80e3-e18c77c9002e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450777830.jpg",
+    "pn": [
+      "4450777830"
+    ],
+    "desc": "INTEL SKYLAKE I7-6700TE PROCESSOR 35W (SKYLAKE )- MISANO",
+    "id": "dae4d5ae-cff3-4d60-9e21-25afd71fde93"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970521233.jpg",
+    "pn": [
+      "4970521233"
+    ],
+    "desc": "SERVICE ASSEMBLY - INTEL CORE I3-7101TE PROCESSOR (KABYLAKE - MISANO)\t",
+    "id": "fd211c5d-1d91-44fe-a6d9-8e6c025c4db3"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970521234.jpg",
+    "pn": [
+      "4970521234"
+    ],
+    "desc": "SERVICE ASSEMBLY - INTEL CORE I5-7500T PROCESSOR (KABYLAKE - MISANO)\t",
+    "id": "1dc25ccb-1acb-47bc-b1cf-0950d04ea92e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450784249.jpg",
+    "pn": [
+      "4450784249"
+    ],
+    "desc": "INTEL CORE I7-7700T PROCESSOR (8M CACHE UP TO 3.8)(KABYLAKE - MISANO)",
+    "id": "a6a9a93e-8d29-4dea-9363-6cdaaa17bb61"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970502747.jpg",
+    "pn": [
+      "4970502747"
+    ],
+    "desc": "SERVICE ASSY - 7702 CELERON G1820TE - 2.2GHZ - LGA1150 (HASWELL - ESTORIL)\t",
+    "id": "fc795e63-0689-49e0-a367-4fc3c271df80"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970465231.jpg",
+    "pn": [
+      "4970465231"
+    ],
+    "desc": "CPU-INTEL E7400 PROCESSOR CORE 2 DUO 2.8GHZ (WOLFDALE - TALLADEGA)",
+    "id": "d7aab2b9-9af8-48b9-aee4-b50aef3c3a81"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477859.jpg",
+    "pn": [
+      "4970477859"
+    ],
+    "desc": "PROCESSOR INTEL CELERON G530T - 2.0 GHZ - LGA1155 (SANDY BRIDGE - POCONO)",
+    "id": "bda592e1-9f30-40aa-8677-bf7dbd96b068"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477861.jpg",
+    "pn": [
+      "4970477861"
+    ],
+    "desc": "PROCESSOR INTEL CORE i3 2120T - 2.6 GHZ - LGA1155 (RIVERSIDE - BRISTOL II\t)",
+    "id": "8c292d35-bacb-4cee-ab2a-692f7a35b9b1"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477862.jpg",
+    "pn": [
+      "4970477862"
+    ],
+    "desc": "PROCESSOR INTEL CORE i5 2390T - 2.7 GHZ - LGA1155 (RIVERSIDE - BRISTOL II)\t",
+    "id": "2b334e3f-88b7-4a38-824a-0552f63d5748"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507673.jpg",
+    "pn": [
+      "4970507673"
+    ],
+    "desc": "PROCESSOR INTEL CORE i5 3470T - 2.9 GHZ - LGA1155( BRISTOL II )",
+    "id": "c2dd0326-3ec0-41a2-bf5e-1c4a06186726"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507338.jpg",
+    "pn": [
+      "4970507338"
+    ],
+    "desc": "SERVICE ASSY - 7702 INTEL CORE I3 4330TE 2.4 GHZ - LGA1150\t(ESTORIL - MONACO)",
+    "id": "50052dee-1aa2-41be-99ff-1ed7b3423583"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507339.jpg",
+    "pn": [
+      "4970507339"
+    ],
+    "desc": "SERVICE ASSY - 7702 INTEL CORE I5 4590T - 2.0GHZ - LGA1150\t(ESTORIL - MONACO)",
+    "id": "b19fd251-fb88-42ed-8662-266394f8f864"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450775205.jpg",
+    "pn": [
+      "4450775205"
+    ],
+    "desc": "SERVICE ASY – 7702 INTEL CORE I7 4770TE 2.3GHZ - LGA1150\t(ESTORIL)",
+    "id": "d44bd3e7-51d1-4b17-af9f-96adac935e41"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970474786.jpg",
+    "pn": [
+      "4970474786"
+    ],
+    "desc": "PROCESSOR INTEL CELERON G540 - 2.5 GHZ - LGA1155\t(POCONO)",
+    "id": "f3c03982-2335-4a9b-8c7f-65507dcb6c41"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970474788.jpg",
+    "pn": [
+      "4970474788"
+    ],
+    "desc": "PROCESSOR INTEL CORE i3 2120 - 3.3 GHZ - LGA1155\t(POCONO)",
+    "id": "6572b3b3-1b58-4790-9dee-d77bfc98af90"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970474790.jpg",
+    "pn": [
+      "4970474790"
+    ],
+    "desc": "PROCESSOR INTEL CORE i5 2400 - 3.1 GHZ - LGA1155\t(POCONO)",
+    "id": "3bbda916-8464-46e7-9a7b-2926ff1d9df3"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068613815.jpg",
+    "pn": [
+      "0068613815",
+      "4970460031"
+    ],
+    "desc": "INTEL CORE 2 DUO PROCESSOR T7500\t(KINGSWAY)",
+    "id": "e311dfc7-a671-44ef-9bc3-a122fdb64d9a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068616154.jpg",
+    "pn": [
+      "0068616154"
+    ],
+    "desc": "CPU-INTEL PROCESOR 900\t(KINGSWAY)",
+    "id": "abb09fdb-e10a-4dea-a783-7c311ae42efa"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090024080.jpg",
+    "pn": [
+      "0090024080"
+    ],
+    "desc": "PROCESSOR - INTEL CONROE L440 - 2GHZ 800MHZ FSB\t(TALLADEGA)",
+    "id": "106a05e8-0e96-446c-b13d-12d8e0945625"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090023325.jpg",
+    "pn": [
+      "0090023325"
+    ],
+    "desc": "CPU-INTEL E6400 PROCESSOR CORE 2 DUO 2.13GHZ\t(TALLADEGA)",
+    "id": "a134616f-2841-4ba9-b800-205176febc31"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037350.jpg",
+    "pn": [
+      "0090037350"
+    ],
+    "desc": "MEMORY MODULE - 32GB DDR4 SODIM 1.2v 2133 Mbps\t(COMETLAKE)",
+    "id": "c70356db-4fdd-4102-803a-7bc8521379ca"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507658.jpg",
+    "pn": [
+      "4970507658"
+    ],
+    "desc": "MEMORY MODULE - 4GB DDR4 SODIM 1.2v 2133 Mbps\t(MISANO)",
+    "id": "7b2a3075-431a-4d96-b9bb-08cf2f3ae569"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970507659.jpg",
+    "pn": [
+      "4970507659"
+    ],
+    "desc": "MEMORY MODULE - 8GB DDR4 SODIM 1.2v 2133 Mbps\tMISANO",
+    "id": "ee85ebeb-727c-48bd-9873-ff0c6e8b6b28"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970510688.jpg",
+    "pn": [
+      "4970510688"
+    ],
+    "desc": "MEMORY MODULE - 16GB DDR4 SODIM 1.2v 2133 Mbps\tMISANO",
+    "id": "d078ee34-4141-43a1-9370-992bbbb013ee"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970506041.jpg",
+    "pn": [
+      "4970506041"
+    ],
+    "desc": "MEMORY MODULE - 8GB 1600MHZ DDR3 SODIMM\tESTORIL",
+    "id": "1cd3e49b-25e8-49c2-99ff-3113e3f49a55"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970502339.jpg",
+    "pn": [
+      "4970502339"
+    ],
+    "desc": "MEMORY MODULE - 4GB 1600MHZ DDR3 SODIMM\tESTORIL",
+    "id": "72f986c2-41b8-4d1e-b529-02c765bda2d4"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970477362.jpg",
+    "pn": [
+      "4970477362"
+    ],
+    "desc": "MEMORY MODULE - 4GB 1333MHZ DDR3 SODIMM\tRIVERSIDE",
+    "id": "bb63aaee-60ed-42b2-85c5-91919defd8d6"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970469649.jpg",
+    "pn": [
+      "4970469649"
+    ],
+    "desc": "MEMORY MODULE - 2GB 1066MHZ DDR3 SODIMM\tRIVERSIDE - KINGSWAY\t",
+    "id": "8acf995c-0268-43cd-a10f-f5337ac39f80"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970469648.jpg",
+    "pn": [
+      "4970469648"
+    ],
+    "desc": "MEMORY MODULE - 1GB 1066MHZ DDR3 SODIMM\tRIVERSIDE - KINGSWAY\t",
+    "id": "5fa1548b-c194-4c9f-9f05-a3e4ec0aeeac"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970473094.jpg",
+    "pn": [
+      "4970473094"
+    ],
+    "desc": "Memory Module, 2GB, 1333 MHz, DDR3, DIMM, Unbuffered\tPOCONO\t",
+    "id": "fe967b3d-0a5a-43ff-83f1-40fa6fcc9a4d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970473095.jpg",
+    "pn": [
+      "4970473095"
+    ],
+    "desc": "MEMORY 4GB 1333MHZ DDR3 DIMM UNBUFFERED\tPOCONO",
+    "id": "3c992d2c-efdc-4578-a1ba-17185a2a7417"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970464507.jpg",
+    "pn": [
+      "4970464507"
+    ],
+    "desc": "MEMORY-512MB DDR2 667MHZ MODULE\tTALLADEGA",
+    "id": "bf8ccbed-d632-4bef-8481-b4aa936b1eeb"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970455320.jpg",
+    "pn": [
+      "4970455320"
+    ],
+    "desc": "MEMORY-1GB DDR2 667MHZ MODULE\tTALLADEGA",
+    "id": "b6a33a3f-97b3-43d1-8a8c-7562c88e1a59"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970455321.jpg",
+    "pn": [
+      "4970455321"
+    ],
+    "desc": "MEMORY MODULE DDR2 2GB 667 MHZ\tTALLADEGA",
+    "id": "d27e93d4-2648-4cee-85fd-e8f81c453657"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627921.jpg",
+    "pn": [
+      "0068627921",
+      "0068628454",
+      "0068627513"
+    ],
+    "desc": "APACER 120GB SSD, SATA, M.2",
+    "id": "c007f4b9-6e58-4990-8611-5f178673530b"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627414.jpg",
+    "pn": [
+      "0068627414",
+      "0068628115",
+      "0068628119",
+      "0068628456",
+      "4970525647"
+    ],
+    "desc": "DRIVE 240GB M.2 42MM NVME PCIE MODULE APACER\t",
+    "id": "c47970f5-ee7d-472d-bc79-8c142618b23b"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627517.jpg",
+    "pn": [
+      "0068627517",
+      "0068628116",
+      "0068628118"
+    ],
+    "desc": "DRIVE SSD 480GB M.2 42MM NVME (2 Channel)\t",
+    "id": "155996de-8151-4479-8b28-7efa3f12cd15"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037344.jpg",
+    "pn": [
+      "0090037344"
+    ],
+    "desc": "500GB NVME M.2 2242 BICS4\t",
+    "id": "c761baf0-e317-412d-8530-06769d348b19"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627509.jpg",
+    "pn": [
+      "0068627509",
+      "0068627916",
+      "0068628451"
+    ],
+    "desc": "SSD 2.5” SATA 120GB (SOLID STATE DRIVE)\t",
+    "id": "785d68c7-dc27-4f7f-a078-282ef6a14813"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090036131.jpg",
+    "pn": [
+      "0090036131",
+      "0090029875"
+    ],
+    "desc": "SOLID STATA DRIVE(SSD)-240GB-2.5INCH SATA\t",
+    "id": "d0559b0d-240a-4ba9-af38-f45b771fcc91"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068627918.jpg",
+    "pn": [
+      "0068627918",
+      "0090036551",
+      "0068627177",
+      "4450771629"
+    ],
+    "desc": "SSD 2.5” SATA 480GB (SOLID STATE DRIVE)\t",
+    "id": "bbc30bf6-0df8-44de-b7bb-c726275bd490"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068626300.jpg",
+    "pn": [
+      "0068626300"
+    ],
+    "desc": "HDD 2.5” SATA 500GB\t",
+    "id": "71000753-5523-4b39-9255-2eb80209c3bd"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090027915.jpg",
+    "pn": [
+      "0090027915"
+    ],
+    "desc": "HARD DISK DRIVE - 1TB 2.5 SATA\t",
+    "id": "37155aae-b9df-4c99-a38d-4ca9bc970d8a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090032136.jpg",
+    "pn": [
+      "0090032136"
+    ],
+    "desc": "SEAGATE 1TB HARD DISK DRIVE-2.5'",
+    "id": "22d6da1e-6d7a-4dd5-ad1b-71a61bc78790"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068625128.jpg",
+    "pn": [
+      "0090040619",
+      "0068625128"
+    ],
+    "desc": "HDD 3.5” SATA 500GB\t",
+    "id": "8bf54fd7-b01d-43bb-82ba-8af654410cbe"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068624668.jpg",
+    "pn": [
+      "0068624668"
+    ],
+    "desc": "Hard Drive - 3.5' Seagate , SATA , 2TB\t",
+    "id": "71d77b96-4041-4650-9c9c-b106ee1ddfd2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068624855.jpg",
+    "pn": [
+      "0068624855"
+    ],
+    "desc": "HARD DRIVE - PRIMARY 1TB SATA 3.5' 4K BYTES\t",
+    "id": "2ef9f5f7-f8d3-4402-bc3f-765a4937dc60"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0068625138.jpg",
+    "pn": [
+      "0068625138"
+    ],
+    "desc": "HDD 3.5” SATA 250GB\t",
+    "id": "6bc182d0-8eb1-4322-a2b1-923bdca38621"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090023846.jpg",
+    "pn": [
+      "0090023846"
+    ],
+    "desc": "HDD 3.5” SATA 80GB\t",
+    "id": "718c372f-e893-467e-8cc3-d209b291522d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090024472.jpg",
+    "pn": [
+      "0090024472"
+    ],
+    "desc": "HDD 3.5” SATA 160GB\t",
+    "id": "cdd0cf50-3841-4b5b-8ea7-9f8fe0ead9e5"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090032526.jpg",
+    "pn": [
+      "0090032526"
+    ],
+    "desc": "CPU COOLER - LGA 1150/5\t(COMETLAKE - MISANO - ESTORIL - RIVERSIDE\t)",
+    "id": "e1a23bd9-723c-4691-b27c-15fa70130fb0"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090027663.jpg",
+    "pn": [
+      "0090027663"
+    ],
+    "desc": "HEATSINK WITH FAN LGA 1155\tPOCONO",
+    "id": "d1425e23-cbc9-4f6f-8fe4-a84e8ee2a8dd"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090026115.jpg",
+    "pn": [
+      "0090026115"
+    ],
+    "desc": "HEATSINK-WITH FAN LGA 775\tTALLADEGA",
+    "id": "95535639-387b-4874-8b08-0a53cbac7055"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090028346.jpg",
+    "pn": [
+      "0090028346"
+    ],
+    "desc": "HEATSINK WITH FAN LGA 1155 CPU RIVERSIDE\tRIVERSIDE",
+    "id": "1a341e39-f138-410a-b93d-47fc20a072b2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090026923.jpg",
+    "pn": [
+      "0090026923"
+    ],
+    "desc": "HEATSINK-WITH FAN INTEL SOCKET P PGA478\tKINGSWAY\t",
+    "id": "92a23c3b-bce6-4e92-adba-c02f31d6f641"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090029465.jpg",
+    "pn": [
+      "0090029465"
+    ],
+    "desc": "DC FAN 12V 92MM X 92MM (CORE FULL SIZE)\tMISANO - ESTORIL - RIVERSIDE - KINGSWAY - POCONO - TALLADEGA\t",
+    "id": "011049ea-3c44-4173-9289-806e255888c9"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090026051.jpg",
+    "pn": [
+      "0090026051"
+    ],
+    "desc": "DC FAN 12V 70MM X 70MM (MINI CORE)\tMISANO - ESTORIL - RIVERSIDE - KINGSWAY",
+    "id": "41678115-a67f-4888-b125-7a61ca2ea1b7"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090028192.jpg",
+    "pn": [
+      "0090036666",
+      "0090028192"
+    ],
+    "desc": "DRIVE - SATA DVD-RW - SLIM",
+    "id": "661efbe0-aca4-43f1-bd50-111b91813d98"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090024470.jpg",
+    "pn": [
+      "0090024470"
+    ],
+    "desc": "DRIVE-5.25 HALF-HEIGHT R/W SATA\t",
+    "id": "15529dff-d1ea-4d4f-afe5-69e7a15dba88"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030607.jpg",
+    "pn": [
+      "0090030607"
+    ],
+    "desc": "POWER SUPPLY 24V (CORE FULL SIZE)\tMISANO - ESTORIL\t",
+    "id": "50e14d36-03cb-4f8f-8d50-0816688d19c9"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090029354.jpg",
+    "pn": [
+      "0090037786",
+      "0090029354"
+    ],
+    "desc": "POWER SUPPLY - SWITCHING 250W\tPOCONO - TALLADEGA - PIVAT",
+    "id": "e884faf1-7a5a-4fe6-bdb5-5650928a4e4c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090023318.jpg",
+    "pn": [
+      "0090023318"
+    ],
+    "desc": "USB 2.0 - 4 PORT BREAK-OUT ASSY\tMISANO - ESTORIL - RIVERSIDE - KINGSWAY - POCONO - TALLADEGA",
+    "id": "9de8f73f-19c7-49d8-9a4e-66900c8eb7b2"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970466594.jpg",
+    "pn": [
+      "4970466594",
+      "0090026263",
+      "0090029718",
+      "0090025797"
+    ],
+    "desc": "CABLE SATA DATA & POWER (7600 7601 7643) (110mm)\tCOMETLAKE - KINGSWAY - RIVERSIDE - ESTORIL - MISANO",
+    "id": "13f7314c-8106-4910-b34f-b2eb1b038f70"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450759447.jpg",
+    "pn": [
+      "4450759447"
+    ],
+    "desc": "HARNESS - PIRAT TO ESTORIL MOTHERBOARD\tESTORIL - MISANO",
+    "id": "dc0e1af6-291c-48de-8aaf-b64d74fe3a7e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031402.jpg",
+    "pn": [
+      "0090031402"
+    ],
+    "desc": "CABLE ASSEMBLY: DUAL PANEL MOUNT DISPLAYPORT EXTENSION\tESTORIL - MISANO - COMETLAKE",
+    "id": "fbe201b1-ecff-4498-b02a-8ae3f9182ccc"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090029665.jpg",
+    "pn": [
+      "0090029665",
+      "0090027665"
+    ],
+    "desc": "PS2, KB/MS BREAKOUT ASSEMBLY\tPOCONO - ESTORIL - MISANO",
+    "id": "eccb3a23-8afe-4c13-b099-7206eda58e7c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090032523.jpg",
+    "pn": [
+      "0090032523",
+      "0090031261"
+    ],
+    "desc": "DISPLAY PORT TO VGA FEMALE\tESTORIL - MISANO - COMETLAKE\t",
+    "id": "e309187d-4856-4403-8460-56207e5c15a0"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450769630.jpg",
+    "pn": [
+      "4450769630"
+    ],
+    "desc": "DISPLAY PORT TO DVI-D FEMALE\tESTORIL - MISANO - COMETLAKE\t",
+    "id": "873e3ed6-6fb6-40cd-9aeb-8507f718769a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031397.jpg",
+    "pn": [
+      "0090031397",
+      "0090031387",
+      "0090031391",
+      "0090031399",
+      "0090031393",
+      "0090031394",
+      "0090031396",
+      "0090031398"
+    ],
+    "desc": "CABLE ASSEMBLY: DP TO DVI-D (3480mm)\tESTORIL - MISANO - COMETLAKE",
+    "id": "c845e95f-8f09-43ad-9a87-10adedea7972"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450711293.jpg",
+    "pn": [
+      "4450711293"
+    ],
+    "desc": "PIRAT HARNESS\tTALLADEGA - POCONO",
+    "id": "03b6aa4c-5e9c-40c1-92d4-703271f143ee"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030131.jpg",
+    "pn": [
+      "0090030131",
+      "0090037775"
+    ],
+    "desc": "HARNESS - CORE DC 24V 110MM\tCOMETLAKE - MISANO - ESTORIL - RIVERSIDE - KINGSWAY - LANIER",
+    "id": "221dcd0b-1ef2-487a-b8e9-41055ff3bd3a"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030954.jpg",
+    "pn": [
+      "0090030954"
+    ],
+    "desc": "HARNESS - RS232 BREAKOUT ESTORIL",
+    "id": "97867234-fa69-44c6-a657-4be992403cc8"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031466.jpg",
+    "pn": [
+      "0090031466"
+    ],
+    "desc": "HARNESS - RS232 BREAKOUT ESTORIL",
+    "id": "9d75bb21-8a99-4c9f-8e60-eab1d262180d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450722303.jpg",
+    "pn": [
+      "4450722303"
+    ],
+    "desc": "PIRAT SELFSERV - PCB ASSY\tTALLADEGA - POCONO - ESTORIL\t",
+    "id": "0393893e-d1f2-4740-a917-9181ced83583"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970500917.jpg",
+    "pn": [
+      "4970500917",
+      "4970455709"
+    ],
+    "desc": "PCBA - TRUSTED PLATFORM MODULE\tTALLADEGA - POCONO",
+    "id": "c480039b-bef9-4b10-a77a-32acc23f78af"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090030950.jpg",
+    "pn": [
+      "0090030950",
+      "0090031059"
+    ],
+    "desc": "TPM 2.0 MODULE, 1.27MM ROW PITCH – PCB ASSEMBLY\tESTORIL ",
+    "id": "b8d46f35-6b8e-4a70-b4ca-b36938e47301"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090036116.jpg",
+    "pn": [
+      "0090036116"
+    ],
+    "desc": "EDP TO LVDS CONVERTER BOARD MISANO",
+    "id": "2deb364f-bcb3-4de4-9bcb-6dc8d2f18af5"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450775483.jpg",
+    "pn": [
+      "4450775483"
+    ],
+    "desc": "CABLE - EDP 620MM REVERSIBLE\tMISANO",
+    "id": "7180ea8f-9430-404c-9b91-d8f8fe9288b6"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450749527.jpg",
+    "pn": [
+      "4450749527"
+    ],
+    "desc": "HARNESS LVDS (600MM)\tMISANO",
+    "id": "219452b1-f234-44ed-ba74-3d8e5f56458c"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450743831.jpg",
+    "pn": [
+      "4450743831"
+    ],
+    "desc": "HARNESS LVDS 1200MM \tMISANO",
+    "id": "08d52588-23f4-4241-b82f-492c2b418871"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450743832.jpg",
+    "pn": [
+      "4450743832"
+    ],
+    "desc": "HARNESS LVDS POWER 1200MM-1\tMISANO",
+    "id": "62d1b0eb-9e30-49f7-9f80-e38e48766f5b"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450755296.jpg",
+    "pn": [
+      "4450755296"
+    ],
+    "desc": "HARNESS LVDS SUNLIGHT POWER (1140MM)",
+    "id": "7dea9189-0f2b-4b20-892d-889d494fd1a1"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450755110.jpg",
+    "pn": [
+      "4450755110"
+    ],
+    "desc": "HARNESS LVDS SUNLIGHT POWER EXTENSION\tMISANO",
+    "id": "40a87ac4-970b-4d9b-ad4a-4d6addbb31bd"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037113.jpg",
+    "pn": [
+      "0090037113"
+    ],
+    "desc": "UNIFIED PC CORE - 12V DC FAN (60MM X 60MM X 15MM)\tCOMETLAKE",
+    "id": "4a446593-2932-4261-9398-b7d85cf009da"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4450757084.jpg",
+    "pn": [
+      "4450757084"
+    ],
+    "desc": "USB EXPANSION BOARD ASSEMBLY\tCOMETLAKE - MISANO",
+    "id": "527693cd-dc30-4ec7-9e9e-809cddf5ea8e"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037737.jpg",
+    "pn": [
+      "0090037737",
+      "0090036412"
+    ],
+    "desc": "USB3 TO LAN BOARD INTERCONNECT CABLE\tCOMETLAKE",
+    "id": "b187225a-a48a-4fd9-883a-f9fd7467d8d3"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037736.jpg",
+    "pn": [
+      "0090037736"
+    ],
+    "desc": "USB3 TO LAN CONVERTER\tCOMETLAKE",
+    "id": "6229e691-3256-429f-9fc2-c92fc537c72d"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/4970479927.jpg",
+    "pn": [
+      "4970479927"
+    ],
+    "desc": "CABLE -  PANEL MOUNT AUDIO \tCOMETLAKE\t",
+    "id": "2aa262c9-4d68-4eba-a193-41cf676b786f"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090031001.jpg",
+    "pn": [
+      "0090031001"
+    ],
+    "desc": "ABLE ASSEMBLY FP RESET TO 12W CONNECTOR\tCOMETLAKE - MISANO\t",
+    "id": "b1d3be91-e37e-49b6-b32b-e77e59d7fa67"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/cpu/0090037735.jpg",
+    "pn": [
+      "0090037735"
+    ],
+    "desc": "CABLE ASSEMBLY USB BREAKOUT 220MM\tCOMETLAKE\t",
+    "id": "a20c8be6-c0c9-44ce-adea-53396f0dc0ad"
+  },
+  {
+    "modulo": "CPU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0068628453"
+    ],
+    "desc": "APACER 480GB, SSD 2.5'' BICS5",
+    "id": "312444a5-5467-4f66-95bf-98b0a141ad8d"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090037060.jpg",
+    "pn": [
+      "0090037060",
+      "0090037769",
+      "0090031459"
+    ],
+    "desc": "POWER SUPPLY SWITCH MODE 754W 24VDC",
+    "id": "8424224f-c353-4cdc-a4ce-12a900e7a778"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090036548.jpg",
+    "pn": [
+      "0090036548",
+      "0090028273",
+      "0090028272",
+      "0090028119",
+      "0090027487",
+      "0090024929"
+    ],
+    "desc": "POWER SUPPLY - SWITCH MODE 600W, 24Volts WITH PFC",
+    "id": "a394196d-0da2-46b2-a414-d876f1aff264"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090028269.jpg",
+    "pn": [
+      "4450788143",
+      "0090028269",
+      "0090025115",
+      "0090022358",
+      "0090022055"
+    ],
+    "desc": "SUPPLY-POWER SWITCH MODE 355W",
+    "id": "3e8636ad-8cd9-4456-a98d-86301e43583c"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090036494.jpg",
+    "pn": [
+      "0090036494",
+      "0090030700",
+      "0090028268",
+      "0090025595"
+    ],
+    "desc": "POWER SUPPLY - SWITCH MODE 320W, 24Volts WITH PFC ",
+    "id": "8c03a330-d93d-4402-847b-9b53d1848154"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090030607.jpg",
+    "pn": [
+      "0090030607"
+    ],
+    "desc": "POWER SUPPLY 24V 198W (Fuente de alimentacion del core full size (Estoril - Misano))",
+    "id": "590fee73-604a-4e59-83fd-6de909666c19"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090029354.jpg",
+    "pn": [
+      "0090037786",
+      "0090029354",
+      "0090028271",
+      "0090027565",
+      "0090024828",
+      "0090023974",
+      "0090023973"
+    ],
+    "desc": "POWER SUPPLY ATX 12v - SWITCHING 250W (Fuente de alimentacion del core (Talladega - Pocono))",
+    "id": "4b0019a1-3d1f-459c-b553-90bd6055dea8"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090023855.jpeg",
+    "pn": [
+      "0090023855"
+    ],
+    "desc": "UNIVERSAL UPS (230V) 1150VA, RACK MOUNT",
+    "id": "115f10db-ef7f-4e86-940b-a58b9149028e"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090032843.jpeg",
+    "pn": [
+      "0090032843"
+    ],
+    "desc": "UNIVERSAL Ups (modelo nuevo)",
+    "id": "7e1d3f9b-e456-43c6-98fe-64cd74716037"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090033288.jpeg",
+    "pn": [
+      "0090033288"
+    ],
+    "desc": "230v 1000VA RA",
+    "id": "e0463536-e37d-46e8-91e9-1cb95fe32789"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022509.jpeg",
+    "pn": [
+      "0090022509"
+    ],
+    "desc": "SLIDE - 4 PART, 585mm CERRADA, 875mm ABIERTA",
+    "id": "ecfbcb87-0632-43cb-8c7b-14ebb096425a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023847.jpg",
+    "pn": [
+      "0090023847"
+    ],
+    "desc": "Cassette Green Latch",
+    "id": "4fff6a6e-3e69-4b91-bd99-60e40d9e36a6"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090024879.jpeg",
+    "pn": [
+      "0090024879"
+    ],
+    "desc": "SLIDE - 4 PART, 585mm CERRADA, 925mm ABIERTA",
+    "id": "2007b5b1-0630-4290-80a5-778b67432776"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023328.jpeg",
+    "pn": [
+      "4450802570",
+      "0090023328"
+    ],
+    "desc": "SLIDE - SNAP LATCH BLOCK",
+    "id": "fb16d4e5-45e4-46df-ad84-44c5809d3fcf"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090027020.jpeg",
+    "pn": [
+      "0090027020"
+    ],
+    "desc": "LOCK-IN LATCH MOUNTING",
+    "id": "9bb9414f-4831-4ffa-a2de-efa7e010f61c"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450711290.jpeg",
+    "pn": [
+      "4450711290"
+    ],
+    "desc": "METAL LATCH EXTENSION",
+    "id": "cfc60ae5-23d2-425a-bc3c-c51032bc77f2"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022809.jpeg",
+    "pn": [
+      "0090022809"
+    ],
+    "desc": "PANEL MOUNT PUSHBUTTON DPS (INTERLOCK) ",
+    "id": "a50061f0-da79-4f51-bfbc-c6893ad3c099"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090008697.jpeg",
+    "pn": [
+      "0090008697"
+    ],
+    "desc": "CAP-ANTI ROLL PVC T (CAPUCHON AMARILLO) ",
+    "id": "8fe0ee57-7fcd-40df-856b-13761d440b1e"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450711000.jpeg",
+    "pn": [
+      "4450711000"
+    ],
+    "desc": "INTERLOCK BRACKET ",
+    "id": "f8c92ab1-8e91-402f-a01d-94678585d836"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090025290.jpeg",
+    "pn": [
+      "0090025290"
+    ],
+    "desc": "1=1 GBXX PATROL NOTE, NARROW",
+    "id": "d72fa327-4f3e-4427-8b0f-ca02ed1ea168"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090020816.jpeg",
+    "pn": [
+      "0090020816"
+    ],
+    "desc": "TEST NOTE – GBVM",
+    "id": "3abb76c9-673e-43dc-81ca-f105213cf089"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913390.jpg",
+    "pn": [
+      "9980913390"
+    ],
+    "desc": "Flat Belt BV Entry - (CORREAS BV ENTRY X3 UNIDADES)",
+    "id": "cd53266c-c108-4c20-9f0c-69d75f48405b"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033253.jpeg",
+    "pn": [
+      "0090041243",
+      "0090033253"
+    ],
+    "desc": "PRE-ACCEPTOR (140 R/A) [SS31/SS32/SS94] TYPE B (GBRU2)",
+    "id": "5a6a344b-8619-417c-a519-eda9ceeea575"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033254.jpeg",
+    "pn": [
+      "0090033254"
+    ],
+    "desc": "PRE-ACCEPTOR (178 F/A) [SS31/SS32/SS38/SS88] TYPE B GBRU2",
+    "id": "d348664a-1214-408b-8b6f-71d97d4ccc4e"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033255.jpeg",
+    "pn": [
+      "0090033255"
+    ],
+    "desc": "PRE-ACCEP (240 TTW-SHORT) [SS34/SS84/2045] TYPE B (GBRU2)",
+    "id": "d75839aa-fdb7-44a3-90bb-337b22601100"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033256.jpeg",
+    "pn": [
+      "0090033256"
+    ],
+    "desc": "PRE-ACCEP (354 TTW-LONG) [SS634/SS84/2045] TYPE B (GBRU2)",
+    "id": "f779bf4a-5f05-4a95-ab76-3f6ee246ff64"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033239.jpeg",
+    "pn": [
+      "0090033239"
+    ],
+    "desc": "PRE-ACCEPTOR (140 R/A) - TYPE B [6632]",
+    "id": "1b057412-6b0a-496f-8a95-b14a93553b5a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033240.jpeg",
+    "pn": [
+      "0090033240"
+    ],
+    "desc": "PRE-ACCEPTOR (178 F/A) - TYPE B [6632/6638] ",
+    "id": "218e8dd9-7d49-48a4-a4b5-1b0480219769"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033241.jpeg",
+    "pn": [
+      "0090033241"
+    ],
+    "desc": "PRE-ACCEPTOR (240 TTW-SHORT) - TYPE B [6634]",
+    "id": "81718354-8b7e-435c-abef-47c9bf159fea"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033242.jpeg",
+    "pn": [
+      "0090033242"
+    ],
+    "desc": "PRE-ACCEPTOR (354 TTW-LONG) - TYPE B [6634]",
+    "id": "d3e69762-3cfa-4383-af6d-3460e708e9fa"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033258.jpeg",
+    "pn": [
+      "0090033258"
+    ],
+    "desc": "ENHANCED SEPARATOR WITH FRU MEMORY (GBRU2)",
+    "id": "6474567b-c2c4-47b6-b2e9-42a4de59e8b5"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033244.jpeg",
+    "pn": [
+      "0090033244"
+    ],
+    "desc": "SEPARATOR - NARROW TYPE B (NOT ENHANCED) (GBRU1)",
+    "id": "f6f61a62-fa4c-45f9-8c77-bda4a12747e7"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033285.jpeg",
+    "pn": [
+      "0090033285"
+    ],
+    "desc": "ESCROW WITH FRU MEMORY TYPE B (GBRU2)",
+    "id": "1563e8d8-96ef-4523-a8d6-574e6dde7dfa"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033246.jpeg",
+    "pn": [
+      "0090033246"
+    ],
+    "desc": "ESCROW AND RESERVOIR (NOT ENHANCED) TYPE B",
+    "id": "12a034af-f6d0-4cc6-9938-96522718d885"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090033247.jpeg",
+    "pn": [
+      "0090033247"
+    ],
+    "desc": "UPPER TRANSPORT REMOVABLE REJECT BIN",
+    "id": "d1a813ae-1dbf-41a5-a891-3bc718e3cd87"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090029270.jpeg",
+    "pn": [
+      "0090029270"
+    ],
+    "desc": "BV – GBVEII",
+    "id": "1bb454db-b33f-4c45-be48-83a2d6aec675"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090031013.jpeg",
+    "pn": [
+      "0090031013",
+      "0090027182"
+    ],
+    "desc": "BV ENTRY TRANSPORT",
+    "id": "60f98522-188b-4146-980f-42cd8063950c"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090025029.jpeg",
+    "pn": [
+      "0090025029"
+    ],
+    "desc": "LOWER TRANSPORT GBRU4",
+    "id": "05e8ca15-e911-443f-b4ac-e8e978ef2217"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090035977.jpeg",
+    "pn": [
+      "0090035977"
+    ],
+    "desc": "PCB-ASSY MAIN UPPER",
+    "id": "0a2d7980-2800-46a3-8fc2-364472fc0975"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090029790.jpeg",
+    "pn": [
+      "0090029790"
+    ],
+    "desc": "POWER SUPPLY",
+    "id": "caead15b-e630-4ab8-8c12-2c1877d4de78"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090035978.jpeg",
+    "pn": [
+      "0090035978"
+    ],
+    "desc": "PCB-ENHANCED SEPATAROR (GBRU2)",
+    "id": "a1b646e6-e949-4da7-b600-95dfdfc8b73b"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090026058.jpeg",
+    "pn": [
+      "0090026058"
+    ],
+    "desc": "SEPARATOR PCB was pre-acceptor (GBRU1)",
+    "id": "cd28a6dc-fea1-4df6-ab36-15655bf314e1"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090035979.jpeg",
+    "pn": [
+      "0090035979"
+    ],
+    "desc": "ASSEMBLY LOWER PCB GBRU/GBNA",
+    "id": "19cec602-f012-4601-ab2b-4e2e1af03ef6"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022163.jpeg",
+    "pn": [
+      "0090022163"
+    ],
+    "desc": "REED SWITCH PCB",
+    "id": "d0e3a404-1cf8-4e87-9229-6e02b649d73a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450719463.jpeg",
+    "pn": [
+      "4450719463"
+    ],
+    "desc": "GBRU SHUTTER I/F - TOP ASSY",
+    "id": "daabe561-d5dc-4e26-af96-11cd3de5b5bf"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090030471.jpeg",
+    "pn": [
+      "0090030471"
+    ],
+    "desc": "PCB-MCU FOR FRU MEMORY MCU1AA",
+    "id": "a2fb81a2-a397-4180-9415-99005cf56861"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090030472.jpeg",
+    "pn": [
+      "0090030472"
+    ],
+    "desc": "PCB-FRU MEMORY WITH BRACKET FOR ESCROW",
+    "id": "72b6c8ae-821d-4e98-a902-03a3ea47cd77"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023114.jpeg",
+    "pn": [
+      "0090023114"
+    ],
+    "desc": "REJECT BIN (PURGA)",
+    "id": "9be80a03-3f36-4061-93cb-645d5189d3e3"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090031177.jpeg",
+    "pn": [
+      "0090031177"
+    ],
+    "desc": "CASSETTE - STD RECYCLE, TYPE B",
+    "id": "a47edafc-5ed4-4184-b779-e0e46f82e987"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090029269.jpeg",
+    "pn": [
+      "0090029269"
+    ],
+    "desc": "CURRENCY CASSETTE (RECICLADOR)",
+    "id": "81c2bb28-b5ea-4ac8-ab43-2a0cf9d5be45"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090029490.jpeg",
+    "pn": [
+      "0090029490"
+    ],
+    "desc": "CURRENCY CASSETTE (SOLO DEPOSITO - CASH IN)",
+    "id": "e41a201c-9747-480c-a6e3-a16c01b72c58"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980914605.jpeg",
+    "pn": [
+      "9980914605"
+    ],
+    "desc": "SLIDER L ASSY CHAPITA CASETERA LADO IZQUIERDO",
+    "id": "c2788d7a-5214-49e6-9f7f-8385b8096783"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980914606.jpeg",
+    "pn": [
+      "9980914606"
+    ],
+    "desc": "SLIDER R ASSY CHAPITA CASETERA LADO DERECHA",
+    "id": "c79d90c6-cad7-4d80-a623-7fd3c70c0982"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090029783.jpeg",
+    "pn": [
+      "0090029783"
+    ],
+    "desc": "CASSETTE CONFIGURATION PARTS",
+    "id": "f64fedf4-9ff5-45fe-a288-8440eebcf933"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912822.jpeg",
+    "pn": [
+      "9980912822"
+    ],
+    "desc": "GBXX CARRIER BELT ALIGNMENT T",
+    "id": "6a32a5ad-3f3c-442a-a991-811f25efdbbb"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022065.jpeg",
+    "pn": [
+      "0090022065"
+    ],
+    "desc": "GAS SP ASSY (6632-6631)",
+    "id": "dc395f85-b696-45ba-8320-a558bfdd312d"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023695.jpeg",
+    "pn": [
+      "0090023695"
+    ],
+    "desc": "GAS SP KIT FOR TTW CAN BE USE ",
+    "id": "fd1214bb-c54f-40b5-8bcf-946683d3cdf9"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022165.jpeg",
+    "pn": [
+      "0090022165"
+    ],
+    "desc": "ASSMEBLY RECYCLE MOTOR",
+    "id": "c55e19b1-cebc-43d2-aaf7-43748b156daa"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980914034.jpeg",
+    "pn": [
+      "9980914034"
+    ],
+    "desc": "MOTOR MAIN (MOTOR PRINCIPAL UPPER)",
+    "id": "858f2f83-1926-4711-93ad-3d9a7a1f2796"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980914437.jpeg",
+    "pn": [
+      "9980914437"
+    ],
+    "desc": "TIMING BELT (CORREA DE MOTOR PRINCIPAL UPPER)",
+    "id": "4d5615e7-42af-4ebd-b7b3-887ddedf3218"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9983002391.jpeg",
+    "pn": [
+      "9983002391"
+    ],
+    "desc": "PULLEY (POLEA DE MOTOR PRINCIPAL UPPER)",
+    "id": "771e7424-1228-480e-8422-84df3761d91c"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912372.jpeg",
+    "pn": [
+      "8772284437",
+      "9980912372"
+    ],
+    "desc": "STEPPING MOTOR – ESCM",
+    "id": "70ae9772-349f-43fc-91e4-f12157311983"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912374.jpeg",
+    "pn": [
+      "9980912374"
+    ],
+    "desc": "STEPPING MOTOR – EESM",
+    "id": "c5eefeb1-aae2-48be-86c9-4f73adb90714"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913051.jpeg",
+    "pn": [
+      "9980913051"
+    ],
+    "desc": "MOTOR ASSY - KD02901-0157",
+    "id": "37533ae2-c24d-4114-a1c4-a87a813c95f6"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912369.jpeg",
+    "pn": [
+      "9980912369"
+    ],
+    "desc": "ROTARY SOLENOID - ESMG",
+    "id": "c125edf4-06e9-438f-aafd-6aa7f872237d"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912364.jpeg",
+    "pn": [
+      "9980912364"
+    ],
+    "desc": "SOLENOID - SRMG",
+    "id": "fbab2d55-08d0-4f9d-9391-58a2a248af08"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912355.jpeg",
+    "pn": [
+      "9980912355"
+    ],
+    "desc": "SOLENOID – PAMG/PDMG ",
+    "id": "bb32cf92-8d56-43b9-b39f-b7c70d413f30"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912955.jpeg",
+    "pn": [
+      "9980912955"
+    ],
+    "desc": "SOLENOID",
+    "id": "cc2ce2a3-bcff-42dd-ab3c-6450ef9f9eac"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912368.jpeg",
+    "pn": [
+      "9980912753",
+      "9980912368"
+    ],
+    "desc": "SPRING EXTENSION – FORK (RESORTE SEPARATOR)",
+    "id": "c13aab36-df81-45a1-b914-fd7f7385a560"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912360.jpeg",
+    "pn": [
+      "9980912360"
+    ],
+    "desc": "FORK ASSEMBLY",
+    "id": "6d11eefc-0d05-4a89-a313-01e98e17fbb3"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912390.jpeg",
+    "pn": [
+      "9980912390"
+    ],
+    "desc": "SPRING - EXTENSION",
+    "id": "9daafc9e-f658-4abf-abaf-5b1ccdb535b7"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090020172.jpeg",
+    "pn": [
+      "0090020172"
+    ],
+    "desc": "TIMING BELT (CARRIER)",
+    "id": "6857ffe6-3e48-4567-9ac0-4e572abfa637"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090020173.jpeg",
+    "pn": [
+      "0090020173"
+    ],
+    "desc": "TIMING BELT (MAIN UPPER TRANSPORT)",
+    "id": "f2ca55f2-0663-44b6-a77d-0654b15fc0eb"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912389.jpeg",
+    "pn": [
+      "9980912389"
+    ],
+    "desc": "SHAFT - BV-ENTRY",
+    "id": "30a38c27-d93c-4e03-a314-63b84569e9ac"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980883626.jpeg",
+    "pn": [
+      "9980883626"
+    ],
+    "desc": "GBXX NEW SENSOR KIT",
+    "id": "7a4e2d8a-7e3c-441d-a789-26542fe668be"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9983002946.jpg",
+    "pn": [
+      "9983002946"
+    ],
+    "desc": "SENSOR",
+    "id": "211eae5a-0e52-4663-b0c2-6374cf45a3a4"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980883626.jpeg",
+    "pn": [
+      "9980883626"
+    ],
+    "desc": "KIT SENSOR - UFHS (1151/1152)",
+    "id": "b01407bc-c772-4453-8a29-a31896e7c2b0"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912375.jpeg",
+    "pn": [
+      "9980912375"
+    ],
+    "desc": "SENSOR PRISM - EECS",
+    "id": "d08db863-8480-4384-85c1-3c323bb26548"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913969.jpeg",
+    "pn": [
+      "9980913969"
+    ],
+    "desc": "T-SENSOR PAC LOWER(KD02901-1169)",
+    "id": "b52263dd-d62f-4577-b068-906cb1f2b53a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913924.jpeg",
+    "pn": [
+      "9980913924"
+    ],
+    "desc": "T-SENSOR PAC UPPER(KD02169-K474)",
+    "id": "6289d0ff-0d6b-49cf-96cf-4beb6818b5fc"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912362.jpeg",
+    "pn": [
+      "9980912362"
+    ],
+    "desc": "GEAR 24 - BV ENTRY (24 DIENTES)",
+    "id": "8b882ef7-7525-41fe-87e7-aed2009dd4b4"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912381.jpeg",
+    "pn": [
+      "9980912381"
+    ],
+    "desc": "GEAR - 27 (lower to upper transport)",
+    "id": "9e710a8d-bf49-4e29-b603-a7779e218e91"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912399.jpeg",
+    "pn": [
+      "9980912399"
+    ],
+    "desc": "GEAR 18 UPPER TO LOWER / BV ENTRY ",
+    "id": "8a953263-b392-4ce5-8152-6be52454e930"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912404.jpeg",
+    "pn": [
+      "9980912404"
+    ],
+    "desc": "GEAR-BV-ENTRY",
+    "id": "cd41621b-3080-426f-bd5b-463117199337"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912386.jpeg",
+    "pn": [
+      "9980912386"
+    ],
+    "desc": "PULLEY - BV-ENTRY",
+    "id": "e83c1ab0-393a-4649-99ba-5954d6f4b552"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912403.jpeg",
+    "pn": [
+      "9980912403"
+    ],
+    "desc": "PULLEY - UPPER TRANSPORT/LOWER",
+    "id": "31ff2b65-2321-4f63-a59a-5a167e7c1227"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912385.jpeg",
+    "pn": [
+      "9980912385"
+    ],
+    "desc": "PULLEY – 27 LOWER TRANSPORT",
+    "id": "df8adafb-cb0f-44d8-907d-a80c7f984117"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912391.jpeg",
+    "pn": [
+      "9980912391"
+    ],
+    "desc": "PULLEY - MAIN DRIVE",
+    "id": "a5a4d271-3f07-4529-a365-3a3fed974618"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912400.jpeg",
+    "pn": [
+      "9980912400"
+    ],
+    "desc": "PLUG RUBBER",
+    "id": "04aca761-0f20-4f46-90ad-2dec1eef67e6"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9983002441.jpeg",
+    "pn": [
+      "9983002441"
+    ],
+    "desc": "PICK RUBBER-1 (GBRU2)",
+    "id": "17f27b72-b360-4a7a-b4f3-048a478554d9"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9983002438.jpeg",
+    "pn": [
+      "9983002438"
+    ],
+    "desc": "FEED RUBBER-1 (GBRU2)",
+    "id": "0946adde-cd0c-4134-bf98-2cfcf3f53a1e"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913387.jpeg",
+    "pn": [
+      "9980913387"
+    ],
+    "desc": "PICK RUBBER SET ",
+    "id": "3214f0fb-6bbe-40a7-af15-f4db32a45410"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912977.jpeg",
+    "pn": [
+      "9980912977"
+    ],
+    "desc": "FEED RUBBER ",
+    "id": "d9d9edba-4ed0-4d1f-9ac0-f45485e542fb"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090026273.jpeg",
+    "pn": [
+      "0090026273"
+    ],
+    "desc": "LOCK ARM KIT - LOBBY",
+    "id": "b937de17-4323-4ddb-9f9f-f5eac9460bd5"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912367.jpeg",
+    "pn": [
+      "9980912367"
+    ],
+    "desc": "LEVER - SUPPORT PAC ",
+    "id": "31762652-4b22-4657-8e33-b4c5fb6c6b7a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912353.jpeg",
+    "pn": [
+      "9980912353"
+    ],
+    "desc": "A-STOPPER LINK",
+    "id": "eca355b5-6234-4d05-a1c9-9785934a43f2"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912430.jpeg",
+    "pn": [
+      "9980912430"
+    ],
+    "desc": "UPPER LOCK KIT FOR UPPER TRAN",
+    "id": "8a4121e4-fe42-43d2-9acd-5f9bd0ff85a3"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090025023.jpeg",
+    "pn": [
+      "0090025023"
+    ],
+    "desc": "STUD SUPPORT KIT",
+    "id": "69256302-cf67-47f8-95c2-ba909165d281"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912376.jpeg",
+    "pn": [
+      "9980912376"
+    ],
+    "desc": "CATCH - POM",
+    "id": "795dc668-11e7-445f-96d2-42d5536f8c46"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913382.jpeg",
+    "pn": [
+      "9980913382"
+    ],
+    "desc": "SPACE KIT ",
+    "id": "eb27e8bc-113d-48b9-b075-3809260cc4b2"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9983002390.jpeg",
+    "pn": [
+      "9983002390"
+    ],
+    "desc": "LEAF SPRING",
+    "id": "9eb0c944-3a83-4c29-b1c5-39602337d176"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912573.jpeg",
+    "pn": [
+      "9980912573"
+    ],
+    "desc": "BRACKET STOPPER - TTW PRE ACCEPTOR",
+    "id": "77fb1c6b-b873-44a1-b087-647a117db12a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090025027.jpeg",
+    "pn": [
+      "0090025027"
+    ],
+    "desc": "TOP COVER ASSY - TAPA ESCROW",
+    "id": "eabb3aab-d9f9-4176-8d16-abc211cffb19"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980912359.jpeg",
+    "pn": [
+      "9980912359"
+    ],
+    "desc": "FIXED GATE DOOR ASSEMBLY",
+    "id": "67402b18-6942-426a-8a84-43d79dfa621d"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022468.jpeg",
+    "pn": [
+      "0090022468"
+    ],
+    "desc": "PUSH LATCH",
+    "id": "9ce004a0-58c4-48a9-a781-89ee77ceaf9e"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980913095.jpeg",
+    "pn": [
+      "9980913095"
+    ],
+    "desc": "COVER SEPARATOR PCB",
+    "id": "f62c1e30-7cad-4fcc-8f98-020b47a57e8d"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090029279.jpeg",
+    "pn": [
+      "0090029279"
+    ],
+    "desc": "KIT - GBXX STATUS LED",
+    "id": "ca4d8f22-87dc-479f-8df5-965fa74b4841"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090021939.jpeg",
+    "pn": [
+      "0090036277",
+      "0090021939"
+    ],
+    "desc": "CABLE GUARD GBNA (CADENA PLASTICA COMPLETA)",
+    "id": "678e97c8-a601-48c0-8b58-f41312ae1424"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090019569.jpeg",
+    "pn": [
+      "0090019569"
+    ],
+    "desc": "CASSETTE CONNECTOR HARNESS",
+    "id": "b99f3a18-0d9d-4415-9822-c92a6fb8ce9c"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090030474.jpeg",
+    "pn": [
+      "0090030474"
+    ],
+    "desc": "HARNESS-SPCB TO E-PAC/E-SEP/E",
+    "id": "1e108856-fef8-45c4-acdd-2d26eb2d9283"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090030473.jpeg",
+    "pn": [
+      "0090030473"
+    ],
+    "desc": "HARNESS-LPCB TO E-SPCB FOR FRU MEMORY",
+    "id": "2a435084-bd1b-49c8-8cb0-9062704fa315"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090030475.jpeg",
+    "pn": [
+      "0090030475"
+    ],
+    "desc": "HARNESS-RELAY FOR ESCROW FRU MEMORY",
+    "id": "22650de4-51ed-4c84-be6c-35cf91ffbf4c"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022174.jpeg",
+    "pn": [
+      "0090022174"
+    ],
+    "desc": "GBRU CABLE ASSEMBLY - MAIN HARNESS (SEPATATOR TO UPPER)",
+    "id": "1d2a0cdc-36e8-4d7f-a38f-e33ee0706038"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090020177.jpeg",
+    "pn": [
+      "0090020177"
+    ],
+    "desc": "100 BASE-T CABLE (BV)",
+    "id": "3210312e-8391-4532-81ec-e57e4a2fc6d4"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022176.jpeg",
+    "pn": [
+      "0090022176"
+    ],
+    "desc": "GBRU / GBNA CABLE ASSEMBLY (BV POWER) ",
+    "id": "b2fdef88-b3b8-40b8-b2ca-6ceaabad6a75"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022180.jpeg",
+    "pn": [
+      "0090022180"
+    ],
+    "desc": "GBRU / GBNA CABLE ASSEMBLY (SHUTTER ME",
+    "id": "aa4690f5-6054-4b08-aa90-353c1beab949"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023126.jpeg",
+    "pn": [
+      "0090023126"
+    ],
+    "desc": "GBRU / GBNA CABLE ASSEMBLY (ATM POWER)",
+    "id": "f738bac7-f9f0-4ee6-aa0b-95f9dd412aac"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022175.jpeg",
+    "pn": [
+      "0090022175"
+    ],
+    "desc": "GBRU / GBNA CABLE ASSEMBLY (SEPARATOR TO UPPER, UCRN)",
+    "id": "3462ff6b-2ecb-4d90-a07d-78a02812b9ba"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022178.jpeg",
+    "pn": [
+      "0090022178"
+    ],
+    "desc": "GBRU / GBNA CABLE ASSY (LOWER TO UPPER, UPCN SEÑAL)",
+    "id": "b6e6cc41-aa11-4830-9c5a-d51dbf41e0f6"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022177.jpeg",
+    "pn": [
+      "0090022177"
+    ],
+    "desc": "CABLE ASSY (LOWER TO UPPER, POWER)",
+    "id": "49623a2f-62ee-4e4f-b759-b237988672b5"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090020181.jpeg",
+    "pn": [
+      "0090020181"
+    ],
+    "desc": "USB CABLE ASSY(ORIGINAL)",
+    "id": "4c46d2c5-7e2e-42f7-9d45-4043b43583a8"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450705091.jpeg",
+    "pn": [
+      "4450705091"
+    ],
+    "desc": "HARNESS GBRU POWER (663x) (J7 at the power supply)",
+    "id": "77b48c70-13d1-4dd3-8942-a0a60002592a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023177.jpeg",
+    "pn": [
+      "0090023177"
+    ],
+    "desc": "CABLE - RJ11-RJ11 6hilos (3M) CABLESHUTTER",
+    "id": "930d8ebf-36a3-484a-bcfa-455b7bc69e1d"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023178.jpeg",
+    "pn": [
+      "0090023178"
+    ],
+    "desc": "CABLE - RJ11-RJ11 6hilos (4M) CABLESHUTTER",
+    "id": "a15adcd7-fe33-4c5f-89eb-1bc8f9b0fcec"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023179.jpeg",
+    "pn": [
+      "0090023179"
+    ],
+    "desc": "CABLE - RJ11-RJ11 6hilos (5M) CABLESHUTTER",
+    "id": "077ce9a3-317f-41a4-b385-d5ddc78add25"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023433.jpeg",
+    "pn": [
+      "0090023433"
+    ],
+    "desc": "RJ11 STRAIGHT THROUGH COUPLER",
+    "id": "850e16c3-36dd-4c70-a3ad-75ac0762283b"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450713964.jpeg",
+    "pn": [
+      "4450713964"
+    ],
+    "desc": "LOWER MOTOR SHUTTER ASSEMBLY (RHS) ",
+    "id": "913a21f1-91fe-4b88-90ad-641938aae518"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450713963.jpeg",
+    "pn": [
+      "4450713963"
+    ],
+    "desc": "LOWER MOTOR SHUTTER ASSEMBLY (LHS)",
+    "id": "c5faa1cf-dd93-4f95-9f4f-700dd7119caf"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450715946.jpeg",
+    "pn": [
+      "4450715946"
+    ],
+    "desc": "BRACKET ASSEMBLY, GBRU GUIDE, LHS (6634)",
+    "id": "058d82ef-a6a3-4e10-951b-f1ae570be453"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450715947.jpeg",
+    "pn": [
+      "4450715947"
+    ],
+    "desc": "BRACKET ASSEMBLY, GBRU GUIDE, RHS (6634) ",
+    "id": "18f21069-985b-4e4b-9813-10a1f96a98ad"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450713683.jpeg",
+    "pn": [
+      "4450713683"
+    ],
+    "desc": "BRACKET, GBRU GUIDE. LHS – SHUTTER (66x2)",
+    "id": "d5ec7e0b-c240-4695-9fdf-c4d0462e77e5"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450713678.jpeg",
+    "pn": [
+      "4450713678"
+    ],
+    "desc": "BRACKET, GBRU GUIDE, RHS – SHUTTER (66x2)",
+    "id": "465f0f20-f93f-45b5-b9b1-1c41ec4fb306"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450697334.jpeg",
+    "pn": [
+      "4450697334"
+    ],
+    "desc": "MOULDING INTERFACE - CASH EXIT ",
+    "id": "453a1f11-751b-4e15-8f1d-8be8a117b817"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450724116.jpeg",
+    "pn": [
+      "4450724116"
+    ],
+    "desc": "ASSY - GBRU NG I/F MOULDING WITH GASKET",
+    "id": "d35d28b0-0ee9-4180-8322-1c49a3a4096a"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/4450699195.jpeg",
+    "pn": [
+      "4450699195"
+    ],
+    "desc": "STUD - GBRU ALIGNMENT CEN",
+    "id": "23c340e2-86d2-4270-b7b3-dc39cde407b0"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090026502.jpeg",
+    "pn": [
+      "0090026502"
+    ],
+    "desc": "LABEL - GBNA/RU INSTRUCTIONAL",
+    "id": "b55c529d-70d2-4243-99ec-0b7311419398"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090022167.jpeg",
+    "pn": [
+      "0090036018",
+      "0090022167"
+    ],
+    "desc": "FAN - CA49008-0381",
+    "id": "1d13e6b9-21ee-4503-8683-442fe0bdca27"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/0090023120.jpeg",
+    "pn": [
+      "0090023120"
+    ],
+    "desc": "LOWER BASE (GBRU 4 CASSETTES)",
+    "id": "5cbf52ac-fd7d-4a59-afae-fbfdbf24562c"
+  },
+  {
+    "modulo": "GBRU",
+    "img": "/img/gbru/9980883600.jpeg",
+    "pn": [
+      "9980883600"
+    ],
+    "desc": "Engranaje 17 dientes (UNE ESCROW-UPPER)",
+    "id": "cc6d4094-3b06-414a-be62-365973dbcefd"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450765156.png",
+    "pn": [
+      "4450765156"
+    ],
+    "desc": "NEMO TRACK 2 READ + SMART (México, SS23, SS27)",
+    "id": "65cab70c-cb63-406f-a40b-55f7c4452e88"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450765157.png",
+    "pn": [
+      "4450800207",
+      "4450765157",
+      "4450723882",
+      "4450737837",
+      "4450764436"
+    ],
+    "desc": "TRCR 3TK R/W HICO GREEN MCRW (Argentina, Chile,México,Perú - SS23, SS27)",
+    "id": "31ddf0f5-2430-480e-a2a2-56ab17720cad"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "4450800209"
+    ],
+    "desc": "sankyo nemo motorized card reader writer",
+    "id": "faa72681-42fc-4e0c-8348-4d7a687208c8"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450765158.png",
+    "pn": [
+      "4450765158"
+    ],
+    "desc": "NEMO (MFR) MCRW TRACK 2 READ + SMART (México - SS82, SS84, SS88) ",
+    "id": "dd2ecfbc-8f01-4f90-a256-44687e8ed4b1"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450765159.png",
+    "pn": [
+      "4450765159"
+    ],
+    "desc": " NEMO (MFR) 3TK R/W HiCo + SMA (Argentina, México, Perú - SS82, SS84, SS88)",
+    "id": "f2867a37-1db7-46ce-9bb0-a19604f83e3e"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090032552.png",
+    "pn": [
+      "0090032552",
+      "0090037132"
+    ],
+    "desc": "SMART DIP CARD READER (TAMPER) (Argentina,Colombia,Mexico,Perú - TODOS)",
+    "id": "6e838068-0c24-43e1-a054-0b079f82f48a"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450740583.png",
+    "pn": [
+      "4450740583",
+      "4450704253"
+    ],
+    "desc": "READER-DIP  SMART UNIVERSAL (Argentina,Colombia,Mexico,Perú - TODOS)",
+    "id": "ae7bac1b-6c7a-4745-8174-ba502209f91b"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090031443.png",
+    "pn": [
+      "0090031443"
+    ],
+    "desc": "TRCR 2TK TRANSPORT WITH BASE (INC PCB) (México, Perú - TODOS) ",
+    "id": "05f698c7-431a-4b9d-82b6-a71610abd9b3"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090031444.png",
+    "pn": [
+      "0090031444",
+      "0090030268",
+      "0090025444",
+      "0090031368",
+      "0090028981"
+    ],
+    "desc": "TRCR 3TK TRANSPORT WITH BASE (INC PCB) (Argentina, México, Perú)",
+    "id": "2449a368-b33a-406d-a111-f1a1f34243dc"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090031365.png",
+    "pn": [
+      "0090031365"
+    ],
+    "desc": "NEMO MAIN PCB (TK2) (Argentina - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "449fbfea-88cf-48da-a814-16c8193396df"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090031366.png",
+    "pn": [
+      "0090031366"
+    ],
+    "desc": "NEMO MAIN PCB (3TK HICO) (Argentina - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "c6f7c0b0-02b5-4354-a5ba-00ce9aad8deb"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/9980914082.jpeg",
+    "pn": [
+      "9980914082"
+    ],
+    "desc": "MAIN PCB FOR 4450723882 (MOD USB)",
+    "id": "ed6c381e-da9c-40ea-815f-b8768b4fe409"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450690746.png",
+    "pn": [
+      "4450690746"
+    ],
+    "desc": "EXTENSION SPRING",
+    "id": "ddbf3279-5152-4f92-9081-f3e2487d180c"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450710101.png",
+    "pn": [
+      "4450710101"
+    ],
+    "desc": " SHUTTER HOOK - MCRW",
+    "id": "1a04d4a6-02c1-4f86-b9b8-610c3354ced5"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450706466.png",
+    "pn": [
+      "4450706466"
+    ],
+    "desc": "MCRW SHUTTER (6632/4)",
+    "id": "3b83b7b8-f93f-445e-9dfe-c973b9ef597a"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450713566.png",
+    "pn": [
+      "4450713566"
+    ],
+    "desc": "UXI MCRW SHUTTER (6622/26/31)",
+    "id": "4178887d-dda6-4376-b288-e2af5e8b9a4f"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450718462.png",
+    "pn": [
+      "4450718462"
+    ],
+    "desc": "MCRW SHUTTER MOUNT MOULD",
+    "id": "40a13513-1158-4f3e-8e09-29decff93bf4"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/4450716110.png",
+    "pn": [
+      "4450716110"
+    ],
+    "desc": "FDI MCRW INSERT MOULDING",
+    "id": "0f44fb16-5873-47ec-ba46-2c150b940970"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/9983002743.png",
+    "pn": [
+      "9983002743"
+    ],
+    "desc": "MAGNETIC HEAD FOR TRACK2 (Argentina - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "c6e2c2c2-cf2a-4869-9d03-a8f086250905"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/9983002744.jpeg",
+    "pn": [
+      "9983002744",
+      "9980913546",
+      "9983001970"
+    ],
+    "desc": "MAGNETIC HEAD FOR TRACK3 (Argentina, Chile - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "ddbac815-3c1a-4ca9-bf79-9acc9f45b3f6"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090022326.jpeg",
+    "pn": [
+      "0090022326"
+    ],
+    "desc": "IMCRW CONTACT SET (SMART CARD EMV PARA LECTORA RS232)",
+    "id": "48faf5ea-3bc7-4e21-895e-ac863157d9bf"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090025446.jpeg",
+    "pn": [
+      "0090025446",
+      "0090028982"
+    ],
+    "desc": "IC BLOCK (SMART CARD EMV PARA LECTORA USB)",
+    "id": "06f0b29e-c809-468b-aaa9-dcff426b8731"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090022329.jpeg",
+    "pn": [
+      "0090022329"
+    ],
+    "desc": "IMCRW MEI LOWER ASSY (mod rs232)",
+    "id": "54fec9ab-0c7b-47f4-a731-2afdc500ba3c"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090023198.jpeg",
+    "pn": [
+      "0090023198"
+    ],
+    "desc": "U-IMCRW UPPER AND LOWER MEEI (mod USB)",
+    "id": "414facc9-6ae9-4048-8f52-857bed555caf"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090022535.jpeg",
+    "pn": [
+      "0090022535"
+    ],
+    "desc": "MEI FOR UNIVERSAL PRODUCTS",
+    "id": "9063c97d-bdc1-4c40-a1c9-ffe33a2d8cd1"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/9980914467.jpeg",
+    "pn": [
+      "9980914467"
+    ],
+    "desc": "MOTOR-ASSY",
+    "id": "36477c8c-2e9e-434a-969d-5de3445e425a"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090037751.png",
+    "pn": [
+      "0090037751",
+      "9980235676",
+      "8770238918"
+    ],
+    "desc": "MCRW Capture-Roller (Argentina, Chile, México - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "5f7f96ce-415f-4c47-b1e0-61a303d624e9"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/9980235677.png",
+    "pn": [
+      "9980235677",
+      "9983002943",
+      "0090037752"
+    ],
+    "desc": "ROLLER (Argentina, Chile, México - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "904bc69b-28b9-442f-b6f8-c26f1807ca5f"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090023198.png",
+    "pn": [
+      "0090023198"
+    ],
+    "desc": "U-IMCRW UPPER AND LOWER MEEI ASSEMBLY (Argentina, Chile,​México, Perú - SS22)",
+    "id": "9506ad0a-3c7c-4cfb-9ca4-99c1f0c5082e"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090031367.png",
+    "pn": [
+      "0090031367",
+      "0090025445"
+    ],
+    "desc": "TRCR GREEN NU-MCRW STANDARD THROAT \t(Argentina,​México,Perú - SS22, SS23, SS27)",
+    "id": "f17698bc-ba90-4032-9e10-3636975229ca"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090031447.png",
+    "pn": [
+      "0090031447"
+    ],
+    "desc": "TRCR CLEAR MCRW SHORT THROAT (Argentina, Chile, ​México, Perú - SS82, SS84, SS88)\t",
+    "id": "5405d121-219f-4fd3-ab9c-8573ef0a8138"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090028982.png",
+    "pn": [
+      "0090028982",
+      "0090025446"
+    ],
+    "desc": "NEMO IC BLOCK (Argentina, Chile,​México,Perú - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "34f74180-b361-4efa-ba1e-07c61f0b8d20"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/9980235644.png",
+    "pn": [
+      "9980235644"
+    ],
+    "desc": "BELT-TIMING (Argentina, Chile,​México - TODOS  LOS LECTORES MOTORIZADOS)",
+    "id": "2a601909-4236-4348-8035-dd1832bf5ec7"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090036446.png",
+    "pn": [
+      "0090036446"
+    ],
+    "desc": "ISO CONTACT POSITION SMART CARD TEST CARD (Argentina, Colombia, Chile, Mexico, Perú - TODOS )\t",
+    "id": "1c6fa548-4e7e-48c1-b891-0fbc69dc2c12"
+  },
+  {
+    "modulo": "LECTORAS",
+    "img": "/img/lectoras/0090024168.jpg",
+    "pn": [
+      "0090024168"
+    ],
+    "desc": "TEST CARD FOR CONTACTLESS CARD READER \t(Argentina, Colombia, Chile, Mexico, Perú - TODOS )",
+    "id": "41acc7f7-7f2e-48e7-b191-c46147a20528"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "4450752222"
+    ],
+    "desc": "UNIVERSAL MISC I/F BOARD - TOP LEVEL ASSY",
+    "id": "5e6fb434-19e8-4e31-a65d-d05c2649ab73"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/9980114226.png",
+    "pn": [
+      "6039015070",
+      "9980114226"
+    ],
+    "desc": "Cord  GRN ESD 5FT W/R&CLP",
+    "id": "7d39fe15-6dca-4842-b11f-b814f3996008"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0061083229.jpg",
+    "pn": [
+      "0061083229"
+    ],
+    "desc": "STRAP - TIE 1 08.00 X .100 (PRECINTOS)",
+    "id": "e457f519-3acb-4d51-8db5-ab73edb05d94"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090023553.jpg",
+    "pn": [
+      "0090023553"
+    ],
+    "desc": "LOCK-W/2-CH751 KEYS",
+    "id": "972599e7-1a7f-47e4-b1d1-6eeacbd0f8bc"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450745418.jpeg",
+    "pn": [
+      "4450745418",
+      "4450742018",
+      "4450735518"
+    ],
+    "desc": "EPP-U (P) SPANISH MODULE ASSY (TECLAS PLASTICAS)",
+    "id": "e64d29a0-9108-4873-ab99-e26c9e239011"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450777418.jpeg",
+    "pn": [
+      "4450777418",
+      "4450783518",
+      "4450782008"
+    ],
+    "desc": " EPP-4 (P) SPANISH ASSY",
+    "id": "eef00c3c-88ab-4820-b4bb-78eb4a214638"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450744308.jpeg",
+    "pn": [
+      "4450744308",
+      "4450732108",
+      "4450735608"
+    ],
+    "desc": " EPP-U (S) SPANISH 16 ASSY (TECLAS METALICAS)SANTANDER",
+    "id": "abaf6940-4e23-4b45-8c78-1c87c017c861"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090027572.jpeg",
+    "pn": [
+      "0090027572",
+      "4450767002"
+    ],
+    "desc": "(SELFSERV)  DISPLAY - 15 STANDARD BRIGHT (CON USB)",
+    "id": "c303385e-18c2-4730-af05-a4291da4565b"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090025270.jpeg",
+    "pn": [
+      "0090025270"
+    ],
+    "desc": "(SELFSERV) DISPLAY-15 INCH LCD",
+    "id": "7267ddac-b25c-4739-ab43-fe6ea242e897"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090024770.jpeg",
+    "pn": [
+      "0090024770"
+    ],
+    "desc": "(SELFSERV)  DISPLAY - 15 SELF SERVICE USB",
+    "id": "80e9d985-2eb7-4bdf-93ee-a89b414177ad"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450741591.jpeg",
+    "pn": [
+      "4450741591"
+    ],
+    "desc": "(SELFSERV) DISPLAY - 15 INCH STANDARD BR",
+    "id": "c1014552-2cf7-4e62-9b15-efea40badc82"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090025942.jpeg",
+    "pn": [
+      "0090025942"
+    ],
+    "desc": "GOP ASSEMBLY (conector de 3 pines para 24v)",
+    "id": "3c005ce2-9aec-4ec4-b12d-a96e8d68880f"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090024829.jpeg",
+    "pn": [
+      "0090024829",
+      "0090026111"
+    ],
+    "desc": " (conector de 3 pines para 24v)",
+    "id": "0e550866-a0ad-44ff-8bf9-6b00267ae98b"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450801991.jpg",
+    "pn": [
+      "4450801991",
+      "4450763724",
+      "4450726365",
+      "4450744450",
+      "4450753129",
+      "4450774573"
+    ],
+    "desc": "COMPACT OPERATOR PANEL - COP (MODELO MINI 7”)",
+    "id": "e51b7d8b-58cc-4f09-a206-8af29b2072b6"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090023185.jpeg",
+    "pn": [
+      "0090023185"
+    ],
+    "desc": "TECLADO USB SERVICIO 6632",
+    "id": "991f65a0-a7cc-4b8a-93fc-44b69996a30c"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450755714.jpeg",
+    "pn": [
+      "4450797406",
+      "4450761948",
+      "4450755714"
+    ],
+    "desc": "UNIVERSAL USB HUB TOP LEVEL ASSEMBLY",
+    "id": "565ac10f-6b52-4084-905e-94f5469754db"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090028709.jpeg",
+    "pn": [
+      "0090028709",
+      "4450775484"
+    ],
+    "desc": "HUB USB BUS POWERED 4 PORT",
+    "id": "6d75e2b0-3147-4a89-8e0d-f3b8acef3794"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450689501.jpeg",
+    "pn": [
+      "4450689501"
+    ],
+    "desc": "DC DISTRIBUTION (HUB DC 24V)",
+    "id": "f5f30e11-c4d4-4d93-8b1d-bdaca6e415d9"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6038001889.jpg",
+    "pn": [
+      "6038001889"
+    ],
+    "desc": "AEROSOL ALCOHOL ISOPROPILICO",
+    "id": "0e111cfb-9cd5-46c3-9b54-18554216f35e"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/8772267133.jpg",
+    "pn": [
+      "8772267133"
+    ],
+    "desc": "AEROSOL ESPUMA LIMPIADORA FOAM",
+    "id": "7e7f83aa-8b4d-44d2-bcca-f4dd18516fab"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6038001888.jpg",
+    "pn": [
+      "6038001888"
+    ],
+    "desc": "AEROSOL LIMPIA CONTACTOS",
+    "id": "47739520-62fc-43a7-b27c-e77e221e4a80"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6038001890.jpg",
+    "pn": [
+      "6038001890"
+    ],
+    "desc": "AEROSOL AIRE REMOVER-PARTICLE",
+    "id": "166fdbf2-9985-4067-b8b8-06597a59f536"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450721020.jpeg",
+    "pn": [
+      "4450761160",
+      "4450721020"
+    ],
+    "desc": "SHUTTER ASSEMBLY MOTOR LOWER LHS",
+    "id": "748cfcc5-eb3a-4c20-80c3-1588763486c8"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450721021.jpeg",
+    "pn": [
+      "4450721021",
+      "4450761161"
+    ],
+    "desc": "SHUTTER ASSEMBLY MOTOR LOWER RHS",
+    "id": "096f4b1d-e55c-4f69-8952-b23d9a86a969"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450761229.jpeg",
+    "pn": [
+      "4450804937",
+      "4450761229",
+      "4450713959",
+      "4450788511",
+      "4450777777"
+    ],
+    "desc": "SHUTTER ASSEMBLY - RHS MOTOR UPPER",
+    "id": "f785d708-9bc4-4e6d-9275-9657b1a3d712"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450721041.jpeg",
+    "pn": [
+      "4450721041"
+    ],
+    "desc": "SHUTTER ASSEMBLY - LHS MOTOR UPPER",
+    "id": "2f775800-a0b3-4405-a24f-8d30ebf30394"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450712931.jpeg",
+    "pn": [
+      "4450712931"
+    ],
+    "desc": "SHUTTER I2C- TOP LEVEL ASSY",
+    "id": "3202b101-137d-4dc4-bb62-f5930ccd5ad6"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450707725.jpeg",
+    "pn": [
+      "4450707725"
+    ],
+    "desc": "Snap-fit – polymer (brazo lateral vienen de a 1)",
+    "id": "b43d8c99-9c03-46af-80bf-0b0ea7f61580"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450706390.jpeg",
+    "pn": [
+      "4450706390"
+    ],
+    "desc": "Worm Wheel (CREMALLERA)",
+    "id": "bdecc27e-8950-4ccd-a0ed-a71c18138c6e"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090023519.jpeg",
+    "pn": [
+      "0090023519"
+    ],
+    "desc": "MOTOR - 7.5 DEGREE STEPPER",
+    "id": "8edaaf6c-b708-4a79-ab6f-a21601abde43"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6039014730.jpg",
+    "pn": [
+      "6039014730"
+    ],
+    "desc": "TARJETA DE LIMPIEZA CAJA X 50 UNIDADES -  CLEANING CARD",
+    "id": "41020a5d-b178-4508-a3e6-55c6fc9d3a2d"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6038001747.jpg",
+    "pn": [
+      "6038001747"
+    ],
+    "desc": "TALONARIO para PM PC DOCUMENT-RESOLUTION",
+    "id": "7c17789b-7448-41dc-9bec-d9cb84f0e352"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/8770321277.jpg",
+    "pn": [
+      "8770321277"
+    ],
+    "desc": "REMITOS CVT BANCO NACION DOCUMENT PROOF OF TECHNICAL V",
+    "id": "ab647d82-efba-4cb5-95c9-64c61a813ca7"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6038005699.jpg",
+    "pn": [
+      "6038005702",
+      "6038005699"
+    ],
+    "desc": "ETIQUETAS DE RETORNO (1=50 LABELS GLOBAL RETURN LABEL)",
+    "id": "a0639776-d38e-40cd-9117-44fcf875a390"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450737927.jpeg",
+    "pn": [
+      "4450737927"
+    ],
+    "desc": "(SELFSERV) SERVICE KIT - 15 INTERIOR U (kit 15” para reemplazar de 12” en SS",
+    "id": "dca5eb0e-c3b2-41f7-989e-cb3b89053874"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450736985.jpeg",
+    "pn": [
+      "4450736985"
+    ],
+    "desc": "(SELFSERV) DISPLAY - 15 STANDARD BRIGHT (SIN USB)",
+    "id": "73df2bb9-1a7f-4e32-8a66-5492e49e964f"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090024928.jpeg",
+    "pn": [
+      "0090024928"
+    ],
+    "desc": "(SELFSERV) MONITOR LCD 15 culote grande SELFSERV (SIN USB)",
+    "id": "dc84f0f7-d551-43a4-b780-ca7d5b8bb533"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090024946.jpeg",
+    "pn": [
+      "0090024946"
+    ],
+    "desc": "(SELFSERV) DISPLAY - COLOUR STD BRIGHT (24 volt MONITOR 12” LCD 6634)",
+    "id": "439f963a-c4c5-4ec5-b00f-e86481b55ede"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450721503.jpeg",
+    "pn": [
+      "4450721503"
+    ],
+    "desc": "FDK-15 IN A/G ASM sin filtro de privacidad ",
+    "id": "04a7cbab-c20a-4a98-a119-89981ba3c845"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450721508.jpeg",
+    "pn": [
+      "4450721508"
+    ],
+    "desc": "FDK-15 IN A/G W/PRIVACY con filtro de privacidad",
+    "id": "a045b53d-935a-4256-ae9e-152145237125"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450735826.jpeg",
+    "pn": [
+      "4450735826"
+    ],
+    "desc": "Touch ELO p/EP62 de 15” y 6622/26/31/32/34 c/marco",
+    "id": "470a7124-adde-42cd-9655-7fb3d6f767f3"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450735827.jpeg",
+    "pn": [
+      "4450735827"
+    ],
+    "desc": "Touch ELO p/EP62 de 15” y 6622/26/31/32/34 c/marco",
+    "id": "ce690517-4a4d-4384-8b46-96b28781b8c6"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090025633.jpeg",
+    "pn": [
+      "0090025633"
+    ],
+    "desc": "SENSOR - TOUCH GLASS SAW P/22e adaptable a otros modelos",
+    "id": "6dfbfce3-bd8c-40dc-b214-f1ede4fb8887"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450719592.jpeg",
+    "pn": [
+      "4450719592"
+    ],
+    "desc": "15 INCH TOUCHSCREEN A/G W/PRIVACY (NCR USB directo)",
+    "id": "1acb572d-be94-428c-b4ac-80650a20df6a"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450711378.jpeg",
+    "pn": [
+      "4450711378"
+    ],
+    "desc": "ASSY - 15INCH TOUCHSCREEN A/G (NCR USB directo)",
+    "id": "a6ea1ce4-b2f2-403f-941f-9312f5a97d9e"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090026177.png",
+    "pn": [
+      "0090026177"
+    ],
+    "desc": "Touch ELO (vidrio sin marco adaptable a todos los modelos)",
+    "id": "2fbbbd53-a069-4626-9c0f-1b469892317d"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090022662.jpeg",
+    "pn": [
+      "0090022662"
+    ],
+    "desc": "CONTROLLER CONTROLLER 270100 (mod nuevo Personas y Self Serv)",
+    "id": "bb093232-dd5c-44bb-89fa-d452a15ab298"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090040203.jpeg",
+    "pn": [
+      "0090040203",
+      "0090030201"
+    ],
+    "desc": "CONTROLLER - TOUCHSCREEN, PCAP, 15” EXTERIOR SS27",
+    "id": "b34024b4-f5b0-452d-9925-5fd4b97d1b67"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090025917.jpeg",
+    "pn": [
+      "0090025917"
+    ],
+    "desc": "CABLE ASSEMBLY HARNESS (ELO TO USB 300mm)",
+    "id": "6f45c4bd-d23b-41ab-a408-bb926e6b1f3d"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450699163.jpeg",
+    "pn": [
+      "4450699163"
+    ],
+    "desc": "CABLE ELO a SERIAL RS232",
+    "id": "b6079f10-d118-4506-9b31-584bafd042fd"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020028.jpeg",
+    "pn": [
+      "0090020028"
+    ],
+    "desc": " VIDEO CABLE 1800MM",
+    "id": "7de8d5f8-19e0-4009-8f6f-cdfe7ba547f3"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020046.jpeg",
+    "pn": [
+      "0090020046"
+    ],
+    "desc": "VIDEO CABLE 1800MM",
+    "id": "f5bde5a2-528d-4d7b-92cf-e1facb25d01c"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020046.png",
+    "pn": [
+      "0090020046"
+    ],
+    "desc": "VIDEO CABLE VGA STRAIGHT / 45 DEGREE, 2200MM",
+    "id": "331d4fbb-4f76-42c0-a024-b1fcb7cfb884"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090019218.png",
+    "pn": [
+      "0090019218"
+    ],
+    "desc": "VIDEO CABLE, VGA STRAIGHT / 45 DEGREE, 2500MM",
+    "id": "fa49c4c8-8b49-4263-9f4f-8fc747c6b0a2"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090022105.jpeg",
+    "pn": [
+      "0090022105"
+    ],
+    "desc": "CABLE DVI GOP",
+    "id": "78fe13fe-878b-499d-bba9-748bf8106779"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090032523.png",
+    "pn": [
+      "0090032523"
+    ],
+    "desc": "DISPLAY PORT TO VGA HEMBRA",
+    "id": "b6feef38-e6bd-44b8-b735-68299efb6df6"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450769630.png",
+    "pn": [
+      "4450769630"
+    ],
+    "desc": "DISPLAY PORT TO DVI-D HEMBRA",
+    "id": "5abe17cf-dc29-4696-862e-fc9ae3373109"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090018413.jpeg",
+    "pn": [
+      "0090018413"
+    ],
+    "desc": "CABLE DATOS ELOTOUCH-RS232(macho-macho)",
+    "id": "3c47b8bd-6c7f-46a1-b395-56a70381be2f"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020734.jpeg",
+    "pn": [
+      "0090020734"
+    ],
+    "desc": "CABLE ASSEMBLY - LOW POWER DC, 300MM",
+    "id": "d9095910-32c9-4da8-b23d-c29ca3eed3c2"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020739.jpeg",
+    "pn": [
+      "0090020739"
+    ],
+    "desc": " CABLE ASSEMBLY - LOW POWER DC, 1000MM",
+    "id": "c8cc418a-55ed-4101-8848-9f11b5f19364"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020736.jpeg",
+    "pn": [
+      "0090020736"
+    ],
+    "desc": "CABLE ASSEMBLY - LOW POWER DC, 1700MM",
+    "id": "109a280d-c90a-4cba-ab2f-5b8243fe9a4e"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020742.jpeg",
+    "pn": [
+      "0090020742"
+    ],
+    "desc": "CABLE ASSEMBLY - LOW POWER DC, 2000MM",
+    "id": "18674b0f-0cee-4abc-b738-b66f7d48f76a"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020738.jpeg",
+    "pn": [
+      "0090020738"
+    ],
+    "desc": "CABLE ASSEMBLY - LOW POWER DC, 2600MM",
+    "id": "384bbc36-5dc1-441b-9328-d858e75be66b"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020743.jpeg",
+    "pn": [
+      "0090020743"
+    ],
+    "desc": "CABLE ASSEMBLY - LOW POWER DC, 3000MM",
+    "id": "f14ea597-8f6b-4019-9697-5cd753414b27"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020745.jpeg",
+    "pn": [
+      "0090020745"
+    ],
+    "desc": "CABLE ASSEMBLY - LOW POWER DC, 3000MM",
+    "id": "e3de9526-a2f7-485f-8e72-ae21c4feb19f"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020701.jpeg",
+    "pn": [
+      "0090020701"
+    ],
+    "desc": "USB TYPE A TO TYPE MINI B, HIGH SPEED, 500 MM",
+    "id": "1b940bd5-c385-4312-bc4a-7fa39662f3fb"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020702.jpeg",
+    "pn": [
+      "0090020702"
+    ],
+    "desc": "USB TYPE A TO TYPE MINI B, HIGH SPEED, 1000MM",
+    "id": "a5542913-329b-48e9-8a1b-7498ab184a42"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020708.jpeg",
+    "pn": [
+      "0090020708"
+    ],
+    "desc": "USB TYPE A TO TYPE MINI B, HIGH SPEED, 2000MM",
+    "id": "27feab34-c8e9-4994-9f84-19cf17eb1186"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090020712.jpeg",
+    "pn": [
+      "0090020712"
+    ],
+    "desc": "USB TYPE A TO TYPE MINI B, HIGH SPEED, 3000MM",
+    "id": "8b327662-6425-4f6e-9855-79909c95ebc1"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090021021.jpeg",
+    "pn": [
+      "0090021021"
+    ],
+    "desc": "USB TYPE A TO TYPE B HIGH SPEED 1000MM",
+    "id": "7152b551-1b9e-49dc-b498-eb41f03be31d"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090021027.jpeg",
+    "pn": [
+      "0090021027"
+    ],
+    "desc": "USB TYPE A TO TYPE B HIGH SPEED 2000MM",
+    "id": "0bb9d67e-02e3-455b-8bf9-7499d7b29a66"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090021031.jpeg",
+    "pn": [
+      "0090021031"
+    ],
+    "desc": "USB TYPE A TO TYPE B HIGH SPEED 3000MM",
+    "id": "48daa008-4597-411e-b2a3-7242364ca267"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090021034.jpeg",
+    "pn": [
+      "0090021034"
+    ],
+    "desc": "USB TYPE A TO TYPE B HIGH SPEED 4000MM",
+    "id": "4483f170-acdb-4144-926a-e016e8a75df7"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090026620.png",
+    "pn": [
+      "0090026620"
+    ],
+    "desc": "CABLE ASSEMBLY USB A TO MINI B (Ficha 90°)",
+    "id": "5861f545-2f50-45a3-9cd0-754748fbad73"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090023455.png",
+    "pn": [
+      "0090023455"
+    ],
+    "desc": "CABLE ASSEMBLY - USB A TO B (Ficha 90°) 3000MM",
+    "id": "18ffa473-e814-4fd6-92c7-19f0291f8016"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450612453.jpeg",
+    "pn": [
+      "4450612453"
+    ],
+    "desc": "HARNESS-SDC REWORK",
+    "id": "607405fe-9638-4a89-b07f-07517610ad36"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450707262.jpeg",
+    "pn": [
+      "4450707262"
+    ],
+    "desc": "HARNESS P67/77 F/A (FRONT ACCESS)",
+    "id": "8e384991-1990-4215-8b3d-bca124ec9881"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4450707263.jpeg",
+    "pn": [
+      "4450707263"
+    ],
+    "desc": "HARNESS P67/77 R/A (REAR ACCESS)",
+    "id": "846c7076-7841-4128-871f-e5894e8e420e"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/0090021977.png",
+    "pn": [
+      "0090025078",
+      "0090021977"
+    ],
+    "desc": "CABLE - AC DISTIBUTION POWER – 1 METRO",
+    "id": "78e6eb11-a7d3-44ac-a04e-a8be16c1dbb7"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "6038001679"
+    ],
+    "desc": "FELT-CLEANING",
+    "id": "0bf071a7-e65b-4b45-96cd-fd6f2c9b6fe8"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "7094211400"
+    ],
+    "desc": "CLOTH-LINT FREE 9 X 9 INCH BO",
+    "id": "4c01638f-2dea-4f30-be48-e738389dd857"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "8770232429"
+    ],
+    "desc": "BATTERY-LITHIUM 3V LEAD FREE",
+    "id": "52a8c014-5f0e-46ba-ac6b-c90bead62876"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/6039015092.jpg",
+    "pn": [
+      "6039015092"
+    ],
+    "desc": "WIPES-MIRACLE MAGIC INDIVIDUAL",
+    "id": "3641fe4a-34d5-4100-b89a-cace8fd4dfc9"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "6039015318"
+    ],
+    "desc": "50 WIPES TECH",
+    "id": "25ff2af8-c1a0-4996-a769-a0760e72d93f"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0068628661"
+    ],
+    "desc": "POWER CORD - ARGENTINA",
+    "id": "8753b53f-8bde-48f0-94a3-cddf38076672"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "6039012423"
+    ],
+    "desc": "MAT-ESC PORTABLE",
+    "id": "b4fb9e87-5a6b-4a27-af68-8dc6c67236fe"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090004618"
+    ],
+    "desc": "SO GREASE 100ML",
+    "id": "ae0ab4b5-7712-440d-8836-b887fcef66a0"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "9980235656"
+    ],
+    "desc": "HEAD-R/W ASSY R1,2 AND 3, W3",
+    "id": "a8febbc6-0789-4729-950b-1f4bbfa2c70d"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "6039014974"
+    ],
+    "desc": "VERIFICATION KIT MODEMLESS",
+    "id": "b9e3fc94-d2b8-4122-8b0d-eb3854933d42"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "2881072111"
+    ],
+    "desc": "(CARREFOUR)NCR SCANNER 7874 COMPACT 15.7 INCH-CARREFOUR CONSIGNED",
+    "id": "258711fa-48d3-4b79-82ce-1c4e10a9ed31"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "4970521303"
+    ],
+    "desc": "(CARREFOUR)Teclado nuevo (con cable y lectora)*4970518820 cable",
+    "id": "dd194802-fb01-4ec9-a064-17a0631f27f8"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/4970518820.jpg",
+    "pn": [
+      "4970518820"
+    ],
+    "desc": "(CARREFOUR)6932 64 KEY PS/2 CABLE - 1.5 METERS",
+    "id": "fc1ed195-4cd2-4f3b-b22f-e67eb9a8985f"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/otros/2881092033.jpg",
+    "pn": [
+      "2881092033"
+    ],
+    "desc": "(MULTIBOOT DISCO SOLIDO) - KIT SSD 240GB + ENCLOSURE - INC SA CONSIGNED",
+    "id": "e78935c1-a3a7-4182-a8fd-6933998d395b"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "9983002947"
+    ],
+    "desc": "SENSOR (NO SE RECONOCE EN NINGUN MODULO)",
+    "id": "1f82993e-bfc9-4eb5-92e3-42b44ac330b3"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090037083"
+    ],
+    "desc": "USB CABLE ASSEMBLY",
+    "id": "8d2f9de8-9090-4f85-9f4a-0111ac1ebdba"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "4450800614"
+    ],
+    "desc": "SKYLAKE - I/O SHIELD ASSY (EDP",
+    "id": "a9a7f9fc-5308-4ef6-8e72-80d484e55db6"
+  },
+  {
+    "modulo": "OTROS",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "4450802570"
+    ],
+    "desc": "SLIDE - LATCH ASSY",
+    "id": "17636afa-d483-42df-96bb-9f6131ef3328"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/9980913657.jpeg",
+    "pn": [
+      "9980913657"
+    ],
+    "desc": "DORNOCH VE TERMAL HEAD BK CABEZAL PRINTER SS",
+    "id": "c195974a-4159-42dd-8888-71e7a4e1b254"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970508207.jpeg",
+    "pn": [
+      "4970508207"
+    ],
+    "desc": "SSC06 TERMAL HEAD BK PRINTER S80",
+    "id": "c9aa6a2b-f6de-4c12-bb59-4f0d2bd30f77"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970467222.jpeg",
+    "pn": [
+      "4970467222"
+    ],
+    "desc": "COVER-PRKII EXIT CHUTE F307/F (GUIA DE GUILLOTINA)",
+    "id": "ba290c1d-33b3-4062-a43f-9393dbaedb22"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090024875.jpeg",
+    "pn": [
+      "0090024875"
+    ],
+    "desc": "Guias carro de impresoras 6622/32",
+    "id": "2912a455-ae34-473c-a844-2e11f1bc01e9"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/9980879496.jpeg",
+    "pn": [
+      "9980879496"
+    ],
+    "desc": " Roll-journal take (porta rollo)",
+    "id": "d29c668a-0ab1-4370-9518-e866316dc0e1"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090027052.jpg",
+    "pn": [
+      "0090027052",
+      "0090020624",
+      "0090030205"
+    ],
+    "desc": "PRINTER - USB 1ST THERMAL RECEIPT W/O CAPTURE (S22,S23,S26,S27,S32)",
+    "id": "c00f9771-7e5a-423f-864d-bda4fe28c0c5"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090027053.jpg",
+    "pn": [
+      "0090027053",
+      "0090030206",
+      "0090020625"
+    ],
+    "desc": "PRINTER - USB 1ST THERMAL RECEIPT WITH CAPTURE (NCR SelfServ S22,S23,S26,S27,S32)",
+    "id": "7a66b670-d9bc-4dff-8756-f367735e4abb"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090030207.jpeg",
+    "pn": [
+      "0090030207"
+    ],
+    "desc": "PRINTER - USB 2ST THERMAL RECEIPT W/O CAPTURE (NCR SelfServ S22,S23,S26,S27,S32)",
+    "id": "e40aa32e-4226-4bcb-8444-bf1fc6888e4c"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090025345.jpg",
+    "pn": [
+      "0090025345",
+      "0090026793",
+      "0090027569"
+    ],
+    "desc": "Printer-Low END ATM (NCR SelfServ 2012 - 2016)",
+    "id": "95a3a915-aecc-4b51-9971-56cff7a0dda7"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4450785559.jpg",
+    "pn": [
+      "4450785559"
+    ],
+    "desc": "PRINTER - STIRLING RECEIPT STANDARD (NO HABILITADO)(NCR SelfServ S23, S25, S27, S28, S37, S80, S81, S82, S83, S84, S87, S88)",
+    "id": "2d50aac0-7f48-4083-b792-f0bb35ea0fae"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090023876.jpeg",
+    "pn": [
+      "0090023876",
+      "0090029610"
+    ],
+    "desc": "PRINTER - THERMAL JOURNAL (NCR SelfServ S22,S23,S26,S27,S32)",
+    "id": "b36ebbd8-fac1-493f-875a-62e48c094791"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090029854.jpg",
+    "pn": [
+      "0090029854"
+    ],
+    "desc": "(1) PRINTER - USB 1ST COMPACT THERMAL STATEMENT (2004)",
+    "id": "b26cbe39-f3ee-4828-8abc-8bb3f0f48d6e"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090029649.jpg",
+    "pn": [
+      "0090029649"
+    ],
+    "desc": "(*2 TRANSPORT)(2004)",
+    "id": "a3cc503d-7c2b-47fb-9c38-c9ca6673cf46"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090029855.jpg",
+    "pn": [
+      "0090029855",
+      "0090026792",
+      "0090027938",
+      "0090029650"
+    ],
+    "desc": "PRINTER - USB 2ST COMPACT THERMAL STATEMENT (2004)",
+    "id": "f79d06f2-0030-4677-bbe0-133dd4ca89ee"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090023826.jpeg",
+    "pn": [
+      "0090023826",
+      "0090027506",
+      "4970454032"
+    ],
+    "desc": "ATM ASSY 1ST RECEIPT ENGINE FRU (NCR SelfServ S22,S23,S26,S27,S32)",
+    "id": "ec22923c-dbfd-4cba-b09d-bbf2ef229fba"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090025767.jpeg",
+    "pn": [
+      "0090025767",
+      "0090026668"
+    ],
+    "desc": "ATM ASSY 2ST RECEIPT ENGINE FRU (NCR SelfServ S22,S23,S26,S27,S32)",
+    "id": "3305040e-40a7-4459-b4b9-69b542e35bb2"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090036004.jpg",
+    "pn": [
+      "0090041342",
+      "0090036004",
+      "0090037099",
+      "0090040327"
+    ],
+    "desc": "STIRLING RECEIPT 1ST ENG MAIN BLOCK (FRU) (NCR SelfServ S23, S25, S27, S28, S37,S62,S64, S80, S81, S82, S83, S84, S87, S88)",
+    "id": "9183ef4d-7e74-48a3-91ef-4dba5663414e"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090036005.jpg",
+    "pn": [
+      "0090036005",
+      "0090037100"
+    ],
+    "desc": "STIRLING RECEIPT 2ST ENG MAIN BLOCK (FRU) (NCR SelfServ S23, S25, S27, S28, S37,S62,S64, S80, S81, S82, S83, S84, S87, S88)",
+    "id": "81744e56-6369-47c9-a765-f7e46ab68118"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090023828.jpg",
+    "pn": [
+      "0090023828",
+      "0090027507",
+      "0090024176",
+      "0090030210"
+    ],
+    "desc": "TRANSPORT - THERMAL RECEIPT WHIT CAPTURE (FRU) (NCR SelfServ S22,S23,S26,S27,S32)",
+    "id": "8eefeb92-bf98-4a6a-b573-87652d0d9723"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090024179.jpeg",
+    "pn": [
+      "0090024179",
+      "0090023827",
+      "0090027508",
+      "0090030211"
+    ],
+    "desc": "TRANSPORT - THERMAL RECEIPT W/O CAPTURE (FRU) (NCR SelfServ S22,S23,S27,S32)",
+    "id": "2d3cb392-8f82-4b92-967a-5e2c34f1e559"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090036006.jpg",
+    "pn": [
+      "0090036006"
+    ],
+    "desc": "STIRLING RECEIPT TRANSPORT BLOCK (STANDARD) (NCR SelfServ S23, S25, S27, S28, S37,S62,S64, S80, S81, S82, S83, S84, S87, S88)",
+    "id": "e74ab813-ff2b-4963-8133-b9b6a7f0a5c0"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090036007.jpg",
+    "pn": [
+      "0090036007"
+    ],
+    "desc": "STIRLING RECEIPT TRANSPORT BLOCK (CAPTURE) (FRU) (NCR SelfServ S23, S25, S27, S28, S37,S62,S64, S80, S81, S82, S83, S84, S87, S88)",
+    "id": "aa83f001-802f-4fa2-a9f0-9a723f168f14"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090023829.jpg",
+    "pn": [
+      "0090023829"
+    ],
+    "desc": "PAPER HOPPER (NCR SelfServ S22,S23,S27,S32)",
+    "id": "9d437246-385c-4bb5-872d-aa544e2e7745"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090036008.jpg",
+    "pn": [
+      "0090036008",
+      "0090036452"
+    ],
+    "desc": "STIRLING RECEIPT HOPPER BLOCK (FRU) (NCR SelfServ S23, S25, S27, S28, S37,S62,S64, S80, S81, S82, S83, S84, S87, S88)",
+    "id": "079f873f-e99e-4c82-90c4-71269ab9c140"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970509702.png",
+    "pn": [
+      "4970509702",
+      "9980911396",
+      "9980914583",
+      "4970468590",
+      "4970479306",
+      "0090041270"
+    ],
+    "desc": "F307 Cutter Block Assy (NCR SelfServ S22e,S22,S23,S27,S32 )",
+    "id": "af6bcf06-5b3f-4e39-8b3b-07281b973d5c"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970472684.jpg",
+    "pn": [
+      "4970472684"
+    ],
+    "desc": "THERMAL HEAD CLEANER- (ROHS)",
+    "id": "dab80468-81b0-4884-a756-d804005b73c4"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/9980879489.jpg",
+    "pn": [
+      "9980879489"
+    ],
+    "desc": "SPINDLE-SUPPLY SHAFT RECEIPT (NCR SelfServ S22,S23,S27,S32)",
+    "id": "992549ee-3669-4384-88c4-eca9dec38e8c"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/0090024414.jpg",
+    "pn": [
+      "0090024414"
+    ],
+    "desc": "U8 HP PAPER CORE HOLDER (ROHS) (FRU) (2004)",
+    "id": "cc011597-23cf-45d9-9d23-2ffdd91c63f9"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970446597.jpg",
+    "pn": [
+      "4970446597",
+      "4970446599",
+      "4970446596",
+      "4970529012",
+      "4970446594"
+    ],
+    "desc": "PRINTER-PARKII 1-ST F307 80MM SINGLE PACK MAIN V38  (7346,7350)",
+    "id": "1f1c3dbe-2baa-4eec-809c-6bfaa9e723a8"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970446599.jpg",
+    "pn": [
+      "4970446599",
+      "4970529012",
+      "4970446597",
+      "4970446596",
+      "4970446594"
+    ],
+    "desc": "Printer - Park II 1ST, 80mm, RoHS, Single Pack, IP (7346,7350)",
+    "id": "978db888-9aa2-4177-8c53-d06f94268d1e"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970505536.jpg",
+    "pn": [
+      "4970505536",
+      "4970505537",
+      "4970505538",
+      "4970505539",
+      "4970505540"
+    ],
+    "desc": "PRINTER - RECEIPT SNBC BK-T680 1ST MAIN FIRMWARE V  (7709) ",
+    "id": "d2e82332-1125-446d-af42-ddb20b713e35"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970525194.jpg",
+    "pn": [
+      "4970525194",
+      "4970533320",
+      "4970532767",
+      "4970531249",
+      "4970531736",
+      "4970533031",
+      "4970533205",
+      "4970527459"
+    ],
+    "desc": "PRINTER - RECEIPT 1ST- 80MM (DOUNE) (7709)",
+    "id": "5b7a1a7e-2d58-477e-9ca1-696891a26b3c"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970529281.jpg",
+    "pn": [
+      "4970529281",
+      "4970533314",
+      "4970532605"
+    ],
+    "desc": "SSCO6 80MM PRINTER 1-ST (7357, 7358)",
+    "id": "5e1d99e5-6b80-4841-8487-54d160630397"
+  },
+  {
+    "modulo": "PRINTERS",
+    "img": "/img/printers/4970526192.jpg",
+    "pn": [
+      "4970526192",
+      "4970533315",
+      "4970528792",
+      "4970529282",
+      "4970532606"
+    ],
+    "desc": "SSCO6 80MM PRINTER 2-ST (7357,7358)",
+    "id": "cf84eae8-a82d-4b65-9dea-91d788825970"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450739208.jpg",
+    "pn": [
+      "4450739208",
+      "4450739403",
+      "4450712960",
+      "4450712897",
+      "4450709293",
+      "4450708613",
+      "4450694226"
+    ],
+    "desc": "ASSY - MITIGATION PRESENTER R/A",
+    "id": "9ea8072d-9548-4bd5-a85d-56104bf0f298"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450739146.jpg",
+    "pn": [
+      "4450739146",
+      "4450688303"
+    ],
+    "desc": "PRESENTER-R/A S1 (MID)",
+    "id": "426d9eac-e93e-456e-85f3-2dd801ba2437"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450739145.jpg",
+    "pn": [
+      "4450739145",
+      "4450688274"
+    ],
+    "desc": "PRESENTER-R/A S1 (LONG)",
+    "id": "6192bf5b-fa09-4c3f-bc6e-5b418e3ecc1a"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450769146.jpg",
+    "pn": [
+      "4450769146",
+      "4450714197",
+      "4450719852",
+      "4450721557",
+      "4450739496",
+      "4450759843",
+      "4450761924"
+    ],
+    "desc": "PRESENTER ASSEMBLY - S1 FRONT ACCESS (220 - 240v)",
+    "id": "2f2db43a-9123-45cf-b817-b12f4bde9fc4"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450757548.jpg",
+    "pn": [
+      "4450757548",
+      "4450724941",
+      "4450739492",
+      "4450761930",
+      "4450769136",
+      "4450771916",
+      "4450790645"
+    ],
+    "desc": "PRESENTER ASSEMBLY - S1 FRONT ACCESS *SHORT NOSE (220v)",
+    "id": "49a99ba1-0c52-47eb-9cb8-bf8b2a061d38"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450782708.jpg",
+    "pn": [
+      "4450798451",
+      "4450804535",
+      "4450782708",
+      "4450708504",
+      "4450712895",
+      "4450718416",
+      "4450730147",
+      "4450737627",
+      "4450742336",
+      "4450749062",
+      "4450751703",
+      "4450797453",
+      "4450754811"
+    ],
+    "desc": "S1 DISPENSER CONTROL BOARD",
+    "id": "2a4f1642-58a7-4db9-8f1e-36b2115aff3c"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450689620.jpg",
+    "pn": [
+      "4450689620"
+    ],
+    "desc": "SENSOR-ASSY LVDT",
+    "id": "94877656-1f0c-4f13-a5ef-39b2f0e445e7"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450790782.jpg",
+    "pn": [
+      "4450790782"
+    ],
+    "desc": "ASSY VACUUM PUMP",
+    "id": "49bfed19-cc95-4b43-9c3f-2a1547d6c5f8"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450721579.jpg",
+    "pn": [
+      "4450721579",
+      "4450706573"
+    ],
+    "desc": "ASSY - ELECTRONICS BOX (230V)",
+    "id": "a8be1e6b-1494-46af-b05f-cf50595efd3d"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450721538.jpg",
+    "pn": [
+      "4450721538",
+      "4450698183"
+    ],
+    "desc": "MOTOR PUMP ASSEMBLY (230V)",
+    "id": "5574bf7f-f1d1-402b-a23a-fb5f0f49a2bf"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450693361.jpg",
+    "pn": [
+      "4450693361",
+      "4450667187"
+    ],
+    "desc": "ASSY - SSR (240V WITHOUT FILTER)",
+    "id": "fd7172f6-f39f-4f16-8848-96f474657976"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090008122.jpg",
+    "pn": [
+      "0090008122"
+    ],
+    "desc": "CAPACITOR-RUN 10mF",
+    "id": "77005840-e827-45bb-ba94-bc64f6581e81"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090008123.jpg",
+    "pn": [
+      "0090008123"
+    ],
+    "desc": "CAPACITOR-RUN 35mF",
+    "id": "06c908cd-45cf-42a4-827c-b1ea9bcfea7d"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450587796.jpg",
+    "pn": [
+      "4450587796"
+    ],
+    "desc": "PULLEY-48 T - 18T",
+    "id": "57261a4f-697d-4c39-bfc5-490a9a3bf346"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450587795.jpg",
+    "pn": [
+      "4450587795"
+    ],
+    "desc": "GEAR-PULLEY",
+    "id": "53bf981a-a38c-4b71-b311-13258107c780"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450618501.jpg",
+    "pn": [
+      "4450618501"
+    ],
+    "desc": "HAND WHEEL( Rueda Verde)",
+    "id": "60e1b71f-8fd0-431b-a669-c753d28fea5b"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090012936.jpg",
+    "pn": [
+      "0090012936",
+      "0090012930",
+      "0090026360"
+    ],
+    "desc": "BELT SYNCHRONOUS S/O (330mm) FA",
+    "id": "beb77f53-45b9-42f7-ba5c-458817bfcad5"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090005026.jpg",
+    "pn": [
+      "0090005026",
+      "0090026357"
+    ],
+    "desc": "BELT-T1  75 14.76 X  .354 508 (375mm)",
+    "id": "fdc90d36-825e-42e2-8828-c499cbe1c662"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090005027.jpg",
+    "pn": [
+      "0090005027",
+      "0090026358"
+    ],
+    "desc": "BELT-T1 85 16.73 X .354 5082 (425mm) RA",
+    "id": "7c04bc08-6911-40bc-a78c-e881b81be0e8"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450690266.jpg",
+    "pn": [
+      "4450690266",
+      "4450653074"
+    ],
+    "desc": "KEYPLATE(PURGE)",
+    "id": "62875f09-0a75-45c1-957e-b1aa1afb46a6"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450773447.jpg",
+    "pn": [
+      "4450773447",
+      "4450769555",
+      "4450612449"
+    ],
+    "desc": "FILTER-ASSEMBLY",
+    "id": "66fac448-407d-4ad7-8f68-d8456efd0987"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450697672.jpg",
+    "pn": [
+      "4450697672",
+      "4450712736"
+    ],
+    "desc": "VACUUM RESERVOIR ASSEMBLY\t",
+    "id": "acc69e2c-08fb-441d-974f-aef1da13db2e"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450722049.jpg",
+    "pn": [
+      "4450722049"
+    ],
+    "desc": "PURGE BIN LATCH - S1 REAR ACC",
+    "id": "c81f2ace-e854-4bf7-848f-627c7f75aafe"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450610618.jpg",
+    "pn": [
+      "4450610618"
+    ],
+    "desc": "CATCH-PURGE BIN",
+    "id": "c0e28665-a9e4-43da-80c6-768018613760"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450691302.jpg",
+    "pn": [
+      "4450691302"
+    ],
+    "desc": "SPRING-PURGE BIN CATCH",
+    "id": "166fc8a7-fd94-4cd1-bec7-da8ee7d78013"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450733960.jpg",
+    "pn": [
+      "4450733960"
+    ],
+    "desc": "LATCH - PURGE BIN (F/A PRESENTER) FA",
+    "id": "4ffe17d8-5507-4748-96f9-cf23d26b6e6f"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090019028.jpg",
+    "pn": [
+      "0090019028"
+    ],
+    "desc": "SWITCH SNAP ACTION",
+    "id": "3c164bbe-669c-4556-ab3c-4daa4091d968"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090022809.jpg",
+    "pn": [
+      "0090022809",
+      "0090019401"
+    ],
+    "desc": "PANEL MOUNT PUSHBUTTON DPST 1",
+    "id": "825f879c-aada-421b-b30c-e6ce0581f1d3"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450739995.png",
+    "pn": [
+      "4450739995",
+      "4450755555"
+    ],
+    "desc": "CASH TRAP KIT (FOR SERVICES ONLY)",
+    "id": "89803e23-6811-4370-8071-d6e9b5f496e2"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450755555.jpg",
+    "pn": [
+      "4450755555",
+      "4450739995"
+    ],
+    "desc": "CASH TRAP KIT",
+    "id": "2f4cb8a1-9d84-4b48-8d18-4abe81b950d8"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450705574.jpg",
+    "pn": [
+      "4450705574"
+    ],
+    "desc": "GUIDE-EXIT",
+    "id": "175fd3f1-b1bc-4eb3-883c-dc90906d2623"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450676833.png",
+    "pn": [
+      "4450676833"
+    ],
+    "desc": "GUIDE EXIT UPPER LH",
+    "id": "047ec8c8-7970-49b6-84ac-7b8647910200"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450676834.png",
+    "pn": [
+      "4450676834"
+    ],
+    "desc": "GUIDE EXIT UPPER RH",
+    "id": "cea5b726-17e4-4240-bc76-e47b34920cc6"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450676635.jpg",
+    "pn": [
+      "4450676635"
+    ],
+    "desc": "Guide Note Stack",
+    "id": "ac514802-03cb-4543-b992-e5a643d4de96"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450737569.png",
+    "pn": [
+      "4450737569"
+    ],
+    "desc": "ASSY - NOSE TENSION SHAFT",
+    "id": "77c51653-1f61-4a35-a738-da115614b039"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450737576.png",
+    "pn": [
+      "4450737576"
+    ],
+    "desc": "TENSION SHAFT ASSY",
+    "id": "74945196-f070-4a55-a0d5-95001b4f96f0"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090010013.jpg",
+    "pn": [
+      "0090010013"
+    ],
+    "desc": "MAIN TIMING DISK SelfServ S1 (MOTOR PRINCIPAL ideal MS-16)",
+    "id": "5d984b8f-4710-43ff-99a9-98a87472469a"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090016584.jpg",
+    "pn": [
+      "0090016584"
+    ],
+    "desc": "PHOTOTRANSISTOR SNAP FIT",
+    "id": "4de8a1d5-4d72-42b3-8652-6aecf90371ce"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090016583.png",
+    "pn": [
+      "0090016583"
+    ],
+    "desc": "LED REPAIR HARNESS\t",
+    "id": "924a32e5-346c-40a4-88fb-f5110e112f52"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450755883.jpg",
+    "pn": [
+      "4450755883"
+    ],
+    "desc": "LOW SENSOR",
+    "id": "832886a0-cffa-42b6-8d70-252a8aaaa0d4"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090029048.jpg",
+    "pn": [
+      "0090029048"
+    ],
+    "desc": "STEPPING MOTOR (Motor de Clamp SelfServ)",
+    "id": "41171ac5-678e-4b26-8f7d-c172cc8d9523"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450737575.jpg",
+    "pn": [
+      "4450737575",
+      "4450658226"
+    ],
+    "desc": "GEAR 26T/5 WIDE (DRIVE)",
+    "id": "644c843c-dfe2-4f1a-957c-40306108bd0e"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450646454.jpg",
+    "pn": [
+      "4450646454"
+    ],
+    "desc": "GEAR-WIDE 26T 6",
+    "id": "1359a667-fb17-4a49-ac6e-b1a3668f6dd1"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450587791.jpg",
+    "pn": [
+      "4450587791"
+    ],
+    "desc": "GEAR-IDLER 42 TOOTH WHITE",
+    "id": "2554ed03-a319-4af5-8f5a-dfb55f0f388b"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450630747.jpg",
+    "pn": [
+      "4450630747"
+    ],
+    "desc": "GEAR-DRIVE 48T/5WIDE",
+    "id": "117f9ad2-e87d-414c-9b5a-5bd4a88645a8"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450630722.jpg",
+    "pn": [
+      "4450630722"
+    ],
+    "desc": "GEAR-DOUBLE",
+    "id": "cd14118e-081e-4e69-8822-95c6e01e4850"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450737108.jpg",
+    "pn": [
+      "4450737108",
+      "4450704914",
+      "4450591218"
+    ],
+    "desc": "BEARING INSERT MULTI M4",
+    "id": "8200a6ea-f330-4e87-b183-c11aaabd79a2"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090009188.jpg",
+    "pn": [
+      "0090009188"
+    ],
+    "desc": "WASHER",
+    "id": "95a7ac5f-3f81-4657-b4c7-5657a42100ac"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090007773.jpg",
+    "pn": [
+      "0090007773"
+    ],
+    "desc": "RING-RETAINING CRESENT",
+    "id": "0242893b-0818-4d33-9cb3-acbda9a58cdb"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090002370.jpg",
+    "pn": [
+      "0090002370"
+    ],
+    "desc": "CIRCLIP GROOVE DIA 8MM",
+    "id": "a3d55b89-ca6a-444a-92fc-120acb704b81"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090002367.jpg",
+    "pn": [
+      "0090002367"
+    ],
+    "desc": "CIRCLIP GROOVE DIAMATRO 5MM",
+    "id": "940086ea-21a9-4d99-9f1f-aa344b1d807c"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450775815.jpg",
+    "pn": [
+      "4450775815",
+      "4450775816",
+      "4450740056",
+      "4450740055",
+      "4450739491",
+      "4450732794",
+      "4450728573",
+      "4450728164",
+      "4450707660",
+      "4450705307",
+      "4450698566",
+      "4450689599",
+      "4450689552"
+    ],
+    "desc": "DOUBLE PICK-ASSY",
+    "id": "97ee01a8-8b7d-42ca-96b4-29f5c9832771"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450704987.jpg",
+    "pn": [
+      "4450704987",
+      "4450742674",
+      "4450743350"
+    ],
+    "desc": "ARIA 3 DOUBLEPICK - PICK LINE ( KIT PICK LINE)",
+    "id": "1aa0d069-ccd9-46bc-baeb-0eadef53a4f9"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450742711.jpg",
+    "pn": [
+      "4450742711",
+      "4450704985"
+    ],
+    "desc": "ARIA 3 DOUBLE PICK DRIVE GEAR (KIT GEAR PICK)",
+    "id": "f03aea52-0b2e-4b8a-9d17-6b066ace230a"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450737514.jpg",
+    "pn": [
+      "4450737514",
+      "4450689777",
+      "4450592112"
+    ],
+    "desc": "LINE PICK ASSY",
+    "id": "f7c74b38-c101-4e51-9f9e-c4d7481e92bc"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090035910.jpg",
+    "pn": [
+      "0090035910",
+      "0090031376"
+    ],
+    "desc": "S2 SUCTION CUP BLUE 0090031376(rojo)",
+    "id": "17ed4232-3cff-49c2-ab2a-00e927d8d15d"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450759705.png",
+    "pn": [
+      "4450759705",
+      "4450735713"
+    ],
+    "desc": "VACUUM SYSTEM UPGRADE (BOM Only)",
+    "id": "8b90a5d9-020f-41d5-aec7-bb57141a54f9"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090022199.jpg",
+    "pn": [
+      "0090022199",
+      "0090007840"
+    ],
+    "desc": "SOLENOID-PICK VALVE",
+    "id": "9565538c-8ad7-4c35-af28-0623992a9a3d"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090007844.jpg",
+    "pn": [
+      "0090007844"
+    ],
+    "desc": "T Connector",
+    "id": "6ea26124-50e4-4cbf-826e-471ebb8951c0"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450634624.jpg",
+    "pn": [
+      "4450634624"
+    ],
+    "desc": "TUBE - VACUUM (80mm LONG) ",
+    "id": "e76dc54b-1784-46bc-8070-ab6446a38425"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450587753.jpg",
+    "pn": [
+      "4450587753"
+    ],
+    "desc": "TUBING 130 LONG",
+    "id": "f14a45bb-1763-40bc-a183-5108623def4c"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450587754.jpg",
+    "pn": [
+      "4450587754"
+    ],
+    "desc": "TUBE - VACUUM (180mm 1 LONG )",
+    "id": "5951b8b4-e461-4eb7-a883-b138578056db"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450646306.jpg",
+    "pn": [
+      "4450646306",
+      "0090029701"
+    ],
+    "desc": "BELT - DRIVE (3MR-420)",
+    "id": "3bcdb2de-563d-486a-97f8-9ee113450fbb"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450729312.jpg",
+    "pn": [
+      "4450729312",
+      "0090029702",
+      "4450646307"
+    ],
+    "desc": "BELT - DRIVE (3MR-252)",
+    "id": "b23390cd-d4e8-4b56-baf5-164e479dbc08"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450632941.jpg",
+    "pn": [
+      "4450632941"
+    ],
+    "desc": "GEAR/PULLEY 36T/26G",
+    "id": "eafb33a0-1da1-43e3-b3db-35421018b457"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450632942.jpg",
+    "pn": [
+      "4450632942"
+    ],
+    "desc": "GEAR - 35T DRIVE",
+    "id": "75de3ed4-7dac-4d5d-a34d-fc70059f4979"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450587809.jpg",
+    "pn": [
+      "4450587809"
+    ],
+    "desc": "GEAR IDLER 36T/5 WIDE",
+    "id": "1b318e8c-207b-4c63-9009-5d5c2329b78f"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450632944.jpg",
+    "pn": [
+      "4450632944"
+    ],
+    "desc": "PULLEY - 18G GT",
+    "id": "3430d66f-ff2a-4df6-a539-e5c19d3c448c"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450632945.jpg",
+    "pn": [
+      "4450632945"
+    ],
+    "desc": "PULLEY - 28G GT",
+    "id": "48a17d67-818e-4df7-83ae-490b09d6921e"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450633190.jpg",
+    "pn": [
+      "4450633190"
+    ],
+    "desc": "GEAR - 26T IDLER",
+    "id": "3843b272-d9ce-4d5e-8911-e393dd067d87"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450633963.jpg",
+    "pn": [
+      "4450633963"
+    ],
+    "desc": "GEAR - 36T DRIVE",
+    "id": "72927f98-64a2-4ba5-b63b-dd7dddde475b"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450790580.jpg",
+    "pn": [
+      "4450790580",
+      "4450775807",
+      "4450763079",
+      "4450737504",
+      "4450707679",
+      "4450632954"
+    ],
+    "desc": "D WHEEL ASSY",
+    "id": "e112d8f0-4646-48de-b991-5d354e362453"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450738284.jpg",
+    "pn": [
+      "4450797948",
+      "4450738284",
+      "4450632956",
+      "4450707681"
+    ],
+    "desc": "PINCH ROLL ASSY.",
+    "id": "f5475349-1894-44eb-bbc6-1297c8c8ff66"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450737503.jpg",
+    "pn": [
+      "4450737503",
+      "4450683429",
+      "4450591578"
+    ],
+    "desc": "DRIVE CLUSTER ASSY SINGLE PICK",
+    "id": "92263659-33db-42ef-bc3e-e0eb7f9a8dde"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450664594.jpg",
+    "pn": [
+      "4450664594",
+      "4450667278"
+    ],
+    "desc": "DRIVE SEGMENT ASSY DOUBLE PICK",
+    "id": "0d9a1eee-0c1f-4f45-84a4-67ee57de6f9b"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450615777.png",
+    "pn": [
+      "4450615777"
+    ],
+    "desc": "PCB-COVER",
+    "id": "c4731eb1-8333-47f5-8671-30c076e37923"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450689219.jpg",
+    "pn": [
+      "4450689219",
+      "4450667059",
+      "4450616023"
+    ],
+    "desc": "PCB PicK I/F Double",
+    "id": "0b5b940c-b249-4acf-8aab-424da710dbe9"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450668913.jpg",
+    "pn": [
+      "4450668913"
+    ],
+    "desc": "BOARD PROTECTOR",
+    "id": "092a39b9-5bad-41b6-9743-7337ec09ecb6"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450616193.png",
+    "pn": [
+      "4450616193"
+    ],
+    "desc": "HARNESS-INTER PICK 40 PINES",
+    "id": "a26e5b4f-3340-4876-a9aa-0fdfa84d4310"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450644331.jpg",
+    "pn": [
+      "4450644331"
+    ],
+    "desc": "VERTICAL TRANSPORT BELT DOUBLE PICK",
+    "id": "e319ef7f-284a-4961-be51-be78cdf39043"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450740443.jpg",
+    "pn": [
+      "4450740443"
+    ],
+    "desc": "HARNESS- KEYPLATE HLASSY",
+    "id": "9fb71d20-8d0b-4bed-a28a-eb86c98e48a8"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450684697.jpg",
+    "pn": [
+      "4450684697",
+      "4450594209",
+      "4450628821",
+      "4450647830"
+    ],
+    "desc": "LATCH-GREEN PICK MODULE",
+    "id": "46ee83e0-c78c-491e-bdac-625ed1950792"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450690153.jpg",
+    "pn": [
+      "4450690153",
+      "4450592159"
+    ],
+    "desc": " SPRING-TORSION ",
+    "id": "08c5361a-e058-4d39-8e15-6b09740957ce"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450744519.png",
+    "pn": [
+      "4450744519"
+    ],
+    "desc": "PRESENTER ON-SITE SERVICE KIT",
+    "id": "0057fc89-0852-4fbc-a439-6a9244943bf3"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6039015635.jpg",
+    "pn": [
+      "6039015635"
+    ],
+    "desc": "ORGANIZER SMALL PARTS",
+    "id": "d7b0ae5b-6252-4013-b8e2-b14a2a192391"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6039015081.png",
+    "pn": [
+      "6039015081"
+    ],
+    "desc": "GAUGE- VACUUM ASSY",
+    "id": "5b05fb76-9abf-4092-80fa-b79132479909"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6039014981.jpg",
+    "pn": [
+      "6039014981"
+    ],
+    "desc": "VACUUM GAUGE FOR ATM TESTING",
+    "id": "906dd2ba-ea04-4d26-8330-8481c6a53afb"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6039014982.jpg",
+    "pn": [
+      "6039014982"
+    ],
+    "desc": "VACUUM ADAPTOR PIECE (8MM TO 1/4 INCH)",
+    "id": "b22e4504-7c36-4610-a855-ed4066891db0"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450734807.jpg",
+    "pn": [
+      "4450734807"
+    ],
+    "desc": "D WHEEL_JIG",
+    "id": "6693a203-ebb1-4c16-b538-4e97c32a3bb0"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450769706.png",
+    "pn": [
+      "4450769706"
+    ],
+    "desc": "S1 CASSETTE PUSHER GAUGE",
+    "id": "221057b2-8a54-4fe8-b3f7-6f860cbc03b8"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090009464.jpg",
+    "pn": [
+      "0090009464"
+    ],
+    "desc": "(BATCH=500)-MEDIA-TEST $1 ",
+    "id": "fdaaea5a-38c3-4594-b745-aa0cc75a70ca"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090009465.jpg",
+    "pn": [
+      "0090009465"
+    ],
+    "desc": "(BATCH=500)-MEDIA-TEST $5",
+    "id": "d7e3d3ee-79f7-4d45-9993-1d6aacbc52d3"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/0090030376.png",
+    "pn": [
+      "0090030376"
+    ],
+    "desc": "NCR DOUBLE TEST NOTE ( 1 = 1)",
+    "id": "c4c09c44-56d9-4ed9-81ed-e2f9966ef076"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6038000505.jpg",
+    "pn": [
+      "6038000505",
+      "9980256220",
+      "6034301564"
+    ],
+    "desc": "LUB-SILICONE HI-VACUM 5 OZ",
+    "id": "df7cad87-b77e-4b9d-9759-3ee68eab5413"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6039013243.jpg",
+    "pn": [
+      "6039013243"
+    ],
+    "desc": "STRIP-TEST INFRA RED LED",
+    "id": "a56f7d9d-84e7-4b87-a227-77a5a2642781"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/6039014904.png",
+    "pn": [
+      "6039014904"
+    ],
+    "desc": "CIRCLIP APPLICATOR FOR 0090007773 - TR FASTNERS",
+    "id": "5e584f7e-4bd5-4ca8-b204-43cf218f9606"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450728451.jpg",
+    "pn": [
+      "4450728451",
+      "4450740267",
+      "4450761663",
+      "4450775109"
+    ],
+    "desc": "CASSETTE WITH LOCK ASSEMBLY - STD",
+    "id": "3f6c26e4-900c-4788-87de-70081f5f35f0"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450770893.jpg",
+    "pn": [
+      "4450770893",
+      "4450657663",
+      "4450657664",
+      "4450689215",
+      "4450756409",
+      "4450761683",
+      "4450761336"
+    ],
+    "desc": "S1 CASSETTE FULL ASSEMBLY",
+    "id": "791b388f-70d9-4a40-a2d4-fe477955c63d"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450761677.jpg",
+    "pn": [
+      "4450761677",
+      "4450721253"
+    ],
+    "desc": "EXTENDED CASSETTE ASSEMBLY",
+    "id": "7ec76f82-c937-4dba-b589-66d444ff5a1c"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450693308.jpg",
+    "pn": [
+      "4450693308"
+    ],
+    "desc": "LATCHFAST PURGE BIN ASSEMBLY",
+    "id": "e13511be-4969-4329-97c8-1e061eca6b21"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450719981.jpg",
+    "pn": [
+      "4450719981"
+    ],
+    "desc": "LATCHFAST PURGE BIN WITH LOCK ASSEMBLY",
+    "id": "3014ed76-4c55-44b0-b077-9f6d6ec1f057"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450663391.jpg",
+    "pn": [
+      "4450663391"
+    ],
+    "desc": "OPEN PURGE BIN ASSEMBLY",
+    "id": "c888dce4-4922-412a-8938-d0bf8901deab"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450589381.jpg",
+    "pn": [
+      "4450589381"
+    ],
+    "desc": "MAGNET-PERMANENT",
+    "id": "57e5a924-e6f6-447b-8da0-f1d727a469d9"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450582383.jpg",
+    "pn": [
+      "4450582383"
+    ],
+    "desc": "MAGNET",
+    "id": "f6d64a8b-a223-4c83-9429-ab43d14d2bb7"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450683972.jpg",
+    "pn": [
+      "4450683972"
+    ],
+    "desc": "SPACER-NOTE GUIDE",
+    "id": "b467bf0e-19fe-423b-89ab-6faa81c53432"
+  },
+  {
+    "modulo": "s1",
+    "img": "/img/S1/4450586280.jpg",
+    "pn": [
+      "4450586280"
+    ],
+    "desc": "SPACER-NOTE HEIGHT",
+    "id": "f5212a18-f050-4eb2-9fd2-9ab5e93ce058"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450769744.jpeg",
+    "pn": [
+      "4450769744",
+      "4450761207"
+    ],
+    "desc": "S2 PRESENTER F/A FRU (completo)",
+    "id": "ef026e1e-ae45-4094-9af2-a4a8db326441"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450769745.jpeg",
+    "pn": [
+      "4450769745",
+      "4450761208"
+    ],
+    "desc": "S2 PRESENTER R/A FRU (completo)",
+    "id": "57a956dd-8e04-4627-ab1d-e3af61037532"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450759689.jpg",
+    "pn": [
+      "4450759689"
+    ],
+    "desc": "ASSY - PRESENTER CORE F/A",
+    "id": "d639a4f1-929e-4e4e-b2ce-f37c32aca76f"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450759690.jpeg",
+    "pn": [
+      "4450759690"
+    ],
+    "desc": "ASSY - PRESENTER CORE R/A",
+    "id": "02d9c64e-e2d8-4890-9167-36ae66b15033"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450782430.jpg",
+    "pn": [
+      "4450782430",
+      "4450763990",
+      "4450767189",
+      "4450769742",
+      "4450775762"
+    ],
+    "desc": "FA CARRIAGE ASSY (4450782430 Rodamientos metálicos)",
+    "id": "218d8ee4-3dbf-4418-afd2-57176b3c32ba"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450782431.jpeg",
+    "pn": [
+      "4450782431",
+      "4450761204",
+      "4450769743"
+    ],
+    "desc": "RA CARRIAGE ASSY (Rodamientos metálicos)",
+    "id": "ea215dfa-0137-4bd0-94d9-d43d0c344735"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731307.jpg",
+    "pn": [
+      "4450731307"
+    ],
+    "desc": "FA SHORT NOSE FRU (144.5 mm)",
+    "id": "c8f2b768-fac5-4b3a-80bf-c2b2e30707bb"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731308.jpg",
+    "pn": [
+      "4450731308"
+    ],
+    "desc": "FA LONG NOSE FRU (154 mm)",
+    "id": "ee7eb399-1345-40e5-896d-e29d8da990d3"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731304.jpeg",
+    "pn": [
+      "4450731304"
+    ],
+    "desc": "RA SHORT NOSE FRU (172 mm)",
+    "id": "b9bd637c-08f9-4430-ac6a-840b0efb065d"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731305.jpeg",
+    "pn": [
+      "4450731305"
+    ],
+    "desc": "RA MID NOSE FRU (357.5 mm)",
+    "id": "1333d551-9bbd-4bb7-bd77-e38cfdeb668c"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731306.jpeg",
+    "pn": [
+      "4450731306"
+    ],
+    "desc": "RA LONG NOSE FRU (471.5 mm)",
+    "id": "b61c5281-21e5-430d-9f8b-0a774ae64394"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731632.jpeg",
+    "pn": [
+      "4450786555",
+      "4450731632"
+    ],
+    "desc": "S2 MOTOR PUMP ASSEMBLY",
+    "id": "e83151c3-a7d7-40e4-8ec6-648c9ea021f3"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450753508.jpeg",
+    "pn": [
+      "4450753508",
+      "4450729811"
+    ],
+    "desc": "S2 - SNT TLA ASSY",
+    "id": "93aa899a-9242-4864-a5b1-52b853dfa063"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450736562.jpeg",
+    "pn": [
+      "4450736562"
+    ],
+    "desc": "ASSY - REFERENCE EDGE FRU (BAM)",
+    "id": "57d62949-a358-4b50-b341-a90e48c2ab06"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450775863.jpg",
+    "pn": [
+      "4450775863",
+      "4450754692",
+      "4450756286"
+    ],
+    "desc": "S2 PICK MODULE ASSY ",
+    "id": "e8f0b796-64d0-41b7-a8b0-86e6d75039ee"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450775854.jpeg",
+    "pn": [
+      "4450775854",
+      "4450756605"
+    ],
+    "desc": "S2 DUAL SENSOR PICK MODULE ASSY",
+    "id": "0dea334c-9d21-498a-8f57-22e7fdeb6684"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450756287.jpg",
+    "pn": [
+      "4450756287",
+      "4450768464",
+      "4450775864"
+    ],
+    "desc": "S2 SINGLE PICK MODULE",
+    "id": "01e5bd64-37ac-471e-84a6-fe9656ca110f"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450759625.jpeg",
+    "pn": [
+      "4450759625",
+      "4450775856"
+    ],
+    "desc": "S2 DUAL SENSOR SINGLE PICK MODULE ASSY",
+    "id": "bf6d097a-898a-4532-bfbd-e44284951306"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450755466.jpg",
+    "pn": [
+      "4450755466"
+    ],
+    "desc": "4 HIGH SUPPORT ASSY (SERVICE)",
+    "id": "c570c9a7-0455-49d7-acb0-4cac2cee56e2"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450749323.jpg",
+    "pn": [
+      "4450749323"
+    ],
+    "desc": "S2 PICK SUPPORT 5 HIGH",
+    "id": "2c7ad609-4f0b-4979-90af-f21931e9f0ea"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450757206.jpg",
+    "pn": [
+      "4450757206",
+      "4450757575",
+      "4450749347",
+      "4450779952"
+    ],
+    "desc": "S2 DISPENSER CONTROL BOARD - TOP LEVEL ASSEMBLY - PCB",
+    "id": "928f4941-57f3-4149-9345-8e90934e5f89"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450752738.jpg",
+    "pn": [
+      "4450752738"
+    ],
+    "desc": "QUAD CIC - PCB ASSY",
+    "id": "fcf34a4d-13f6-4844-8a81-11c26ed80dd3"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450753663.jpg",
+    "pn": [
+      "4450753663"
+    ],
+    "desc": "SINGLE PICK CIC SENSOR PCB ASSEMBLY",
+    "id": "10cda0bb-ac95-48c5-b650-309cc2590863"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450734103.jpg",
+    "pn": [
+      "4450734103"
+    ],
+    "desc": "S2 DUAL CASS ID PCB ASSEMBLY",
+    "id": "d7aadd61-8721-4001-9525-fa69ce843cc1"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450762248.jpg",
+    "pn": [
+      "4450762248",
+      "4450772413"
+    ],
+    "desc": "SINGLE CASSETTE ID CIC PCB ASSEMBLY",
+    "id": "4ba0cadc-7a12-4e79-83d0-2c8e07c5f0c1"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450755148.jpg",
+    "pn": [
+      "4450755148"
+    ],
+    "desc": "VACUUM SENSOR PCB ASSY",
+    "id": "c03e0a34-c480-4375-83fe-e9c738d608ea"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450749759.jpg",
+    "pn": [
+      "4450749759"
+    ],
+    "desc": "PICK LED2 PCB ASSEMBLY",
+    "id": "30fcc1f0-4cba-446c-a196-449d93e0a4d5"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450752931.jpg",
+    "pn": [
+      "4450752931",
+      "4450784130",
+      "4450793847"
+    ],
+    "desc": "5_6 HIGH INTERFACE - PCB",
+    "id": "d28b734f-9b50-4dcb-8670-2ef5c74958d7"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450742807.jpg",
+    "pn": [
+      "4450755915",
+      "4450742807"
+    ],
+    "desc": "SENSOR ARRAY ASSEMBLY - PCB",
+    "id": "5c8518cd-a47c-49c8-b8f6-645ccbc679b6"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731226.jpg",
+    "pn": [
+      "4450731226"
+    ],
+    "desc": "S2 SOH LED ASSEMBLY - PCB",
+    "id": "f8c6114e-4e7c-47cf-8c76-810a08848d62"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090026396.jpg",
+    "pn": [
+      "0090026396"
+    ],
+    "desc": "BELT SYNCHRONOUS (510-3MR-10 NON-REINFORCED)",
+    "id": "591f915c-3325-4c4a-b450-543bb77683d3"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090029511.jpg",
+    "pn": [
+      "0090029511"
+    ],
+    "desc": "S2 BELT SYNCHRONOUS (252-3MR-1)",
+    "id": "a95ff311-9fa5-406a-b122-660580752faf"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090031094.jpg",
+    "pn": [
+      "0090031094"
+    ],
+    "desc": "BELT SYNCHRONOUS (135T FHT-3 X 6MM)",
+    "id": "d3c669d1-2f9a-448d-a849-134b738f755a"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090029305.jpg",
+    "pn": [
+      "0090029305"
+    ],
+    "desc": "BELT SYNCHRONOUS (32T FHT-3 NF x 6mm)",
+    "id": "0d5d16bd-71d2-46fc-b384-babcaec93571"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090031091.jpg",
+    "pn": [
+      "0090031091"
+    ],
+    "desc": "BELT SYNCHRONOUS (54T FHT-3 x 5mm)",
+    "id": "dd9f460a-96d3-4130-b9e3-0757c3a75394"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450790783.jpg",
+    "pn": [
+      "4450790783",
+      "4450751323",
+      "4450776004",
+      "4450776990",
+      "4450786556"
+    ],
+    "desc": "ASSY - VACUUM PUMP",
+    "id": "a35f5c1d-7659-4fdf-9b15-46e51c8dd600"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450781220.jpg",
+    "pn": [
+      "4450781220"
+    ],
+    "desc": "S2 VACUUM PUMP DUST COVER",
+    "id": "aadee105-3997-4c84-94c6-1c880186a178"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450750210.jpg",
+    "pn": [
+      "4450750210"
+    ],
+    "desc": "ASSY - S2 AIR RESERVOIR - VACUUM",
+    "id": "b04b4367-898b-40be-b4cb-08ef12190492"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450750211.jpg",
+    "pn": [
+      "4450750211"
+    ],
+    "desc": "ASSY - S2 PRESENTER TUBING - VACUUM",
+    "id": "27c8d75a-8738-4929-87de-48c5e6c2ad30"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450769555.jpg",
+    "pn": [
+      "4450769555",
+      "4450773447"
+    ],
+    "desc": "AIR FILTER - VACUUM",
+    "id": "bd8f837c-ccc8-4593-8828-30bd410acd15"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450769558.jpg",
+    "pn": [
+      "4450769558"
+    ],
+    "desc": "S2 VACUUM SERVICE KIT",
+    "id": "731c88f8-129d-4273-9a76-244b04d065db"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090022199.jpg",
+    "pn": [
+      "0090022199"
+    ],
+    "desc": "SOLENOID-PICK VALVE - VACUUM",
+    "id": "d2afc2ce-e4e8-4e75-b1f2-dc74e30f3d2e"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450750855.jpg",
+    "pn": [
+      "4450750855"
+    ],
+    "desc": "PNEUMATIC TUBING - 6.0mm OD 70.0mm LONG - VACUUM",
+    "id": "9aa078b9-7fea-4b05-9e73-96c81b3c09d0"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450781371.jpg",
+    "pn": [
+      "4450781371",
+      "4450756284"
+    ],
+    "desc": "S2 PICKLINE ASSEMBLY - VACUUM",
+    "id": "9a9c8ca8-2ea2-4632-a6f9-034fcd060cd4"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450729511.jpg",
+    "pn": [
+      "4450729511"
+    ],
+    "desc": "S2 HUB PICK LINE (SNAP FIT)",
+    "id": "341cfa99-9438-4278-8c6a-171b9cce37d2"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090035910.jpg",
+    "pn": [
+      "0090035910"
+    ],
+    "desc": "S2 SUCTION CUP BLUE - VACUUM",
+    "id": "9af755a7-12a5-44ee-8e98-9c86547833e2"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450785843.jpg",
+    "pn": [
+      "4450785843",
+      "4450729506",
+      "4450775830"
+    ],
+    "desc": "S2 G-WHEEL SHAFT ASSY",
+    "id": "ba0afdd9-844f-4fc6-8ca9-810c96cdd36c"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450729504.jpg",
+    "pn": [
+      "4450729504"
+    ],
+    "desc": "S2 PINCH ROLLER SHAFT ASSY",
+    "id": "e0a8da36-c6d1-432a-a15a-c4f21fa509b7"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450756222.jpg",
+    "pn": [
+      "4450756222"
+    ],
+    "desc": "CASSETTE HLA NON TI ",
+    "id": "c6464a58-f888-49ab-887e-ff98a3bb3e4c"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450752309.jpg",
+    "pn": [
+      "4450752309"
+    ],
+    "desc": "ASSY OPEN PURGE BIN (NON RFP, CLEAR) - CASSETTE",
+    "id": "c13502a9-03c0-43e1-9e55-1de8783b5d62"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450756691.jpg",
+    "pn": [
+      "4450756691"
+    ],
+    "desc": "LATCHFAST BIN ASSY - CASSETTE",
+    "id": "1f2298c2-7863-43ff-b2bb-bb3075c27254"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450764619.jpg",
+    "pn": [
+      "4450764619"
+    ],
+    "desc": "PURGE BIN LATCH - S2 DISPENSE",
+    "id": "38a94685-6156-4995-a0b6-0d980e425cfb"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450751775.jpg",
+    "pn": [
+      "4450751775",
+      "4450788983",
+      "4450781428"
+    ],
+    "desc": "S2 CASSETTE LATCH",
+    "id": "e5b3fbff-f8bc-44d6-9ae0-4aec0a15fb1b"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450592159.jpg",
+    "pn": [
+      "4450592159",
+      "4450690153"
+    ],
+    "desc": "SPRING-TORSION - CASSETTE LATCH",
+    "id": "87d5ffb5-96b6-4ed7-a33a-1454e488a382"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450754660.jpg",
+    "pn": [
+      "4450754660"
+    ],
+    "desc": "S2 IDLER GEAR 42T-SNAP",
+    "id": "93331b23-d818-4b51-9f4f-893f44155aff"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450741309.jpg",
+    "pn": [
+      "4450741309"
+    ],
+    "desc": "S2 PULLEY GEAR ASSY 30T/26G",
+    "id": "f60abc74-2d72-4055-a4c2-c1a64ffb2c40"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450736867.jpg",
+    "pn": [
+      "4450736867",
+      "4450632942"
+    ],
+    "desc": "GEAR-35T DRIVE",
+    "id": "28c5bc70-b06c-4e04-9e63-bb4b35bbb59a"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450729526.jpg",
+    "pn": [
+      "4450729526"
+    ],
+    "desc": "S2 G WHEEL DRIVE GEAR 36T ",
+    "id": "d9b0d7b3-70fa-4d61-a3f0-ff68a4e85544"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450726253.jpg",
+    "pn": [
+      "4450726253"
+    ],
+    "desc": "S2 GEAR 22T SNAP FIT",
+    "id": "d667e927-7cbb-48b8-ba78-2a2b8730c3c8"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450748043.jpg",
+    "pn": [
+      "4450748043"
+    ],
+    "desc": "TOOL - S2 GEAR PUSHER 42T96T",
+    "id": "0e56b553-9f45-4b09-9dfd-c3c06e44deac"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450729498.jpg",
+    "pn": [
+      "4450729498"
+    ],
+    "desc": "S2 BAYONET - GEAR",
+    "id": "9320fab0-15c8-4cd1-ac27-323ceabb334c"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450736663.jpg",
+    "pn": [
+      "4450736663"
+    ],
+    "desc": "S2 BELT RETAINER - 5MM - GEAR",
+    "id": "5f93a18b-e531-47dd-831c-42aa404553c0"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0090030991.jpg",
+    "pn": [
+      "0090030991"
+    ],
+    "desc": "FLEX CIRCUIT - S2 CARRIAGE UMBILICAL 515 LONG - HARNESS",
+    "id": "7d731256-c6f4-43a6-a3fb-b84e59786bcd"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450733346.jpg",
+    "pn": [
+      "4450733346"
+    ],
+    "desc": "S2 DUAL CASSETTE ID HARNESS ",
+    "id": "c6f485ea-9b5f-4bfa-868f-33d33d30658f"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450733351.jpg",
+    "pn": [
+      "4450733351"
+    ],
+    "desc": "S2 STATE OF HEALTH HARNESS",
+    "id": "33425a1d-d0b3-4a8e-992b-bec32e0a944b"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450750261.jpg",
+    "pn": [
+      "4450750261"
+    ],
+    "desc": "S2 SINGLE CASSETTE ID HARNESS",
+    "id": "99057326-404b-4848-98d7-af60380712b5"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450750262.jpg",
+    "pn": [
+      "4450750262"
+    ],
+    "desc": "S2 5 & 6 HIGH INTERFACE HARNESS",
+    "id": "2c921872-5198-4fb7-b2f9-d53dced5d30a"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450743473.jpg",
+    "pn": [
+      "4450743473"
+    ],
+    "desc": "BAM CIC HARNESS 2",
+    "id": "ab76b778-8894-45a6-9c2c-c562a3f8d76b"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450753259.jpg",
+    "pn": [
+      "4450753259"
+    ],
+    "desc": "NOSE TRACK INSERT",
+    "id": "0e106f9a-ccde-4763-b363-be09cac6813a"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450730542.jpg",
+    "pn": [
+      "4450730542"
+    ],
+    "desc": "HANDLE KNURLED - OVER MOLDING",
+    "id": "6e5c0c51-1b59-4c49-833e-0b8f82e34005"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450759179.jpg",
+    "pn": [
+      "4450759179"
+    ],
+    "desc": "PLASTIC RETRACT LATCH",
+    "id": "43ee6aea-c39a-453b-89de-75f8fdae91a0"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450731153.jpg",
+    "pn": [
+      "4450731153"
+    ],
+    "desc": "CARRIAGE INTERFACE BRIDGE",
+    "id": "a5aa7b45-8366-47f8-9163-23cc4270ea66"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450746100.jpg",
+    "pn": [
+      "4450746100"
+    ],
+    "desc": "R/A CARRIAGE INTERFACE BRIDGE",
+    "id": "72548325-cbe9-47e5-b36c-61f452e6b529"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450763583.jpg",
+    "pn": [
+      "4450763583"
+    ],
+    "desc": "DIVERT PURGE KEYPLATE",
+    "id": "d31d1a90-3a80-48b9-a3c3-f38b5dc5b2cb"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450754405.jpg",
+    "pn": [
+      "4450754405"
+    ],
+    "desc": "ACTUATOR LH",
+    "id": "c06bf4fc-2320-499b-8dc7-14b1f627eef2"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450754406.jpg",
+    "pn": [
+      "4450754406"
+    ],
+    "desc": "ACTUATOR RH",
+    "id": "37c5c105-0996-4b9d-b86a-60c7ebf19f2f"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0077022110.jpg",
+    "pn": [
+      "0077022110"
+    ],
+    "desc": "METRIC MACHINE, FLAT POZIDRIV, 3X.5 6 LONG",
+    "id": "bf1909e7-5674-4edc-92e1-d577ffaeef09"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450763681.jpg",
+    "pn": [
+      "4450763681"
+    ],
+    "desc": "MOULDING - S2 CAM COVER",
+    "id": "a60254e2-7df0-443d-834a-ba4283d776c2"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/0078732422.jpg",
+    "pn": [
+      "0078732422"
+    ],
+    "desc": "WASHER - NYLON #8",
+    "id": "59bc3cee-ce70-4705-8951-ffc961a06d6b"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450743612.jpg",
+    "pn": [
+      "4450743612"
+    ],
+    "desc": "S2 ASSY SNT DRIVE SHAFT",
+    "id": "3faa41be-df72-4eb7-b1b7-f80cd2e3d0b5"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450769844.jpg",
+    "pn": [
+      "4450769844"
+    ],
+    "desc": "SNT DRIVE SHAFT ASSY",
+    "id": "2f0ae380-6021-433c-8f57-5fdf16e33a1a"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450764287.jpg",
+    "pn": [
+      "4450764287"
+    ],
+    "desc": "MOULDING - S2 NOSE SPACER (NEW)",
+    "id": "8890fdbb-447b-4af2-9c4f-31b74e22d393"
+  },
+  {
+    "modulo": "S2",
+    "img": "/img/s2/4450754711.jpg",
+    "pn": [
+      "4450754711"
+    ],
+    "desc": "NOSE LEG SPACER (OLD)",
+    "id": "e36c8573-a6d8-48c7-bb0f-786e4c27b7c1"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840105162.jpg",
+    "pn": [
+      "4840105162",
+      "4840100840",
+      "4840100083",
+      "4840100066",
+      "4840100007",
+      "4840097798",
+      "4450782624"
+    ],
+    "desc": "INFEED-ASSY SCPM BUNCH SHORT",
+    "id": "5cd0a5bc-98e2-4f7e-8d74-96a207f1a2ca"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840100084.jpg",
+    "pn": [
+      "4840100084"
+    ],
+    "desc": "INFEED-ASSY SCPM BUNCH (MEDIUM)",
+    "id": "2e2fadef-9bd5-456a-bd69-46dd292d91bb"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840105977.jpg",
+    "pn": [
+      "4450786321",
+      "4840105977",
+      "4840105219",
+      "4840101262",
+      "4840100185",
+      "4840100032",
+      "4840097102"
+    ],
+    "desc": "ASSEMBLY - SCPM BUNCH FEED MODULE",
+    "id": "466b1a3c-f763-47e7-aa94-81171ce92367"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840105218.jpg",
+    "pn": [
+      "4450796958",
+      "4840105218",
+      "4840100184",
+      "4840099943",
+      "4450795694"
+    ],
+    "desc": "ASSEMBLY-SCPM CORE MODULE",
+    "id": "ab9a9fe2-433f-459c-9ef6-a3178e9f839a"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840100911.jpg",
+    "pn": [
+      "4450781109",
+      "4840100911",
+      "4840100186",
+      "4840097723"
+    ],
+    "desc": "BIN ASSY STACKING UPPER",
+    "id": "90a53e4a-7bb0-49b9-9e1a-00f685cf8eba"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069483.jpg",
+    "pn": [
+      "0061069483"
+    ],
+    "desc": "SCPM-ERBM MODULE ASM",
+    "id": "b42fc9b3-11b8-4182-8373-d59914e9cc53"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098525.jpg",
+    "pn": [
+      "4840098525"
+    ],
+    "desc": "BOARD ASSEMBLY - SCPM INFEED",
+    "id": "91eef6e5-cfc5-46b7-8c4a-b4898403f2fb"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098528.jpg",
+    "pn": [
+      "4840098528"
+    ],
+    "desc": "ASSEMBLY  SCPM TRANSPORT SENS",
+    "id": "757310e1-9ecc-420c-802b-ba76f59f02a0"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069024.jpg",
+    "pn": [
+      "0061069024"
+    ],
+    "desc": "TIMING BELT MXL 0.08 PITCH 515",
+    "id": "767c0e4c-a650-47fb-9219-2123f8e8add5"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069453.jpg",
+    "pn": [
+      "0061069453"
+    ],
+    "desc": "TIMING BELT",
+    "id": "9e8d06c4-004f-4327-bdf7-e8c6b5038043"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061067519.jpg",
+    "pn": [
+      "0061063888",
+      "0061067519"
+    ],
+    "desc": "BELT-T1 120 9.50 X .250",
+    "id": "2e5d812b-b54f-44ab-bca9-a7e7d8a361c0"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069375.jpg",
+    "pn": [
+      "0061069375"
+    ],
+    "desc": "TIMING BELT 48",
+    "id": "0c02ce64-1540-4ba6-a9ff-b424de7cea39"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069022.jpg",
+    "pn": [
+      "0061069022"
+    ],
+    "desc": "TIMING BELT MXL 0.08 PITCH 51",
+    "id": "fdab9ab1-25b8-4fdd-86fe-1ad40dffa145"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069557.jpg",
+    "pn": [
+      "0061069557"
+    ],
+    "desc": "PANEL ADAPTER (INFEED-CORE) - MOLEX MINI MIII DUAL ROW - 2X14",
+    "id": "3d08fada-d965-491e-9fa2-56e1dc60c97d"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840099204.jpg",
+    "pn": [
+      "4840099204"
+    ],
+    "desc": "HARNESS-SCPM CONTROLLER UDFD",
+    "id": "7cdaad86-5d89-4cdf-8dbd-2b1ead18faed"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098252.jpg",
+    "pn": [
+      "4840098252"
+    ],
+    "desc": "HARNESS-ERBM TO CORE INTERFACE ",
+    "id": "e76bb913-edd6-4e8e-833f-e06b3d0e76a0"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450711516.jpg",
+    "pn": [
+      "4450711516"
+    ],
+    "desc": "HARNESS - SCPM DC INTERLOCK TO PCB CORE",
+    "id": "edb8e180-27ea-4852-aba5-b197222ef6e5"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090006620.jpg",
+    "pn": [
+      "0090006620",
+      "0090022194"
+    ],
+    "desc": "SWITCH-INTERLOCK",
+    "id": "bdce3584-675b-4f00-bc5e-cae96b83387c"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090008697.jpg",
+    "pn": [
+      "0090008697"
+    ],
+    "desc": "CAP-ANTI ROLL PVC",
+    "id": "a12f4f4b-f3c9-466d-8ba4-8ec9c34ab11b"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840101415.jpg",
+    "pn": [
+      "4840101415"
+    ],
+    "desc": "COVER - TOP MOUNT BIN BACKSID Plastic side cover (Stacking Bin)",
+    "id": "7205389d-fdcc-4e80-814d-6eabde7ab929"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840100446.jpg",
+    "pn": [
+      "4840100446"
+    ],
+    "desc": "COVER - STACKING BIN TOP",
+    "id": "1568d772-02ba-45ec-ad25-37f70315d347"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840102049.jpg",
+    "pn": [
+      "4840102049"
+    ],
+    "desc": "COVER BELT SCPM",
+    "id": "e9f94eb7-8f1c-46b5-81be-dc41c90438c9"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090028709.jpg",
+    "pn": [
+      "0090028709"
+    ],
+    "desc": "SINGLE USB ASSEMBLY (Mini HUB 4 port)",
+    "id": "76994626-69f9-49fe-a8ed-e7ab33a110b8"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450775484.jpg",
+    "pn": [
+      "4450775484"
+    ],
+    "desc": "SINGLE USB HUB PORT - ASSEMBLY (Mini HUB 1 port)",
+    "id": "2908d47e-3d6c-443b-b504-f99a7480b3c3"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090020715.jpg",
+    "pn": [
+      "0090020715"
+    ],
+    "desc": "CABLE - USB TYPE A TO TYPE MINI B - HIGH SPEED (480 MBPS) (4000mm 28/22) ",
+    "id": "20bd1eb9-8b2c-4948-a4ad-c433222c322f"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450762184.jpg",
+    "pn": [
+      "4450762184",
+      "4450714834"
+    ],
+    "desc": "SCPM DC HARNESS 16 AWG (4000)",
+    "id": "e1031009-7d05-420f-bd0d-dff0a38c3a05"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090023328.jpg",
+    "pn": [
+      "4450802570",
+      "0090023328"
+    ],
+    "desc": "SLIDE - SNAP LATCH (Traba naranja)",
+    "id": "a8ea3062-6b86-403d-a78e-305da62136a9"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090024889.jpg",
+    "pn": [
+      "0090024889"
+    ],
+    "desc": "SLIDE BLOCK",
+    "id": "6c47cee0-3ca7-4390-b8a1-a0c286dc0b1a"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450711290.jpg",
+    "pn": [
+      "4450711290"
+    ],
+    "desc": "METAL LATCH EXTENSION",
+    "id": "151801eb-2ad5-4356-aece-95364eb473d8"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450720814.jpg",
+    "pn": [
+      "4450720814"
+    ],
+    "desc": "LATCH EXTENSION - SCPM",
+    "id": "62fcd6da-af57-48f0-b669-63ee1248f8c6"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090024172.jpg",
+    "pn": [
+      "0090024172"
+    ],
+    "desc": "CHAIN SEGMENT 12.5MM (W) X 15 (Eslabón) ",
+    "id": "b5f1028c-0791-4f33-a915-ad36288fcd3f"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090024173.jpg",
+    "pn": [
+      "0090024173"
+    ],
+    "desc": "CABLE CHAIN MOUNTING BRACKET",
+    "id": "65e2e005-d02a-47dc-a141-7f4a8218d1ee"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840051295.jpg",
+    "pn": [
+      "4840051295"
+    ],
+    "desc": "1 = 10 PCS SWAB-CLEANING (Isopo limpieza scanner) ",
+    "id": "12b44bff-9fb2-448e-8961-e506ad9f1526"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098230.jpg",
+    "pn": [
+      "4840098230"
+    ],
+    "desc": "SCPM RIBBON CASSETTE",
+    "id": "a635086b-9dd7-4256-951c-dc0ca4c58dc9"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840046075.jpg",
+    "pn": [
+      "4840046075"
+    ],
+    "desc": "TEST-DECK CMC7",
+    "id": "0c4c1a43-34e3-4660-9df2-d2062c4a507a"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450681421.jpg",
+    "pn": [
+      "4450758951",
+      "4450681421"
+    ],
+    "desc": "DEPOSITORY MODULE ASSEMBLY",
+    "id": "40a20710-d311-4753-9619-1ffe67039663"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450758721.jpg",
+    "pn": [
+      "4450758721"
+    ],
+    "desc": "USB PPD CONTROL BOARD ",
+    "id": "3396e714-483f-4d39-a735-f7a69f63df92"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/0090022987.jpeg",
+    "pn": [
+      "0090022987"
+    ],
+    "desc": "DC MOTOR, GEAR REDUCER WITH SUPPRESSION",
+    "id": "24d54195-c2fd-4483-8808-c5da3a35ab78"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450704629.jpg",
+    "pn": [
+      "4450704629"
+    ],
+    "desc": "PPD INTERFACE MOULDING",
+    "id": "155dbca8-139b-4d72-8a63-94f80287a20b"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450685679.jpg",
+    "pn": [
+      "4450685679"
+    ],
+    "desc": "SOLENOID ASSEMBLY",
+    "id": "fe451c33-2e1f-4ce4-9669-07ea9b443b21"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450683158.png",
+    "pn": [
+      "4450683158"
+    ],
+    "desc": " Canasto blanco deposito SS con selenoide",
+    "id": "8408e3c0-c831-4a12-a2ea-e8364d5f6d5f"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450683162.jpg",
+    "pn": [
+      "4450683162"
+    ],
+    "desc": "INK PAD",
+    "id": "a4c4431d-19ac-40af-bfc9-9655ec6af114"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450689066.jpg",
+    "pn": [
+      "4450689066"
+    ],
+    "desc": "MID LENGTH INFEED (6634)",
+    "id": "0d9409fd-0a87-4b66-a1ae-09ca6d4c4f9e"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450704237.png",
+    "pn": [
+      "4450704237"
+    ],
+    "desc": "TI DEPOSIT BIN HARNESS",
+    "id": "c7b1b501-086c-4f8a-b949-e2544659ef0e"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450682356.jpg",
+    "pn": [
+      "4450682356"
+    ],
+    "desc": " ENVELOPE DEPOSIT CONTROL HARNESS",
+    "id": "225b9033-3ae4-4316-9b2b-51a01bd1a31e"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/0090019194.jpg",
+    "pn": [
+      "0090019194"
+    ],
+    "desc": "HOLDER - PRINT CATRIDGE",
+    "id": "1fdfdb0a-1d4c-4a12-9e8b-22df2ee68a7f"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450704514.jpg",
+    "pn": [
+      "4450704514"
+    ],
+    "desc": "ENVELOPE SPACER (DISPENSER)",
+    "id": "97696172-a612-44a2-9bdf-64c2219085b6"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450704197.jpg",
+    "pn": [
+      "4450704197"
+    ],
+    "desc": "GEAR COVER (DISPENSER)",
+    "id": "f912002b-6d1c-4c55-bef4-84d45af0e466"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450682355.jpg",
+    "pn": [
+      "4450682355"
+    ],
+    "desc": "ENVELOPE DISPENSER CONTROL HARNESS",
+    "id": "d80fe73f-7a76-46a7-ba07-dcc3a6e31c5e"
+  },
+  {
+    "modulo": "SOBRES",
+    "img": "/img/sobres/4450681767.jpg",
+    "pn": [
+      "4450681767"
+    ],
+    "desc": "DISPENSER-ENVELOPE ASM",
+    "id": "ae5f9fa6-d463-4d3a-8fc1-3fd4b613c2d0"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090036266.jpg",
+    "pn": [
+      "0090036266"
+    ],
+    "desc": "SR SPLIT CASSETTE (W/O LOCK)",
+    "id": "b5d25a8b-bfca-4a4b-81e1-e0c5a7791c9d"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040735.jpg",
+    "pn": [
+      "0090040735",
+      "0090039456",
+      "0090038034",
+      "0090037548",
+      "0090036262"
+    ],
+    "desc": "SR RECYCLE CASSETTE W/O LOCK",
+    "id": "731df533-09b4-45d8-9b74-ac12c5916140"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040734.jpg",
+    "pn": [
+      "0090040734",
+      "0090039455",
+      "0090038048",
+      "0090037558",
+      "0090036258"
+    ],
+    "desc": "SR DEPOSIT CASSETTE W/O LOCK",
+    "id": "0bc6fe99-590d-4b5a-bb94-41a8a66d4bdb"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040118.jpg",
+    "pn": [
+      "0090040118",
+      "0090039450",
+      "0090038063",
+      "3320003067",
+      "3320003006"
+    ],
+    "desc": "SR BV MAGNETIC SENSOR",
+    "id": "d3264f64-f72e-4591-b84f-4f759c196070"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040733.jpg",
+    "pn": [
+      "5050003044",
+      "0090040733",
+      "0090038065",
+      "3320003069",
+      "3320003008"
+    ],
+    "desc": "SR ESCROW",
+    "id": "fe768aea-7891-40fd-add2-76a54ac09d6d"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090038066.jpg",
+    "pn": [
+      "0090038066",
+      "3320003070",
+      "3320003009"
+    ],
+    "desc": "SR REJECT TRANSPORT",
+    "id": "bf6da648-2db4-48fb-8e40-0d25f90737db"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040731.jpg",
+    "pn": [
+      "0090040731",
+      "0090039453",
+      "0090038076",
+      "3320003063",
+      "3320003002"
+    ],
+    "desc": "SR UPPER TRANSPORT W/O CENTRALISER",
+    "id": "8ca4368b-340e-4bcb-9dc9-7ce9b1143568"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040730.jpg",
+    "pn": [
+      "5050003051",
+      "0090041315",
+      "0090040730",
+      "0090039449",
+      "0090038074",
+      "3320003061"
+    ],
+    "desc": "SR POCKET SEPARATOR W/O COIN DETECT",
+    "id": "f030994a-c0ce-461d-8505-cd193b6960b0"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040758.jpg",
+    "pn": [
+      "0090040758",
+      "0090039451",
+      "0090038062",
+      "3320003066",
+      "3320003005"
+    ],
+    "desc": "SR BV CIS",
+    "id": "27735096-a6e9-444b-bc8e-96297591e77c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040098.jpg",
+    "pn": [
+      "0090040098",
+      "0090039467",
+      "0090036253"
+    ],
+    "desc": "SR -SLOT - PRE-ACCEPTOR - 140mm",
+    "id": "1d34acd7-7132-47d1-bb60-fdefd8c2fad3"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003075.jpeg",
+    "pn": [
+      "3320003075",
+      "3320003022"
+    ],
+    "desc": "SR MAIN PCB",
+    "id": "555edabd-07b8-4448-96b2-3c5366f84367"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040729.jpg",
+    "pn": [
+      "0090040729",
+      "0090039448",
+      "0090038075",
+      "3320003062"
+    ],
+    "desc": "SR POCKET SEPARATOR COIN DETECT",
+    "id": "277d8414-0c54-43bb-b8ae-9e8ec92e30c1"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040732.jpg",
+    "pn": [
+      "0090040732",
+      "0090039452",
+      "0090038060",
+      "3320003064",
+      "3320003003"
+    ],
+    "desc": "SR UPPER TRANSPORT CENTRALISER",
+    "id": "3e038190-978f-453d-888e-9c6c2b234fe9"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450787231.jpg",
+    "pn": [
+      "4450787231"
+    ],
+    "desc": "HARNESS - SHUTTER EXTENSION (2062/2064)",
+    "id": "4188304a-050a-4466-a837-1207bcfdee4b"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090003030.jpg",
+    "pn": [
+      "3320003030"
+    ],
+    "desc": " SR - UPPER MODULE GEAR - KIT",
+    "id": "24047d81-8a55-494c-9392-2aaaf013562f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003015.jpg",
+    "pn": [
+      "3320003015"
+    ],
+    "desc": "SR RECYCLE CASSETTE DRIVE/MOTOR",
+    "id": "4a93bcad-e461-4340-bde8-012c331bbdcc"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003017.jpg",
+    "pn": [
+      "3320003017"
+    ],
+    "desc": "SR DEPOSIT / RECYCLE CASSETTE CONNECTOR HARNESS",
+    "id": "0cce7ad6-86be-4ffa-a42d-0c95b80ed1bf"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003019.jpg",
+    "pn": [
+      "3320003019"
+    ],
+    "desc": "SR LOWER MODULE LATCH",
+    "id": "e6e7a97d-cf15-470e-b913-1451873716c3"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003031.jpg",
+    "pn": [
+      "3320003031"
+    ],
+    "desc": "SR - UPPER MODULE - DRIVE BELT",
+    "id": "be16e46f-24ed-4bea-a3ee-45481af7e7c1"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003033.jpg",
+    "pn": [
+      "3320003033"
+    ],
+    "desc": "SR - POCKET - FEED RUBBER",
+    "id": "ea43e971-0a5a-4632-bbdd-19e0e0ba80fc"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003034.jpg",
+    "pn": [
+      "0090040589",
+      "3320003034"
+    ],
+    "desc": "SR - POCKET - PICK RUBBER",
+    "id": "aed6d047-5f1d-4d89-be83-08831c022c20"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003039.jpg",
+    "pn": [
+      "3320003039"
+    ],
+    "desc": "SR - LOWER MODULE - DC DRIVE - TIMING BELT",
+    "id": "f3330ae9-955e-4cd1-a06e-5f1d908e24c3"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003040.jpg",
+    "pn": [
+      "3320003040"
+    ],
+    "desc": "SR - REJECT TRANSPORT - LATCH - KIT",
+    "id": "9fb0e6d3-9ac5-4fd5-ad61-c9b29f83c51f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003041.jpg",
+    "pn": [
+      "3320003041"
+    ],
+    "desc": "SR - ESCROW - DOCKING CONNECTOR",
+    "id": "5f60ba41-ce19-46fe-a8bb-50109210c923"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003050.jpg",
+    "pn": [
+      "3320003050"
+    ],
+    "desc": "SR UPPER TRANSPORT - DRIVE BELT",
+    "id": "b182dc39-b555-401e-94b1-1046a39ea187"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003074.jpg",
+    "pn": [
+      "3320003074",
+      "3320003021"
+    ],
+    "desc": "SR ACCEPTOR PCB",
+    "id": "2fa8b665-1114-40fb-872b-7f959195a80f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090036222.jpg",
+    "pn": [
+      "0090036222"
+    ],
+    "desc": "SR SPLIT TRANSPORT DRIVE/MOTOR ASSEMBLY",
+    "id": "8f1743c2-59cb-4e9e-95a2-b8e5281a1c11"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090036277.jpg",
+    "pn": [
+      "0090036277",
+      "0090021939"
+    ],
+    "desc": "SR MISC - ENERGY CHAIN LOWER (24 LINKS)",
+    "id": "09899647-9edf-460c-8643-ff914c925525"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090036279.jpg",
+    "pn": [
+      "0090036279"
+    ],
+    "desc": "SR MISC - ENERGY CHAIN LOWER (30 LINKS LOWER 2062)",
+    "id": "1af3cd5c-b1d8-4e28-ad11-6694acd58097"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090036311.jpg",
+    "pn": [
+      "0090036311"
+    ],
+    "desc": "SR - LOWER TRANSPORT SPLIT (FRU)",
+    "id": "32304bc6-4b34-4301-8081-d7043ac1ae37"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090037086.jpg",
+    "pn": [
+      "0090037086"
+    ],
+    "desc": "STORAGE MEDIA - MICRO SD CARD 64GB CLASS 10 (Micro SD)",
+    "id": "f6670ffe-9dcd-4b66-be3e-ddb4870abc8c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090037537.jpg",
+    "pn": [
+      "0090037537",
+      "0090036120"
+    ],
+    "desc": "SR INTERCONNECT CABLE - UPPER - 3200MM",
+    "id": "fbe6b79f-4aa7-48d2-8819-2d8ab23b2321"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090037538.jpg",
+    "pn": [
+      "0090037538",
+      "0090036122"
+    ],
+    "desc": "SR INTERCONNECT CABLE - INTERMEDIATE - 2000MM",
+    "id": "cd00a034-5fee-4df7-9ee4-51889e811f13"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090037539.jpg",
+    "pn": [
+      "0090037539",
+      "0090036121"
+    ],
+    "desc": "SR INTERCONNECT CABLE - LOWER - 3000MM",
+    "id": "2457fbd5-1c18-48a6-a8bf-6cabcb1c26cf"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040737.jpg",
+    "pn": [
+      "0090040737",
+      "0090039458",
+      "0090038042",
+      "0090036310"
+    ],
+    "desc": "SR LOWER TRANSPORT MIDDLE SUB ASSEMBLY",
+    "id": "fdfc99b2-9fc3-4b15-8fcc-39fbf6a2199d"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040119.jpg",
+    "pn": [
+      "0090040119",
+      "0090038049",
+      "0090037559",
+      "0090036199"
+    ],
+    "desc": "SR REJECT CASSETTE (W/O LOCK)",
+    "id": "f840cd15-8afb-42be-a297-746f2541a33a"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090038064.jpg",
+    "pn": [
+      "0090038064",
+      "3320003068",
+      "3320003007"
+    ],
+    "desc": "SR BV THICKNESS SENSOR",
+    "id": "ebc8fc9f-566e-4269-9c2b-2dcdef214611"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040736.jpg",
+    "pn": [
+      "5050003060",
+      "0090040736",
+      "0090038067",
+      "3320003071",
+      "3320003010"
+    ],
+    "desc": "SR LOWER TRANSPORT FRONT",
+    "id": "c84fd491-05b8-4234-b167-29261324ee4c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040738.jpg",
+    "pn": [
+      "0090040738",
+      "0090038068",
+      "3320003072",
+      "3320003012"
+    ],
+    "desc": "SR LOWER TRANSPORT REAR (FRU)",
+    "id": "4cd19864-461c-4a78-b800-a723bdc96878"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090039459.jpg",
+    "pn": [
+      "5050003072",
+      "0090039459",
+      "0090038047",
+      "0090037557",
+      "0090036226"
+    ],
+    "desc": "SR INTERMEDIATE TRANSPORT RA",
+    "id": "c3fae22a-7939-441a-8b09-13fd733ff57f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090039460.jpg",
+    "pn": [
+      "0090039460",
+      "0090038036",
+      "0090038036",
+      "0090037540",
+      "0090036225"
+    ],
+    "desc": "SR INTERMEDIATE TRANSPORT FA",
+    "id": "baf4fd9c-dbb5-4646-bb12-6f04b822657c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040741.jpg",
+    "pn": [
+      "0090040741",
+      "0090039475",
+      "0090036250"
+    ],
+    "desc": "SR - SLOT - SEPARATE-FRONT TRANSPORT (SLOT - 2088 FRONT)",
+    "id": "853ef010-4c62-40d2-9cdc-5d6bd324ca6b"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090039498.jpg",
+    "pn": [
+      "0090039498",
+      "0090037547",
+      "0090036309"
+    ],
+    "desc": "SR HORIZONTAL TRANSPORT DRIVE - MOTOR SUB ASSEMBLY",
+    "id": "5474648d-8e2f-4840-9327-29da66d04d68"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040681.jpg",
+    "pn": [
+      "0090040681"
+    ],
+    "desc": "SR - CASSETTE HOLDER FEED GEAR GUIDE",
+    "id": "09805131-650c-4352-94de-4e341877a827"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040707.jpg",
+    "pn": [
+      "0090040707"
+    ],
+    "desc": "SR POCKET COIN TRAY",
+    "id": "b22bc259-016e-4761-ae99-44aae53912ae"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003018.jpg",
+    "pn": [
+      "3320003018"
+    ],
+    "desc": "SR INTERLOCK",
+    "id": "1cb6ae65-ac46-4f21-8f7e-64ce2a3e0de7"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090037792.jpg",
+    "pn": [
+      "0090037792",
+      "3320003073",
+      "3320003020"
+    ],
+    "desc": "SR UPPER PCB",
+    "id": "6b529f30-e456-4c64-bf7f-b22a8233ee4f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003058.jpeg",
+    "pn": [
+      "5050010007",
+      "3320003058",
+      "0090036337",
+      "3320003076",
+      "3320003023"
+    ],
+    "desc": "SR LOWER BASE PCB",
+    "id": "8aa6339c-2311-4a36-a3f8-c91b6802b427"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003077.jpeg",
+    "pn": [
+      "3320003077",
+      "3320003024"
+    ],
+    "desc": "SR LOWER HOLDER PCB",
+    "id": "90720146-281f-4a10-a7a3-a3a0967153e5"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003032.jpg",
+    "pn": [
+      "3320003032"
+    ],
+    "desc": "SR - UPPER MODULE - TRANSPORT MOTOR",
+    "id": "9c3fb2ca-bdca-4413-b06e-e5da8ff9a13a"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003036.jpg",
+    "pn": [
+      "3320003036"
+    ],
+    "desc": "SR - POCKET COVER - LOWER",
+    "id": "9526e89c-c19f-4e64-b0ad-bd92616cfcb7"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090038061.jpg",
+    "pn": [
+      "0090038061",
+      "3320003065",
+      "3320003004"
+    ],
+    "desc": "SR FRONT TRANSPORT(POCKET)",
+    "id": "0fc2ab89-03a6-4e26-a5d4-ef71f49efd84"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450764943.jpg",
+    "pn": [
+      "4450764943"
+    ],
+    "desc": "E CHAIN ASSY 34 LINK(UPPER)",
+    "id": "da627f2d-4279-4c76-bbb8-d275ee2a3e9c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450767331.jpg",
+    "pn": [
+      "4450767331"
+    ],
+    "desc": "DEPOSIT ADAPTER PCB ASSY",
+    "id": "06a40afa-0c49-4eee-9639-88ba35297c1f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450778018.jpg",
+    "pn": [
+      "4450778018"
+    ],
+    "desc": "OLYMPUS SHUTTER ASSY(2062/2064)",
+    "id": "af5a8b69-2f0b-42af-af77-17133f1dc77c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450781161.jpg",
+    "pn": [
+      "4450781161"
+    ],
+    "desc": "HARNESS STATUS LIGHT UPPER SRU",
+    "id": "52e2382b-318e-4b58-8c59-6e709d53cd17"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450781162.jpg",
+    "pn": [
+      "4450781162"
+    ],
+    "desc": "HARNESS STATUS LIGHT LOWER SRU",
+    "id": "814d5ad5-e65d-46fc-93b4-fc6ce2a1dd32"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450781194.jpg",
+    "pn": [
+      "4450781194"
+    ],
+    "desc": "E CHAIN ASSY - 30 LINK",
+    "id": "1ec354ab-93ff-4a05-8043-51297debad62"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450802133.jpg",
+    "pn": [
+      "4450802133",
+      "4450795000"
+    ],
+    "desc": "2088 SHUTTER ASSY - MOTOR LOW(2088)",
+    "id": "e2236f04-40c0-4275-9e51-451fdab3e366"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450796592.jpg",
+    "pn": [
+      "4450796592",
+      "4450795907"
+    ],
+    "desc": "RECYCLER SHUTTER - PCB TOP ASSY",
+    "id": "dbf6e334-5396-4200-ab0e-6f9a8bf0abef"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090036308.jpg",
+    "pn": [
+      "0090036308"
+    ],
+    "desc": "SR EXTENSION - BELT",
+    "id": "08e62ff6-d4ad-4788-bab3-9d8d48c45ae4"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090037543",
+      "0090036214"
+    ],
+    "desc": "SR EXTENSION DC MOTOR - HARNESS",
+    "id": "e9db2267-6dbc-4068-b52d-687d808b661f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090038375.jpg",
+    "pn": [
+      "0090038375"
+    ],
+    "desc": "SR LOWER MODULE ACTUATOR BRACKET",
+    "id": "6d9a6666-96b7-49ef-a1b2-37e562de7546"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090040588.jpg",
+    "pn": [
+      "0090040588"
+    ],
+    "desc": "SR - IMT ACTUATOR",
+    "id": "d1db4fe4-8de8-44bb-8272-6024f972a3cc"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003026"
+    ],
+    "desc": "SR SPLIT CASSETTE CONNECTOR HARNESS",
+    "id": "6b8f3891-9f3e-4bf5-86d0-26108ee6d57e"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003027"
+    ],
+    "desc": "SR SPLIT CASSETTE DRIVE/MOTOR - UPPER",
+    "id": "4f997ec0-0f88-4d8a-afa5-2f57de0b1432"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003028"
+    ],
+    "desc": "SR SPLIT CASSETTE DRIVE/MOTOR - LOWER",
+    "id": "1c55006c-0c5e-4bc0-bb00-0dd8f101cce2"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003037"
+    ],
+    "desc": "SR - POCKET STAGES - KIT",
+    "id": "ab7b6c14-9ed0-4158-81e8-22ed7b8d8a57"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003042"
+    ],
+    "desc": "SR - ESCROW TAPES - KIT",
+    "id": "8b4f7033-6d25-4ec2-85f6-5cc1972819fa"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/3320003043.jpg",
+    "pn": [
+      "3320003043"
+    ],
+    "desc": "SR - CIS RIBBON CABLE - UPPER",
+    "id": "0194f198-96c6-4f13-85b5-a0f01104aea0"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003044"
+    ],
+    "desc": "SR - CIS RIBBON CABLE - LOWER",
+    "id": "03567dc5-0e8d-4e86-a7c7-cd7b8cea3043"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003045"
+    ],
+    "desc": "SR - POCKET COVER - FRONT UPPER",
+    "id": "478cb4d0-c424-497f-9919-b7d1554abb9c"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003046"
+    ],
+    "desc": "SR POCKET - PUSHER & ROOF PLATE - DRIVE BELT",
+    "id": "0ccb6c6c-cd32-4b58-bf25-67d4dcfb19d8"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003048"
+    ],
+    "desc": "SR POCKET - ROOF PLATE - LIFT MECHANISM - DRIVE BELT",
+    "id": "f507ecd0-6d24-4c82-b047-b8fef5022417"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003049"
+    ],
+    "desc": "SR POCKET - PICK MECHANISM - DRIVE BELT",
+    "id": "dd66630f-b5ad-47a0-bee3-364f4b141703"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003053"
+    ],
+    "desc": "SR - DIVERT GATE SOLENOID - (TYPE 1)",
+    "id": "e473d98c-83c9-44c3-b4d6-bc530070a605"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003054"
+    ],
+    "desc": "SR - DIVERT GATE SOLENOID - (TYPE 2)",
+    "id": "17470608-6ebf-45d8-b7dc-34ca91d53db1"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003055"
+    ],
+    "desc": "SR - TRACK SENSORS (TYPE 1)",
+    "id": "8b9a5b59-7adc-4990-8c33-b2e5cb02c355"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003056"
+    ],
+    "desc": "SR - PRISMS",
+    "id": "3b818d86-cdb7-4679-993d-a75dd02acab0"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003057"
+    ],
+    "desc": "SR - TRACK SENSORS (TYPE 2)",
+    "id": "89c4e1ce-b424-4626-a599-03c7ff98ae8d"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036211"
+    ],
+    "desc": "SR SPLIT - DC DRIVE BELT",
+    "id": "e59f35fa-3121-4905-aaac-92c8837a50d3"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036221"
+    ],
+    "desc": "SR - HARNESS - SPLIT PCB TO SPLIT DC MOTOR PCB",
+    "id": "aa2bc6be-612b-4f76-82c6-775938816691"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036314"
+    ],
+    "desc": "SR LID ASSEMBLY - SPLIT CASSETTE",
+    "id": "6269a7ea-2087-4ece-b5db-49391557336d"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036316"
+    ],
+    "desc": "SR GUIDE ASSEMBLY - SPLIT CASSETTE",
+    "id": "5843fab3-9839-41e3-955c-fb626ddc8bb0"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003025"
+    ],
+    "desc": "SR SPLIT HOLDER PCB",
+    "id": "8da11de9-5e17-4925-8d98-fec76795a047"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "3320003038"
+    ],
+    "desc": "SR - POCKET LATCH - SPLIT PIN",
+    "id": "4d289bfd-19c7-4b42-935f-23557dd48423"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090040666"
+    ],
+    "desc": "SR - LOWER MODULE INTERLOCK CABLE - 2680MM",
+    "id": "71e3c4cc-33a4-47ca-91c1-7a363103b957"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/0090030376.jpg",
+    "pn": [
+      "0090030376"
+    ],
+    "desc": "Test media: Double Test",
+    "id": "a673c55e-0800-41fc-a221-908aa4462918"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450781397.jpg",
+    "pn": [
+      "4450781397"
+    ],
+    "desc": "HARNESS STATUS LIGHTS ADAPTER",
+    "id": "2a7002aa-a5d6-4190-813d-ad7bd155195f"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450789109.jpg",
+    "pn": [
+      "4450789109"
+    ],
+    "desc": "BRACKET - MODULE GUIDE SRU(2088)",
+    "id": "5b4b6ea1-ee36-49a8-a190-317807fa01a1"
+  },
+  {
+    "modulo": "SRU",
+    "img": "/img/sru/4450798035.jpg",
+    "pn": [
+      "4450798035",
+      "4450790801"
+    ],
+    "desc": "MOULDING - SR SLOT INTERFACE(2088)",
+    "id": "5d011a4e-6337-4b60-8b02-8342af63a2d4"
+  }
+]

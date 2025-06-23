@@ -82,7 +82,9 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
 
     // Formatear y limpiar datos
     const formattedData = {
-        partNumber: cleanArray([String(data["Part Nbr"]), String(data["TMP"]), String(data["Part#"]), String(data["partNumber"])]),
+        partNumber: String(
+          data["Part Nbr"] ?? data["Part#"] ?? data["partNumber"] ?? ''
+        ).padStart(10, '0'),
         description: data["Description"],
         reWork: data["RW"] === 'Y',
         cost: data["Cost"],

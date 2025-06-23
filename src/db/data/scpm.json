@@ -1,0 +1,340 @@
+[
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840105162.jpg",
+    "pn": [
+      "4840105162",
+      "4840100840",
+      "4840100083",
+      "4840100066",
+      "4840100007",
+      "4840097798",
+      "4450782624"
+    ],
+    "desc": "INFEED-ASSY SCPM BUNCH SHORT",
+    "id": "5cd0a5bc-98e2-4f7e-8d74-96a207f1a2ca"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840100084.jpg",
+    "pn": [
+      "4840100084"
+    ],
+    "desc": "INFEED-ASSY SCPM BUNCH (MEDIUM)",
+    "id": "2e2fadef-9bd5-456a-bd69-46dd292d91bb"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840105977.jpg",
+    "pn": [
+      "4450786321",
+      "4840105977",
+      "4840105219",
+      "4840101262",
+      "4840100185",
+      "4840100032",
+      "4840097102"
+    ],
+    "desc": "ASSEMBLY - SCPM BUNCH FEED MODULE",
+    "id": "466b1a3c-f763-47e7-aa94-81171ce92367"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840105218.jpg",
+    "pn": [
+      "4450796958",
+      "4840105218",
+      "4840100184",
+      "4840099943",
+      "4450795694"
+    ],
+    "desc": "ASSEMBLY-SCPM CORE MODULE",
+    "id": "ab9a9fe2-433f-459c-9ef6-a3178e9f839a"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840100911.jpg",
+    "pn": [
+      "4450781109",
+      "4840100911",
+      "4840100186",
+      "4840097723"
+    ],
+    "desc": "BIN ASSY STACKING UPPER",
+    "id": "90a53e4a-7bb0-49b9-9e1a-00f685cf8eba"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069483.jpg",
+    "pn": [
+      "0061069483"
+    ],
+    "desc": "SCPM-ERBM MODULE ASM",
+    "id": "b42fc9b3-11b8-4182-8373-d59914e9cc53"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098525.jpg",
+    "pn": [
+      "4840098525"
+    ],
+    "desc": "BOARD ASSEMBLY - SCPM INFEED",
+    "id": "91eef6e5-cfc5-46b7-8c4a-b4898403f2fb"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098528.jpg",
+    "pn": [
+      "4840098528"
+    ],
+    "desc": "ASSEMBLY  SCPM TRANSPORT SENS",
+    "id": "757310e1-9ecc-420c-802b-ba76f59f02a0"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069024.jpg",
+    "pn": [
+      "0061069024"
+    ],
+    "desc": "TIMING BELT MXL 0.08 PITCH 515",
+    "id": "767c0e4c-a650-47fb-9219-2123f8e8add5"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069453.jpg",
+    "pn": [
+      "0061069453"
+    ],
+    "desc": "TIMING BELT",
+    "id": "9e8d06c4-004f-4327-bdf7-e8c6b5038043"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061067519.jpg",
+    "pn": [
+      "0061063888",
+      "0061067519"
+    ],
+    "desc": "BELT-T1 120 9.50 X .250",
+    "id": "2e5d812b-b54f-44ab-bca9-a7e7d8a361c0"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069375.jpg",
+    "pn": [
+      "0061069375"
+    ],
+    "desc": "TIMING BELT 48",
+    "id": "0c02ce64-1540-4ba6-a9ff-b424de7cea39"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069022.jpg",
+    "pn": [
+      "0061069022"
+    ],
+    "desc": "TIMING BELT MXL 0.08 PITCH 51",
+    "id": "fdab9ab1-25b8-4fdd-86fe-1ad40dffa145"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0061069557.jpg",
+    "pn": [
+      "0061069557"
+    ],
+    "desc": "PANEL ADAPTER (INFEED-CORE) - MOLEX MINI MIII DUAL ROW - 2X14",
+    "id": "3d08fada-d965-491e-9fa2-56e1dc60c97d"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840099204.jpg",
+    "pn": [
+      "4840099204"
+    ],
+    "desc": "HARNESS-SCPM CONTROLLER UDFD",
+    "id": "7cdaad86-5d89-4cdf-8dbd-2b1ead18faed"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098252.jpg",
+    "pn": [
+      "4840098252"
+    ],
+    "desc": "HARNESS-ERBM TO CORE INTERFACE ",
+    "id": "e76bb913-edd6-4e8e-833f-e06b3d0e76a0"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450711516.jpg",
+    "pn": [
+      "4450711516"
+    ],
+    "desc": "HARNESS - SCPM DC INTERLOCK TO PCB CORE",
+    "id": "edb8e180-27ea-4852-aba5-b197222ef6e5"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090006620.jpg",
+    "pn": [
+      "0090006620",
+      "0090022194"
+    ],
+    "desc": "SWITCH-INTERLOCK",
+    "id": "bdce3584-675b-4f00-bc5e-cae96b83387c"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090008697.jpg",
+    "pn": [
+      "0090008697"
+    ],
+    "desc": "CAP-ANTI ROLL PVC",
+    "id": "a12f4f4b-f3c9-466d-8ba4-8ec9c34ab11b"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840101415.jpg",
+    "pn": [
+      "4840101415"
+    ],
+    "desc": "COVER - TOP MOUNT BIN BACKSID Plastic side cover (Stacking Bin)",
+    "id": "7205389d-fdcc-4e80-814d-6eabde7ab929"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840100446.jpg",
+    "pn": [
+      "4840100446"
+    ],
+    "desc": "COVER - STACKING BIN TOP",
+    "id": "1568d772-02ba-45ec-ad25-37f70315d347"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840102049.jpg",
+    "pn": [
+      "4840102049"
+    ],
+    "desc": "COVER BELT SCPM",
+    "id": "e9f94eb7-8f1c-46b5-81be-dc41c90438c9"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090028709.jpg",
+    "pn": [
+      "0090028709"
+    ],
+    "desc": "SINGLE USB ASSEMBLY (Mini HUB 4 port)",
+    "id": "76994626-69f9-49fe-a8ed-e7ab33a110b8"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450775484.jpg",
+    "pn": [
+      "4450775484"
+    ],
+    "desc": "SINGLE USB HUB PORT - ASSEMBLY (Mini HUB 1 port)",
+    "id": "2908d47e-3d6c-443b-b504-f99a7480b3c3"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090020715.jpg",
+    "pn": [
+      "0090020715"
+    ],
+    "desc": "CABLE - USB TYPE A TO TYPE MINI B - HIGH SPEED (480 MBPS) (4000mm 28/22) ",
+    "id": "20bd1eb9-8b2c-4948-a4ad-c433222c322f"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450762184.jpg",
+    "pn": [
+      "4450762184",
+      "4450714834"
+    ],
+    "desc": "SCPM DC HARNESS 16 AWG (4000)",
+    "id": "e1031009-7d05-420f-bd0d-dff0a38c3a05"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090023328.jpg",
+    "pn": [
+      "4450802570",
+      "0090023328"
+    ],
+    "desc": "SLIDE - SNAP LATCH (Traba naranja)",
+    "id": "a8ea3062-6b86-403d-a78e-305da62136a9"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090024889.jpg",
+    "pn": [
+      "0090024889"
+    ],
+    "desc": "SLIDE BLOCK",
+    "id": "6c47cee0-3ca7-4390-b8a1-a0c286dc0b1a"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450711290.jpg",
+    "pn": [
+      "4450711290"
+    ],
+    "desc": "METAL LATCH EXTENSION",
+    "id": "151801eb-2ad5-4356-aece-95364eb473d8"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4450720814.jpg",
+    "pn": [
+      "4450720814"
+    ],
+    "desc": "LATCH EXTENSION - SCPM",
+    "id": "62fcd6da-af57-48f0-b669-63ee1248f8c6"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090024172.jpg",
+    "pn": [
+      "0090024172"
+    ],
+    "desc": "CHAIN SEGMENT 12.5MM (W) X 15 (Eslabón) ",
+    "id": "b5f1028c-0791-4f33-a915-ad36288fcd3f"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/0090024173.jpg",
+    "pn": [
+      "0090024173"
+    ],
+    "desc": "CABLE CHAIN MOUNTING BRACKET",
+    "id": "65e2e005-d02a-47dc-a141-7f4a8218d1ee"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840051295.jpg",
+    "pn": [
+      "4840051295"
+    ],
+    "desc": "1 = 10 PCS SWAB-CLEANING (Isopo limpieza scanner) ",
+    "id": "12b44bff-9fb2-448e-8961-e506ad9f1526"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840098230.jpg",
+    "pn": [
+      "4840098230"
+    ],
+    "desc": "SCPM RIBBON CASSETTE",
+    "id": "a635086b-9dd7-4256-951c-dc0ca4c58dc9"
+  },
+  {
+    "modulo": "SCPM",
+    "img": "/img/scpm/4840046075.jpg",
+    "pn": [
+      "4840046075"
+    ],
+    "desc": "TEST-DECK CMC7",
+    "id": "0c4c1a43-34e3-4660-9df2-d2062c4a507a"
+  }
+]

@@ -26,7 +26,7 @@ import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
-import { dispatchUpdatePriority, dispatchUpdateCategory } from '../../redux/actions/async';
+import { dispatchUpdatePriority } from '../../redux/actions/async';
 import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../redux/actions/sync';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
@@ -121,12 +121,6 @@ const TableInventory = ({ minified }) => {
     handleClose();
   };
 
-  const handleSetCategory = (category) => {
-    dispatch(dispatchUpdateCategory({...selectedItem, category: category}));
-    handleClose();
-  };
-
-
   return (
     <div className={`view-table ${isolated ? 'isIsolated' : ''}`} >
       <div className="layout-table">
@@ -184,28 +178,6 @@ const TableInventory = ({ minified }) => {
         <MenuItem onClick={() => showDetail()} disabled={overView}>
             <VisibilityIcon style={{marginLeft: "-.4rem", color: "#e1e1e1"}}/>
             <span style={{marginLeft : "1rem"}}>Ver Detalles</span>
-        </MenuItem>
-
-        <MenuItem  onClick={() => setMenuPositionCategory((prev) => !prev)}>
-          <Menu
-            open={!!menuPositionCategory}
-            disableAutoFocusItem
-            anchorReference="anchorPosition"
-            transformOrigin={{ vertical: "top", horizontal: "right" }} // Despliega el menú hacia la izquierda
-            anchorPosition={
-              menuPosition && menuPosition.mouseX != null && menuPosition.mouseY != null
-                ? { top: menuPosition.mouseY, left: menuPosition.mouseX }
-                : { top: 0, left: 0 } // fallback para evitar crash
-            }          
-          >
-            {
-              category.values.map((item, index) => (
-                <MenuItem key={index} onClick={() => handleSetCategory(item)}>{item}</MenuItem>
-              ))
-            }
-          </Menu>
-          <CategoryIcon style={{marginLeft: "-.4rem", color: "#e1e1e1"}}/>
-          <span style={{marginLeft : "0.7rem"}}>Categoria</span>
         </MenuItem>
 
         <MenuItem onClick={() => handleSetPriority('LOW')}>

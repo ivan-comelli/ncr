@@ -330,15 +330,17 @@ export async function verifyStockOfSomeTechnicianInPart(batch, tecRef, csr, onHa
                     break;
                 }
             });            
+
+            console.log(`To tech ${options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name} insert ${onHand} units`);
             batch.set(doc(collection(tecRef.parent.parent, "stock")), {
-                status: STATUS.ISSUE,
-                quantity: onHand + balance.issue,
+                status: STATUS.SYNC,
+                quantity: onHand,
                 name: options.find(option => option.csr.toLowerCase() == (csr && csr.toLowerCase())).name,
                 csr: csr.toLowerCase(),
                 lastUpdate: Timestamp.now()
             });
             //Actualiza el updateAt del Main Ref, necesario para las actualizaciones optimizadas del fetch cliente
-            batch.set(doc(tecRef.parent.parent), {
+            batch.set(tecRef.parent.parent, {
                 lastUpdate: Timestamp.now()
             }, { merge: true });
     } catch(e) {

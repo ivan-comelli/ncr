@@ -1,0 +1,201 @@
+[
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024187.png",
+    "pn": [
+      "0090024187"
+    ],
+    "desc": "BNA3 LONG INFEED",
+    "id": "be015880-d299-4326-bae5-5ed5cf0f37b1"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024189.png",
+    "pn": [
+      "0090027415",
+      "0090024189"
+    ],
+    "desc": "BNA3 SHORT INFEED",
+    "id": "7891e66d-516b-49a4-ab6e-eeef5088b4c5"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024188.png",
+    "pn": [
+      "0090024188"
+    ],
+    "desc": "BNA3 MID INFEED",
+    "id": "1dd4e283-e168-4ec4-ba68-a0e6f4384081"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024190.png",
+    "pn": [
+      "0090024190"
+    ],
+    "desc": "BNA3 ANGLED INFEED",
+    "id": "e5d97e83-f961-41e7-8846-45126e8dc5c7"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024181.png",
+    "pn": [
+      "0090024181"
+    ],
+    "desc": "BNA3 FEED / REJECT UNIT",
+    "id": "bfe00cdc-b425-494c-aacb-d6e6573f5f40"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024180.png",
+    "pn": [
+      "0090024180"
+    ],
+    "desc": "BNA3 MAIN TRANSPORT",
+    "id": "7d202ae0-6234-46a4-8ff6-3c9d8507c0fa"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024182.png",
+    "pn": [
+      "0090024182"
+    ],
+    "desc": "BNA3 GARAGE UNIT F/A",
+    "id": "3ea1d300-ad20-45e9-975d-9bca4474c40b"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024183.png",
+    "pn": [
+      "0090024183"
+    ],
+    "desc": "BNA 3 GARAGE UNIT R/A",
+    "id": "8bc98293-9f29-4b8d-bc31-cdf84b27f587"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090023742.png",
+    "pn": [
+      "0090023742"
+    ],
+    "desc": "RECOGNITION UNIT (MBV)",
+    "id": "b50e738f-bc17-4026-8291-da5586e774d6"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090025434.png",
+    "pn": [
+      "0090025434"
+    ],
+    "desc": "RECOGNITION UNIT (HBV)",
+    "id": "e7f400e3-8cf5-4fe9-a6a3-cecd7f3e2398"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024192.png",
+    "pn": [
+      "0090024192"
+    ],
+    "desc": "BNA3 CASSETTE",
+    "id": "da83f17e-a916-46ca-986a-ba81ed490bc0"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024185.png",
+    "pn": [
+      "0090024185"
+    ],
+    "desc": "BNA3 ESCROW UNIT",
+    "id": "b53cfdaa-6825-4d0c-a001-1b966f7d9cad"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090025436.png",
+    "pn": [
+      "0090025436"
+    ],
+    "desc": "HBV SERIAL NUMBER BOARD",
+    "id": "096625a9-150a-40ea-96e3-41f134147b05"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090025435.png",
+    "pn": [
+      "0090025435"
+    ],
+    "desc": "HBV BOARD FRU",
+    "id": "eba3c16e-53ab-4554-a5d7-3df6e36b3275"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024184.png",
+    "pn": [
+      "0090024184"
+    ],
+    "desc": "BNA3 CONTROL BOARD FRU",
+    "id": "d9c2c534-aa41-48ad-9753-15a9a858f2ff"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024186.png",
+    "pn": [
+      "0090024186"
+    ],
+    "desc": "11 BNA3 DRAWBRIDGE ASSEMBLY FRU R/A",
+    "id": "be7c44d9-74bb-4507-a21a-4cdb24f4731e"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024194.png",
+    "pn": [
+      "0090024194"
+    ],
+    "desc": "11 BNA3 DRAWBRIDGE ASSEMBLY FRU F/A",
+    "id": "1b884def-f12f-425e-8272-3ab654dabfb1"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024191.png",
+    "pn": [
+      "0090024191"
+    ],
+    "desc": "12 BNA3 DOOR SWITCH ASSEMBLY FRU",
+    "id": "b7a6ff95-8f2e-4860-8fbc-26bf3cb7348f"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024197.png",
+    "pn": [
+      "0090024197"
+    ],
+    "desc": "13 BNA3 CASSETTE CONNECTOR FRU R/A",
+    "id": "3c9076a9-5b0d-4b3c-812a-d16de7054a7d"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024198.png",
+    "pn": [
+      "0090024198"
+    ],
+    "desc": "13 BNA3 CASSETTE CONNECTOR FRU F/A",
+    "id": "b4d72d1b-d934-4cc9-aff5-110c6f710051"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/0090024193.png",
+    "pn": [
+      "0090024193"
+    ],
+    "desc": "BNA3 MBV HARNESS ASSEMBLY FRU",
+    "id": "188e43bc-34ee-4d4f-b289-1b75d88f080c"
+  },
+  {
+    "modulo": "BNA3",
+    "img": "/img/bna3/4450707544.png",
+    "pn": [
+      "4450707544"
+    ],
+    "desc": "BNA HARNESS",
+    "id": "4cf9e104-360e-47e1-bdc3-aff538852431"
+  }
+]

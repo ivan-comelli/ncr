@@ -1,0 +1,103 @@
+[
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090037060.jpg",
+    "pn": [
+      "0090037060",
+      "0090037769",
+      "0090031459"
+    ],
+    "desc": "POWER SUPPLY SWITCH MODE 754W 24VDC",
+    "id": "8424224f-c353-4cdc-a4ce-12a900e7a778"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090036548.jpg",
+    "pn": [
+      "0090036548",
+      "0090028273",
+      "0090028272",
+      "0090028119",
+      "0090027487",
+      "0090024929"
+    ],
+    "desc": "POWER SUPPLY - SWITCH MODE 600W, 24Volts WITH PFC",
+    "id": "a394196d-0da2-46b2-a414-d876f1aff264"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090028269.jpg",
+    "pn": [
+      "4450788143",
+      "0090028269",
+      "0090025115",
+      "0090022358",
+      "0090022055"
+    ],
+    "desc": "SUPPLY-POWER SWITCH MODE 355W",
+    "id": "3e8636ad-8cd9-4456-a98d-86301e43583c"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090036494.jpg",
+    "pn": [
+      "0090036494",
+      "0090030700",
+      "0090028268",
+      "0090025595"
+    ],
+    "desc": "POWER SUPPLY - SWITCH MODE 320W, 24Volts WITH PFC ",
+    "id": "8c03a330-d93d-4402-847b-9b53d1848154"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090030607.jpg",
+    "pn": [
+      "0090030607"
+    ],
+    "desc": "POWER SUPPLY 24V 198W (Fuente de alimentacion del core full size (Estoril - Misano))",
+    "id": "590fee73-604a-4e59-83fd-6de909666c19"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090029354.jpg",
+    "pn": [
+      "0090037786",
+      "0090029354",
+      "0090028271",
+      "0090027565",
+      "0090024828",
+      "0090023974",
+      "0090023973"
+    ],
+    "desc": "POWER SUPPLY ATX 12v - SWITCHING 250W (Fuente de alimentacion del core (Talladega - Pocono))",
+    "id": "4b0019a1-3d1f-459c-b553-90bd6055dea8"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090023855.jpeg",
+    "pn": [
+      "0090023855"
+    ],
+    "desc": "UNIVERSAL UPS (230V) 1150VA, RACK MOUNT",
+    "id": "115f10db-ef7f-4e86-940b-a58b9149028e"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090032843.jpeg",
+    "pn": [
+      "0090032843"
+    ],
+    "desc": "UNIVERSAL Ups (modelo nuevo)",
+    "id": "7e1d3f9b-e456-43c6-98fe-64cd74716037"
+  },
+  {
+    "modulo": "FUENTES",
+    "img": "/img/fuentesUps/0090033288.jpeg",
+    "pn": [
+      "0090033288"
+    ],
+    "desc": "230v 1000VA RA",
+    "id": "e0463536-e37d-46e8-91e9-1cb95fe32789"
+  }
+]

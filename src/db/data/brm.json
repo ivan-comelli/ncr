@@ -1,0 +1,526 @@
+[
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450746108.jpg",
+    "pn": [
+      "4450746108"
+    ],
+    "desc": "ASSY - RECYCLER SHUTTER",
+    "id": "55a9f320-5a85-4bf9-bc50-90738aba2d44"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036583.jpg",
+    "pn": [
+      "0090036583",
+      "0090036583",
+      "0090035943",
+      "0090029370"
+    ],
+    "desc": "BRM POCKET",
+    "id": "95994e30-4052-446a-bd39-f392eb17c83e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029372.jpg",
+    "pn": [
+      "0090029372"
+    ],
+    "desc": "BRM BRIDGE TRANSPORT",
+    "id": "6f79be41-4f95-432b-b56c-7955091c3e3e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030198.jpg",
+    "pn": [
+      "0090030198",
+      "0090029713"
+    ],
+    "desc": "BRM CENTRALIZATION ASSEMBLY",
+    "id": "3ad37b7f-a474-4471-a749-0382c95b1dc6"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029739.jpg",
+    "pn": [
+      "0090029739"
+    ],
+    "desc": "BRM HVD-300U BILL VALIDATOR",
+    "id": "961d39f7-1ea3-4b2a-931b-7ec146d7bfeb"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033344.jpg",
+    "pn": [
+      "0090033344"
+    ],
+    "desc": "BRM ESCROW",
+    "id": "8a565dc9-b44c-4e2a-b0fa-125f61333af1"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033346.jpg",
+    "pn": [
+      "0090033346",
+      "0090029374"
+    ],
+    "desc": "BRM UPPER TRANSPORT",
+    "id": "a66fa077-4a50-49cc-a8d4-b2bf1d690a71"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030514.jpg",
+    "pn": [
+      "0090030514"
+    ],
+    "desc": "BRM SPARE FRONT UPPER FRAME",
+    "id": "eb901646-cceb-4c07-9541-cc0bfbab3508"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030511.jpg",
+    "pn": [
+      "0090030511"
+    ],
+    "desc": "BRM SPARE UPPER TRANSPORT SECTION -BEFORE BV",
+    "id": "c3decbf3-9505-4027-9d81-a098a2288b1f"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030509.jpg",
+    "pn": [
+      "0090030509"
+    ],
+    "desc": "BRM SPARE REAR UPPER FRAME",
+    "id": "9e0e2e23-1920-40dc-ada8-af1164908406"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030513.jpg",
+    "pn": [
+      "0090030513"
+    ],
+    "desc": "BRM SPARE REAR UPPER FRAME",
+    "id": "9879bea1-07ca-4358-b22e-2b8c042a3fa4"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029839.jpg",
+    "pn": [
+      "0090029839",
+      "0090029126"
+    ],
+    "desc": "BRM INTERMEDIATE TRANSPORT",
+    "id": "101d6772-9249-40dc-9527-381268adea8c"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033347.jpg",
+    "pn": [
+      "0090033347",
+      "0090029376"
+    ],
+    "desc": "BRM LOWER TRANSPORT",
+    "id": "b458f38c-4966-413c-8ced-eea8116cdef2"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029377.jpg",
+    "pn": [
+      "0090029377"
+    ],
+    "desc": "BRM VERTICAL TRANSPORT",
+    "id": "edc821ab-57a0-401b-b413-27190ac17389"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036165.jpg",
+    "pn": [
+      "0090036165"
+    ],
+    "desc": "BRM UPPER MODULE CPU BOARD",
+    "id": "25627891-f71e-4661-ab79-ac24e3fd7383"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029379.jpg",
+    "pn": [
+      "0090029379",
+      "0090036165"
+    ],
+    "desc": "OLD - BRM UPPER CPU PCB",
+    "id": "14e88a1e-29a5-4ca7-a2f3-c34d132bbe94"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033345.jpg",
+    "pn": [
+      "0090033345",
+      "0090029375"
+    ],
+    "desc": "BRM LOWER FRAME",
+    "id": "bc7959f8-439f-4450-8ae3-8f8ab1ad5fdb"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036166.jpg",
+    "pn": [
+      "0090036166"
+    ],
+    "desc": "BRM LOWER MODULE CPU BOARD",
+    "id": "64959c7d-0dcc-4b0b-9b08-39cd66a886d5"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029380.jpg",
+    "pn": [
+      "0090029380",
+      "0090036166"
+    ],
+    "desc": "OLD - BRM LOWER CPU PCB",
+    "id": "b45c8b35-d9e3-4292-b28a-b8828d6d7607"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030532.jpg",
+    "pn": [
+      "0090030532"
+    ],
+    "desc": "BRM SPARE I/O-41U PCB",
+    "id": "5d5ebebc-cd46-46bf-9cc1-84ad99c9bee1"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450749831.jpg",
+    "pn": [
+      "4450749831"
+    ],
+    "desc": "UPPER EXCEPTION BIN COVER",
+    "id": "b14834bb-dfde-46de-9868-7d99e8e0348a"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030584.jpg",
+    "pn": [
+      "0090030584",
+      "0090029131"
+    ],
+    "desc": "BRM UPPER EXCEPTION BIN - FRU",
+    "id": "dfd6fb5e-1ef6-49b2-8283-e9cb1d04f82c"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090035723.jpg",
+    "pn": [
+      "0090035723",
+      "0090029128",
+      "0090029127"
+    ],
+    "desc": "BRM RECYCLE CASSETTE - STANDARD",
+    "id": "9c69c0dc-9541-4cb4-9dbe-606affd86f32"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090035724.jpg",
+    "pn": [
+      "0090035724",
+      "0090029129"
+    ],
+    "desc": "BRM LOWER EXCEPTION BIN 1DEPOSIT, 2 EXCEPTION AREA",
+    "id": "1b152bc9-70e0-4ded-8fbf-8f2a16e6a307"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030507.jpg",
+    "pn": [
+      "0090030507"
+    ],
+    "desc": "BRM SPARE CASSETTE LATCH",
+    "id": "6ad2b843-c1d5-42a2-9d4e-7ca5da084727"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029579.jpg",
+    "pn": [
+      "0090029579"
+    ],
+    "desc": "BRM CASSETTE LATCH",
+    "id": "1e62e9c0-bc6e-43f8-976b-6e166a4a52d9"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090036036.jpg",
+    "pn": [
+      "0090036036",
+      "0090030525",
+      "0090030526",
+      "0090030527",
+      "0090030528"
+    ],
+    "desc": "",
+    "id": "d6cf3121-8c9c-4550-921b-15b4399bb667"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030525.jpg",
+    "pn": [
+      "0090030525"
+    ],
+    "desc": "BRM SPARE CNL1 HARNESS",
+    "id": "5c398194-85a7-4761-94ee-15f4d774bc14"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030526.jpg",
+    "pn": [
+      "0090030526"
+    ],
+    "desc": "BRM SPARE CNL2 HARNESS",
+    "id": "988b0e05-1697-45f9-a1a4-88d8e52c9395"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030527.jpg",
+    "pn": [
+      "0090030527"
+    ],
+    "desc": "BRM SPARE CNL3 HARNESS",
+    "id": "5a621b46-89c0-4b55-a19d-e6351a7746ca"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030528.jpg",
+    "pn": [
+      "0090030528"
+    ],
+    "desc": "BRM SPARE CNL4 HARNESS",
+    "id": "da3f6085-9eea-40bb-8715-e6895ef67d53"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030529.jpg",
+    "pn": [
+      "0090030529"
+    ],
+    "desc": "BRM SPARE CNW1 HARNESS",
+    "id": "86b67caa-a41c-4cf2-aa1e-7893ee4f3244"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036037"
+    ],
+    "desc": "BRM LOWER EXCEPTION BIN CABLE ASSEMBLY (FRU)",
+    "id": "3bcb990e-2b2e-4d09-a011-c3281cb392e4"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090036038"
+    ],
+    "desc": "BRM ENHANCED LOWER EXCEPTION BIN CABLE ASSEMBLY (FRU)",
+    "id": "8d03d5ad-26b7-4e11-9240-380300772388"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030523.jpg",
+    "pn": [
+      "0090030523"
+    ],
+    "desc": "BRM SPARE INTERLOCK SWITCH IN",
+    "id": "2012e031-b63f-4454-85fc-5d81e767ec78"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030499.jpg",
+    "pn": [
+      "0090030499"
+    ],
+    "desc": "BRM SPARE MICROSWITCH",
+    "id": "54ae8bb2-c658-4002-8455-67734a87a915"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090029840.jpg",
+    "pn": [
+      "0090029840"
+    ],
+    "desc": "OVERALL STATUS LIGHT",
+    "id": "a0f84892-36ff-4225-adda-b419bafeeb91"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450775289.jpg",
+    "pn": [
+      "4450775289"
+    ],
+    "desc": "BRM - ALIGNMENT GAUGE (2.5MM TOOL ALIGNMENT)",
+    "id": "85609334-2cda-436c-9f99-23b8ce278c73"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030200.jpg",
+    "pn": [
+      "0090030200"
+    ],
+    "desc": "BRM CENTRALIZATION DAMPER ASSEMBLY",
+    "id": "0dbcf643-cb18-4cda-a527-74342aa1e00b"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450750148.jpg",
+    "pn": [
+      "4450750148"
+    ],
+    "desc": "E CHAIN ASSY 44 LINK",
+    "id": "2d56d242-3b5a-48bb-9d2b-9c31fd9fcb8a"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030531.jpg",
+    "pn": [
+      "0090030531"
+    ],
+    "desc": "BRM SPARE BV REAR DRIVE BELT",
+    "id": "7a9e0f3d-5815-4049-854b-7bdda4c78931"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030199.jpg",
+    "pn": [
+      "0090030199"
+    ],
+    "desc": "BRM CENTRALIZATION PCB ASSEMBLY",
+    "id": "da75fbba-8420-451a-bf49-861c3e606f15"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450753409.jpg",
+    "pn": [
+      "4450753409"
+    ],
+    "desc": "RECYCLER SHUTTER - PCB TOP ASSY",
+    "id": "4ccdfefa-8e3c-407f-b342-421198585f82"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030502.jpg",
+    "pn": [
+      "0090030502"
+    ],
+    "desc": "BRM SPARE DC LIFT MOTOR",
+    "id": "4c997951-5be8-4095-8c31-c51c971926ae"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030504.jpg",
+    "pn": [
+      "0090030504"
+    ],
+    "desc": "BRM SPARE DC BRUSHLESS MOTOR (11 pins)",
+    "id": "ee6cf5b9-e132-40f1-b5e9-b5aa84bed93e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090031212.jpg",
+    "pn": [
+      "0090031212"
+    ],
+    "desc": "SPARE CR2/3 LITHIUM BATTERY FOR BRM & BNA",
+    "id": "659c244d-e498-40b0-9f9b-92c2094f6c1a"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030503.jpg",
+    "pn": [
+      "0090030503"
+    ],
+    "desc": "BRM SPARE DC BRUSHLESS MOTOR (9 PINS)",
+    "id": "48ea24b6-dd9b-46bc-86aa-37c337166a13"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030500.jpg",
+    "pn": [
+      "0090030500",
+      "9980912720",
+      "9980912678"
+    ],
+    "desc": "BRM SPARE PICK DRIVE STEPPING",
+    "id": "2fb2b4dc-178a-4e5e-854e-2003ab3e5cd3"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090033221.jpg",
+    "pn": [
+      "0090033221"
+    ],
+    "desc": "BRM - SPUR GEAR",
+    "id": "0795a743-04eb-4448-a5d6-d620332c4888"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030522.jpg",
+    "pn": [
+      "0090030522"
+    ],
+    "desc": "BRM SPARE INTERLOCK HARNESS",
+    "id": "019ae829-cb44-417a-95b2-4505b46e34c2"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090033356"
+    ],
+    "desc": "BRM Lift For Pocket",
+    "id": "84cd8e74-06db-4b2c-9c7a-8caeb1dabca7"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090030512"
+    ],
+    "desc": "BRM SPARE CNJ71 HARNESS",
+    "id": "351199f3-1d5b-4248-aeca-8f8f33e10f3e"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/0090030498.jpg",
+    "pn": [
+      "0090030498"
+    ],
+    "desc": "BRM HORIZONTAL TRANSPORT TIMING BELT (LT BELT)",
+    "id": "2bf66d15-46ab-49c8-8cd2-6906ba346e3b"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/brm/4450750127.jpg",
+    "pn": [
+      "4450750127"
+    ],
+    "desc": "HARNESS UPPER MODULE BRM (CNJ3)",
+    "id": "96c07d96-ef5a-404a-a4f4-e0c2ab1a6612"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090030530"
+    ],
+    "desc": "RELEASE OF BRM POCKET FRU WIT",
+    "id": "f7bee1e9-9ccb-475f-abc9-ec256da5c2f7"
+  },
+  {
+    "modulo": "BRM",
+    "img": "/img/no_image.jpg",
+    "pn": [
+      "0090030524"
+    ],
+    "desc": "BRM SPARE LATCH DETECTION ASSY",
+    "id": "84c97895-bd2b-44fd-9a7c-1cd1cdeef510"
+  }
+]

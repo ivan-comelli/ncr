@@ -1,5 +1,6 @@
 import { format } from 'path-browserify';
 import TYPES from './types';
+import dbData from '../db/output.json';
 
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },
@@ -50,125 +51,116 @@ const initialStateInventory = {
     }
 };
 
+
 const mergeDataTable = (newData, data) => {
+    console.log(newData);
     let oldData = structuredClone(data);
     let result = [];
-    if (oldData.length > 0) {
-        result = oldData.map(item => {
-            const existingItem = newData.find(dataItem => {
-                let find = false;
-                dataItem.partNumber?.forEach((part) => {
-                    if(item.partNumber.includes(part)) {
-                        find = true;
-                    }
-                })
-                !find && dataItem.id === item.id && (find = true)
-                return find;
+
+    if (oldData.length === 0) {
+        oldData = newData.map(item => ({
+            ...item,
+            stock: { detail: [], total: {} }
+        }));
+    }
+
+    result = oldData.map(item => {
+        const existingItem = newData.find(dataItem => item.id === dataItem.id);
+
+        // Asegurar estructura mínima
+        const stockDetail = Array.isArray(item.stock?.detail) ? [...item.stock.detail] : [];
+        const stockTotal = item.stock?.total ? { ...item.stock.total } : {};
+
+        let updatedTechnicians = item.technicians;
+
+        if (existingItem) {
+            // Actualizar técnicos
+            updatedTechnicians = item.technicians.map(technician => {
+                const matchingTechnician = existingItem.technicians?.find(tec => tec.csr === technician.csr);
+                return matchingTechnician ? {
+                    ...technician,
+                    onHand: matchingTechnician.onHand ?? technician.onHand,
+                    ppk: matchingTechnician.ppk ?? technician.ppk,
+                    createdAt: matchingTechnician.createdAt || technician.createdAt,
+                } : technician;
             });
-            let updatedTechnicians;
-            if (existingItem) {
-                updatedTechnicians = item.technicians.map(technician => {
-                    const matchingTechnician = existingItem.technicians?.find(tec => tec.csr === technician.csr);
-                    if (matchingTechnician) {
-                        return {
-                            ...technician,
-                            onHand: matchingTechnician.onHand ?? technician.onHand,
-                            ppk: matchingTechnician.ppk ?? technician.ppk,
-                            createdAt: matchingTechnician.createdAt || technician.createdAt,
-                        };
+
+            // Actualizar stock
+            existingItem.stock?.forEach(newStock => {
+                const csrKey = (newStock.csr || '').toLowerCase();
+                const existingOpIndex = stockDetail.findIndex(item => item.id === newStock.id);
+                const existStockOp = existingOpIndex !== -1 ? stockDetail[existingOpIndex] : null;
+
+                // Eliminar stock si se marca como DELETE
+                if (newStock.req === 'DELETE') {
+                    if (existStockOp) {
+                        stockDetail.splice(existingOpIndex, 1);
+                        const quantity = Number(existStockOp.stock);
+                        stockTotal[csrKey] = (stockTotal[csrKey] || 0) - quantity;
                     }
-                    return technician;
-                });
-                let countTotal = 0;
-                console.log(existingItem)
-                existingItem.stock.forEach((newStock) => {
-                    let existStockOp = item.stock.detail.find((item) => item.id === newStock.id);
+                    return;
+                }
 
-                    if (newStock.req === 'DELETE') {
-                        if (existStockOp) {
-                            item.stock.detail = item.stock.detail.filter((item) => item.id !== newStock.id);
-                            // También podría ser necesario restar su cantidad del total:
-                            const csrKey = existStockOp.csr.toLowerCase();
-                            const quantity = Number(existStockOp.stock);
-                            item.stock.total[csrKey] = (item.stock.total[csrKey] || 0) - quantity;
-                        }
-                        return; // saltar al siguiente newStock
-                    }
-                
-                    console.log(existStockOp)
-
-                    let mergeStockData = {
-                        id: newStock.id || existStockOp.id,
-                        csr: newStock.csr?.toLowerCase() || existStockOp.csr.toLowerCase(),
-                        name: newStock.name || existStockOp.name,
-                        status: newStock.status || existStockOp.status,
-                        lastUpdate: newStock.lastUpdate || existStockOp.lastUpdate,
-                        stock: Number(newStock.quantity) || existStockOp.stock,
-                    }
-                    console.log(mergeStockData)
-                    item.stock.detail.forEach((op) => {
-                        if(op.csr.toLowerCase() == mergeStockData.csr.toLowerCase()) {
-                            countTotal += Number(op.stock);
-                        }
-                    });
-
-                    let quantitySum = 0;
-
-                    existStockOp ? (
-                        Object.assign(existStockOp, mergeStockData)
-                    ) : (
-                        item.stock.detail.push(mergeStockData)
-                    )
-
-                    switch (mergeStockData.status) {
-                        case STATUS.PENDIENT:
-                            quantitySum = Number(mergeStockData.stock);
-                        break;
-
-                        case STATUS.FAILED:
-                        break;
-
-                        case STATUS.SYNC:
-                            quantitySum = Number(mergeStockData.stock);
-                        break;
-
-                        case STATUS.ADJUST:
-                            quantitySum = Number(mergeStockData.stock);
-                        break;
-
-                        case STATUS.ISSUE:
-                            quantitySum = Number(mergeStockData.stock);
-                        break;
-
-                        case STATUS.DONE:
-                            quantitySum = Number(mergeStockData.stock) * (-1)
-                        break;
-
-                        default:
-                            quantitySum = Number(mergeStockData.stock);
-                        break;
-                                
-                    }
-
-
-                    console.log(quantitySum)
-
-                    item.stock.total[mergeStockData.csr.toLowerCase()] = (item.stock.total[mergeStockData.csr.toLowerCase()] ? item.stock.total[mergeStockData.csr.toLowerCase()] : 0) + quantitySum
-                });
-                
-                newData.splice(newData.indexOf(existingItem), 1);
-                console.log(item)
-                return {
-                    ...item,
-                    technicians: updatedTechnicians,
+                // Crear objeto mergeado
+                const mergedStock = {
+                    id: newStock.id ?? existStockOp?.id,
+                    csr: csrKey,
+                    name: newStock.name ?? existStockOp?.name,
+                    status: newStock.status ?? existStockOp?.status,
+                    lastUpdate: newStock.lastUpdate ?? existStockOp?.lastUpdate,
+                    stock: newStock.quantity != null ? Number(newStock.quantity) : existStockOp?.stock || 0,
                 };
-            }
-            
-            return item;
-        });
-    } 
+
+                // Reemplazar o insertar en stock.detail
+                if (existStockOp) {
+                    stockDetail[existingOpIndex] = mergedStock;
+                } else {
+                    stockDetail.push(mergedStock);
+                }
+
+                // Calcular cantidad a sumar
+                let quantitySum = 0;
+                switch (mergedStock.status) {
+                    case STATUS.DONE:
+                        quantitySum = mergedStock.stock * -1;
+                        break;
+                    case STATUS.FAILED:
+                        break;
+                    default:
+                        quantitySum = mergedStock.stock;
+                        break;
+                }
+
+                stockTotal[csrKey] = (stockTotal[csrKey] || 0) + quantitySum;
+            });
+
+            // Eliminar el ítem procesado de newData para evitar duplicados
+            newData = newData.filter(dataItem => dataItem.id !== existingItem.id);
+
+            return {
+                ...item,
+                stock: {
+                    detail: stockDetail,
+                    total: stockTotal
+                },
+                technicians: updatedTechnicians
+            };
+        }
+
+        // Si no hay cambios, retornar el item tal como está
+        return {
+            ...item,
+            stock: {
+                detail: stockDetail,
+                total: stockTotal
+            },
+            technicians: updatedTechnicians
+        };
+    });
+
     return result;
-}
+};
+
 
 //Este se usar para buscar las operaciones para el overview del isolated
 const sortedDetails = (id, nativeData) => {
@@ -241,18 +233,24 @@ const filterDataTable = (filters, dataState) => {
 
 
 const formatDataTable = (dataState) => {
+    console.log(dataState)
     let dataTable = structuredClone(dataState);
     dataTable = dataTable.map((item => {
         var issue = false;
+        console.log(item);
+        const matchDB = dbData.find((db) => (db.id === item.catalogId));
         item.stock.detail.forEach(op => {
             op.status === 'ISSUE' && (issue = true);
         });
+        console.log(item)
+        console.log(matchDB)
+
         return {
             id: item.id,
-            partNumber: item.partNumber,
-            description: item.description,
+            partNumber: matchDB.pn,
+            description: matchDB.desc,
             reWork: item.reWork,
-            category: item.category || null,
+            category: matchDB.modulo,
             cost: item.cost,
             stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,

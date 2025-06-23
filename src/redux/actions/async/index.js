@@ -11,6 +11,8 @@ import {
     isolatePartInTable,
 } from '../sync';
 
+import dbData from '../../../db/output.json';
+
 export * from './dispatch'
 
 let timer;
@@ -42,14 +44,15 @@ export function fetchAllInventory() {
 
             await Promise.all(
                 inventorySnapshot.docs.map(async (inventoryDoc) => {
+                    let matchDb = dbData.find(ref => {
+                        if (ref.id == inventoryDoc.idCatalog) return true;
+                        return false;
+                    });
                     const inventoryData = {
                         id: inventoryDoc.id,
                         cost: Number(inventoryDoc.data().cost),
                         reWork: inventoryDoc.data().reWork,
-                        partNumber: inventoryDoc.data().partNumber,
-                        description: inventoryDoc.data().description,
-                        priority: inventoryDoc.data().priority,
-                        category: inventoryDoc.data().category || null
+                        priority: inventoryDoc.data().priority
                     };
                     new Date(inventoryDoc.data().lastUpdate.toDate()).getTime() > new Date(updateMostNew).getTime() && (updateMostNew = inventoryDoc.data().lastUpdate.toDate());
                     const refInventory = inventoryDoc.ref;
