@@ -52,7 +52,8 @@ export function fetchAllInventory() {
                         id: inventoryDoc.id,
                         cost: Number(inventoryDoc.data().cost),
                         reWork: inventoryDoc.data().reWork,
-                        priority: inventoryDoc.data().priority
+                        priority: inventoryDoc.data().priority,
+                        catalogId: inventoryDoc.data().catalogId
                     };
                     new Date(inventoryDoc.data().lastUpdate.toDate()).getTime() > new Date(updateMostNew).getTime() && (updateMostNew = inventoryDoc.data().lastUpdate.toDate());
                     const refInventory = inventoryDoc.ref;

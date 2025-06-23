@@ -31,12 +31,13 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
             throw new Error("Hay mas de una coincidencia.");
         }
         response = technicianSnapshot.docs.map(doc => {
-            console.log(`Tech ${doc.data().name} in ${doc.id}`)
+            console.log(`Tech ${doc.data().name} in ${doc.id}`);
             return {
                 id: doc.id, // Incluye el ID del documento si es necesario
                 ...doc.data() // Extrae los datos del documento
             }
         });
+        console.groupEnd();
     } catch(error) {
         throw new Error("No se pudo obtener el tecnico, " + error.message);
     }
