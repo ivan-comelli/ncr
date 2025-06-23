@@ -46,17 +46,20 @@ export async function getTechnicianOfSomePart(refInventory, identity) {
 
 export async function initTechnicianToSomePart(refInventory, batch) {
     try {
+        //const technicianST = await getDocs(collection(refInventory, "technicians"));
         console.log(`Initialization technician of inventory ${refInventory.id}:`);
         options.forEach((item) => {
-            let docTech = doc(collection(refInventory, "technicians"));
-            console.log(`Init ${item.name} in ${docTech.id}`);
-            batch.set(docTech, {
-                name: item.name,
-                csr: item.csr.toLowerCase(),
-                onHand: 0,
-                ppk: 0,
-                lastUpdate: Timestamp.now()
-            });
+            //if(!technicianST.find(tec => (tec.csr.toLowerCase() == item.csr.toLowerCase()))) {
+                let docTech = doc(collection(refInventory, "technicians"));
+                console.log(`Init ${item.name} in ${docTech.id}`);
+                batch.set(docTech, {
+                    name: item.name,
+                    csr: item.csr.toLowerCase(),
+                    onHand: 0,
+                    ppk: 0,
+                    lastUpdate: Timestamp.now()
+                });
+            //}
         })
     }
     catch(e) {

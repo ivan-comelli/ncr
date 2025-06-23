@@ -17,11 +17,17 @@ function parseMutations(mutations, dispatch) {
     let loadingProgress = 0;
     let lotStock = [], lotTec = [], part = {}, formatData = [];
     console.groupCollapsed('Parse Batch for Store');
+    console.log(mutations)
     mutations.forEach((item, index) => {
       loadingProgress = ((index + 1) / mutations.length) * 100;
       dispatch(setStepLoader(Math.floor(loadingProgress)));
-  
-      const data = item.type === 1 ? item.data.value.mapValue.fields : item.value.value.mapValue.fields;
+      let data;
+      if(item.type === 1) {
+        data = item.data.value.mapValue.fields;
+      }
+      else if (item.type === 0) {
+        data = item.value.value.mapValue.fields
+      }
       const path = item.key.collectionGroup;
       console.log(path)
       switch (path) {
@@ -127,18 +133,18 @@ async function checkTechnicianExists(batch, refInventory, technician) {
   
 async function getOrCreateInventoryRef(batch, catalogId) {
     const snap = await getInventoryByCatalog(catalogId);
-    if (snap) return snap.ref;
+    if (snap) return snap.id;
   
     const batchMatch = batch._mutations.find(doc => {
       const fields = doc.type === 1 ? doc?.data.value.mapValue.fields : doc?.value.value.mapValue.fields;
       return fields.catalogId?.stringValue === catalogId;
     });
   
-    if (batchMatch) return doc(db, "Inventory", batchMatch.key.path.segments[1]);
+    if (batchMatch) return doc(db, "Inventory", batchMatch.key.path.segments[1]).id;
   
     const newRef = doc(collection(db, "Inventory"));
     await initTechnicianToSomePart(newRef, batch);
-    return newRef;
+    return newRef.id;
 }
   
 async function processSingleInventoryItem(batch, item, dispatch) {
@@ -146,7 +152,9 @@ async function processSingleInventoryItem(batch, item, dispatch) {
     console.log(matchDB)
     if (!matchDB) return;
   
-    const refInventory = await getOrCreateInventoryRef(batch, matchDB.id);
+    const idInventory = await getOrCreateInventoryRef(batch, matchDB.id);
+    const refInventory = doc(db, 'Inventory', idInventory);
+    console.log(`Reference of Inventory is: ${refInventory.id}`)
     if (item.stock && Object.keys(item.stock).length) {
       batch = await setStockToSomePart(doc(collection(refInventory, "stock")), item.stock, batch);
     }

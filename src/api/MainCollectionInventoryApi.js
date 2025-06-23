@@ -8,20 +8,24 @@ const options = [
     { name: "Ivan Comelli", csr: "AR903S48" }
   ];
 
-export async function getInventoryByCatalog(idCatalog) {
+export async function getInventoryByCatalog(catalogId) {
     const inventoryCollectionRef = collection(db, "Inventory");
     let inventoryDoc = null;
     try {
-        const q = query(inventoryCollectionRef, where("idCatalog", "==", idCatalog));
+        const q = query(inventoryCollectionRef, where("catalogId", "==", catalogId));
         const allDocs = await getDocs(q);
         if (!allDocs.empty) {
             inventoryDoc = allDocs.docs[0];
-            console.log(`Catalog Id To Search is ${idCatalog} Exist ${inventoryDoc.id}`);
+            console.log(`Catalog Id To Search is ${catalogId} Exist ${inventoryDoc.id}`);
 
         } else if(allDocs.size > 1) {
             throw new Error("Hay mas de una coincidencia"); 
         }
+        else {
+            console.log('Not find coincidence')
+        }
     } catch(error) {
+        console.error("Error al procesar el documento: " + error.message);
         throw new Error("Error al procesar el documento: " + error.message); 
     }
     return inventoryDoc;
