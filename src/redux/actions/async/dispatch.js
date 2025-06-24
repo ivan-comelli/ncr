@@ -80,21 +80,22 @@ function parseMutations(mutations, dispatch) {
         case "technicians":
           let techIndex = lotTec.findIndex(t => t.id == item.key.path.segments[3]);
           console.log(`Parse tech find similar ${techIndex > 0}`)
+          console.log(data.ppk.integerValue)
           if (techIndex >= 0) {
             lotTec[techIndex] = {
               ...lotTec[techIndex],
-              onHand: Number(data.onHand.integerValue),
-              ppk: Number(data.ppk.integerValue),
-              lastUpdate: { seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000) }
+              ...(data.onHand && { onHand: Number(data.onHand.integerValue) }),
+              ...(data.ppk && { ppk: Number(data.ppk.integerValue) }),
+              ...(data.lastUpdate && { lastUpdate: { seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000) } }),
             };
           } else {
             lotTec.push({
               id: item.key.path.segments[3],
-              csr: data.csr?.stringValue,
-              name: data.name?.stringValue,
-              onHand: Number(data.onHand.integerValue),
-              ppk: Number(data.ppk.integerValue),
-              lastUpdate: { seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000) }
+              ...(data.csr && {csr: data.csr?.stringValue}),
+              ...(data.onHand && { onHand: Number(data.onHand.integerValue) }),
+              ...(data.ppk && { ppk: Number(data.ppk.integerValue) }),
+              ...(data.lastUpdate && { lastUpdate: { seconds: Math.floor(new Date(data.lastUpdate.timestampValue).getTime() / 1000) } }),
+              ...(data.name && { name: data.name.stringValue }),
             });
           }
           break;
@@ -215,7 +216,7 @@ export function dispatchBulkInventory(data) {
 export function dispatchUpdatePriority(item) {
     return async (dispatch) => {
         try {
-            const response = await setPriorityOfInventoryPart(item.partNumber, item.priority);
+            const response = await setPriorityOfInventoryPart(item.id, item.priority);
             console.log("API response:", response);
 
             dispatch(updatePriority(response, item.priority));

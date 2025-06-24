@@ -78,15 +78,10 @@ export async function setCategoryOfInventoryPart(partNumber, newCategory) {
     }
 }*/
 
-export async function setPriorityOfInventoryPart(catalog, newPriority) {
+export async function setPriorityOfInventoryPart(idInventory, newPriority) {
     try {
-        // Obtener el documento
-        const inventoryDoc = await getInventoryByCatalog(catalog);
-        if (!inventoryDoc) {
-            throw new Error("No se encontró un documento de inventario para ese catalog.");
-        }
-
-        const refInventory = doc(db, "Inventory", inventoryDoc.id);
+        console.log(`Id to Ref is: ${idInventory}`)
+        const refInventory = doc(db, "Inventory", idInventory);
 
         // Actualizar directamente con setDoc
         await setDoc(refInventory, {
@@ -95,7 +90,7 @@ export async function setPriorityOfInventoryPart(catalog, newPriority) {
         }, { merge: true });
         console.info("Prioridad actualizada correctamente.");
 
-        return inventoryDoc.id
+        return idInventory
     } catch (error) {
         throw new Error("No se pudo actualizar la prioridad: " + error.message);
     }

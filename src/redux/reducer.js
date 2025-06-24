@@ -1,7 +1,6 @@
 import { format } from 'path-browserify';
 import TYPES from './types';
 import dbData from '../db/output.json';
-
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },
     { name: "Nahuel DeLuca", csr: "AR103S44" },
@@ -53,6 +52,8 @@ const initialStateInventory = {
 
 
 const mergeDataTable = (newData, data) => {
+    console.groupCollapsed(`MergeData`);
+
     console.log(newData);
     let oldData = structuredClone(data);
     let result = [];
@@ -157,7 +158,7 @@ const mergeDataTable = (newData, data) => {
             technicians: updatedTechnicians
         };
     });
-
+    console.groupEnd();
     return result;
 };
 
@@ -233,6 +234,8 @@ const filterDataTable = (filters, dataState) => {
 
 
 const formatDataTable = (dataState) => {
+    console.groupCollapsed(`Format Data`);
+
     console.log(dataState)
     let dataTable = structuredClone(dataState);
     dataTable = dataTable.map((item => {
@@ -279,11 +282,14 @@ const formatDataTable = (dataState) => {
             issue: issue
         }
     }));
+    console.groupEnd();
+
     return dataTable;
 }
 
 export const inventoryReducer = (state = initialStateInventory, action) => {
     let newDataTable;
+
     switch (action.type) {
         //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH
         case TYPES.FETCH_INVENTORY_START:

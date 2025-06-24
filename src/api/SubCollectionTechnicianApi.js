@@ -73,18 +73,20 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
     //tengo que calcular la diferencia de OH en la ventana del ultimo periodo registrado
     //por cada technician de parte hay que ir a validar el stock
     //ACA FALLA porque si el tecnico no tiene ningun registro de onHand en una pieza tira error
-    await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr, newTechnician.onHand);
+    if(newTechnician.onHand != undefined) {
+        await verifyStockOfSomeTechnicianInPart(batch, refTechnician, newTechnician.csr, newTechnician.onHand);
+    }
 
     try {
         if(!refTechnician) {
             throw new Error("No hay referencia para actualizar");
         }
-        console.log(`Setting tech ${newTechnician.csr.toLowerCase()} in reference ${refTechnician.id}`);
+        console.log(`Setting tech ${newTechnician.csr.toLowerCase()} in reference ${refTechnician.id} for ${newTechnician.ppk}`);
 
         batch.set(refTechnician, {
             ...newTechnician,
             csr: newTechnician.csr.toLowerCase(),
-            onHand: newTechnician.onHand || 0,
+            ...(newTechnician.onHand && {onHand: newTechnician.onHand}),
             ppk: newTechnician.ppk || 0,
             lastUpdate: Timestamp.now()
         }, 
