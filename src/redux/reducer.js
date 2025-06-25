@@ -80,8 +80,8 @@ const mergeDataTable = (newData, data) => {
                 const matchingTechnician = existingItem.technicians?.find(tec => tec.csr === technician.csr);
                 return matchingTechnician ? {
                     ...technician,
-                    onHand: matchingTechnician.onHand ?? technician.onHand,
-                    ppk: matchingTechnician.ppk ?? technician.ppk,
+                    onHand: (matchingTechnician.onHand ?? technician.onHand) || 0,
+                    ppk: (matchingTechnician.ppk ?? technician.ppk) || 0,
                     createdAt: matchingTechnician.createdAt || technician.createdAt,
                 } : technician;
             });

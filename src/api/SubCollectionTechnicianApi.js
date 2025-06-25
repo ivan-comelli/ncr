@@ -79,15 +79,17 @@ export async function setTechnicianToSomePart(refTechnician, newTechnician, batc
 
     try {
         if(!refTechnician) {
+            console.error("Not Exist Reference to Update");
             throw new Error("No hay referencia para actualizar");
         }
+
         console.log(`Setting tech ${newTechnician.csr.toLowerCase()} in reference ${refTechnician.id} for ${newTechnician.ppk}`);
 
         batch.set(refTechnician, {
             ...newTechnician,
             csr: newTechnician.csr.toLowerCase(),
             ...(newTechnician.onHand && {onHand: newTechnician.onHand}),
-            ppk: newTechnician.ppk || 0,
+            ...(newTechnician.ppk && {ppk: newTechnician.ppk}),
             lastUpdate: Timestamp.now()
         }, 
         { merge: true });
