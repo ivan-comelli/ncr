@@ -1,11 +1,14 @@
 import { format } from 'path-browserify';
 import TYPES from './types';
 import dbData from '../db/output.json';
+
+//EL REDUCER NO CONTEMPLA SI LA NUEVA DATA A MERGER ESTA CON ITEMS REPETIDOS, APLICA CAMBIOS CON LA PRIMERA COINCIDENCIA, LAS DEMAS SE IGNORAN
+
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },
     { name: "Nahuel DeLuca", csr: "AR103S44" },
     { name: "Adrian Santarelli", csr: "AR103S45" },
-    { name: "Juan Valenzuela", csr: "AR903S49" },
+    { name: "Juan Valenzuela", csr: "AR103S46" },
     { name: "Ivan Comelli", csr: "AR903S48" }
 ];
 
@@ -17,7 +20,6 @@ const STATUS = {
     SYNC: "SYNC",
     ISSUE: "ISSUE"
 }
-
 //Destaco que el stepLoading se activa cuando su valor es mayor a 0
 const initialStateInventory = {
     stepLoading: 0,
@@ -36,7 +38,7 @@ const initialStateInventory = {
             key: null
         },
         category: {
-            values: ['CASH', 'BNA3', 'SCPM', 'SRU', 'GBRU', 'BRM', 'CPU', 'ATM', 'READ', 'TOOL', 'PRINT'],
+            values: ['S1', 'S2', 'BNA3', 'SCPM', 'SRU', 'GBRU', 'BRM', 'CPU', 'OTROS', 'LECTORAS', 'SOBRES', 'PRINTERS'],
             key: []
         },
         priority: {
@@ -49,7 +51,6 @@ const initialStateInventory = {
         }
     }
 };
-
 
 const mergeDataTable = (newData, data) => {
     console.groupCollapsed(`MergeData`);
@@ -161,8 +162,6 @@ const mergeDataTable = (newData, data) => {
     console.groupEnd();
     return result;
 };
-
-
 //Este se usar para buscar las operaciones para el overview del isolated
 const sortedDetails = (id, nativeData) => {
     let response
@@ -232,7 +231,6 @@ const filterDataTable = (filters, dataState) => {
     return response;
 }
 
-
 const formatDataTable = (dataState) => {
     console.groupCollapsed(`Format Data`);
 
@@ -241,7 +239,7 @@ const formatDataTable = (dataState) => {
     dataTable = dataTable.map((item => {
         var issue = false;
         console.log(item);
-        const matchDB = dbData.find((db) => (db.id === item.catalogId));
+        const matchDB = dbData.find((db) => (db.id === item.id));
         item.stock.detail.forEach(op => {
             op.status === 'ISSUE' && (issue = true);
         });
@@ -254,10 +252,10 @@ const formatDataTable = (dataState) => {
             description: matchDB.desc,
             reWork: item.reWork,
             category: matchDB.modulo,
-            cost: item.cost,
+            cost: item.cost || 0,
             stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
-            ppk: item.technicians.reduce((sum, value) => sum += value.ppk, 0) || 0,
-            onHand: item.technicians.reduce((sum, value) => sum += value.onHand, 0) || 0,
+            ppk: item.technicians.reduce((sum, value) => sum += value.ppk || 0, 0) || 0,
+            onHand: item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0) || 0,
             priority: item.priority || 'LOW',
             nodes: item.technicians
             .filter((node) => {
@@ -308,7 +306,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                     active: state.overView.active,
                     data: sortedDetails(state.isolated?.id, state.nativeData),
                 }
-            }
+        }
 
         case TYPES.FETCH_INVENTORY_FAILURE:
             return { ...state, stepLoading: 0 };
@@ -345,7 +343,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                     active: state.overView.active,
                     data: sortedDetails(state.isolated?.id, state.nativeData),
                 }
-            }
+        }
 
         case TYPES.SET_STOCK: {
             let newData = mergeDataTable(state.nativeData)

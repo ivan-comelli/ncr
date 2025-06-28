@@ -30,7 +30,7 @@ import {
 function CheckerModal({ show, resolveModal, rejectModal }) {
   const [activeStep, setActiveStep] = useState(0);
   const [selectedPerson, setSelectedPerson] = useState({ name: null, csr: null }); 
-  const options = [{ name: "Diego Molina", csr: "AR103S42"}, { name: "Nahuel DeLuca", csr: "AR103S44"}, { name: "Adrian Santarelli", csr: "AR103S45"}, { name: "Juan Valenzuela", csr: "AR903S49"},  { name: "Ivan Comelli", csr: "AR903S48"}];
+  const options = [{ name: "Diego Molina", csr: "AR103S42"}, { name: "Nahuel DeLuca", csr: "AR103S44"}, { name: "Adrian Santarelli", csr: "AR103S45"}, { name: "Juan Valenzuela", csr: "AR103S46"},  { name: "Ivan Comelli", csr: "AR903S48"}];
   const [loading, setLoading] = useState(true);
   const [previewFile, setPreviewFile] = useState();
   const [previewDetail, setPreviewDetail] = useState();

@@ -88,12 +88,6 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
         description: data["Description"],
         reWork: data["RW"] === 'Y',
         cost: data["Cost"],
-        stock: cleanObject({
-            csr: data["CSR"] || defaultCSR && defaultCSR.csr,
-            name: data["Name"] || defaultCSR && defaultCSR.name,
-            quantity: data["quantity"] || data["stock"],
-            createdAt: data["deliveryDate"] || data["date"],
-        }),
         technician: cleanObject({
             csr: data["CSR"] || defaultCSR && defaultCSR.csr,
             onHand: Number(data["OnHand"]),
