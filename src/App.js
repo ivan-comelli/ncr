@@ -297,7 +297,7 @@ function App() {
                     ))}
                   </Select>
                 </FormControl>
-              <TableInventory />
+              <TableInventory minified={minified} />
               <div className='info'>
         Capital Neto es de <span>{ neto }</span> de dolares
       </div>

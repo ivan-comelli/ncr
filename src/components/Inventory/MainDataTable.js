@@ -123,11 +123,6 @@ const TableInventory = ({ minified }) => {
 
   return (
     <div className={`view-table ${isolated ? 'isIsolated' : ''}`} >
-      <div className="layout-table">
-        <Button variant="outlined">Explorador</Button>
-        <Button variant="outlined">Analitico</Button>
-        <Button variant="outlined">Avanzado</Button>
-      </div>
       <Table data={ {nodes: collectionData} } theme={theme} tree={tree}>
        {(tableList) => (
          <>
@@ -135,13 +130,12 @@ const TableInventory = ({ minified }) => {
            <HeaderRow>
              <HeaderCell>Part Number</HeaderCell>
              <HeaderCell>Description</HeaderCell>
-             <HeaderCell>Categoria</HeaderCell>
+             {!minified && <HeaderCell>Categoria</HeaderCell>}
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
-             {!minified && <HeaderCell><IconPPK fontSize="small" /></HeaderCell>}
+             <HeaderCell><IconPPK fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell>$</HeaderCell>}
              {!minified && <HeaderCell>RW</HeaderCell>}
-
              <HeaderCell><IconPrio fontSize="small" /></HeaderCell>
            </HeaderRow>
          </Header>
@@ -153,10 +147,10 @@ const TableInventory = ({ minified }) => {
               key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
                <Cell>{item?.partNumber[0]}</Cell>
                <Cell>{item?.description}</Cell>
-               <Cell>{item?.category}</Cell>
+               {!minified && <Cell>{item?.category}</Cell>}
                <Cell>{item?.stock}</Cell>
                {!minified && <Cell>{item?.onHand}</Cell>}
-               {!minified && <Cell>{item?.ppk}</Cell>}
+               <Cell>{item?.ppk}</Cell>
                {!minified && <Cell>{item?.cost}</Cell>}
                {!minified && <Cell>{item.reWork != null ? (item.reWork ? "T" : "F") : ''}</Cell>}
                <Cell>{item?.partNumber != "" && <span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/>}</Cell>

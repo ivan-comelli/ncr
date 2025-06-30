@@ -55,7 +55,6 @@ const initialStateInventory = {
 const mergeDataTable = (newData, data) => {
     console.groupCollapsed(`MergeData`);
 
-    console.log(newData);
     let oldData = structuredClone(data);
     let result = [];
 
@@ -74,15 +73,14 @@ const mergeDataTable = (newData, data) => {
         const stockTotal = item.stock?.total ? { ...item.stock.total } : {};
 
         let updatedTechnicians = item.technicians;
-
         if (existingItem) {
             // Actualizar técnicos
             updatedTechnicians = item.technicians.map(technician => {
                 const matchingTechnician = existingItem.technicians?.find(tec => tec.csr === technician.csr);
                 return matchingTechnician ? {
                     ...technician,
-                    onHand: (matchingTechnician.onHand ?? technician.onHand) || 0,
-                    ppk: (matchingTechnician.ppk ?? technician.ppk) || 0,
+                    onHand: matchingTechnician.onHand || 0,
+                    ppk: matchingTechnician.ppk || 0,
                     createdAt: matchingTechnician.createdAt || technician.createdAt,
                 } : technician;
             });
@@ -121,19 +119,7 @@ const mergeDataTable = (newData, data) => {
                 }
 
                 // Calcular cantidad a sumar
-                let quantitySum = 0;
-                switch (mergedStock.status) {
-                    case STATUS.DONE:
-                        quantitySum = mergedStock.stock * -1;
-                        break;
-                    case STATUS.FAILED:
-                        break;
-                    default:
-                        quantitySum = mergedStock.stock;
-                        break;
-                }
-
-                stockTotal[csrKey] = (stockTotal[csrKey] || 0) + quantitySum;
+                stockTotal[csrKey] = (stockTotal[csrKey] || 0) + mergedStock.stock;
             });
 
             // Eliminar el ítem procesado de newData para evitar duplicados
@@ -260,7 +246,7 @@ const formatDataTable = (dataState) => {
             nodes: item.technicians
             .filter((node) => {
                 // Filtrar nodos donde ppk, onHand y stock no sean todos 0
-                return !(node.ppk === 0 && node.onHand === 0 && (item.stock.total[node.csr] || 0) === 0);
+                return !(!node.ppk && !node.onHand && !(item.stock.total[node.csr] || 0));
             })
             .map((node) => {
                 return {
@@ -268,8 +254,8 @@ const formatDataTable = (dataState) => {
                     partNumber: [],
                     description: node.name,
                     reWork: null,
-                    ppk: node.ppk,
-                    onHand: node.onHand,
+                    ppk: node.ppk || 0,
+                    onHand: node.onHand || 0,
                     stock: item.stock.total[node.csr] || 0
                 };
             })
