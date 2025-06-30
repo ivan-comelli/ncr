@@ -76,6 +76,7 @@ const CheckerMovement = ({ petition }) => {
     // Lógica para enviar el formulario
     // Por ejemplo, podrías hacer un dispatch de la acción correspondiente:
     dispatch(dispatchBulkInventory([{
+      id: data.id,
       partNumber: data.partNumber,
       description: data.description,
       stock: {

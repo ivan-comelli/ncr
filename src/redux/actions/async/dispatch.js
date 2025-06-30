@@ -482,7 +482,8 @@ async function getOrCreateInventoryRef(batch, catalogId) {
   
 async function processSingleInventoryItem(batch, batchOfDate, item) {
   try {
-    const matchDB = dbData.find(ref => ref.pn.includes(item.partNumber));
+    console.log(item)
+    const matchDB = dbData.find(ref => (item.partNumber.find(part => part == ref.pn) || ref.id == item.id));
     console.log(matchDB)
     if (!matchDB) return;
     console.log(`Reference of Inventory is: ${matchDB.id}`)

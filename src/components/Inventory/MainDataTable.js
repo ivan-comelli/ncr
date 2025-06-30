@@ -117,7 +117,7 @@ const TableInventory = ({ minified }) => {
 
   // Establecer prioridad
   const handleSetPriority = (priority) => {
-    dispatch(dispatchUpdatePriority({...selectedItem, priority: priority}));
+    dispatch(dispatchUpdatePriority(selectedItem.id, priority));
     handleClose();
   };
 
