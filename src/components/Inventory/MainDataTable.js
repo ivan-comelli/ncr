@@ -132,7 +132,6 @@ const TableInventory = ({ minified }) => {
              <HeaderCell>Description</HeaderCell>
              {!minified && <HeaderCell>Categoria</HeaderCell>}
              <HeaderCell><IconStock fontSize="small" /></HeaderCell>
-             {!minified && <HeaderCell><IconOnHand fontSize="small" /></HeaderCell>}
              <HeaderCell><IconPPK fontSize="small" /></HeaderCell>
              {!minified && <HeaderCell>$</HeaderCell>}
              {!minified && <HeaderCell>RW</HeaderCell>}
@@ -149,7 +148,6 @@ const TableInventory = ({ minified }) => {
                <Cell>{item?.description}</Cell>
                {!minified && <Cell>{item?.category}</Cell>}
                <Cell>{item?.stock}</Cell>
-               {!minified && <Cell>{item?.onHand}</Cell>}
                <Cell>{item?.ppk}</Cell>
                {!minified && <Cell>{item?.cost}</Cell>}
                {!minified && <Cell>{item.reWork != null ? (item.reWork ? "T" : "F") : ''}</Cell>}

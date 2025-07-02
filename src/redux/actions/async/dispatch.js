@@ -26,11 +26,10 @@ const STATUS = {
   ISSUE: "ISSUE"
 }
 
-async function setStockToSomePart(refStock, newStock, batch) {
+async function setStockToSomePart(refStock, newStock) {
   console.log(`Set Stock ${newStock.quantity} To ${newStock.csr} On State ${newStock.status}`)
-  if(!batch) {
-      batch = writeBatch(db);
-  }
+  const batch = writeBatch(db);
+  
   try {
       if(!refStock) {
           throw new Error("No hay referencia para actualizar");
@@ -44,9 +43,14 @@ async function setStockToSomePart(refStock, newStock, batch) {
           lastUpdate: Timestamp.now()
 
       });
+      console.log(refStock)
+      batch.set(doc(db,'Inventory', refStock.parent.parent.id), {
+        lastUpdate: Timestamp.now()
+      }, {merge: true});
   } catch(error) {
       throw new Error("No se pudo agregar el stock: " + error.message);
   }
+  batch.commit();
   return batch;
 }
 
@@ -288,7 +292,7 @@ async function verifyStockOfSomeTechnicianInPart(batch, batchOfDate, tecRef, csr
           //Actualiza el updateAt del Main Ref, necesario para las actualizaciones optimizadas del fetch cliente
           batchOfDate.set(tecRef.parent.parent, {
               lastUpdate: Timestamp.now()
-          });
+          }, {merge: true});
   } catch(e) {
       console.error(e)
   }
@@ -483,13 +487,15 @@ async function getOrCreateInventoryRef(batch, catalogId) {
 async function processSingleInventoryItem(batch, batchOfDate, item) {
   try {
     console.log(item)
-    const matchDB = dbData.find(ref => (item.partNumber.find(part => part == ref.pn) || ref.id == item.id));
+    const matchDB = dbData.find(ref => 
+      ref.pn.some(pn => item.partNumber.includes(pn))
+    );
     console.log(matchDB)
     if (!matchDB) return;
     console.log(`Reference of Inventory is: ${matchDB.id}`)
     const snapDocInventory = await getOrCreateInventoryRef(batch, matchDB.id);
 
-    if (item.technician && Object.keys(item.technician).length) {
+    if(item.technician && Object.keys(item.technician).length) {
       batch = await setTechnicianToSomePart(doc(collection(snapDocInventory.ref, "technicians"), `${snapDocInventory.id}-${item.technician.csr.toLowerCase()}`), item.technician, batch, batchOfDate);
     }
 
@@ -565,4 +571,36 @@ export function dispatchUpdatePriority(catalogId, newPriority) {
     };
 }
 
-//HACER UN DISPATCH APARTE PARA LAS MODIFICACIONES DE STOCK
+export function dispatchAddStock(newStock) {  
+  return async(dispatch) => {    
+    try {
+      console.log(newStock)
+      const matchDB = dbData.find(item => 
+        item.pn.some(pn => newStock.partNumber.includes(pn))
+      );
+      if(matchDB) {
+        const inventoryRef = doc(db, 'Inventory', matchDB.id);
+        const refStock = doc(collection(inventoryRef, "stock"));
+        console.log(`New Id Stock ${refStock.id}`);
+        const result = await setStockToSomePart(refStock, newStock.stock);
+        const merge = [{
+          id: matchDB.id,
+          stock: [{
+            id: refStock.id,
+            ...newStock.stock,
+            csr: newStock.stock.csr.toLowerCase(),
+          }],
+          technicians: []
+        }];
+        
+        dispatch(dispatchInventorySuccess(merge));
+      }
+      else {
+        console.error('NO exist match')
+      }
+    }
+    catch {
+
+    }
+  }
+}

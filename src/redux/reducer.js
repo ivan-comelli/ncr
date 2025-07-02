@@ -54,7 +54,6 @@ const initialStateInventory = {
 
 const mergeDataTable = (newData, data) => {
     console.groupCollapsed(`MergeData`);
-
     let oldData = structuredClone(data);
     let result = [];
 
@@ -64,14 +63,12 @@ const mergeDataTable = (newData, data) => {
             stock: { detail: [], total: {} }
         }));
     }
-
     result = oldData.map(item => {
-        const existingItem = newData.find(dataItem => item.id === dataItem.id);
+        const existingItem = newData.find(dataItem => (item.id == dataItem.id));
 
         // Asegurar estructura mínima
         const stockDetail = Array.isArray(item.stock?.detail) ? [...item.stock.detail] : [];
         const stockTotal = item.stock?.total ? { ...item.stock.total } : {};
-
         let updatedTechnicians = item.technicians;
         if (existingItem) {
             // Actualizar técnicos
@@ -87,6 +84,7 @@ const mergeDataTable = (newData, data) => {
 
             // Actualizar stock
             existingItem.stock?.forEach(newStock => {
+                console.log(newStock)
                 const csrKey = (newStock.csr || '').toLowerCase();
                 const existingOpIndex = stockDetail.findIndex(item => item.id === newStock.id);
                 const existStockOp = existingOpIndex !== -1 ? stockDetail[existingOpIndex] : null;
@@ -110,7 +108,7 @@ const mergeDataTable = (newData, data) => {
                     lastUpdate: newStock.lastUpdate ?? existStockOp?.lastUpdate,
                     stock: newStock.quantity != null ? Number(newStock.quantity) : existStockOp?.stock || 0,
                 };
-
+                console.log(mergedStock)
                 // Reemplazar o insertar en stock.detail
                 if (existStockOp) {
                     stockDetail[existingOpIndex] = mergedStock;
@@ -234,14 +232,13 @@ const formatDataTable = (dataState) => {
 
         return {
             id: item.id,
-            partNumber: matchDB.pn,
-            description: matchDB.desc,
+            partNumber: matchDB?.pn || [],
+            description: matchDB?.desc,
             reWork: item.reWork,
-            category: matchDB.modulo,
+            category: matchDB?.modulo,
             cost: item.cost || 0,
             stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk || 0, 0) || 0,
-            onHand: item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0) || 0,
             priority: item.priority || 'LOW',
             nodes: item.technicians
             .filter((node) => {
@@ -255,8 +252,7 @@ const formatDataTable = (dataState) => {
                     description: node.name,
                     reWork: null,
                     ppk: node.ppk || 0,
-                    onHand: node.onHand || 0,
-                    stock: item.stock.total[node.csr] || 0
+                    stock: node.onHand || 0
                 };
             })
             .sort((a, b) => {

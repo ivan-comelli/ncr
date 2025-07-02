@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Modal, TextField, Button, Typography, Backdrop, Fade, Stack, InputLabel, FormControl, MenuItem, Select, FormHelperText } from '@mui/material';
 import { Close, Add } from "@mui/icons-material";
 import { useDispatch, useSelector } from 'react-redux';
-import { dispatchBulkInventory } from '../../redux/actions/async';
+import { dispatchAddStock } from '../../redux/actions/async';
 
 const CheckerMovement = ({ petition }) => {
   const partIsolate = useSelector((state) => state.inventory.isolated);
@@ -75,7 +75,7 @@ const CheckerMovement = ({ petition }) => {
   const submitForm = () => {
     // Lógica para enviar el formulario
     // Por ejemplo, podrías hacer un dispatch de la acción correspondiente:
-    dispatch(dispatchBulkInventory([{
+    dispatch(dispatchAddStock({
       id: data.id,
       partNumber: data.partNumber,
       description: data.description,
@@ -85,7 +85,7 @@ const CheckerMovement = ({ petition }) => {
         status: data.status,
         note: data.note
       }
-    }], false));
+    }, false));
     localStorage.setItem('csr', data.csr);
     handleClose(); // Cerrar el modal después de enviar el formulario
   };

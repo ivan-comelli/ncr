@@ -90,7 +90,7 @@ function App() {
   useEffect(() => {
     let value = 0;
     data.forEach(element => {
-      value += (element.cost * element.onHand);
+      value += (element.cost * element.stock);
     });
     setNeto(Intl.NumberFormat('en-US', {
       style: 'currency',
