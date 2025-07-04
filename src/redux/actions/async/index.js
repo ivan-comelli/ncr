@@ -61,47 +61,43 @@ export async function getAllStockOfSomePart(refInventory) {
         const stockSnapshot = await getDocs(stockCollectionRef);
         if (stockSnapshot.empty) {
             return {
-                total: {},
+                total: 0,
                 detail: []
             };
         }
         let balance = [];
-        let commonCount = {};
+        let commonCount = 0;
         stockSnapshot.docs.forEach((doc) => {
-            if(!commonCount[doc.data().csr]) commonCount[doc.data().csr] = 0;
             switch (doc.data().status) {
                 case STATUS.PENDIENT:
-                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                     commonCount = commonCount + Number(doc.data().quantity);
                 break;
                 case STATUS.FAILED:
-                    commonCount[doc.data().csr] += 0;
+                    commonCount = commonCount + 0;
                 break;
                 case STATUS.SYNC:
-                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                     commonCount = commonCount + Number(doc.data().quantity);
                 break;
                 case STATUS.ADJUST:
-                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                     commonCount = commonCount + Number(doc.data().quantity);
                 break;
                 case STATUS.ISSUE:
-                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                     commonCount = commonCount + Number(doc.data().quantity);
                 break;
                 case STATUS.DONE:
-                     commonCount[doc.data().csr] += 0;
+                     commonCount = commonCount + 0;
                 break;
                 default:
-                     commonCount[doc.data().csr] += Number(doc.data().quantity);
+                     commonCount = commonCount + Number(doc.data().quantity);
                 break;
                         
             }
             balance.push({
                 id: doc.id,
-                csr: doc.data().csr,
-                name: doc.data().name,
                 stock: Number(doc.data().quantity),
                 status: doc.data().status,
                 note: doc.data().note,
                 lastUpdate: doc.data().lastUpdate,
-                total: commonCount[doc.data().csr]
             });
         });
         return {

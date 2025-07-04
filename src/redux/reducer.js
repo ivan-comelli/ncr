@@ -53,110 +53,113 @@ const initialStateInventory = {
 };
 
 const mergeDataTable = (newData, data) => {
-    console.groupCollapsed(`MergeData`);
-    let oldData = structuredClone(data);
-    let result = [];
+  console.groupCollapsed(`MergeData`);
+  let oldData = structuredClone(data);
+  let result = [];
 
-    if (oldData.length === 0) {
-        oldData = newData.map(item => ({
-            ...item,
-            stock: { detail: [], total: {} }
-        }));
+  // Si no hay data previa, inicializa base
+  if (oldData.length === 0) {
+    oldData = newData.map(item => ({
+      ...item,
+      stock: { detail: [], total: 0 },
+    }));
+  }
+
+  result = oldData.map(item => {
+    // Encuentra todos los matches de este ID (en caso de que haya duplicados)
+    const matchingItems = newData.filter(dataItem => dataItem.id == item.id);
+
+    // Si no hay match, devuelve item tal cual (pero clonado para nueva ref)
+    if (matchingItems.length === 0) {
+      return {
+        ...item,
+        stock: {
+          detail: Array.isArray(item.stock?.detail) ? [...item.stock.detail] : [],
+          total: item.stock?.total || 0
+        },
+        technicians: [...item.technicians]
+      };
     }
-    result = oldData.map(item => {
-        const existingItem = newData.find(dataItem => (item.id == dataItem.id));
 
-        // Asegurar estructura mínima
-        const stockDetail = Array.isArray(item.stock?.detail) ? [...item.stock.detail] : [];
-        const stockTotal = item.stock?.total ? { ...item.stock.total } : {};
-        let updatedTechnicians = item.technicians;
-        if (existingItem) {
-            // Actualizar técnicos
-            updatedTechnicians = item.technicians.map(technician => {
-                const matchingTechnician = existingItem.technicians?.find(tec => tec.csr === technician.csr);
-                return matchingTechnician ? {
-                    ...technician,
-                    onHand: matchingTechnician.onHand || 0,
-                    ppk: matchingTechnician.ppk || 0,
-                    createdAt: matchingTechnician.createdAt || technician.createdAt,
-                } : technician;
-            });
+    // Combinar stock y technicians de todos los matches
+    let stockDetail = Array.isArray(item.stock?.detail) ? [...item.stock.detail] : [];
+    let stockTotal = item.stock?.total || 0;
 
-            // Actualizar stock
-            existingItem.stock?.forEach(newStock => {
-                console.log(newStock)
-                const csrKey = (newStock.csr || '').toLowerCase();
-                const existingOpIndex = stockDetail.findIndex(item => item.id === newStock.id);
-                const existStockOp = existingOpIndex !== -1 ? stockDetail[existingOpIndex] : null;
+    let updatedTechnicians = [...item.technicians];
 
-                // Eliminar stock si se marca como DELETE
-                if (newStock.req === 'DELETE') {
-                    if (existStockOp) {
-                        stockDetail.splice(existingOpIndex, 1);
-                        const quantity = Number(existStockOp.stock);
-                        stockTotal[csrKey] = (stockTotal[csrKey] || 0) - quantity;
-                    }
-                    return;
-                }
+    matchingItems.forEach(existingItem => {
+      // Actualizar technicians
+      updatedTechnicians = updatedTechnicians.map(technician => {
+        const matchingTec = existingItem.technicians?.find(tec => tec.csr === technician.csr);
+        return matchingTec ? {
+          ...technician,
+          onHand: matchingTec.onHand || 0,
+          ppk: matchingTec.ppk || 0,
+          createdAt: matchingTec.createdAt || technician.createdAt,
+        } : technician;
+      });
 
-                // Crear objeto mergeado
-                const mergedStock = {
-                    id: newStock.id ?? existStockOp?.id,
-                    csr: csrKey,
-                    name: newStock.name ?? existStockOp?.name,
-                    status: newStock.status ?? existStockOp?.status,
-                    lastUpdate: newStock.lastUpdate ?? existStockOp?.lastUpdate,
-                    stock: newStock.quantity != null ? Number(newStock.quantity) : existStockOp?.stock || 0,
-                };
-                console.log(mergedStock)
-                // Reemplazar o insertar en stock.detail
-                if (existStockOp) {
-                    stockDetail[existingOpIndex] = mergedStock;
-                } else {
-                    stockDetail.push(mergedStock);
-                }
+      // Actualizar stock
+      existingItem.stock?.forEach(newStock => {
+        const existingOpIndex = stockDetail.findIndex(op => op.id === newStock.id);
+        const existStockOp = existingOpIndex !== -1 ? stockDetail[existingOpIndex] : null;
 
-                // Calcular cantidad a sumar
-                stockTotal[csrKey] = (stockTotal[csrKey] || 0) + mergedStock.stock;
-            });
-
-            // Eliminar el ítem procesado de newData para evitar duplicados
-            newData = newData.filter(dataItem => dataItem.id !== existingItem.id);
-
-            return {
-                ...item,
-                stock: {
-                    detail: stockDetail,
-                    total: stockTotal
-                },
-                technicians: updatedTechnicians
-            };
+        // DELETE
+        if (newStock.req === 'DELETE') {
+          if (existStockOp) {
+            stockDetail = [
+              ...stockDetail.slice(0, existingOpIndex),
+              ...stockDetail.slice(existingOpIndex + 1)
+            ];
+            stockTotal -= Number(existStockOp.stock) || 0;
+          }
+          return;
         }
 
-        // Si no hay cambios, retornar el item tal como está
-        return {
-            ...item,
-            stock: {
-                detail: stockDetail,
-                total: stockTotal
-            },
-            technicians: updatedTechnicians
+        // MERGE o INSERT
+        const mergedStock = {
+          id: newStock.id ?? existStockOp?.id,
+          status: newStock.status ?? existStockOp?.status,
+          lastUpdate: newStock.lastUpdate ?? existStockOp?.lastUpdate,
+          stock: newStock.quantity != null ? Number(newStock.quantity) : (existStockOp?.stock || 0),
         };
+
+        if (existStockOp) {
+          stockTotal -= Number(existStockOp.stock || 0);  // quita el viejo
+          stockTotal += Number(mergedStock.stock);        // suma el nuevo
+
+          stockDetail = [
+            ...stockDetail.slice(0, existingOpIndex),
+            mergedStock,
+            ...stockDetail.slice(existingOpIndex + 1)
+          ];
+        } else {
+          stockDetail = [...stockDetail, mergedStock];
+          stockTotal += Number(mergedStock.stock);
+        }
+      });
     });
-    console.groupEnd();
-    return result;
+
+    return {
+      ...item,
+      stock: {
+        detail: stockDetail,
+        total: stockTotal
+      },
+      technicians: updatedTechnicians
+    };
+  });
+
+  console.groupEnd();
+  return result;
 };
+
 //Este se usar para buscar las operaciones para el overview del isolated
 const sortedDetails = (id, nativeData) => {
     let response
     if(id) {
         var item = nativeData.find((element) => element.id === id);
-
-        response = item?.stock?.detail? [...item.stock.detail].sort(
-            (a, b) =>
-                new Date(b.lastUpdate.seconds * 1000) - new Date(a.lastUpdate.seconds * 1000)
-        ).filter((item) => 
-            item.status !== "DONE") : null;
+        response = item?.stock?.detail? [...item.stock.detail].filter((item) => item.status !== "DONE") : null;
     }
         
     return response;
@@ -222,7 +225,6 @@ const formatDataTable = (dataState) => {
     let dataTable = structuredClone(dataState);
     dataTable = dataTable.map((item => {
         var issue = false;
-        console.log(item);
         const matchDB = dbData.find((db) => (db.id === item.id));
         item.stock.detail.forEach(op => {
             op.status === 'ISSUE' && (issue = true);
@@ -237,13 +239,13 @@ const formatDataTable = (dataState) => {
             reWork: item.reWork,
             category: matchDB?.modulo,
             cost: item.cost || 0,
-            stock: Object.values(item.stock.total).reduce((sum, value) => sum += value, 0) || 0,
+            stock: Number(item.stock.total) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk || 0, 0) || 0,
             priority: item.priority || 'LOW',
             nodes: item.technicians
             .filter((node) => {
                 // Filtrar nodos donde ppk, onHand y stock no sean todos 0
-                return !(!node.ppk && !node.onHand && !(item.stock.total[node.csr] || 0));
+                return !(!node.ppk && !node.onHand);
             })
             .map((node) => {
                 return {

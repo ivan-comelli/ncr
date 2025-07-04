@@ -86,7 +86,13 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
           data["Part Nbr"] ?? data["Part#"] ?? data["partNumber"] ?? ''
         ).padStart(10, '0'),
         description: data["Description"],
-        reWork: data["RW"] === 'Y',
+        reWork: (() => {
+          switch(data['RW']) {
+            case 'Y': return true;
+            case 'N': return false;
+            default: return undefined;
+          }
+        })(),
         cost: data["Cost"],
         technician: cleanObject({
             csr: data["CSR"] || defaultCSR && defaultCSR.csr,
@@ -121,8 +127,16 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
 
         for (const row of rows) {
           const data = await processRow(row, rows); // Pasar `queryCSR` como parámetro
-          if (data !== null) {
+          if(['ar903s48', 'ar103s42', 'ar103s44', 'ar103s45', 'ar103s46'].includes(row['CSR']?.toLowerCase())) {
+            console.log(row['CSR'])
+            if (data !== null) {
               processedData.push(data);
+            }
+          } 
+          else if(!row['CSR']) {
+            if (data !== null) {
+              processedData.push(data);
+            }
           }
         }
 

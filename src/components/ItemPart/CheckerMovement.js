@@ -23,19 +23,10 @@ const CheckerMovement = ({ petition }) => {
     ISSUE: "Conflicto"
   } 
 
-  const options = [
-    { name: "Diego Molina", csr: "AR103S42" },
-    { name: "Nahuel DeLuca", csr: "AR103S44" },
-    { name: "Adrian Santarelli", csr: "AR103S45" },
-    { name: "Juan Valenzuela", csr: "AR103S46" },
-    { name: "Ivan Comelli", csr: "AR903S48" }
-  ];
-
   const [data, setData] = useState({
     partNumber: [],
     description: "",
     stock: 0,
-    csr: "DEFAULT",
     status: "PENDIENT",
     note: ""
   });
@@ -54,7 +45,6 @@ const CheckerMovement = ({ petition }) => {
         partNumber: partIsolate?.partNumber || '',
         description: partIsolate?.description || '',
         stock: petition?.quantity || 0,
-        csr: localStorage.getItem('csr') || "DEFAULT",
         status: petition ? Object.entries(STATUS).find(([key, value]) => value === petition.type)[0] : 'PENDIENT',
         note: ""
       });
@@ -81,7 +71,6 @@ const CheckerMovement = ({ petition }) => {
       description: data.description,
       stock: {
         quantity: data.stock,
-        csr: data.csr,
         status: data.status,
         note: data.note
       }
@@ -140,22 +129,6 @@ const CheckerMovement = ({ petition }) => {
             error={error.stock}
             helperText={error.stock && "Stock es requerido"}
           />
-
-          <Select
-            className="owner"
-            value={data.csr}
-            error={error.owner}
-            onChange={handleChange}
-          >
-            <MenuItem value={"DEFAULT"}>
-              <em>Selecciona un empleado</em>
-            </MenuItem>
-            {options.map((option) => (
-              <MenuItem key={option.csr} value={option.csr}>
-                {option.name}
-              </MenuItem>
-            ))}
-          </Select>
 
           <Select
             className="status"

@@ -27,7 +27,7 @@ const STATUS = {
 }
 
 async function setStockToSomePart(refStock, newStock) {
-  console.log(`Set Stock ${newStock.quantity} To ${newStock.csr} On State ${newStock.status}`)
+  console.log(`Set Stock ${newStock.quantity} On State ${newStock.status}`)
   const batch = writeBatch(db);
   
   try {
@@ -35,8 +35,6 @@ async function setStockToSomePart(refStock, newStock) {
           throw new Error("No hay referencia para actualizar");
       }
       batch.set(refStock, {
-          name: options.find(option => option.csr.toLowerCase() == (newStock.csr && newStock.csr.toLowerCase())).name,
-          csr: newStock.csr.toLowerCase(),
           quantity: newStock.quantity || 0,
           status: newStock.status,
           note: newStock.note || "",
@@ -397,8 +395,6 @@ function parseMutations(mutations, dispatch) {
             : {
                 id: item.key.path.segments[3],
                 req: "POST",
-                ...(data.csr && { csr: data.csr.stringValue }),
-                ...(data.name && { name: data.name.stringValue }),
                 ...(data.quantity && { quantity: Number(data.quantity.integerValue) }),
                 ...(data.status && { status: data.status.stringValue }),
                 ...(data.note && { note: data.note.stringValue }),
@@ -588,7 +584,6 @@ export function dispatchAddStock(newStock) {
           stock: [{
             id: refStock.id,
             ...newStock.stock,
-            csr: newStock.stock.csr.toLowerCase(),
           }],
           technicians: []
         }];
