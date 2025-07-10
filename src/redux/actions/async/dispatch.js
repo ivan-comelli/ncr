@@ -75,7 +75,7 @@ async function initTechnicianToSomePart(refInventory, batch) {
 
 }
 
-async function setTechnicianToSomePart(refTechnician, newTechnician, batch, batchOfDate, lastLog = {onHand: 0, createdAt: undefined}) {
+async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
   try {
       if(!refTechnician) {
           console.error("Not Exist Reference to Update");
@@ -95,7 +95,9 @@ async function setTechnicianToSomePart(refTechnician, newTechnician, batch, batc
   } catch(error) {
       throw new Error("No se pudo agregar al tecnico: " + error.message);
   }
-  return batch;
+  finally {
+    return batch;
+  }
 }
 
 function parseMutations(mutations, dispatch) {
@@ -241,7 +243,7 @@ async function processSingleInventoryItem(batch, batchOfDate, item) {
     const snapDocInventory = await getOrCreateInventoryRef(batch, matchDB.id);
 
     if(item.technician && Object.keys(item.technician).length) {
-      batch = await setTechnicianToSomePart(doc(collection(snapDocInventory.ref, "technicians"), `${snapDocInventory.id}-${item.technician.csr.toLowerCase()}`), item.technician, item, batch, batchOfDate);
+      batch = await setTechnicianToSomePart(doc(collection(snapDocInventory.ref, "technicians"), `${snapDocInventory.id}-${item.technician.csr.toLowerCase()}`), item.technician, batch);
     }
 
     batch.set(snapDocInventory.ref, {
