@@ -21,3 +21,14 @@ export const openOverview = () => ({
 export const closeOverview = () => ({
     type: TYPES.CLOSE_OVERVIEW
 })
+
+export const deleteStockOP = (catalog, stock) => ({
+    type: TYPES.DELETE_STOCK_OP,
+    reference: {
+        id: catalog,
+        stock: {
+            id: stock,
+            req: 'DELETE'
+        }
+    }
+})

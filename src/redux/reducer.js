@@ -239,7 +239,7 @@ const formatDataTable = (dataState) => {
             reWork: item.reWork,
             category: matchDB?.modulo,
             cost: item.cost || 0,
-            stock: Number(item.stock.total) || 0,
+            stock: item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0) + Number(item.stock.total) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk || 0, 0) || 0,
             priority: item.priority || 'LOW',
             nodes: item.technicians
@@ -273,6 +273,22 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
     let newDataTable;
 
     switch (action.type) {
+        case TYPES.DELETE_STOCK_OP: {
+            let newNativeData = mergeDataTable(action.reference, state.nativeData);
+            newDataTable = formatDataTable(newNativeData) || [];
+            return { 
+                ...state, 
+                nativeData: newNativeData,
+                dataTable: newDataTable, 
+                renderTable: filterDataTable(state.filters, newDataTable),
+                overView: {
+                    active: state.overView.active,
+                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                }, 
+                stepLoading: 0 
+            };
+        }
+
         //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH //FETCH
         case TYPES.FETCH_INVENTORY_START:
             return { ...state, stepLoading: 1 };

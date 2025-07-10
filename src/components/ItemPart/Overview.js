@@ -6,11 +6,11 @@ import { useTree } from "@table-library/react-table-library/tree";
 import { IconButton } from '@mui/material';
 import IconCheck from '@mui/icons-material/Check';
 import IconCancel from '@mui/icons-material/Close';
-
 import { useSelector, useDispatch } from 'react-redux';
+import { dispatchDeleteStock } from '../../redux/actions/async';
+
 const TableHistory = () => {
     const COLUMNS = [
-        { label: 'Dueño', renderCell: (item) => item.name },
         { label: 'Cantidad', renderCell: (item) => item.stock },
         { label: 'Estado', renderCell: (item) => item.status },
 
@@ -20,21 +20,10 @@ const TableHistory = () => {
             year: 'numeric',
           }) },
         {
-            label: 'Confirmar', renderCell: (item) => (
+            label: 'Borrar', renderCell: (item) => (
                 <IconButton
                     variant="contained"
-                    color="primary"
-                    onClick={() => {}}
-                >
-                    <IconCheck />
-                </IconButton>
-            )
-        },
-        {
-            label: 'Cancelar', renderCell: (item) => (
-                <IconButton
-                    variant="contained"
-                    onClick={() => {}}
+                    onClick={() => dispatch(dispatchDeleteStock(item.id))}
                     xs={{
                         color: '#cd0000'
                       }}

@@ -1,26 +1,29 @@
-module.exports = function override(config, env) {
-  // Modifica la configuración de Webpack aquí
-  console.log('Configuración de Webpack sobreescrita');
-  
-  // Ejemplo: Agregar un polyfill para 'crypto-browserify'
+const webpack = require('webpack');
+
+module.exports = function override(config) {
   config.resolve.fallback = {
     ...config.resolve.fallback,
-    assert: require.resolve('assert/'),
-    buffer: require.resolve('buffer/'),
-    crypto: require.resolve('crypto-browserify'),
-    fs: false, // fs no se puede usar en el navegador
-    http: require.resolve('stream-http'),
-    https: require.resolve('https-browserify'),
-    net: false, // net no se puede usar en el navegador
-    os: require.resolve('os-browserify/browser'),
-    path: require.resolve('path-browserify'),
-    querystring: require.resolve('querystring-es3'),
+    process: require.resolve('process/browser.js'),
     stream: require.resolve('stream-browserify'),
-    tls: false, // tls no se puede usar en el navegador
-    url: require.resolve('url/'),
-    util: require.resolve('util/'),
-    zlib: require.resolve('browserify-zlib') // Polyfill para zlib
+    zlib: require.resolve('browserify-zlib'),
+    crypto: require.resolve('crypto-browserify'),
+    buffer: require.resolve('buffer'),
+    path: require.resolve('path-browserify'),
+    os: require.resolve('os-browserify/browser'),
+    https: require.resolve('https-browserify'),
+    http: require.resolve('stream-http'),
+    fs: false, // NO se puede polyfillear en navegador
+    net: false, // NO se puede polyfillear en navegador
+    tls: false  // NO se puede polyfillear en navegador
   };
+
+  config.plugins = [
+    ...(config.plugins || []),
+    new webpack.ProvidePlugin({
+      process: 'process/browser.js',
+      Buffer: ['buffer', 'Buffer'],
+    }),
+  ];
 
   return config;
 };

@@ -7,8 +7,6 @@ import {
     searchInDataTable,
     isolatePartInTable,
 } from '../sync';
-import { FirebaseError } from "firebase/app";
-
 
 export * from './dispatch';
 
@@ -183,17 +181,8 @@ export function fetchAllInventory() {
       localStorage.setItem('session', updateMostNew);
       dispatch(fetchInventorySuccess(storedData));
     } catch (error) {
+      dispatch(fetchInventoryFailure(error.message));
       console.error(error);
-
-      // Manejo especial para error de red (offline)
-      if (error instanceof FirebaseError && error.code === 'unavailable') {
-        console.warn('Firestore no disponible, usando datos locales.');
-        const fallbackData = JSON.parse(localStorage.getItem('db')) || [];
-        dispatch(fetchInventorySuccess(fallbackData));
-      } else {
-        // Otro tipo de error
-        dispatch(fetchInventoryFailure(error.message));
-      }
     }
   };
 }
