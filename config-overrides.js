@@ -1,38 +1,26 @@
-const path = require('path');
-const webpack = require('webpack');
-
-module.exports = function override(config) {
-  // Asegura que Webpack resuelva los módulos en node_modules y src
-  config.resolve.modules = [
-    'node_modules',
-    path.resolve(__dirname, 'src'),
-  ];
-
-  // Polyfills para node core modules que usa webpack 5
+module.exports = function override(config, env) {
+  // Modifica la configuración de Webpack aquí
+  console.log('Configuración de Webpack sobreescrita');
+  
+  // Ejemplo: Agregar un polyfill para 'crypto-browserify'
   config.resolve.fallback = {
-    process: require.resolve('process/browser.js'),
+    ...config.resolve.fallback,
+    assert: require.resolve('assert/'),
+    buffer: require.resolve('buffer/'),
     crypto: require.resolve('crypto-browserify'),
-    stream: require.resolve('stream-browserify'),
-    path: require.resolve('path-browserify'),
-    os: require.resolve('os-browserify/browser'),
-    https: require.resolve('https-browserify'),
+    fs: false, // fs no se puede usar en el navegador
     http: require.resolve('stream-http'),
-    buffer: require.resolve('buffer'),
+    https: require.resolve('https-browserify'),
+    net: false, // net no se puede usar en el navegador
+    os: require.resolve('os-browserify/browser'),
+    path: require.resolve('path-browserify'),
+    querystring: require.resolve('querystring-es3'),
+    stream: require.resolve('stream-browserify'),
+    tls: false, // tls no se puede usar en el navegador
+    url: require.resolve('url/'),
+    util: require.resolve('util/'),
+    zlib: require.resolve('browserify-zlib') // Polyfill para zlib
   };
-
-  // Alias para imports fully specified
-  config.resolve.alias = {
-    ...(config.resolve.alias || {}),
-    'process/browser': 'process/browser.js',
-  };
-
-  // Provee variables globales
-  config.plugins.push(
-    new webpack.ProvidePlugin({
-      process: 'process/browser',
-      Buffer: ['buffer', 'Buffer'],
-    })
-  );
 
   return config;
 };
