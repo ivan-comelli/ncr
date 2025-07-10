@@ -1,7 +1,6 @@
 import { collection, writeBatch, doc, getDocs, getDoc, deleteDoc, setDoc, Timestamp, updateDoc, where, query, or } from "firebase/firestore";
 import { db } from '../../../db/firebase';
 import dbData from '../../../db/output.json';
-import crypto from "crypto";
 
 import { 
     dispatchInventoryFailure, 
@@ -325,9 +324,21 @@ export function dispatchAddStock(newStock) {
         item.pn.some(pn => newStock.partNumber.includes(pn))
       );
       if(matchDB) {
-        const randomBytes = crypto.randomBytes(4); // Buffer de 4 bytes
-        const randomInt = randomBytes.readUInt32BE(0);
-        const randomHex = randomInt.toString(16).padStart(8, "0");
+        const array = new Uint8Array(4);
+        // Llena con valores aleatorios criptográficamente seguros
+        crypto.getRandomValues(array);
+        
+        // Convierte los 4 bytes a un número entero (big endian)
+        const randomInt =
+          (array[0] << 24) |
+          (array[1] << 16) |
+          (array[2] << 8) |
+          array[3];
+
+        // Convierte a hexadecimal con padding a 8 caracteres
+        // Usamos >>> 0 para forzar entero sin signo (porque JS usa 32 bits signed)
+        const randomHex = (randomInt >>> 0).toString(16).padStart(8, '0');
+        console.log(randomHex)
         const inventoryRef = doc(db, 'Inventory', matchDB.id);
         const refStock = doc(collection(inventoryRef, "stock"), `${matchDB.id}-${randomHex}`);
         console.log(`New Id Stock ${refStock.id}`);
