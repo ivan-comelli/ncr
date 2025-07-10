@@ -186,8 +186,7 @@ function parseMutations(mutations, dispatch) {
     return formatData;
 }  
 
-async function updateGeneralSettings(batch, batchOfDate) {
-  await batchOfDate.commit();
+async function updateGeneralSettings(batch) {
   await batch.commit();
   const lastUpdateFlag = doc(db, 'config', 'generalSettings');
   await setDoc(lastUpdateFlag, { lastUpdate: Timestamp.now() });
@@ -231,7 +230,7 @@ async function getOrCreateInventoryRef(batch, catalogId) {
     }
 }
   
-async function processSingleInventoryItem(batch, batchOfDate, item) {
+async function processSingleInventoryItem(batch, item) {
   try {
     console.log(item)
     const matchDB = dbData.find(ref => 
@@ -260,11 +259,11 @@ async function processSingleInventoryItem(batch, batchOfDate, item) {
   }
 }
 
-async function processInventoryData(batch, batchOfDate, data, dispatch) {
+async function processInventoryData(batch, data, dispatch) {
     let index = 1;
     for (const item of data) {
       console.groupCollapsed(`Iteration: ${index}`);
-      await processSingleInventoryItem(batch, batchOfDate, item);
+      await processSingleInventoryItem(batch, item);
       dispatch(setStepLoader(Math.floor((index / data.length) * 100)));
       index ++;
       console.groupEnd();
@@ -281,11 +280,10 @@ export function dispatchBulkInventory(data) {
   
       dispatch(dispatchInventoryStart(false));
       let batch = writeBatch(db);
-      let batchOfDate = writeBatch(db);
 
       try {
-        await processInventoryData(batch, batchOfDate, data, dispatch);
-        await updateGeneralSettings(batch, batchOfDate);
+        await processInventoryData(batch, data, dispatch);
+        await updateGeneralSettings(batch);
         const parsed = parseMutations(batch._mutations, dispatch);
         dispatch(dispatchInventorySuccess(parsed));
       } catch (error) {
