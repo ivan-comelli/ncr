@@ -167,7 +167,9 @@ const sortedDetails = (id, nativeData) => {
 
 const filterDataTable = (filters, dataState) => {
     let dataTable = structuredClone(dataState);
-    let response = dataTable?.filter((item) => {
+
+    // Primero filtramos
+    let filteredData = dataTable?.filter((item) => {
         let descriptionMatch = true;
         let partNumberMatch = true;
         let reworkMatch = false;
@@ -206,17 +208,35 @@ const filterDataTable = (filters, dataState) => {
                 break;
         }
 
-        filters.category.key?.map((name, index) => {
-            if(item.category == name) {
-                categoryMatch = true;
-            }
-        });
-        if(filters.category.key.length == 0) categoryMatch = true
+        if (filters.category.key?.length > 0) {
+            filters.category.key?.forEach((name) => {
+                if (item.category === name) {
+                    categoryMatch = true;
+                }
+            });
+        } else {
+            categoryMatch = true;
+        }
+
         return (descriptionMatch || partNumberMatch) && reworkMatch && priorityMatch && categoryMatch;
     });
 
-    return response;
-}
+    // Ahora agrupamos y ordenamos por categoría
+    let groupedOrdered = [];
+
+    if (filters.category.key?.length > 0) {
+        filters.category.key.forEach((categoryName) => {
+            let group = filteredData.filter(item => item.category === categoryName);
+            groupedOrdered = groupedOrdered.concat(group);
+        });
+    } else {
+        // Si no hay categorías seleccionadas, devolver todo filtrado sin ordenar
+        groupedOrdered = filteredData;
+    }
+
+    return groupedOrdered;
+};
+
 
 const formatDataTable = (dataState) => {
     console.groupCollapsed(`Format Data`);
