@@ -177,7 +177,9 @@ const filterDataTable = (filters, dataState) => {
         let categoryMatch = false;
 
         if (filters.search && filters.search !== "") {
-            descriptionMatch = item.description?.toLowerCase().includes(filters.search.toLowerCase()) ?? false;
+            const searchWords = filters.search.toLowerCase().split(/\s+/); // separa por espacios
+            const description = item.description?.toLowerCase() ?? "";
+            descriptionMatch = searchWords.every(word => description.includes(word));
             partNumberMatch = item.partNumber?.toString().includes(filters.search) ?? false;
         }
 
