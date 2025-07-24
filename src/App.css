@@ -459,3 +459,8 @@ tr {
 .description > div {
   white-space: break-spaces !important;
 }
+
+.partNumber > div {
+  display: flex;
+  flex-direction: column;
+}
