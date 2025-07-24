@@ -455,3 +455,7 @@ tr {
   height: .2rem;
   width: 100%;
 }
+
+.description > div {
+  white-space: break-spaces !important;
+}

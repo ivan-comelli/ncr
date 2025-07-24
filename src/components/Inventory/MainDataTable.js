@@ -145,7 +145,7 @@ const TableInventory = ({ minified }) => {
               onContextMenu={(e) => handleContextMenu(e, item)}
               key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
                <Cell>{item?.partNumber[0]}</Cell>
-               <Cell>{item?.description}</Cell>
+               <Cell className="description">{item?.description}</Cell>
                {!minified && <Cell>{item?.category}</Cell>}
                <Cell>{item?.stock}</Cell>
                <Cell>{item?.ppk}</Cell>
