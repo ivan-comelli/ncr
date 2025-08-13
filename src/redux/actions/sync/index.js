@@ -24,11 +24,11 @@ export const closeOverview = () => ({
 
 export const deleteStockOP = (catalog, stock) => ({
     type: TYPES.DELETE_STOCK_OP,
-    reference: {
+    reference: [{
         id: catalog,
-        stock: {
+        stock: [{
             id: stock,
             req: 'DELETE'
-        }
-    }
+        }]
+    }]
 })

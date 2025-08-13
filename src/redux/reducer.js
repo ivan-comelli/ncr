@@ -100,6 +100,7 @@ const mergeDataTable = (newData, data) => {
       });
 
       // Actualizar stock
+      console.log(existingItem)
       existingItem.stock?.forEach(newStock => {
         const existingOpIndex = stockDetail.findIndex(op => op.id === newStock.id);
         const existStockOp = existingOpIndex !== -1 ? stockDetail[existingOpIndex] : null;
@@ -261,7 +262,7 @@ const formatDataTable = (dataState) => {
             reWork: item.reWork,
             category: matchDB?.modulo,
             cost: item.cost || 0,
-            stock: item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0) + Number(item.stock.total) || 0,
+            stock: (item.reWork ?  Number(item.stock.total) : item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0) + Number(item.stock.total)) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk || 0, 0) || 0,
             priority: item.priority || 'LOW',
             nodes: item.technicians
@@ -296,6 +297,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
 
     switch (action.type) {
         case TYPES.DELETE_STOCK_OP: {
+            console.log(action.reference)
             let newNativeData = mergeDataTable(action.reference, state.nativeData);
             newDataTable = formatDataTable(newNativeData) || [];
             return { 
@@ -305,7 +307,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 renderTable: filterDataTable(state.filters, newDataTable),
                 overView: {
                     active: state.overView.active,
-                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                    data: sortedDetails(state.isolated?.id, newNativeData),
                 }, 
                 stepLoading: 0 
             };
@@ -326,7 +328,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 renderTable: filterDataTable(state.filters, newDataTable),
                 overView: {
                     active: state.overView.active,
-                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                    data: sortedDetails(state.isolated?.id, action.payload),
                 }
         }
 
@@ -347,7 +349,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
                 renderTable: filterDataTable(state.filters, newDataTable),
                 overView: {
                     active: state.overView.active,
-                    data: sortedDetails(state.isolated?.id, state.nativeData),
+                    data: sortedDetails(state.isolated?.id, newNativeData),
                 }, 
                 stepLoading: 0 
             };
