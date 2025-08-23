@@ -179,7 +179,7 @@ function App() {
 
   return (
     <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
-      <header className="App-header">
+      <header className={`App-header ${showNotes ? 'absolute' : ''}`}>
         <img src={minified ? logoMinified : logo} className="App-logo" alt="Logo"/>
         <Box sx={{
           gap: '2em',

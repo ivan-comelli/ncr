@@ -20,6 +20,10 @@
   padding: 1rem 2rem 1rem 1.5rem;
 }
 
+.App-header.absolute {
+  position: absolute !important;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -472,4 +476,8 @@ tr {
 .more-button {
   position: absolute !important;
   top: 5em;
+}
+
+iframe {
+  padding-top: 3.5em;
 }
