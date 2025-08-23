@@ -5,7 +5,7 @@ import { Remove } from '@mui/icons-material';
 import { Add } from "@mui/icons-material";
 import Snackbar from '@mui/material/Snackbar';
 
-
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DetailsIcon from '@mui/icons-material/DescriptionOutlined';
 import TuneIcon from '@mui/icons-material/SquareOutlined';
 import SendIcon from '@mui/icons-material/PlayArrowOutlined';
@@ -35,6 +35,19 @@ export const StockBar = ({ submit, minified }) => {
     };
     return (
         <div className='stock-bar'>
+            {
+                !minified &&
+                <IconButton
+                    sx={iconButtonStyle}
+                    className='more-button'
+                    onClick={(e) => {
+                    }}
+                >
+                    <MoreHorizIcon fontSize='small'/>
+                </IconButton>
+
+            }
+
             <IconButton
                 disabled={ partIsolate ? false : true }
                 sx={iconButtonStyle}
@@ -45,57 +58,56 @@ export const StockBar = ({ submit, minified }) => {
                     setOpen(true);
                 }}
             >
-            <TuneIcon fontSize='small'/>
+                <TuneIcon fontSize='small'/>
             </IconButton>
             <TextField
-            disabled={ partIsolate ? false : true }
-            className='stock'
-            fullWidth
-            margin="none"
-            variant='standard'
-            value={counterStock}
-            InputProps={{
-                disableUnderline: true,
-                endAdornment: (
-                <InputAdornment position="start">
-                    <IconButton
-                    disabled={ partIsolate ? false : true }
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setCounterStock((prev) => prev - 1);
-                    }}
-                    >
-                    <Remove />
-                    </IconButton>
-                </InputAdornment>
-                ),
-                startAdornment: (
-                <InputAdornment position="end">
-                    <IconButton
-                    disabled={ partIsolate ? false : true }
-                    onClick={(e) => {
-                        e.stopPropagation(); 
-                        setCounterStock((prev) => prev + 1);
-                    }}
-                    >
-                    <Add />
-                    </IconButton>
-                </InputAdornment>
-                ),
-            }}
+                disabled={ partIsolate ? false : true }
+                className='stock'
+                fullWidth
+                margin="none"
+                variant='standard'
+                value={counterStock}
+                InputProps={{
+                    disableUnderline: true,
+                    endAdornment: (
+                    <InputAdornment position="start">
+                        <IconButton
+                        disabled={ partIsolate ? false : true }
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setCounterStock((prev) => prev - 1);
+                        }}
+                        >
+                        <Remove />
+                        </IconButton>
+                    </InputAdornment>
+                    ),
+                    startAdornment: (
+                    <InputAdornment position="end">
+                        <IconButton
+                        disabled={ partIsolate ? false : true }
+                        onClick={(e) => {
+                            e.stopPropagation(); 
+                            setCounterStock((prev) => prev + 1);
+                        }}
+                        >
+                        <Add />
+                        </IconButton>
+                    </InputAdornment>
+                    ),
+                }}
             />
             <IconButton
-            disabled={ partIsolate ? false : true }
-            sx={iconButtonStyle}          
-            onClick={(e) => {
-                e.stopPropagation();
-                submit({quantity: counterStock, type: secuenceStatus[indexSecuenceStatus]})
-            }}
+                disabled={ partIsolate ? false : true }
+                sx={iconButtonStyle}          
+                onClick={(e) => {
+                    e.stopPropagation();
+                    submit({quantity: counterStock, type: secuenceStatus[indexSecuenceStatus]})
+                }}
             >
-            <SendIcon />
+                <SendIcon />
             </IconButton>
             <Snackbar
-               
                 open={open}
                 autoHideDuration={1000} // Cierra después de 3 segundos
                 onClose={handleClose}

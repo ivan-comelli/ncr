@@ -301,6 +301,10 @@ tr {
   grid-area: 1 / 1 / 2 / 4;
 }
 
+.App iframe {
+  grid-area: 2 / 1 / 4 / 4;
+}
+
 .App.minified .container {
   grid-area: 2 / 1 / 3 / 4 !important;
   display: none;
@@ -463,4 +467,9 @@ tr {
 .partNumber > div {
   display: flex;
   flex-direction: column;
+}
+
+.more-button {
+  position: absolute !important;
+  top: 5em;
 }

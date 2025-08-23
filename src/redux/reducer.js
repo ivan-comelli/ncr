@@ -252,8 +252,6 @@ const formatDataTable = (dataState) => {
         item.stock.detail.forEach(op => {
             op.status === 'ISSUE' && (issue = true);
         });
-        console.log(item)
-        console.log(matchDB)
 
         return {
             id: item.id,

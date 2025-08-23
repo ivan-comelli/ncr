@@ -18,6 +18,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chip, Box, FormControl } from '@mui/material';
+import NoteAltIcon from "@mui/icons-material/Description";
 
 
 const useWindowDimensions = () => {
@@ -82,6 +83,7 @@ function App() {
   const data = useSelector((state) => state.inventory.renderTable);
   const [neto, setNeto] = useState(0);
   const [settings, setSettings] = useState(null);
+  const [showNotes, setShowNotes] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAllInventory());
@@ -179,38 +181,58 @@ function App() {
     <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
       <header className="App-header">
         <img src={minified ? logoMinified : logo} className="App-logo" alt="Logo"/>
-        <TextField
-          className="search"
-          variant="outlined"
-          size="small"
-          placeholder={"Buscar..."}
-          value={search}
-          onChange={handleSearch}
-          sx={{
-            width: "200px",
-            transition: "width 0.3s ease",
-            "& .MuiOutlinedInput-root": {
-              borderRadius: "1rem",
-              paddingLeft: "0.3rem",
-            },
-            "& .MuiOutlinedInput-input": {
-              paddingLeft: "0.3rem",
-            },
-          }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleIconClick} edge="start">
-                  <CloseIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+        <Box sx={{
+          gap: '2em',
+          display: 'flex'
+        }}>
+          <TextField
+            className="search"
+            variant="outlined"
+            size="small"
+            placeholder={"Buscar..."}
+            value={search}
+            onChange={handleSearch}
+            sx={{
+              width: "200px",
+              transition: "width 0.3s ease",
+              "& .MuiOutlinedInput-root": {
+                borderRadius: "1rem",
+                paddingLeft: "0.3rem",
+              },
+              "& .MuiOutlinedInput-input": {
+                paddingLeft: "0.3rem",
+              },
+            }}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleIconClick} edge="start">
+                    <CloseIcon />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
+
+          <IconButton
+            sx={{
+              backgroundColor: 'none', 
+              borderRadius: '1rem',              
+              padding: '12px'
+            }}
+            onClick={(e) => {
+              setShowNotes((prev) => !prev);
+            }}
+          >
+            <NoteAltIcon fontSize='small'/>
+          </IconButton>
+        </Box>
       </header>
-      <StockBar submit={ setPetitionSubmit } minified={minified} />
+      { showNotes && <iframe src="https://sapphire-menu-c00.notion.site/ebd/258f57a974ca8025a039f583e1e39150" width="100%" height="600" frameborder="0" allowfullscreen />}
       {
+        !showNotes && 
           <>
+            <StockBar submit={ setPetitionSubmit } minified={minified} />
             <div className={`container ${minified ? 'full' : ''}`}>
               {
                 loaderDispatch ? ( <LinearProgress variant="determinate" value={loaderDispatch} />):(<div className='emty-bar'></div>)
