@@ -228,7 +228,7 @@ function App() {
           </IconButton>
         </Box>
       </header>
-      { showNotes && <iframe src="https://sapphire-menu-c00.notion.site/ebd/258f57a974ca8025a039f583e1e39150" width="100%" height="600" frameborder="0" allowfullscreen />}
+      { showNotes && <iframe src="https://sapphire-menu-c00.notion.site/ebd/258f57a974ca8025a039f583e1e39150" width="100%" height="100%" frameborder="0" allowfullscreen />}
       {
         !showNotes && 
           <>
