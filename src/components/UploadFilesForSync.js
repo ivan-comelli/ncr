@@ -101,6 +101,15 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
             name: data["Name"] || defaultCSR && defaultCSR.name,
             createdAt: data["As Of Date"] || data["Issue Date"],
         }),
+        type: (() => {
+          if(Object.keys(data).includes('Maximum Qty')) {
+            return 'PPK';
+          }
+          else if(Object.keys(data).includes('OnHand')) {
+            return 'OH';
+          }
+          return undefined;
+        })()
     };
 
     // Eliminar `partNumber` si queda vacío
