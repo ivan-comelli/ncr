@@ -7,7 +7,6 @@ import dbData from '../db/output.json';
 const options = [
     { name: "Diego Molina", csr: "AR103S42" },
     { name: "Nahuel DeLuca", csr: "AR103S44" },
-    { name: "Adrian Santarelli", csr: "AR103S45" },
     { name: "Juan Valenzuela", csr: "AR103S46" },
     { name: "Ivan Comelli", csr: "AR903S48" }
 ];

@@ -14,7 +14,6 @@ import {
 const options = [
   { name: "Diego Molina", csr: "AR103S42" },
   { name: "Nahuel DeLuca", csr: "AR103S44" },
-  { name: "Adrian Santarelli", csr: "AR103S45" },
   { name: "Juan Valenzuela", csr: "AR103S46" },
   { name: "Ivan Comelli", csr: "AR903S48" }
 ];
@@ -388,9 +387,10 @@ export function dispatchBulkInventory(data) {
         }
 
         // 🔹 Ejecutar todo junto
-        await batch2.commit();
+        //await batch2.commit();
+        const newParsed = parseMutations(batch2._mutations, dispatch)
         console.log("✅ Batch ejecutado con éxito");
-        console.log(batch2)
+        console.log(newParsed)
 
         //dispatch(dispatchInventorySuccess(parsed));
       } catch (error) {
