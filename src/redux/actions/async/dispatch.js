@@ -99,6 +99,39 @@ async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
   }
 }
 
+function mergeResults(res1, res2) {
+  const map = new Map();
+
+  const mergeById = (arr1 = [], arr2 = []) => {
+    const inner = new Map();
+    [...arr1, ...arr2].forEach(item => {
+      inner.set(item.id, { ...(inner.get(item.id) || {}), ...item });
+    });
+    return Array.from(inner.values());
+  };
+
+  [...res1, ...res2].forEach(item => {
+    if (map.has(item.id)) {
+      const existing = map.get(item.id);
+      map.set(item.id, {
+        ...existing,
+        ...item,
+        stock: mergeById(existing.stock, item.stock),
+        technicians: mergeById(existing.technicians, item.technicians)
+      });
+    } else {
+      map.set(item.id, {
+        ...item,
+        stock: [...item.stock],
+        technicians: [...item.technicians]
+      });
+    }
+  });
+
+  return Array.from(map.values());
+}
+
+
 function parseMutations(mutations, dispatch) {
   //HACER MERGE DE MUTACIONES EN STOCK Y TECNICOS SOBRE ITEM DE CATALOGO REPETIDOS
   const mergeById = (arr1, arr2) => {
@@ -391,8 +424,9 @@ export function dispatchBulkInventory(data) {
         const newParsed = parseMutations(batch2._mutations, dispatch)
         console.log("✅ Batch ejecutado con éxito");
         console.log(newParsed)
+        const mergeResult = mergeResults(paresed, newParsed);
 
-        //dispatch(dispatchInventorySuccess(parsed));
+        dispatch(dispatchInventorySuccess(mergeResult));
       } catch (error) {
         dispatch(dispatchInventoryFailure(error.message));
         throw error;
