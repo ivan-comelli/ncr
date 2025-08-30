@@ -155,43 +155,122 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
     }
   };
 
-  const processUpload = async () => {
-    try {
-        if (file) {
-            const fileName = file.name;
-            const fileType = file.type;
-            let responseData = null;
-            let queryCSR = null;
-            setLoading(true);
+  // Deduplicar items por partNumber, priorizando los que tengan ppk/onHand
+const deduplicateItems = (items) => {
+  const map = new Map();
 
-            if (fileType === 'text/csv') {
-                possibleName(fileName.replace(/\.[^/.]+$/, ''));
-                const collectionData = await handleCSV(async(row, rows) => {
-                  if (!Object.keys(row).find((key) => key.toLowerCase() === 'csr') && !queryCSR) {
-                    previewDetail("Hay " + rows.length + " registros preparados para ser insertado");
-                    queryCSR = await askCSR();
-                  }
-                  return formatDataInventoryToModelDB(row, queryCSR);
-                });
-                submit(collectionData)  
-            } else if (fileType === 'image/jpeg' || fileType === 'image/png') {
-                responseData = await readDataWithOCR();
-                possibleName(responseData.entrega);
-                previewDetail(<CompactTable columns={[
-                  { label: 'Part Number', renderCell: (item) => item.partNumber },
-                  { label: 'Stock', renderCell: (item) => item.stock },
-                ]} 
-                data={{ nodes: responseData.items }} theme={theme} layout={{ fixedHeader: true }} />);
-                queryCSR = await askCSR();
-                submit(responseData.items.map((item) => formatDataInventoryToModelDB(item, queryCSR)));
-            } else {
-                throw new Error("Tipo de Archivo no permitido.");
-            }
-        }
-    } catch(error) {
-        throw new Error("No se pudo procesar el archivo: " + error.message );
+  for (const item of items) {
+    if (!item || !item.partNumber) continue;
+
+    const existing = map.get(item.partNumber);
+
+    if (!existing) {
+      map.set(item.partNumber, item);
+    } else {
+      // Si el nuevo tiene ppk o onHand, lo priorizamos sobre el existente
+      const hasPriority = (i) => i?.technician?.ppk || i?.technician?.onHand;
+
+      if (hasPriority(item) && !hasPriority(existing)) {
+        map.set(item.partNumber, item);
+      }
     }
-  };
+  }
+
+  return Array.from(map.values());
+};
+
+  const processUpload = async () => {
+  try {
+    if (file) {
+      const fileName = file.name;
+      const fileType = file.type;
+      let responseData = null;
+      let queryCSR = null;
+      setLoading(true);
+
+      // ✅ función local para deduplicar
+      const deduplicateItems = (items) => {
+        const map = new Map();
+
+        for (const item of items) {
+          if (!item || !item.partNumber) continue;
+
+          const existing = map.get(item.partNumber);
+
+          if (!existing) {
+            map.set(item.partNumber, item);
+          } else {
+            const hasPriority = (i) =>
+              i?.technician?.ppk || i?.technician?.onHand;
+
+            // si el nuevo tiene ppk/onHand y el otro no, lo reemplaza
+            if (hasPriority(item) && !hasPriority(existing)) {
+              map.set(item.partNumber, item);
+            }
+          }
+        }
+
+        return Array.from(map.values());
+      };
+
+      if (fileType === "text/csv") {
+        possibleName(fileName.replace(/\.[^/.]+$/, ""));
+        const collectionData = await handleCSV(async (row, rows) => {
+          if (
+            !Object.keys(row).find((key) => key.toLowerCase() === "csr") &&
+            !queryCSR
+          ) {
+            previewDetail(
+              "Hay " + rows.length + " registros preparados para ser insertado"
+            );
+            queryCSR = await askCSR();
+          }
+          return formatDataInventoryToModelDB(row, queryCSR);
+        });
+
+        // ✅ aplicar deduplicación antes de enviar
+        const deduped = deduplicateItems(collectionData);
+        submit(deduped);
+
+      } else if (
+        fileType === "image/jpeg" ||
+        fileType === "image/png"
+      ) {
+        responseData = await readDataWithOCR();
+        possibleName(responseData.entrega);
+
+        previewDetail(
+          <CompactTable
+            columns={[
+              { label: "Part Number", renderCell: (item) => item.partNumber },
+              { label: "Stock", renderCell: (item) => item.stock },
+            ]}
+            data={{ nodes: responseData.items }}
+            theme={theme}
+            layout={{ fixedHeader: true }}
+          />
+        );
+
+        queryCSR = await askCSR();
+        const mapped = responseData.items.map((item) =>
+          formatDataInventoryToModelDB(item, queryCSR)
+        );
+
+        // ✅ aplicar deduplicación antes de enviar
+        const deduped = deduplicateItems(mapped);
+        submit(deduped);
+
+      } else {
+        throw new Error("Tipo de Archivo no permitido.");
+      }
+    }
+  } catch (error) {
+    throw new Error("No se pudo procesar el archivo: " + error.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className='file-bar'>
