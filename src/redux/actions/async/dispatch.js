@@ -420,7 +420,7 @@ export function dispatchBulkInventory(data) {
         }
 
         // 🔹 Ejecutar todo junto
-        //await batch2.commit();
+        await batch2.commit();
         const newParsed = parseMutations(batch2._mutations, dispatch)
         console.log("✅ Batch ejecutado con éxito");
         console.log(newParsed)
