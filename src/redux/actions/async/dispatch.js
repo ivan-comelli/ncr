@@ -424,7 +424,7 @@ export function dispatchBulkInventory(data) {
         const newParsed = parseMutations(batch2._mutations, dispatch)
         console.log("✅ Batch ejecutado con éxito");
         console.log(newParsed)
-        const mergeResult = mergeResults(paresed, newParsed);
+        const mergeResult = mergeResults(parsed, newParsed);
 
         dispatch(dispatchInventorySuccess(mergeResult));
       } catch (error) {
