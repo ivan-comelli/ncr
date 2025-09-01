@@ -14,7 +14,7 @@ import SendIcon from '@mui/icons-material/PlayArrowOutlined';
 export const StockBar = ({ submit, minified }) => {
     const partIsolate = useSelector((state) => state.inventory.isolated);
     const [counterStock, setCounterStock] = useState(0);
-    const secuenceStatus = ["Confirmacion", "Ajuste", "Conflicto"];
+    const secuenceStatus = ["Confirmado", "Ajuste", "Conflicto"];
     const [indexSecuenceStatus, setIndexSecuenceStatus] = useState(0);
 
     useEffect(() => {
@@ -102,7 +102,8 @@ export const StockBar = ({ submit, minified }) => {
                 sx={iconButtonStyle}          
                 onClick={(e) => {
                     e.stopPropagation();
-                    const returnCounter = indexSecuenceStatus == 0 ? (partIsolate.reWork ? partIsolate.teoricStock : 0) : counterStock;
+                    
+                    const returnCounter = indexSecuenceStatus === 0 ? (partIsolate.reWork ? partIsolate.teoricStock : 0) : counterStock;
                     submit({quantity: returnCounter, type: secuenceStatus[indexSecuenceStatus]})
                 }}
             >

@@ -18,7 +18,7 @@ const CheckerMovement = ({ petition }) => {
   });
 
   const STATUS = {
-    PENDIENT: "Pendiente",
+    CONFIRM: "Confirmado",
     ADJUST: "Ajuste",
     ISSUE: "Conflicto"
   } 
@@ -27,7 +27,7 @@ const CheckerMovement = ({ petition }) => {
     partNumber: [],
     description: "",
     stock: 0,
-    status: "PENDIENT",
+    status: "CONFIR",
     note: ""
   });
 
@@ -45,7 +45,7 @@ const CheckerMovement = ({ petition }) => {
         partNumber: partIsolate?.partNumber || '',
         description: partIsolate?.description || '',
         stock: petition?.quantity || 0,
-        status: petition ? Object.entries(STATUS).find(([key, value]) => value === petition.type)[0] : 'PENDIENT',
+        status: petition ? Object.entries(STATUS).find(([key, value]) => value === petition.type)[0] : 'CONFIRM',
         note: ""
       });
     }
