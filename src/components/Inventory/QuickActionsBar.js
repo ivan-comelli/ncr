@@ -14,7 +14,7 @@ import SendIcon from '@mui/icons-material/PlayArrowOutlined';
 export const StockBar = ({ submit, minified }) => {
     const partIsolate = useSelector((state) => state.inventory.isolated);
     const [counterStock, setCounterStock] = useState(0);
-    const secuenceStatus = ["Pendiente", "Ajuste", "Conflicto"];
+    const secuenceStatus = ["Confirmacion", "Ajuste", "Conflicto"];
     const [indexSecuenceStatus, setIndexSecuenceStatus] = useState(0);
 
     useEffect(() => {
@@ -61,7 +61,7 @@ export const StockBar = ({ submit, minified }) => {
                 <TuneIcon fontSize='small'/>
             </IconButton>
             <TextField
-                disabled={ partIsolate ? false : true }
+                disabled={ partIsolate ? (indexSecuenceStatus == 0 ? true : false) : true }
                 className='stock'
                 fullWidth
                 margin="none"
@@ -72,7 +72,7 @@ export const StockBar = ({ submit, minified }) => {
                     endAdornment: (
                     <InputAdornment position="start">
                         <IconButton
-                        disabled={ partIsolate ? false : true }
+                        disabled={ partIsolate ? (indexSecuenceStatus == 0 ? true : false) : true }
                         onClick={(e) => {
                             e.stopPropagation();
                             setCounterStock((prev) => prev - 1);
@@ -85,7 +85,7 @@ export const StockBar = ({ submit, minified }) => {
                     startAdornment: (
                     <InputAdornment position="end">
                         <IconButton
-                        disabled={ partIsolate ? false : true }
+                        disabled={ partIsolate ? (indexSecuenceStatus == 0 ? true : false) : true }
                         onClick={(e) => {
                             e.stopPropagation(); 
                             setCounterStock((prev) => prev + 1);
@@ -102,6 +102,7 @@ export const StockBar = ({ submit, minified }) => {
                 sx={iconButtonStyle}          
                 onClick={(e) => {
                     e.stopPropagation();
+                    const returnCounter = partIsolate.reWork ? partIsolate.teoricStock : 0;
                     submit({quantity: counterStock, type: secuenceStatus[indexSecuenceStatus]})
                 }}
             >

@@ -262,6 +262,8 @@ const formatDataTable = (dataState) => {
             stock: (item.reWork ?  Number(item.stock.total) : item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0) + Number(item.stock.total)) || 0,
             ppk: item.technicians.reduce((sum, value) => sum += value.ppk || 0, 0) || 0,
             priority: item.priority || 'LOW',
+            init: item.stock.detail.length > 0,
+            teoricStock: item.technicians.reduce((sum, value) => sum += value.onHand || 0, 0),
             nodes: item.technicians
             .filter((node) => {
                 // Filtrar nodos donde ppk, onHand y stock no sean todos 0

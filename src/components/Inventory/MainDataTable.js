@@ -143,7 +143,7 @@ const TableInventory = ({ minified }) => {
            {tableList.map((item) => (
              <Row 
               onContextMenu={(e) => handleContextMenu(e, item)}
-              key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''}`}>
+              key={item.id} item={item} onClick={(item, e) => isolateItem(item, e)} className={`${item.issue ? 'issue' : ''} ${!item.init ? 'not-init' : ''}`}>
                <Cell className="partNumber">{item?.partNumber.map((p, i) => (
                  <span key={i} style={{ display: 'block' }}>{p}</span>
                ))}</Cell>
