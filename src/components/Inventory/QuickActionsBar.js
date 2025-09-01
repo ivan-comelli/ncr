@@ -102,8 +102,8 @@ export const StockBar = ({ submit, minified }) => {
                 sx={iconButtonStyle}          
                 onClick={(e) => {
                     e.stopPropagation();
-                    const returnCounter = partIsolate.reWork ? partIsolate.teoricStock : 0;
-                    submit({quantity: counterStock, type: secuenceStatus[indexSecuenceStatus]})
+                    const returnCounter = indexSecuenceStatus == 0 ? (partIsolate.reWork ? partIsolate.teoricStock : 0) : counterStock;
+                    submit({quantity: returnCounter, type: secuenceStatus[indexSecuenceStatus]})
                 }}
             >
                 <SendIcon />
