@@ -35,19 +35,7 @@ export const StockBar = ({ submit, minified }) => {
     };
     return (
         <div className='stock-bar'>
-            {
-                !minified &&
-                <IconButton
-                    sx={iconButtonStyle}
-                    className='more-button'
-                    onClick={(e) => {
-                    }}
-                >
-                    <MoreHorizIcon fontSize='small'/>
-                </IconButton>
-
-            }
-
+            
             <IconButton
                 disabled={ partIsolate ? false : true }
                 sx={iconButtonStyle}

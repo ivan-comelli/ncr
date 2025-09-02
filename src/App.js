@@ -181,52 +181,34 @@ function App() {
     <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
       <header className={`App-header ${showNotes ? 'absolute' : ''}`}>
         <img src={minified ? logoMinified : logo} className="App-logo" alt="Logo"/>
-        <Box sx={{
-          gap: '2em',
-          display: 'flex'
-        }}>
-          <TextField
-            className="search"
-            variant="outlined"
-            size="small"
-            placeholder={"Buscar..."}
-            value={search}
-            onChange={handleSearch}
-            sx={{
-              width: "200px",
-              transition: "width 0.3s ease",
-              "& .MuiOutlinedInput-root": {
-                borderRadius: "1rem",
-                paddingLeft: "0.3rem",
-              },
-              "& .MuiOutlinedInput-input": {
-                paddingLeft: "0.3rem",
-              },
-            }}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleIconClick} edge="start">
-                    <CloseIcon />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
-
-          <IconButton
-            sx={{
-              backgroundColor: 'none', 
-              borderRadius: '1rem',              
-              padding: '12px'
-            }}
-            onClick={(e) => {
-              setShowNotes((prev) => !prev);
-            }}
-          >
-            <NoteAltIcon fontSize='small'/>
-          </IconButton>
-        </Box>
+        <TextField
+          className="search"
+          variant="outlined"
+          size="small"
+          placeholder={"Buscar..."}
+          value={search}
+          onChange={handleSearch}
+          sx={{
+            width: "200px",
+            transition: "width 0.3s ease",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "1rem",
+              paddingLeft: "0.3rem",
+            },
+            "& .MuiOutlinedInput-input": {
+              paddingLeft: "0.3rem",
+            },
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={handleIconClick} edge="start">
+                  <CloseIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
       </header>
       { showNotes && <iframe src="https://sapphire-menu-c00.notion.site/ebd/258f57a974ca8025a039f583e1e39150" width="100%" height="100%" frameborder="0" allowfullscreen />}
       {
