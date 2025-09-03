@@ -286,13 +286,19 @@ async function getOrCreateInventoryRef(batch, catalogId) {
 async function processSingleInventoryItem(batch, item) {
   try {
     console.log(item)
+    let idRef;
     const matchDB = dbData.find(ref => 
       ref.pn.some(pn => item.partNumber.includes(pn))
     );
     console.log(matchDB)
-    if (!matchDB) return;
-    console.log(`Reference of Inventory is: ${matchDB.id}`)
-    const snapDocInventory = await getOrCreateInventoryRef(batch, matchDB.id);
+    if (!matchDB) {
+      idRef = item.partNumber;
+    }
+    else {
+      idRef = matchDB.id;
+    }
+    console.log(`Reference of Inventory is: ${idRef}`)
+    const snapDocInventory = await getOrCreateInventoryRef(batch, idRef);
 
     if(item.technician && Object.keys(item.technician).length) {
       batch = await setTechnicianToSomePart(doc(collection(snapDocInventory.ref, "technicians"), `${snapDocInventory.id}-${item.technician.csr.toLowerCase()}`), item.technician, batch);
@@ -333,6 +339,7 @@ async function processInventoryData(batch, data, dispatch) {
 export function dispatchBulkInventory(data) {
     return async (dispatch) => {
       console.groupCollapsed("Start Dispatch in Bulk Inventory Parts...");
+      console.log(data)
       if (!data) {
         dispatch(dispatchInventoryFailure("No hay datos o no son válidos"));
         return;
@@ -384,6 +391,17 @@ export function dispatchBulkInventory(data) {
 
         const batch2 = writeBatch(db);
 
+        const formatItem = (item) => {
+          const parts = item.split("-");
+          if (parts.length <= 2) {
+            // Caso corto: xxxx-xxxx
+            return parts[0]
+          } else {
+            // Caso largo: xxxx-xxxx-xxxx-xxxx-xxxxx-xxxxx
+            return parts.slice(0, 5).join("-");
+          }
+        };
+
         //Es muy costoso traer todo el inventario solo para saber cual no se muto
         //tendria que poder obtener una lista de estos inventarios
         console.log(membersMuted)
@@ -391,7 +409,7 @@ export function dispatchBulkInventory(data) {
         console.log(flagType)
         //Debe de ser en Batch
         for (const item of lessTecMutations) {
-          const result = item.split("-").slice(0, 5).join("-");
+          const result = formatItem(item)
           const techRef = doc(db, "Inventory", result, "technicians", item);
 
           if (flagType === "OH") {
@@ -460,44 +478,47 @@ export function dispatchUpdatePriority(catalogId, newPriority) {
 export function dispatchAddStock(newStock) {  
   return async(dispatch) => {    
     try {
+      let idRef;
       console.log(newStock)
       const matchDB = dbData.find(item => 
         item.pn.some(pn => newStock.partNumber.includes(pn))
       );
       if(matchDB) {
-        const array = new Uint8Array(4);
-        // Llena con valores aleatorios criptográficamente seguros
-        crypto.getRandomValues(array);
-        
-        // Convierte los 4 bytes a un número entero (big endian)
-        const randomInt =
-          (array[0] << 24) |
-          (array[1] << 16) |
-          (array[2] << 8) |
-          array[3];
-
-        // Convierte a hexadecimal con padding a 8 caracteres
-        // Usamos >>> 0 para forzar entero sin signo (porque JS usa 32 bits signed)
-        const randomHex = (randomInt >>> 0).toString(16).padStart(8, '0');
-        console.log(randomHex)
-        const inventoryRef = doc(db, 'Inventory', matchDB.id);
-        const refStock = doc(collection(inventoryRef, "stock"), `${matchDB.id}-${randomHex}`);
-        console.log(`New Id Stock ${refStock.id}`);
-        const result = await setStockToSomePart(refStock, newStock.stock);
-        const merge = [{
-          id: matchDB.id,
-          stock: [{
-            id: refStock.id,
-            ...newStock.stock,
-          }],
-          technicians: []
-        }];
-        
-        dispatch(dispatchInventorySuccess(merge));
+        idRef = matchDB.id;
       }
       else {
-        console.error('NO exist match')
+        idRef = newStock.partNumber[0];
       }
+
+      const array = new Uint8Array(4);
+      // Llena con valores aleatorios criptográficamente seguros
+      crypto.getRandomValues(array);
+      
+      // Convierte los 4 bytes a un número entero (big endian)
+      const randomInt =
+        (array[0] << 24) |
+        (array[1] << 16) |
+        (array[2] << 8) |
+        array[3];
+
+      // Convierte a hexadecimal con padding a 8 caracteres
+      // Usamos >>> 0 para forzar entero sin signo (porque JS usa 32 bits signed)
+      const randomHex = (randomInt >>> 0).toString(16).padStart(8, '0');
+      console.log(randomHex)
+      const inventoryRef = doc(db, 'Inventory', idRef);
+      const refStock = doc(collection(inventoryRef, "stock"), `${idRef}-${randomHex}`);
+      console.log(`New Id Stock ${refStock.id}`);
+      const result = await setStockToSomePart(refStock, newStock.stock);
+      const merge = [{
+        id: idRef,
+        stock: [{
+          id: refStock.id,
+          ...newStock.stock,
+        }],
+        technicians: []
+      }];
+      
+      dispatch(dispatchInventorySuccess(merge));
     }
     catch {
 

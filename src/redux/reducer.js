@@ -254,8 +254,8 @@ const formatDataTable = (dataState) => {
 
         return {
             id: item.id,
-            partNumber: matchDB?.pn || [],
-            description: matchDB?.desc,
+            partNumber: matchDB?.pn || [item.id],
+            description: matchDB?.desc || 'Fuera de Catalogo',
             reWork: item.reWork,
             category: matchDB?.modulo,
             cost: item.cost || 0,
