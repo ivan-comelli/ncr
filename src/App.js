@@ -8,7 +8,7 @@ import { TextField, InputAdornment, IconButton, Select, MenuItem } from '@mui/ma
 import { LinearProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllInventory, lazySearch } from './redux/actions/async';
-import { closeOverview, filterReWork, filterPriority, filterCategory } from './redux/actions/sync';
+import { closeOverview, filterReWork, filterPriority, filterCategory, filterMore } from './redux/actions/sync';
 import UploadIcon from '@mui/icons-material/Sync';
 import BackIcon from '@mui/icons-material/ArrowBack';
 import BatchImport from './components/Inventory/BatchImport';
@@ -71,6 +71,7 @@ function App() {
   const [typeSelect, setTypeSelect] = useState();
   const [indexPrio, setIndexPrio] = useState();
   const [categoryValues, setCategoryValues] = useState(Array());  
+  const [moreValues, setMoreValues] = useState(Array())
 
   const searchGlobal = useSelector(state => state.inventory.search);
   const priority = useSelector(state => state.inventory.filters.priority)
@@ -161,6 +162,15 @@ function App() {
     console.log(value)
   };
   
+  const handleChangeMore = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setMoreValues(value)
+    console.log(value)
+        dispatch(filterMore(value))
+
+  };
 
   const openModal = async () => {
     try {
@@ -251,6 +261,80 @@ function App() {
                     className={`priority-icon ${priority.values[indexPrio]}`} 
                     onClick={() => changePriorityFilter()}
                   />
+
+                  <Select
+                    id="more-multiple-chip"
+                    className='more'
+                    multiple
+                    fullWidth
+                    value={moreValues}
+                    onChange={handleChangeMore}
+                    renderValue={(selected) => (
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {selected.map((value) => (
+                          <Chip
+                            key={value}
+                            label={value}
+                            sx={{
+                              maxWidth: '100%',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap',
+                            }}
+                          />
+                        ))}
+                      </Box>
+                    )}
+                    sx={{
+                      width: '90%',
+                      '.MuiSelect-select': {
+                        paddingTop: '3px',    // 🔽 menos padding vertical
+                        paddingBottom: '3px',
+                        minHeight: 'unset',   // elimina alto mínimo fijo
+                      },
+                      '&.MuiOutlinedInput-root': {
+                        minHeight: '28px',    // 🔽 altura total menor (puede ajustarse aún más)
+                        borderRadius: '1rem',
+                      },
+                    }}
+                  >
+                    <MenuItem
+                      value={'Non Audit'}
+                      sx={{
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                      }}
+                    >
+                      {'Non Audit'}
+                    </MenuItem>
+                    <MenuItem
+                      value={'Audit'}
+                      sx={{
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                      }}
+                    >
+                      {'Audit'}
+                    </MenuItem>
+                    <MenuItem
+                      value={'Imbalance'}
+                      sx={{
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                      }}
+                    >
+                      {'Imbalance'}
+                    </MenuItem>
+                    <MenuItem
+                      value={'Cost +5'}
+                      sx={{
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                      }}
+                    >
+                      {'Cost +5'}
+                    </MenuItem>
+                  </Select>
                   <Select
                     id="category-multiple-chip"
                     className='category'

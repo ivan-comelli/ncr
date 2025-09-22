@@ -21,6 +21,11 @@ export const filterStatus = () => ({
     
 })
 
+export const filterMore = (value) => ({
+    type: TYPES.FILTER_MORE,
+    key: value
+})
+
 export const searchInDataTable = (value) => ({
     type: TYPES.SEARCH_IN_TABLE,
     search: value
