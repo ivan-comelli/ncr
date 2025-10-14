@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 
-import UploadFiles from "../UploadFilesForSync";
+import UploadFiles from "./UploadFilesForSync";
 import { ClipLoader } from 'react-spinners';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -27,7 +27,7 @@ import {
   InputLabel,
 } from '@mui/material';
 
-function CheckerModal({ show, resolveModal, rejectModal }) {
+function CheckerModal({ show}) {
   const [activeStep, setActiveStep] = useState(0);
   const [selectedPerson, setSelectedPerson] = useState({ name: null, csr: null }); 
   const options = [{ name: "Diego Molina", csr: "AR103S42"}, { name: "Nahuel DeLuca", csr: "AR103S44"}, { name: "Juan Valenzuela", csr: "AR103S46"},  { name: "Ivan Comelli", csr: "AR903S48"}];
@@ -50,7 +50,7 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
         setFlagSubmit(false);
         setUploadData(false);
         setActiveStep(0);
-        resolveModal("Se Completo Exitosamente");
+
 
     } 
   }, [uploadData, activeStep]);
@@ -102,7 +102,7 @@ function CheckerModal({ show, resolveModal, rejectModal }) {
   const handleCancel = () => {
     switch (activeStep) {
       case 0:
-        rejectModal("Salio del Modal");
+        
       break;
       case 1:
         setActiveStep((prevActiveStep) => prevActiveStep - 1);

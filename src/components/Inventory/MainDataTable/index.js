@@ -18,6 +18,9 @@ import IconPPK from '@mui/icons-material/AssignmentOutlined';
 import IconOnHand from '@mui/icons-material/PanToolOutlined';
 import IconStock from '@mui/icons-material/Inventory2Outlined';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import UpIcon from '@mui/icons-material/KeyboardArrowUp';
+import DownIcon from '@mui/icons-material/KeyboardArrowDown';
+import SideIcon from '@mui/icons-material/KeyboardArrowLeft';
 
 import PushPinIcon from "@mui/icons-material/PushPin";
 import CheckIcon from "@mui/icons-material/Check";
@@ -26,8 +29,8 @@ import MediumPriorityIcon from "@mui/icons-material/ArrowForward";
 import HighPriorityIcon from "@mui/icons-material/ArrowUpward";
 import DotPriorityIcon from "@mui/icons-material/CircleSharp";
 import { useSelector, useDispatch } from 'react-redux';
-import { dispatchUpdatePriority } from '../../redux/actions/async';
-import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../redux/actions/sync';
+import { dispatchUpdatePriority } from '../../../redux/actions/async';
+import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../../redux/actions/sync';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
 
 const TableInventory = ({ minified }) => {
@@ -36,7 +39,7 @@ const TableInventory = ({ minified }) => {
   const isolated = useSelector((state) => state.inventory.isolated);
   const overView = useSelector((state) => state.inventory.overView.active);
   const category = useSelector((state) => state.inventory.filters.category);
-
+  
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
 
@@ -121,6 +124,25 @@ const TableInventory = ({ minified }) => {
     handleClose();
   };
 
+  const priorityIcon = (key) => {
+    let PriorityIcon;
+    console.log(key)
+    switch (key) {
+      case 'HIGH':
+        PriorityIcon = <UpIcon />;
+        break;
+      case 'LOW':
+        PriorityIcon = <DownIcon />;
+        break;
+      case 'MID':
+        PriorityIcon = <SideIcon />;
+        break;
+      default:
+        PriorityIcon = <DownIcon />;
+    }
+    return PriorityIcon;
+  }
+
   return (
     <div className={`view-table ${isolated ? 'isIsolated' : ''}`} >
       <Table data={ {nodes: collectionData} } theme={theme} tree={tree}>
@@ -153,7 +175,7 @@ const TableInventory = ({ minified }) => {
                <Cell>{item?.ppk}</Cell>
                {!minified && <Cell>{item?.cost}</Cell>}
                {!minified && <Cell>{item.reWork != null ? (item.reWork ? "T" : "F") : ''}</Cell>}
-               <Cell>{item?.partNumber != "" && <span className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}/>}</Cell>
+               <Cell>{item?.partNumber != "" && (<div className={`priority-icon ${item?.priority ? item.priority : 'LOW'}`}>{ priorityIcon(item.priority) }</div>)}</Cell>
              </Row>
            ))}
          </Body>

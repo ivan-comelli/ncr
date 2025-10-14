@@ -1,0 +1,29 @@
+
+
+.stock {
+  max-width: 10rem;
+}
+
+.stock > :only-child {
+  display: flex;
+  flex-direction: column;
+  padding: .5rem 0;
+}
+
+.stock input {
+  text-align: center;
+}
+
+.stock > :only-child  > * {
+  margin: 0 !important;
+}
+
+.stock-bar button.Pendiente {
+  color: #839a83;
+}
+.stock-bar button.Ajuste {
+  color: #c9c98d;
+}
+.stock-bar button.Conflicto {
+  color: #9a8484;
+}

@@ -1,0 +1,102 @@
+.view-table {
+  background: #fefefe;
+  padding: 0 1rem;
+  width: 100%;
+  user-select: none;
+}
+
+
+.table {
+  --bs-table-bg: none !important;
+}
+
+table {
+  width: 100%;
+}
+
+tr {
+  padding: .3rem;
+  font-size: .8rem !important;
+  text-align: left;
+}
+
+.td div {
+  display: flex;
+  justify-content: center;
+}
+.td:nth-child(-n+2) div {
+  justify-content: left !important;
+}
+
+.th div {
+  display: flex;
+  justify-content: center;
+  color:rgb(88 114 90);
+}
+.th:nth-child(-n+2) div {
+  justify-content: left !important;
+}
+
+.expand {
+  display: flex;
+  grid-column: 1 / -1;
+  background: #fff;
+}
+
+.row-tree-leaf {
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.MuiFormLabel-root {
+  font-size: .8rem !important;
+}
+
+.App.minified .view-table > table {
+  --data-table-library_grid-template-columns: minmax(6rem, 1fr) minmax(8rem, 3fr) 3rem 3rem 2rem !important;
+}
+
+
+.view-table > table {
+  --data-table-library_grid-template-columns: minmax(4rem, 1fr) minmax(6rem, 3fr) 6rem 3rem 3rem 3rem 3rem 3rem !important;
+}
+
+.view-table-history > table {
+  --data-table-library_grid-template-columns: minmax(2rem, 0.5fr) minmax(4rem, 2fr) minmax(4rem, 2fr) minmax(2rem, 0.5fr) !important;
+}
+
+.view-table > table.hidden {
+  display: none !important;
+}
+
+
+.view-table:is(.isIsolated) .tr-body:not(.row-tree-expanded):not(.row-tree-leaf) > td {
+  filter: blur(0.03rem);
+  color: gray;
+}
+
+
+.description > div {
+  white-space: break-spaces !important;
+}
+
+.partNumber > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.issue > td {
+  background: #fff4f4 !important;
+}
+
+.not-init > td:nth-child(1) {
+  border-left: solid .1rem #ebeccd;
+}
+
+.MuiToggleButton-root {
+  font-size: .7rem !important;
+}
+
+.Mui-selected {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}

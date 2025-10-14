@@ -7,7 +7,7 @@ import { IconButton } from '@mui/material';
 import IconCheck from '@mui/icons-material/Check';
 import IconCancel from '@mui/icons-material/Close';
 import { useSelector, useDispatch } from 'react-redux';
-import { dispatchDeleteStock } from '../../redux/actions/async';
+import { dispatchDeleteStock } from '../../../redux/actions/async';
 
 const TableHistory = () => {
     const COLUMNS = [

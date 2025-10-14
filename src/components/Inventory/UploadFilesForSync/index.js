@@ -8,7 +8,7 @@ import { Timestamp } from "firebase/firestore";
 import { CompactTable } from '@table-library/react-table-library/compact';
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
-
+import "./style.css"; 
 const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit}) => {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);

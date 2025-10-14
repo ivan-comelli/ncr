@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Modal, TextField, Button, Typography, Backdrop, Fade, Stack, InputLabel, FormControl, MenuItem, Select, FormHelperText } from '@mui/material';
 import { Close, Add } from "@mui/icons-material";
 import { useDispatch, useSelector } from 'react-redux';
-import { dispatchAddStock } from '../../redux/actions/async';
+import { dispatchAddStock } from '../../../redux/actions/async';
 
 const CheckerMovement = ({ petition }) => {
   const partIsolate = useSelector((state) => state.inventory.isolated);
