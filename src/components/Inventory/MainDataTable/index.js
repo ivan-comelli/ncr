@@ -32,6 +32,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { dispatchUpdatePriority } from '../../../redux/actions/async';
 import { isolatePartInTable, setPriority, openOverview, closeOverview } from '../../../redux/actions/sync';
 import useEnhancedEffect from "@mui/material/utils/useEnhancedEffect";
+import './style.css';
 
 const TableInventory = ({ minified }) => {
   const dispatch = useDispatch();

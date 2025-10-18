@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import { TextField, InputAdornment, IconButton } from "@mui/material";
+import { TextField, InputAdornment, IconButton, Button } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./style.css";
 import logo from '../../ncr-logo.png';
 import logoMinified from '../../ncr-logo-minified.png';
 import { lazySearch } from '../../redux/actions/async';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 function NavBar({ minified }) {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch();
@@ -27,13 +28,13 @@ function NavBar({ minified }) {
   };
 
   return (
-    <header className="App-header">
+    <header className="App-header .glass-card">
       <img
         src={minified ? logoMinified : logo}
         className="App-logo"
         alt="Logo"
       />
-
+      
       <TextField
         className="search"
         variant="outlined"

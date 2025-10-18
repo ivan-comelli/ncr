@@ -34,20 +34,19 @@ const initialStateInventory = {
         search: '',
         status: {
             values: ["Conflicto"],
-            key: null
+            key: []
         },
         category: {
             values: ['S1', 'S2', 'BNA3', 'SCPM', 'SRU', 'GBRU', 'BRM', 'CPU', 'OTROS', 'LECTORAS', 'SOBRES', 'PRINTERS'],
             key: []
         },
-        more: [],
         priority: {
-            values: ["LOW", "MID", "HIGH", "ALL"],
-            key: 3
+            values: ["LOW", "MID", "HIGH"],
+            key: null
         },
         reWork: {
-            values: ["Non Rework", "Rework", "All"],
-            key: 2
+            values: ["Non Rework", "Rework"],
+            key: null
         }
     }
 };
@@ -176,7 +175,7 @@ const filterDataTable = (filters, dataState) => {
         let reworkMatch = false;
         let priorityMatch = false;
         let categoryMatch = false;
-        let moreMatch = false;
+        let statusMatch = false;
 
         if (filters.search && filters.search !== "") {
             const searchWords = filters.search.toLowerCase().split(/\s+/); // separa por espacios
@@ -222,13 +221,13 @@ const filterDataTable = (filters, dataState) => {
             categoryMatch = true;
         }
 
-        if (filters.more.length > 0) {
-            let factor1 = !filters.more.includes('Cost +5');
-            let factor2 = !filters.more.includes('Imbalance');
-            let factor3 = !filters.more.includes('Non Audit');
-            let factor4 = !filters.more.includes('Audit');
+        if (filters.status.length > 0) {
+            let factor1 = !filters.status.includes('Cost +5');
+            let factor2 = !filters.status.includes('Imbalance');
+            let factor3 = !filters.status.includes('Non Audit');
+            let factor4 = !filters.status.includes('Audit');
 
-            filters.more.forEach((name) => {
+            filters.status.forEach((name) => {
                 if (name == 'Cost +5') {
                     Number(item.cost) > 5 && (factor1 = true)
                 }
@@ -243,12 +242,12 @@ const filterDataTable = (filters, dataState) => {
                 }
             });
 
-            moreMatch = factor1 && factor2 && factor3 && factor4;
+            statusMatch = factor1 && factor2 && factor3 && factor4;
         } else {
-            moreMatch = true;
+            statusMatch = true;
         }
 
-        return (descriptionMatch || partNumberMatch) && reworkMatch && priorityMatch && categoryMatch && moreMatch;
+        return (descriptionMatch || partNumberMatch) && reworkMatch && priorityMatch && categoryMatch && statusMatch;
     });
 
     // Ahora agrupamos y ordenamos por categoría
@@ -470,21 +469,15 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
             return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
 
-         case TYPES.FILTER_MORE: {
+         case TYPES.FILTER_STATUS: {
             var filters = structuredClone(state.filters);
-            filters.more = action.key
+            filters.status = action.key
             return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
 
         case TYPES.FILTER_PRIORITY: {
             var filters = structuredClone(state.filters);
             filters.priority.key = action.key
-            return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
-        }
-
-        case TYPES.FILTER_STATUS: {
-            var filters = structuredClone(state.filters);
-            filters.reWork.key = action.key
             return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
 

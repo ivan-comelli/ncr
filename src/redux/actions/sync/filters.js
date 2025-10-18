@@ -17,12 +17,8 @@ export const filterCategory = (value) => ({
     key: value 
 })
 
-export const filterStatus = () => ({
-    
-})
-
-export const filterMore = (value) => ({
-    type: TYPES.FILTER_MORE,
+export const filterStatus = (value) => ({
+    type: TYPES.FILTER_STATUS,
     key: value
 })
 

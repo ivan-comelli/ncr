@@ -71,11 +71,11 @@ function App() {
   useEffect(() => {
     setMinified(width < 768 ? true : false);
     let newToShow = Math.floor(width * 12) / 1920;
-  }, [width, activeDetail]);
+  }, [width]);
   
   
   return (
-    <div className={`App ${activeDetail ? '' : 'without-aditional'} ${minified ? 'minified' : ''}`}>
+    <div className={`App ${minified ? 'minified' : ''}`}>
       <Navbar minified={minified}></Navbar>
       <>
         <StockBar submit={ setPetitionSubmit } minified={minified} />
@@ -86,10 +86,12 @@ function App() {
           <FilterBar minified={minified} activeDetail={activeDetail} setShowModal={setShowModal}></FilterBar>
           <TableInventory minified={minified} />
         </div>
-        <div className='aditional'>
+        { (!minified && activeDetail) ?
+        (<div className='aside'>
           <IconButton variant="contained" color="primary" className="middle-back" onClick={() => dispatch(closeOverview())}><BackIcon></BackIcon></IconButton>
           <OverviewItem/>
-        </div>
+        </div>) : <></>
+        }
         
       </>
       <CheckerMovement petition={ petitionSubmit }/>
