@@ -9,7 +9,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DetailsIcon from '@mui/icons-material/DescriptionOutlined';
 import TuneIcon from '@mui/icons-material/SquareOutlined';
 import SendIcon from '@mui/icons-material/PlayArrowOutlined';
-
+import BtnCsv from './ButtonDownloadCSV';
 
 export const StockBar = ({ submit, minified }) => {
     const partIsolate = useSelector((state) => state.inventory.isolated);
@@ -36,7 +36,7 @@ export const StockBar = ({ submit, minified }) => {
     return (
         <div className='stock-bar'>
             
-           
+            <BtnCsv></BtnCsv>
             <SideButtons></SideButtons>
            
         </div>

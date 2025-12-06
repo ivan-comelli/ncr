@@ -1,4 +1,3 @@
-import { format } from 'path-browserify';
 import TYPES from './types';
 import dbData from '../db/output.json';
 
@@ -185,10 +184,10 @@ const filterDataTable = (filters, dataState) => {
         }
 
         switch (filters.reWork.key) {
-            case 0:
+            case false:
                 reworkMatch = item.reWork === false;
                 break;
-            case 1:
+            case true:
                 reworkMatch = item.reWork === true;
                 break;
             default:
@@ -221,13 +220,13 @@ const filterDataTable = (filters, dataState) => {
             categoryMatch = true;
         }
 
-        if (filters.status.length > 0) {
-            let factor1 = !filters.status.includes('Cost +5');
-            let factor2 = !filters.status.includes('Imbalance');
-            let factor3 = !filters.status.includes('Non Audit');
-            let factor4 = !filters.status.includes('Audit');
+        if (filters.status.key.length > 0) {
+            let factor1 = !filters.status.key.includes('Cost +5');
+            let factor2 = !filters.status.key.includes('Imbalance');
+            let factor3 = !filters.status.key.includes('Non Audit');
+            let factor4 = !filters.status.key.includes('Audit');
 
-            filters.status.forEach((name) => {
+            filters.status.key.forEach((name) => {
                 if (name == 'Cost +5') {
                     Number(item.cost) > 5 && (factor1 = true)
                 }
@@ -471,7 +470,7 @@ export const inventoryReducer = (state = initialStateInventory, action) => {
 
          case TYPES.FILTER_STATUS: {
             var filters = structuredClone(state.filters);
-            filters.status = action.key
+            filters.status.key = action.key
             return { ...state, renderTable: filterDataTable(filters, state.dataTable), filters: filters }
         }
 

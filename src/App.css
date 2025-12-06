@@ -1,16 +1,17 @@
+html {
+  scrollbar-gutter: stable;
+}
+form{
+  height: 100%;
+  position: relative;
+}
 .App {
 background-color: #ffffff;
 opacity: 1;
-background-image: linear-gradient(
-  to right,
-  #fdfdfd,
-  #fdfdfd 30px,
-  #ffffff 30px,
-  #ffffff 60px
-);
-background-size: 60px 100%;
-
-  width: 100%;
+background-color: #ffffff;
+opacity: 1;
+background: linear-gradient(135deg, #eafae655 25%, transparent 25%) -40px 0/ 80px 80px, linear-gradient(225deg, #eafae6 25%, transparent 25%) -40px 0/ 80px 80px, linear-gradient(315deg, #eafae655 25%, transparent 25%) 0px 0/ 80px 80px, linear-gradient(45deg, #eafae6 25%, #ffffff 25%) 0px 0/ 80px 80px;
+width: 100%;
 }
 
 .App.minified .tool-bar button span {
@@ -28,6 +29,7 @@ background-size: 60px 100%;
 
 .App {
   display: grid;
+  min-height: 100vh;
   grid-template-columns: 6rem auto 80vw auto 6rem;
   grid-template-rows: 6rem auto;
   grid-column-gap: 0px;
@@ -35,6 +37,7 @@ background-size: 60px 100%;
   grid-template-areas:
     "header     header    header    header    header"
     "barTools   margL     main      margR     aside";
+  justify-items: center;
 }
 
 .App.minified {
@@ -58,6 +61,7 @@ background-size: 60px 100%;
   grid-area: main;
   padding-top: 1rem;
   gap: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .App > .aside {
@@ -76,9 +80,9 @@ background-size: 60px 100%;
   flex-direction: column;
   gap: 1rem;
   padding: 3rem 1.5rem;
-  margin-left: 1rem;
-  margin-top: 1rem;
   height: 85vh;
+  width: 5rem;
+  margin-top: 1rem;
   top: 1rem;
   position: sticky;
   /* From https://css.glass */

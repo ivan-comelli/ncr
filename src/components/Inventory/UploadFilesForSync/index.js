@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 import Papa from 'papaparse';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFileArrowUp } from '@fortawesome/free-solid-svg-icons';
-import Tesseract from 'tesseract.js';
-import { Client } from "@gradio/client";
-import { Timestamp } from "firebase/firestore";
-import { CompactTable } from '@table-library/react-table-library/compact';
 import { useTheme } from '@table-library/react-table-library/theme';
 import { DEFAULT_OPTIONS, getTheme } from '@table-library/react-table-library/material-ui';
 import "./style.css"; 
@@ -15,43 +11,9 @@ const UploadFiles = ({previewFile, previewDetail, askCSR, possibleName, submit})
   const materialTheme = getTheme(DEFAULT_OPTIONS);
   const theme = useTheme(materialTheme);
 
-  const llmFormatImgData = async (ocrText) => {
-    try {
-        const client = await Client.connect("Qwen/Qwen2.5");
-        const result = await client.predict("/model_chat", { 		
-            query: `Compilame la informacion solo en un json formateado para ser usado, sin mas respuesta de contexto. El modelo que espero es - {entrega: string "Nombre de persona", fecha: date, nmbRemito: number, items: {cantidad as stock: number, descripcion as partNumber: number, observaciones hay que ignorarla: number}}: "${ocrText}"`, 		
-        });
-        let cleanString = result.data[1][0][1].text
-          .replace(/```json/g, "")  
-          .replace(/```/g, "")      
-          .replace(/\n/g, "")      
-          .trim();                  
-
-        const jsonObject = JSON.parse(cleanString); 
-        return jsonObject;  
-    } catch (error) {
-        throw new Error("Error en la solicitud a Hugging Face: " + error);
-    }
-  };
-
   const handleFileChange = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
-  };
-
-  const readDataWithOCR = async () => {
-    if (!file) return;  
-    try {
-      const result = await Tesseract.recognize(file, 'spa', {
-        logger: (m) => console.log(m), // Log progress
-        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_BLOCK, // O usa otro valor como Tesseract.PSM.AUTO
-      });
-      const text = result.data.text;
-      const llmResult = await llmFormatImgData(text);
-      return llmResult;
-    } catch (error) {
-      throw new Error('Fallo el OCR: ' + error.message);
-    }
   };
 
   const formatDataInventoryToModelDB = (data, defaultCSR) => {
@@ -231,35 +193,6 @@ const deduplicateItems = (items) => {
         // ✅ aplicar deduplicación antes de enviar
         const deduped = deduplicateItems(collectionData);
         submit(deduped);
-
-      } else if (
-        fileType === "image/jpeg" ||
-        fileType === "image/png"
-      ) {
-        responseData = await readDataWithOCR();
-        possibleName(responseData.entrega);
-
-        previewDetail(
-          <CompactTable
-            columns={[
-              { label: "Part Number", renderCell: (item) => item.partNumber },
-              { label: "Stock", renderCell: (item) => item.stock },
-            ]}
-            data={{ nodes: responseData.items }}
-            theme={theme}
-            layout={{ fixedHeader: true }}
-          />
-        );
-
-        queryCSR = await askCSR();
-        const mapped = responseData.items.map((item) =>
-          formatDataInventoryToModelDB(item, queryCSR)
-        );
-
-        // ✅ aplicar deduplicación antes de enviar
-        const deduped = deduplicateItems(mapped);
-        submit(deduped);
-
       } else {
         throw new Error("Tipo de Archivo no permitido.");
       }

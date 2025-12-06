@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { TextField, InputAdornment, IconButton, Button } from "@mui/material";
+import { TextField, InputAdornment, IconButton, Button, Box } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import "./style.css";
 import logo from '../../ncr-logo.png';
 import logoMinified from '../../ncr-logo-minified.png';
 import { lazySearch } from '../../redux/actions/async';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 function NavBar({ minified }) {
@@ -34,6 +35,32 @@ function NavBar({ minified }) {
         className="App-logo"
         alt="Logo"
       />
+
+      <Box
+        sx={{
+          display: "flex",
+          gap: 2,
+          alignItems: "center",
+        }}
+      >
+        <Button
+          component={Link}
+          to="/"
+          variant="text"
+          sx={{ fontWeight: 500 }}
+        >
+          Inicio
+        </Button>
+
+        <Button
+          component={Link}
+          to="/log"
+          variant="text"
+          sx={{ fontWeight: 500 }}
+        >
+          Bitacora
+        </Button>
+      </Box>
       
       <TextField
         className="search"

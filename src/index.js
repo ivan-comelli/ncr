@@ -8,6 +8,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { Provider } from 'react-redux';
 import store from './redux/store'
+import { BrowserRouter } from 'react-router-dom';
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,7 +25,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </ThemeProvider>
 );
