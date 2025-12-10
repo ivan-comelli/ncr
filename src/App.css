@@ -62,6 +62,7 @@ width: 100%;
   padding-top: 1rem;
   gap: 1rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-top: 0.3rem solid #55b949;
 }
 
 .App > .aside {
@@ -128,3 +129,8 @@ width: 100%;
   color: rgb(128, 118, 160);
 }
 
+.section-wrap {
+  border-radius: 0;
+  background: #ffffff;
+  box-shadow: 0px 1px 3px 0px #e8e8e8;
+}

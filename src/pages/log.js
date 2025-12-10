@@ -11,11 +11,19 @@ import {
   Button,
   Stack,
   ToggleButton,
-  ToggleButtonGroup
+  ToggleButtonGroup,
+  Slider,
+  Checkbox,
+  FormControlLabel,
+  Tabs,
+  Tab,
+  Chip,
 } from "@mui/material";
 
+import SectionForm from "../components/Form/SectionForm";
+
 import { useForm, Controller } from "react-hook-form";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 //PROPIEDADES
 //Identificadores y dueño
@@ -110,370 +118,415 @@ import { useEffect } from "react";
 //verificacion de estado motor stepper
 //}/
 
-const equipos = [
+const mappingLayout = {
+  0: [2, 2],
+  1: [3, 1],
+  2: [2, 1, 1],
+  3: [4],
+  4: [2, 1, 1],
+  5: [4],
+  6: [4],
+  7: [4],
+  8: [4],
+  9: [4],
+  10: [4],
+  11: [4],
+  12: [4],
+  13: [4],
+  14: [4],
+  15: [4],
+  16: [4],
+  17:[4]
+};
+
+const inputClient = [
   {
-    anio: "", // Año puesta en producción
-    type: "TASI",
-    id: "ATM001",
-    serial: "SN-123456",
-    flag: "BNA",
-    suc: "100",
-    localidad: "Neuquen",
-    modelo: "Diebold Opteva",
-    modulos: [],
-    lectora: "",
-    biometria: "",
-    tactilCliente: "",
+    id: 0,
+    name: "terminalId",
+    label: "ID Dominio",
+    render: {
+      type: "TextField",
+    },
+  },
+  {
+    id: 1,
+    name: "client",
+    label: "Banco",
+    render: {
+      type: "AutoComplete",
+      options: [
+        { id: 1, label: "BBVA" },
+        { id: 2, label: "BNA" },
+        { id: 3, label: "BPN" },
+        { id: 4, label: "Galicia" },
+      ],
+    },
+  },
+  {
+    id: 2,
+    name: "location",
+    label: "Localidad",
+    render: {
+      type: "AutoComplete",
+      options: [
+        { id: 1, label: "Neuquen" },
+        { id: 2, label: "Cipolletti" },
+        { id: 3, label: "Plottier" },
+        { id: 4, label: "Rincon de los Sauces" },
+        { id: 5, label: "Cinco Saltos" },
+        { id: 6, label: "Vista Alegre" },
+        { id: 7, label: "Cordero" },
+        { id: 8, label: "Zapala" },
+        { id: 9, label: "Fernandez Oro" },
+        { id: 10, label: "General Roca" },
+        { id: 11, label: "Allen" },
+        { id: 12, label: "Centenario" },
+      ],
+    },
+  },
+  {
+    id: 3,
+    name: "numberBranch",
+    label: "Nº Sucursal",
+    render: {
+      type: "TextField",
+    },
   },
 ];
 
-const clients = [
-  { label: 'BBVA' },
-  { label: 'BNA' },
-  { label: 'BPN' },
-  { label: 'Galicia' },
+const inputSpecs = [
+   {
+    id: 4,
+    name: "serialNumber",
+    label: "Nº Serial",
+    render: {
+      type: 'TextField'
+    }
+  },
+  {
+    id: 5,
+    name: "terminalModel",
+    label: "Modelo",
+    render: {
+      type: 'Selector',
+      options: [
+        { id: 1, label: "6632" },
+        { id: 2, label: "6634" },
+        { id: 3, label: "6622" },
+        { id: 4, label: "6624" },
+      ]
+    }
+  },
+  {
+    id: 6,
+    name: "cpuModel",
+    label: "CPU",
+    render: {
+      type: 'Selector',
+      options: [
+        { id: 1, label: "Talladega" },
+        { id: 2, label: "Pocono" },
+        { id: 3, label: "Estoril" },
+        { id: 4, label: "Misano" },
+      ]
+    }
+  },
+  {
+    id: 7,
+    name: "deviceSetting",
+    label: "Modulos",
+    render: {
+      type: "Selector",
+      options:[
+        { id: 1, label: "S1" },
+        { id: 2, label: "S2" },
+        { id: 3, label: "BNA3" },
+        { id: 4, label: "GBRU" },
+        { id: 5, label: "BRM" },
+        { id: 6, label: "SRU" },
+        { id: 7, label: "SCPM" },
+        { id: 8, label: "SCPM2" },
+        { id: 9, label: "Sobres" },
+      ]
+    },
+  },
+  {
+    id: 8,
+    name: "settingRed",
+    label: "Red",
+    render: {
+      type: "ToggleButton",
+      options: [
+        {id: 1, label: "Red Propia"},
+        {id: 2, label: "Banelco"},
+        {id: 3, label: "Link"}
+      ]
+    }
+  },
+  {
+    id: 9,
+    name: "settingType",
+    label: "Tipo",
+    render: {
+      type: "ToggleButton",
+      options: [
+        {id: 1, label: "ATM"},
+        {id: 2, label: "TASI"},
+      ]
+    }
+  },
+  {
+    id: 10,
+    name: "siteInfraestructure",
+    label: "Sitio",
+    render: {
+      type: "ToggleButton",
+      options: [
+        {id: 1, label: "Neutral"},
+        {id: 2, label: "Sucursal"},
+      ]
+    }
+  },
 ];
 
-const models = [
-  { label: '6632' },
-  { label: '6634' },
-  { label: '6622' },
-  { label: '6624' },
+const inputPresenterS1 = [
+  {
+    id: 11,
+    name: "pressurePump",
+    label: "Presion de Bomba",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 12,
+    name: "presenterBelt",
+    label: "Correas Presentador en Buen Estado",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 13,
+    name: "ldvtDrive",
+    label: "Engranaje en Buen Estado",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 14,
+    name: "ldvtStatus",
+    label: "Estado general LVDT",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 15,
+    name: "motorClamp",
+    label: "Estado Motor Clamp",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 16,
+    name: "capacitorStatus",
+    label: "Capacitor en Buen Estado",
+    render: {
+      type: 'CheckBox'
+    }
+  }
 ]
 
-const prodType = [
-  { label: 'ATM' },
-  { label: 'TASI' },
+const inputPickAriaS1 = [
+  {
+    id: 17,
+    name: "verticalBelt",
+    label: "Estado Correa Verticales",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 18,
+    name: "sensorLow",
+    label: "Integridad Sensor Low Bill",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 19,
+    name: "interfacePCB",
+    label: "Estado Placa de Interface",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 20,
+    name: "solenoidStatus",
+    label: "Estado Solenoide",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 21,
+    name: "gearDriveStatus",
+    label: "Estado Engranajes de Transmicion",
+    render: {
+      type: 'CheckBox'
+    }
+  },
+  {
+    id: 22,
+    name: "pickLineStatus",
+    label: "Estado Sistema de Piqueo",
+    render: {
+      type: 'CheckBox'
+    }
+  },
 ]
 
-const red = [
-  { label: 'Red Propia' },
-  { label: 'Banelco' },
-  { label: 'Link' },
+const inputResultS1 = [
+    {
+    id: 23,
+    name: "resultStatusS1",
+    label: "Estado Resultante",
+    render: {
+      type: 'Ranking'
+    }
+  }
 ]
-
-const locations = [
-  { label: 'Neuquen' },
-  { label: 'Cipolletti' },
-  { label: 'Plottier' },
-  { label: 'Rincon de los Sauces' },
-  { label: 'Cinco Saltos' },
-  { label: 'Vista Alegre' },
-  { label: 'Cordero' },
-  { label: 'Zapala' },
-  { label: 'Fernandez Oro' },
-  { label: 'General Roca' },
-  { label: 'Allen' },
-  { label: 'Centenario' },
-];
 
 export default function PasoPropiedades() {
-  const { register, control, handleSubmit, setValue, watch, formState: { errors } } = useForm({
-    defaultValues: { id: "", client: null, location: null },
+  const {
+    register,
+    control,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { terminalId: "", client: null, location: null, deviceSetting: [] },
   });
 
-  const onSubmit = (data) => {
-    console.log('Seleccionado:', data);
+  const [tab, setTab] = useState(0);
+
+  const getInputsWithLevel = (inputs, mapping) => {
+    const flatLayout = Object.values(mapping).flat();
+
+    return inputs.map((input) => {
+      const level = flatLayout[input.id];
+      return {
+        ...input,
+        level,
+      };
+    });
   };
 
-  const idValue = watch("id");
+  const handleChange = (_, newValue) => {
+    setTab(newValue);
+  };
+
+  const onSubmit = (data) => {
+    console.log("Seleccionado:", data);
+  };
+
+  const idValue = watch("terminalId");
+  const deviceSettingValue = watch("deviceSetting");
 
   useEffect(() => {
-    if(idValue !== String(idValue).toUpperCase()) {
-      setValue("id", String(idValue).toUpperCase())
+    console.log(deviceSettingValue)
+  }, [deviceSettingValue]);
+
+  useEffect(() => {
+    if (idValue !== String(idValue).toUpperCase()) {
+      setValue("terminalId", String(idValue).toUpperCase());
     }
-  }, [idValue]); 
+  }, [idValue]);
   //Me interesa capturar la informacion tanto del estado previo como el del posterior al mantenimiento
   //Por eso se requiere precision en detallo como se encontro
   //Y segun el procedimiento que establecio a seguir sin mucho detalle se entiende que se arreglaron todos los detalles mencionados anteriormente
   return (
     <Box className="container" spacing={2} sx={{ width: "100%", m: 0 }}>
-      <Typography className="form-header" variant="h5">
+      <Typography className="form-header" variant="h5" marginBottom={"1rem"}>
         Administracion
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={3}>
-          <Grid className="section-wrap" data-section="client"
-            container
-            columnSpacing={2}
-            size={12}
-          >
-            <Grid size={{ md: 2, lg: 4 }} className="subtitle-wrap">
-              <Typography variant="subtitle1">Cliente</Typography>
-            </Grid>
-            <Grid size="grow" className="content-wrapper">
-              <Stack spacing={2}>
-                <Grid container className="1/2-row" columnSpacing={2}>
-                  <Grid size={6} className="field-cell" data-field="ID">
-                    <TextField
-                      label="ID"
-                      size="small"
-                      fullWidth
-                      {...register("id", { required: "El ID es obligatorio"})}
-                      error={!!errors.id} // true si hay error
-                      helperText={errors.id?.message} // mensaje del error
-                    />
-                  </Grid>
-                  <Grid size={6} className="field-cell" data-field="Banco">
-                    <Controller
-                      name="client"
-                      control={control}
-                      rules={{ required: 'Campo requerido' }}
-                      render={({ field, fieldState }) => (
-                        <Autocomplete
-                          {...field}
-                          options={clients}
-                          freeSolo
-                          getOptionLabel={(option) => (option.label ? option.label : "")}
-                          onChange={(_, value) => {
-                            if(value) {
-                              const matches = clients.filter(c =>
-                                String(c.label).toLowerCase().includes(String(value.label || value).toLowerCase())
-                              );
-                              if (matches.length === 1) {
-                                field.onChange(matches[0]); // selecciona automáticamente
-                              } else {
-                                field.onChange(null); // ningún match
-                              }
-                            }
-                            else {
-                              field.onChange(null)
-                            }
-                            
-                          }}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              label="Banco"
-                              size="small"
-                              error={!!fieldState.error}
-                              helperText={fieldState.error?.message}
-                            />
-                          )}
-                        />
-                      )}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container className="1/3-row" columnSpacing={2}>
-                  <Grid size={8} className="field-cell" data-field="Localidad">
-                    <Controller
-                      name="location"
-                      control={control}
-                      rules={{ required: 'Campo requerido' }}
-                      render={({ field, fieldState }) => (
-                        <Autocomplete
-                          {...field}
-                          options={locations}
-                          freeSolo
-                          getOptionLabel={(option) => (option.label ? option.label : "")}
-                          onChange={(_, value) => {
-                            if(value) {
-                              const matches = locations.filter(c =>
-                                String(c.label).toLowerCase().includes(String(value.label || value).toLowerCase())
-                              );
-                              if (matches.length === 1) {
-                                field.onChange(matches[0]); // selecciona automáticamente
-                              } else {
-                                field.onChange(null); // ningún match
-                              }
-                            }
-                            else {
-                              field.onChange(null)
-                            }
-                            
-                          }}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              label="Localidad"
-                              size="small"
-                              error={!!fieldState.error}
-                              helperText={fieldState.error?.message}
-                            />
-                          )}
-                        />
-                      )}
-                    />
-                  </Grid>
-                  <Grid size={4} className="field-cell" data-field="Branch">
-                    <TextField
-                      label="Nº Sucursal"
-                      size="small"
-                      fullWidth
-                      {...register("branch", { required: "La sucursal es obligatorio"})}
-                      error={!!errors.id} // true si hay error
-                      helperText={errors.id?.message} // mensaje del error
-                    />
-                  </Grid>
-                </Grid>
-              </Stack>
-            </Grid>
-          </Grid>
-          <Grid className="section-wrap" data-section="specs"
-            container
-            columnSpacing={2}
-            size={12}
-          >
-            <Grid size={{ md: 2, lg: 4 }} className="subtitle-wrap">
-              <Typography variant="subtitle1">Especificaciones</Typography>
-            </Grid>
-            <Grid size="grow" className="content-wrapper">
-              <Stack spacing={2}>
-                <Grid container className="1/2-row" columnSpacing={2}>
-                  <Grid size={6} className="field-cell" data-field="serial">
-                    <TextField
-                      label="Nº Serial"
-                      size="small"
-                      fullWidth
-                      {...register("serial", { required: "El serial es obligatorio"})}
-                      error={!!errors.id} // true si hay error
-                      helperText={errors.id?.message} // mensaje del error
-                    />
-                  </Grid>
-                  <Grid size={6} className="field-cell" data-field="model">
-                    <Controller
-                      name="model"
-                      control={control}
-                      rules={{ required: 'Campo requerido' }}
-                      render={({ field, fieldState }) => (
-                        <Autocomplete
-                          {...field}
-                          options={models}
-                          freeSolo
-                          getOptionLabel={(option) => (option.label ? option.label : "")}
-                          onChange={(_, value) => {
-                            if(value) {
-                              const matches = models.filter(c =>
-                                String(c.label).toLowerCase().includes(String(value.label || value).toLowerCase())
-                              );
-                              if (matches.length === 1) {
-                                field.onChange(matches[0]); // selecciona automáticamente
-                              } else {
-                                field.onChange(null); // ningún match
-                              }
-                            }
-                            else {
-                              field.onChange(null)
-                            }
-                            
-                          }}
-                          renderInput={(params) => (
-                            <TextField
-                              {...params}
-                              label="Modelo"
-                              size="small"
-                              error={!!fieldState.error}
-                              helperText={fieldState.error?.message}
-                            />
-                          )}
-                        />
-                      )}
-                    />
-                  </Grid>
-                </Grid>
-                <Grid container className="row" columnSpacing={2}>
-                  <Grid size={6} className="field-cell" data-field="red">
-                    <Typography variant="body2" sx={{ mb: 0.5 }}>
-                      Red
-                    </Typography>
-                    <Controller
-                      name="network"
-                      control={control}
-                      defaultValue=""
-                      rules={{ required: "Seleccioná una red" }}
-                      render={({ field, fieldState }) => (
-                        <ToggleButtonGroup
-                          exclusive
-                          value={field.value}
-                          onChange={(_, value) => {
-                            if (value !== null) field.onChange(value);
-                          }}
-                          size="small"
-                          color={fieldState.error ? "error" : "primary"}
-                        >
-                          <ToggleButton value="propia">Red Propia</ToggleButton>
-                          <ToggleButton value="banelco">Banelco</ToggleButton>
-                          <ToggleButton value="link">Link</ToggleButton>
-                        </ToggleButtonGroup>
-                      )}
-                    />
-                    
-                    {errors.network && (
-                      <Typography variant="caption" color="error">
-                        {errors.network.message}
-                      </Typography>
-                    )}
-                  </Grid>  
-                  <Grid size={2} className="field-cell" data-field="type">
-                    <Typography variant="body2" sx={{ mb: 0.5 }}>
-                      Tipo
-                    </Typography>
-                    <Controller
-                      name="network"
-                      control={control}
-                      defaultValue=""
-                      rules={{ required: "Seleccioná una red" }}
-                      render={({ field, fieldState }) => (
-                        <ToggleButtonGroup
-                          exclusive
-                          value={field.value}
-                          onChange={(_, value) => {
-                            if (value !== null) field.onChange(value);
-                          }}
-                          size="small"
-                          color={fieldState.error ? "error" : "primary"}
-                        >
-                          <ToggleButton value="atm">ATM</ToggleButton>
-                          <ToggleButton value="tasi">TASI</ToggleButton>
-                        </ToggleButtonGroup>
-                      )}
-                    />
-                    
-                    {errors.network && (
-                      <Typography variant="caption" color="error">
-                        {errors.network.message}
-                      </Typography>
-                    )}
-                  </Grid>   
-                  <Grid size={2} className="field-cell" data-field="type">
-                    <Typography variant="body2" sx={{ mb: 0.5 }}>
-                      Sitio
-                    </Typography>
-                    <Controller
-                      name="network"
-                      control={control}
-                      defaultValue=""
-                      rules={{ required: "Seleccioná una red" }}
-                      render={({ field, fieldState }) => (
-                        <ToggleButtonGroup
-                          exclusive
-                          value={field.value}
-                          onChange={(_, value) => {
-                            if (value !== null) field.onChange(value);
-                          }}
-                          size="small"
-                          color={fieldState.error ? "error" : "primary"}
-                        >
-                          <ToggleButton value="atm">Sucursal</ToggleButton>
-                          <ToggleButton value="tasi">Neutral</ToggleButton>
-                        </ToggleButtonGroup>
-                      )}
-                    />
-                    
-                    {errors.network && (
-                      <Typography variant="caption" color="error">
-                        {errors.network.message}
-                      </Typography>
-                    )}
-                  </Grid>          
-                </Grid>
-              </Stack>
-            </Grid>
-          </Grid>
+          <SectionForm
+            register={register}
+            control={control}
+            section={{ name: "Cliente", label: "El Cliente" }}
+            inputs={getInputsWithLevel(inputClient, mappingLayout)}
+          />
+          <SectionForm
+            register={register}
+            control={control}
+            section={{ name: "Specs", label: "Especificaciones" }}
+            inputs={getInputsWithLevel(inputSpecs, mappingLayout)}
+          />
+          { deviceSettingValue.length != 0 ? (
+            <Box sx={{ width: "100%" }}>
+              {/**
+              { id: 1, label: "S1" },
+              { id: 2, label: "S2" },
+              { id: 3, label: "BNA3" },
+              { id: 4, label: "GBRU" },
+              { id: 5, label: "BRM" },
+              { id: 6, label: "SRU" },
+              { id: 7, label: "SCPM" },
+              { id: 8, label: "SCPM2" },
+              { id: 9, label: "Sobres" },*/}
+              <Tabs value={tab} onChange={handleChange}>
+                { deviceSettingValue.map(item => (
+                  <Tab value={item.id} label={item.label} />
+                ))
+                }
+              </Tabs>
+
+              {tab === 1 && (
+                <Stack spacing={3}>
+                  <SectionForm
+                    register={register}
+                    control={control}
+                    section={{ name: "presenter", label: "Presentador" }}
+                    inputs={getInputsWithLevel(inputPresenterS1, mappingLayout)}
+                  />
+                  <SectionForm
+                    register={register}
+                    control={control}
+                    section={{ name: "pickAria", label: "Pick Aria" }}
+                    inputs={getInputsWithLevel(inputPickAriaS1, mappingLayout)}
+                  />
+                  <SectionForm
+                    register={register}
+                    control={control}
+                    section={{ name: "eval", label: "Evaluacion" }}
+                    inputs={getInputsWithLevel(inputResultS1, mappingLayout)}
+                  />
+                </Stack>
+              )}
+              {tab === 2 && <Box sx={{ p: 2 }}>Contenido Gabinete</Box>}
+              {tab === 3 && <Box sx={{ p: 2 }}>Contenido Mantenimiento</Box>}
+            </Box>
+          ) : <></>}
         </Stack>
-        <Button variant="text" type="submit" sx={{position:"absolute", bottom:"1rem", right:"1rem"}}>Enviar</Button>
+        <Button
+          variant="text"
+          type="submit"
+          sx={{ position: "absolute", bottom: "1rem", right: "1rem" }}
+        >
+          Enviar
+        </Button>
       </form>
     </Box>
   );
 }
+
+//Pienso que unas de las reglas para contruir la proporcion de las rows. va de la mano de que campo es tonica o importante mas que otro
+//Entonces seria identificar cuantas columnas se necesitan y que rol cumple cada una

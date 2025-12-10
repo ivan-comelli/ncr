@@ -1,5 +1,4 @@
 import { arrayUnion, collection, writeBatch, doc, getDocs, getDoc, deleteDoc, setDoc, Timestamp, documentId, updateDoc, where, query, or } from "firebase/firestore";
-import { db } from '../../../db/firebase';
 import dbData from '../../../db/output.json';
 
 import { 
@@ -25,78 +24,6 @@ const STATUS = {
   DONE: "DONE",
   SYNC: "SYNC",
   ISSUE: "ISSUE"
-}
-
-async function setStockToSomePart(refStock, newStock) {
-  console.log(`Set Stock ${newStock.quantity} On State ${newStock.status}`)
-  const batch = writeBatch(db);
-  
-  try {
-      if(!refStock) {
-          throw new Error("No hay referencia para actualizar");
-      }
-      batch.set(refStock, {
-          quantity: newStock.quantity || 0,
-          status: newStock.status,
-          csr: "default",
-          name: "default",
-          note: newStock.note || "",
-          lastUpdate: Timestamp.now()
-
-      });
-      console.log(refStock)
-      batch.set(doc(db,'Inventory', refStock.parent.parent.id), {
-        lastUpdate: Timestamp.now()
-      }, {merge: true});
-  } catch(error) {
-      throw new Error("No se pudo agregar el stock: " + error.message);
-  }
-  batch.commit();
-  return batch;
-}
-
-async function initTechnicianToSomePart(refInventory, batch) {
-  try {
-      console.log(`Initialization technician of inventory ${refInventory.id}:`);
-      options.forEach((item) => {
-              let docTech = doc(collection(refInventory, "technicians"), `${refInventory.id}-${item.csr.toLowerCase()}`);
-              console.log(`Init ${item.name} in ${docTech.id}`);
-              batch.set(docTech, {
-                  name: item.name,
-                  csr: item.csr.toLowerCase()
-              }, {merge: true});
-      })
-  }
-  catch(e) {
-
-  }
-  return batch
-
-}
-
-async function setTechnicianToSomePart(refTechnician, newTechnician, batch) {
-  try {
-      if(!refTechnician) {
-          console.error("Not Exist Reference to Update");
-          throw new Error("No hay referencia para actualizar");
-      }
-
-      console.log(`Setting tech ${newTechnician.csr.toLowerCase()} in reference ${refTechnician.id} for ${newTechnician.ppk}`);
-
-      batch.set(refTechnician, {
-          ...newTechnician,
-          csr: newTechnician.csr.toLowerCase(),
-          ...(newTechnician.onHand && {onHand: newTechnician.onHand}),
-          ...(newTechnician.ppk && {ppk: newTechnician.ppk}),
-          lastUpdate: Timestamp.now()
-      }, 
-      { merge: true });
-  } catch(error) {
-      throw new Error("No se pudo agregar al tecnico: " + error.message);
-  }
-  finally {
-    return batch;
-  }
 }
 
 function mergeResults(res1, res2) {
@@ -130,7 +57,6 @@ function mergeResults(res1, res2) {
 
   return Array.from(map.values());
 }
-
 
 function parseMutations(mutations, dispatch) {
   //HACER MERGE DE MUTACIONES EN STOCK Y TECNICOS SOBRE ITEM DE CATALOGO REPETIDOS
@@ -238,50 +164,6 @@ function parseMutations(mutations, dispatch) {
     console.groupEnd();
     return formatData;
 }  
-
-async function updateGeneralSettings(batch) {
-  await batch.commit();
-  const lastUpdateFlag = doc(db, 'config', 'generalSettings');
-  await setDoc(lastUpdateFlag, { lastUpdate: Timestamp.now() });
-}
-
-async function getOrCreateInventoryRef(batch, catalogId) {
-      try {
-        const q = query(collection(db, "Inventory"), where(documentId(), "==", catalogId));
-        const allDocs = await getDocs(q);
-        let inventoryDoc;
-
-        if (allDocs.size > 1) {
-            throw {
-                code: "multiple-docs",
-                message: `Se encontraron múltiples coincidencias con catalogId=${catalogId}`
-            };
-        }
-
-        if(allDocs.empty) {
-          inventoryDoc = {
-            id: catalogId,
-            ref: doc(db, 'Inventory', catalogId)
-          }
-          await initTechnicianToSomePart(inventoryDoc.ref, batch);
-        }
-        else {
-          inventoryDoc = allDocs.docs[0];
-        }
-      
-        return inventoryDoc;
-
-    } catch (error) {
-        if (!error.code) {
-            error = {
-              code: "internal-error",
-              message: error.message || "Error inesperado al buscar el inventario"
-            };
-          }
-          console.error(`[${error.code}] ${error.message}`);
-          throw error;
-    }
-}
   
 async function processSingleInventoryItem(batch, item) {
   try {
@@ -298,13 +180,13 @@ async function processSingleInventoryItem(batch, item) {
       idRef = matchDB.id;
     }
     console.log(`Reference of Inventory is: ${idRef}`)
-    const snapDocInventory = await getOrCreateInventoryRef(batch, idRef);
+    const refInventory = await getOrCreateInventoryRef(batch, idRef);
 
     if(item.technician && Object.keys(item.technician).length) {
-      batch = await setTechnicianToSomePart(doc(collection(snapDocInventory.ref, "technicians"), `${snapDocInventory.id}-${item.technician.csr.toLowerCase()}`), item.technician, batch);
+      batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians"), `${idRef}-${item.technician.csr.toLowerCase()}`), item.technician, batch);
     }
 
-    batch.set(snapDocInventory.ref, {
+    batch.set(refInventory, {
         ...(item.reWork !== undefined && { reWork: item.reWork }),
         ...(item.cost !== undefined && { cost: item.cost }),
         lastUpdate: Timestamp.now()

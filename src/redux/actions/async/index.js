@@ -21,94 +21,11 @@ const STATUS = {
     ISSUE: "ISSUE"
   }
   
-export async function getTechnicianOfSomePart(refInventory, identity) {
-    let response = null;
-    try {
-        if(!refInventory) {
-            throw new Error("No hay referencia de la parte para actualizar");
-        }
-        const technicianCollectionRef = collection(refInventory, "technicians");
-        let technicianSnapshot = null;
-        if(identity){
-            const qTechnician = query(technicianCollectionRef, or(where("csr", "==", identity.csr), where("name", "==", identity.name)));
-            technicianSnapshot = await getDocs(qTechnician);
-        }
-        else {
-            technicianSnapshot = await getDocs(technicianCollectionRef);
-        }
-        if (technicianSnapshot.size > 1 && identity) {
-            throw new Error("Hay mas de una coincidencia.");
-        }
-        response = technicianSnapshot.docs.map(doc => {
-            return {
-                id: doc.id, // Incluye el ID del documento si es necesario
-                ...doc.data() // Extrae los datos del documento
-            }
-        });
-    } catch(error) {
-        throw new Error("No se pudo obtener el tecnico, " + error.message);
-    }
-    return response;
-}
 
-export async function getAllStockOfSomePart(refInventory) {
-    //Aqui se debe calcular la sumatoria por cada CSR presente y la total de todas
-    try {
-        if(!refInventory) {
-            throw new Error("No hay referencia de la parte para actualizar");
-        }
-        const stockCollectionRef = collection(refInventory, "stock");
-        const stockSnapshot = await getDocs(stockCollectionRef);
-        if (stockSnapshot.empty) {
-            return {
-                total: 0,
-                detail: []
-            };
-        }
-        let balance = [];
-        let commonCount = 0;
-        stockSnapshot.docs.forEach((doc) => {
-            switch (doc.data().status) {
-                case STATUS.PENDIENT:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.FAILED:
-                    commonCount = commonCount + 0;
-                break;
-                case STATUS.SYNC:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.ADJUST:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.ISSUE:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.DONE:
-                     commonCount = commonCount + 0;
-                break;
-                default:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                        
-            }
-            balance.push({
-                id: doc.id,
-                stock: Number(doc.data().quantity),
-                status: doc.data().status,
-                note: doc.data().note,
-                lastUpdate: doc.data().lastUpdate,
-            });
-        });
-        return {
-            total: commonCount,
-            detail: balance
-        };
-    } catch(error) {
-        throw new Error("No se pudo obtener el stock, " + error.message);
-    }
-}
 
+
+
+//Aca hay logica de servicio que tengo que migrar, pero si es un action
 export function fetchAllInventory() {
   return async (dispatch) => {
     try {
