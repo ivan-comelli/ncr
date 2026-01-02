@@ -1,4 +1,3 @@
-import { arrayUnion, collection, writeBatch, doc, getDocs, getDoc, deleteDoc, setDoc, Timestamp, documentId, updateDoc, where, query, or } from "firebase/firestore";
 import dbData from '../../../db/output.json';
 
 import { 
@@ -10,21 +9,7 @@ import {
     deleteStockOP,
 } from '../sync';
 
-const options = [
-  { name: "Diego Molina", csr: "AR103S42" },
-  { name: "Nahuel DeLuca", csr: "AR103S44" },
-  { name: "Juan Valenzuela", csr: "AR103S46" },
-  { name: "Ivan Comelli", csr: "AR903S48" }
-];
-
-const STATUS = {
-  PENDIENT: "PENDIENT",
-  FAILED: "FAILED",
-  ADJUST: "ADJUST",
-  DONE: "DONE",
-  SYNC: "SYNC",
-  ISSUE: "ISSUE"
-}
+import { InventoryFirestoreService } from "../../../services/firestoreInventory";
 
 function mergeResults(res1, res2) {
   const map = new Map();
@@ -165,59 +150,9 @@ function parseMutations(mutations, dispatch) {
     return formatData;
 }  
   
-async function processSingleInventoryItem(batch, item) {
-  try {
-    console.log(item)
-    let idRef;
-    const matchDB = dbData.find(ref => 
-      ref.pn.some(pn => item.partNumber.includes(pn))
-    );
-    console.log(matchDB)
-    if (!matchDB) {
-      idRef = item.partNumber;
-    }
-    else {
-      idRef = matchDB.id;
-    }
-    console.log(`Reference of Inventory is: ${idRef}`)
-    const refInventory = await getOrCreateInventoryRef(batch, idRef);
 
-    if(item.technician && Object.keys(item.technician).length) {
-      batch = await setTechnicianToSomePart(doc(collection(refInventory, "technicians"), `${idRef}-${item.technician.csr.toLowerCase()}`), item.technician, batch);
-    }
 
-    batch.set(refInventory, {
-        ...(item.reWork !== undefined && { reWork: item.reWork }),
-        ...(item.cost !== undefined && { cost: item.cost }),
-        lastUpdate: Timestamp.now()
-    }, { merge: true });
-
-  } catch (error) {
-      throw {
-          code: "batch-set-failed",
-          message: "No se pudo agregar la parte: " + (error.message || error)
-      };
-  }
-}
-
-async function processInventoryData(batch, data, dispatch) {
-    let index = 1;
-    let members = [];
-    for (const item of data) {
-      console.groupCollapsed(`Iteration: ${index}`);
-      if(!members.includes(item.technician.csr.toLowerCase())) {
-        members.push(item.technician.csr.toLowerCase())
-      }
-      await processSingleInventoryItem(batch, item);
-      dispatch(setStepLoader(Math.floor((index / data.length) * 100)));
-      index ++;
-      console.groupEnd();
-    }
-    const type = data[0].type;
-
-    return { membersMuted: members, flagType: type };
-}
-  
+//Hay que ver de hacer una inteface con lo datos que pueden llegar del CSV
 export function dispatchBulkInventory(data) {
     return async (dispatch) => {
       console.groupCollapsed("Start Dispatch in Bulk Inventory Parts...");
@@ -227,10 +162,12 @@ export function dispatchBulkInventory(data) {
         return;
       }
       dispatch(dispatchInventoryStart(false));
-      let batch = writeBatch(db);
+      let serviceInventory = new InventoryFirestoreService();
       try {
-        let {membersMuted, flagType} = await processInventoryData(batch, data, dispatch);
-        await updateGeneralSettings(batch);
+        let {membersMuted, flagType} = await processInventoryData(data, (index) => {
+          dispatch(setStepLoader(Math.floor((index / inventoryData.length) * 100)));
+        });
+        await updateGeneralSettings();
         const parsed = parseMutations(batch._mutations, dispatch);
         //primero recorremos todo el inventario y cada tecnico que haga una mutacion se inserta en el objeto modelo de abajo
         //ademas de crear una bandera para señalar que tecnicos estan involucrados.
@@ -245,6 +182,12 @@ export function dispatchBulkInventory(data) {
         let restDataId = [];
         let lessTecMutations = []
 
+        //Entiendo que aqui busco saber cuales items no se modificaron con el archivo
+        //por ende hay que dejar en 0 los contadores ya que no son actualizaciones merge
+
+        //MUCHA LOGICA DE ACA SE VA RELACIONADA CON EL WIPE DE PARTES NO ACTUALIZADAS
+        //TAMBIEN VA HABER UN NUEVO CONCEPTO DE HASH PARA DETECTAR CAMBIOS
+        
         parsed.forEach((item) => {
           restDataId.push(item.id);
           membersMuted.forEach(members => {

@@ -4,5 +4,8 @@ export interface TechnicianOption {
 }
 
 export const technicianOption: TechnicianOption[] = [
-//Necesito los Datos de mi Equipo
+    { name: "Diego Molina", csr: "AR103S42" },
+    { name: "Nahuel DeLuca", csr: "AR103S44" },
+    { name: "Juan Valenzuela", csr: "AR103S46" },
+    { name: "Ivan Comelli", csr: "AR903S48" }
 ];

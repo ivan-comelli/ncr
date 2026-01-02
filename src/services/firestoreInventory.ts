@@ -1,296 +1,200 @@
 import {
-    writeBatch,
+    Firestore,
     DocumentReference,
+    WriteBatch,
     Timestamp,
     doc,
-    Firestore,
-    WriteBatch,
     collection,
-    QueryDocumentSnapshot,
-    FirestoreDataConverter,
-    DocumentSnapshot,
-    DocumentData,
     getDoc,
-    setDoc,
-    query,
     getDocs,
-    or,
+    query,
     where,
+    or,
+    writeBatch,
+    setDoc,
+    FirestoreDataConverter,
+    QueryDocumentSnapshot,
     SnapshotOptions,
-    CollectionReference,
+    DocumentData,
     QuerySnapshot
 } from "firebase/firestore";
 
-import { db } from '../db/firebase';
-import { StockModel, TechnicianModel, InventoryModel } from "../types";
-import { technicianOption, TechnicianOption } from "../constant";
+import {
+    StockModel,
+    TechnicianModel,
+    InventoryModel
+} from "../types/modelType";
 
-export const inventoryConverter: FirestoreDataConverter<InventoryModel> = {
-    toFirestore(data: InventoryModel): DocumentData {
-        return data;
-    },
+import { StockDTO } from "../types/dtoType";
+import { technicianOption } from "../constant";
 
-    fromFirestore(snapshot: QueryDocumentSnapshot): InventoryModel {
-        return snapshot.data() as InventoryModel;
+import { db } from "../db/firebase";
+
+/*
+*   Es muy favorable el hecho de que este servicio sea una clase porque hay muchos estados globales que necesito
+*   En el constructor debo hacer un fetch de los hash para detectar versiones
+*   Tambien consultar la black list de idCatalog ya usados
+*/
+
+export class InventoryFirestoreService {
+    private batch: WriteBatch;
+
+    constructor() {
+        this.batch = writeBatch(db);
     }
-};
 
-export const technicianConverter: FirestoreDataConverter<TechnicianModel> = {
-    toFirestore(data: TechnicianModel): DocumentData {
-        const { id, ...rest } = data; // evitamos guardar id en Firestore
-        return rest;
-    },
+    /* ==========================
+       Converters (privados)
+    ========================== */
 
-    fromFirestore(
-        snapshot: QueryDocumentSnapshot,
-        options: SnapshotOptions
-    ): TechnicianModel {
-        const data = snapshot.data(options);
-        return {
-            id: snapshot.id,   // acá recuperamos el id real del documento
-            ...data
-        } as TechnicianModel;
-    }
-};
+    private inventoryConverter: FirestoreDataConverter<InventoryModel> = {
+        toFirestore: (data) => data,
+        fromFirestore: (snap) => snap.data() as InventoryModel
+    };
 
-/**
- * Los Document Reference, deberian tener el generico seteado y las interfaces de los modelos DB creados de forma correspondiente.
- * Reevaluar como se gestionan las banderas de cambio de estado en la base de datos. Por el sistema de Sync eficiente.
- */
+    private technicianConverter: FirestoreDataConverter<TechnicianModel> = {
+        toFirestore: ({ id, ...rest }: TechnicianModel) => rest,
+        fromFirestore: (snap, options) => ({
+            id: snap.id,
+            ...snap.data(options)
+        }) as TechnicianModel
+    };
 
+    private stockConverter: FirestoreDataConverter<StockDTO> = {
+        toFirestore: ({ id, ...rest }: StockModel) => rest,
+        fromFirestore: (snap, options) => ({
+            id: snap.id,
+            ...snap.data(options)
+        }) as StockDTO
+    };
 
-/**
- * Primitivamente esta funcion permite setear los imbalances entre el onHand y el stock fisico.
- * El onHand va ser calculado por las diferencias detectadas entre sincronizacion y estado onHand registradas en la coleccion stock.
- * Debo setear a que tecnico corresponde.
- * Debo resguardar que numero de parte tiene en el legajo.
- * Cada cierta cantidad de tiempo se unifican registros para liberar espacio, como tambien se descargan los detalles para analisis de datos.
- */
+    /* ==========================
+       Inventory
+    ========================== */
 
-export async function setStockToSomePart(
-    refStock: DocumentReference<StockModel>,
-    newStock: Partial<StockModel>,
-    db: Firestore
-): Promise<WriteBatch> {
-    const batch = writeBatch(db);
+    async getOrCreateInventoryRef(
+        catalogId: string
+    ): Promise<DocumentReference<InventoryModel>> {
+        const ref = doc(db, "Inventory", catalogId)
+            .withConverter(this.inventoryConverter);
 
-    try {
-        // Set del stock interno
-        batch.set(refStock, {
-            quantity: newStock.quantity,
-            status: newStock.status,
-            csr: newStock.csr,
-            note: newStock.note ?? "",
-            lastUpdate: Timestamp.now(),
-        });
+        const snap = await getDoc(ref);
 
-        // Acceso al documento padre (Inventory > item)
-        const parentId = refStock.parent?.parent?.id;
-        if (parentId) {
-            const parentRef = doc(db, "Inventory", parentId);
-            batch.set(parentRef, { lastUpdate: Timestamp.now() }, { merge: true });
+        if (!snap.exists()) {
+            await this.initTechnicians(ref);
         }
-    } catch (error: any) {
-        throw new Error("No se pudo agregar el stock: " + error.message);
+
+        return ref;
     }
 
-    await batch.commit();
-    return batch;
-}
-
-/**
- * Se Inicializa intanciando todos los tecnicos del equipo, para evitar huecos en las estructura de datos cuando se crea un nuevo documento en inventory.
- */
-
-export async function initTechnicianToSomePart(
-    refInventory: DocumentReference<InventoryModel>,
-    batch: WriteBatch,
-): Promise<WriteBatch> {
-    try {
-        console.log(`Initialization technician of inventory ${refInventory.id}:`);
-
+    private async initTechnicians(
+        refInventory: DocumentReference<InventoryModel>,
+    ): Promise<void> {
         technicianOption.forEach((tec) => {
-            const docTech = doc(
+            const techRef = doc(
                 collection(refInventory, "technicians"),
                 `${refInventory.id}-${tec.csr.toLowerCase()}`
             );
 
-            console.log(`Init ${tec.name} in ${docTech.id}`);
-
-            batch.set(
-                docTech,
-                {
-                    csr: tec.csr.toLowerCase(),
-                },
+            this.batch.set(
+                techRef,
+                { csr: tec.csr.toLowerCase() },
                 { merge: true }
             );
         });
-    } catch (e) {
-        console.error(e);
     }
 
-    return batch;
-}
+    /* ==========================
+       Technicians
+    ========================== */
 
-/**
- * Sencillamente setea los cambios sobre documentos de la coleccion de tecnicos, el unico problema es que se prevee la posibilidad de guardar datos precalculados que tengo que tener en cuenta.
- */
+    async getTechnicians(
+        refInventory: DocumentReference<InventoryModel>,
+        csr?: string
+    ): Promise<TechnicianModel[]> {
+        const colRef = collection(refInventory, "technicians")
+            .withConverter(this.technicianConverter);
 
-export async function setTechnicianToSomePart(
-    refTechnician: DocumentReference<TechnicianModel>,
-    newTechnician: Partial<TechnicianModel>,
-    batch: WriteBatch
-): Promise<WriteBatch> {
-    if (!refTechnician) {
-        throw new Error("Referencia inválida para actualizar");
-    }
+        let snapshot: QuerySnapshot<TechnicianModel>;
 
-    try {
-        console.log(
-            `Setting tech ${newTechnician.csr?.toLowerCase()} in reference ${refTechnician.id} for ${newTechnician.ppk}`
-        );
+        if (csr) {
+            const q = query(colRef, or(where("csr", "==", csr)));
+            snapshot = await getDocs(q);
 
-        const { onHand, ppk, ...rest } = newTechnician;
-
-        const dataToSet: Partial<TechnicianModel> = {
-            ...rest,
-            ...(onHand !== undefined && { onHand }),
-            ...(ppk !== undefined && { ppk }),
-            lastUpdate: Timestamp.now(),
-        };
-
-        batch.set(refTechnician, dataToSet, { merge: true });
-
-        return batch;
-    } catch (error: any) {
-        throw new Error("No se pudo agregar al tecnico: " + error.message);
-    }
-}
-
-/**
- * Simplemente si no existe un documento con el identificador, se crea una referencia al mismo
- */
-
-export async function getOrCreateInventoryRef(
-    batch: WriteBatch,
-    catalogId: string,
-): Promise<DocumentReference> {
-    try {
-        const ref = doc(db, "Inventory", catalogId).withConverter(inventoryConverter);
-        const snap: DocumentSnapshot<InventoryModel> = await getDoc(ref);
-        if (!snap.exists()) {
-            await initTechnicianToSomePart(ref, batch);
-        }
-        return ref;
-    } catch (error: any) {
-        console.error(`[inventory-error] ${error.message}`);
-        throw {
-            code: "inventory-error",
-            message: error.message || "Error inesperado al preparar el inventario"
-        };
-    }
-}
-
-/**
- * Queda pendiente a revision el funionamiento de la logica para syncronizar eficientemente las base de datos locales
- */
-
-export async function updateGeneralSettings(batch) {
-    await batch.commit();
-    const lastUpdateFlag = doc(db, 'config', 'generalSettings');
-    await setDoc(lastUpdateFlag, { lastUpdate: Timestamp.now() });
-}
-
-/**
- * Esta funcion devuelve los tecnicos de una parte especifica del inventario.
- */
-
-export async function getTechnicianOfSomePart(
-    refInventory: DocumentReference<InventoryModel>,
-    csr?: string
-): Promise<Array<TechnicianModel>> {
-
-    if (!refInventory) {
-        throw new Error("No hay referencia de la parte para actualizar");
-    }
-
-    const technicianCollectionRef: CollectionReference<TechnicianModel> =
-        collection(refInventory, "technicians").withConverter(technicianConverter);
-
-    let technicianSnapshot: QuerySnapshot<TechnicianModel>;
-
-    if (csr) {
-        const qTechnician = query(
-            technicianCollectionRef,
-            or(
-                where("csr", "==", csr),
-            )
-        );
-        technicianSnapshot = await getDocs(qTechnician);
-    } else {
-        technicianSnapshot = await getDocs(technicianCollectionRef);
-    }
-
-    if (technicianSnapshot.size > 1 && csr) {
-        throw new Error("Hay mas de una coincidencia.");
-    }
-
-    return technicianSnapshot.docs.map(d => d.data());
-}
-
-export async function getAllStockOfSomePart(refInventory: DocumentReference) {
-    //Aqui se debe calcular la sumatoria por cada CSR presente y la total de todas
-    try {
-        if(!refInventory) {
-            throw new Error("No hay referencia de la parte para actualizar");
-        }
-        const stockCollectionRef = collection(refInventory, "stock");
-        const stockSnapshot = await getDocs(stockCollectionRef);
-        if (stockSnapshot.empty) {
-            return {
-                total: 0,
-                detail: []
-            };
-        }
-        let balance = [];
-        let commonCount = 0;
-        stockSnapshot.docs.forEach((doc) => {
-            switch (doc.data().status) {
-                case STATUS.PENDIENT:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.FAILED:
-                    commonCount = commonCount + 0;
-                break;
-                case STATUS.SYNC:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.ADJUST:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.ISSUE:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;
-                case STATUS.DONE:
-                     commonCount = commonCount + 0;
-                break;
-                default:
-                     commonCount = commonCount + Number(doc.data().quantity);
-                break;        
+            if (snapshot.size > 1) {
+                throw new Error("Hay más de una coincidencia.");
             }
-            balance.push({
-                id: doc.id,
-                stock: Number(doc.data().quantity),
-                status: doc.data().status,
-                note: doc.data().note,
-                lastUpdate: doc.data().lastUpdate,
-            });
+        } else {
+            snapshot = await getDocs(colRef);
+        }
+
+        return snapshot.docs.map(d => d.data());
+    }
+
+    async setTechnician(
+        ref: DocumentReference<TechnicianModel>,
+        data: Partial<TechnicianModel>,
+    ): Promise<void> {
+        const { onHand, ppk, ...rest } = data;
+
+        this.batch.set(
+            ref,
+            {
+                ...rest,
+                ...(onHand !== undefined && { onHand }),
+                ...(ppk !== undefined && { ppk }),
+                lastUpdate: Timestamp.now()
+            },
+            { merge: true }
+        );
+    }
+
+    /* ==========================
+       Stock
+    ========================== */
+
+    async getAllStock(
+        refInventory: DocumentReference<InventoryModel>
+    ): Promise<StockDTO[]> {
+        const colRef = collection(refInventory, "stock")
+            .withConverter(this.stockConverter);
+
+        const snapshot = await getDocs(colRef);
+        return snapshot.docs.map(d => d.data());
+    }
+
+    async setStock(
+        refStock: DocumentReference<StockModel>,
+        data: Partial<StockModel>
+    ): Promise<void> {
+        const batch = writeBatch(db);
+
+        batch.set(refStock, {
+            quantity: data.quantity,
+            status: data.status,
+            csr: data.csr,
+            note: data.note ?? "",
+            lastUpdate: Timestamp.now()
         });
-        return {
-            total: commonCount,
-            detail: balance
-        };
-    } catch(error) {
-        throw new Error("No se pudo obtener el stock, " + error.message);
+
+        const parentId = refStock.parent?.parent?.id;
+        if (parentId) {
+            batch.set(
+                doc(db, "Inventory", parentId),
+                { lastUpdate: Timestamp.now() },
+                { merge: true }
+            );
+        }
+
+        await batch.commit();
+    }
+
+    /* ==========================
+       Config
+    ========================== */
+
+    async updateGeneralSettings(): Promise<void> {
+        const ref = doc(db, "config", "generalSettings");
+        await setDoc(ref, { lastUpdate: Timestamp.now() });
     }
 }
